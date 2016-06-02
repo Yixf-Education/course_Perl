@@ -1,0 +1,272 @@
+\documentclass{TIJMUjiaoanLL}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\neirong{基序和循环 \ / 第5章}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年9月25\&28日8:00-10:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\fangshi{理论讲授}
+\xueshi{4}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 掌握：流程控制的语句及语法；文件交互的方法；join、split、substr和tr等函数的基本用法；Perl语言中真与假的判断。
+  \item 熟悉：正则表达式的基本用法；获取键盘输入的方法。
+  \item 了解：常见的特殊变量和文件测试；变量初始化的方法。
+  \item 自学：join、split和substr等函数的高级用法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）引言与导入：回顾上一章学习的知识点，介绍本章将要学习的内容。
+  \item （35'）流程控制：介绍流程控制的概念和指令，讲解流程控制的分类及各自的语法。
+  \item （10'）代码布局：比较不同的代码布局。
+  \item （50'）查找基序：通过在蛋白质序列中查找用户指定基序的Perl程序讲解Perl语言的相关知识。
+  \item （70'）计数核苷酸：通过计数核苷酸的Perl程序讲解字符串操作等Perl语言的相关知识。
+  \item （25'）写入文件：通过保存核苷酸计数结果的Perl程序讲解写入文件的方法。
+  \item （5'）总结与答疑：总结授课内容中的知识点与技能，解答学生疑问。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 重点：流程控制的语句及语法；常用字符串操作函数的用法；真与假的判断。
+  \item 难点：Perl语言中真与假的判断。
+  \item 解决策略：通过实例演示帮助学生理解、记忆。
+\end{itemize}
+}
+
+\waiyu{
+\vspace*{-10pt}
+\begin{multicols}{2}
+流程控制（flow control）
+
+真（true）
+
+假（false）
+
+基序（motif）
+
+初始化（initialization）
+
+声明（declare）
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\fuzhu{
+\begin{itemize}
+  \item 多媒体：流程控制的各种语法；正则表达式的使用。
+  \item 板书：真与假的判断法则；正则表达式解析。
+  \item 演示：常见字符串处理函数的使用。
+\end{itemize}
+}
+
+\sikao{
+\vspace*{-10pt}
+\begin{multicols}{2}
+\begin{itemize}
+  \item 总结Perl语言中流程控制的语句及其语法。
+  \item 总结Perl语言真与假的判断法则。
+  \item 总结字符串和数组互转的方法。
+  \item 总结正则表达式和模式匹配的使用。
+  \item 总结Perl对数字和字符串的智能化处理。
+  \item 总结substr和tr处理字符串的用法。
+\end{itemize}
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 引言与导入（5分钟）
+    \begin{enumerate}
+      \item 已经学习
+	\begin{itemize}
+	  \item Perl语言基础：标量、数组、字符串操作、读取文件
+	  \item 生物序列处理：连接DNA片段、DNA转录成RNA、获取反向互补序列
+	\end{itemize}
+      \item 即将学习
+	\begin{itemize}
+	  \item Perl语言基础：条件测试、循环、正则表达式、写入文件
+	  \item 生物序列处理：查找基序、计数核苷酸
+	\end{itemize}
+    \end{enumerate}
+  \item 流程控制（35分钟）
+    \begin{enumerate}
+      \item 简介
+	\begin{enumerate}
+	  \item 定义：在程序运行时,个别的指令(或是陈述、子程序)运行或求值的顺序
+	  \item 指令
+	    \begin{itemize}
+	      \item 继续运行位于不同位置的一段指令
+	      \item 若特定条件成立时，运行一段指令
+	      \item 运行一段指令若干次，直到特定条件成立为止
+	      \item 运行位于不同位置的一段指令，但完成后会继续运行原来要运行的指令
+	      \item 停止程序，不运行任何指令
+	    \end{itemize}
+	\end{enumerate}
+      \item \textcolor{red}{【重点】}分类
+	\begin{enumerate}
+	  \item 默认：除非明确指明不按顺序执行，否则程序将从最顶端的第一个语句开始，顺序执行到最底端的最后一个语句
+	  \item 条件判断：只在条件测试成功的前提下执行相应的语句，否则直接跳过这些语句；if、if-else、unless\textcolor{red}{（通过实例详细讲解各自的语法，比较常规写法和简写，比较if和unless）}
+	    \begin{itemize}
+	      \item Perl程序5.1：使用if-elsif-else
+	    \end{itemize}
+\vspace{-1em}
+\begin{multicols}{2}
+\begin{verbatim}
+if( 1 == 1 ) {
+print "1 equals 1\n";
+}
+if( 1 ) {
+print "1 evaluates to true\n";
+}
+\end{verbatim}
+\begin{verbatim}
+if( 1 == 0 ) {
+print "1 equals 0\n";
+}
+if( 0 ) {
+print "0 evaluates to true\n";
+}
+\end{verbatim}
+\end{multicols}
+\vspace{-1em}
+	  \item 循环：一直重复语句，直到相应的测试失败为止；while、for、foreach
+	    \begin{itemize}
+	      \item Perl程序5.2：使用while从文件中读取蛋白质序列数据
+	    \end{itemize}
+	\end{enumerate}
+      \item \textcolor{red}{【重点、难点】}真和假
+	\begin{enumerate}
+	  \item 数字：0为假，其他为真
+	  \item 字符串：空字符串和字符串\verb|'0'|\textcolor{red}{（唯一为假的非空字符串）}为假，其他为真
+	  \item 其他：先转换成数字或字符串再行判断
+	\end{enumerate}
+    \end{enumerate}
+  \item 代码布局（10分钟）\textcolor{red}{（比较不同代码布局的优缺点）}
+\vspace{-1em}
+\begin{multicols}{2}
+\begin{verbatim}
+while ( $alive ) {
+  if ( $needs_nutrients ) {
+    print "Needs nutrients\n";
+  }
+}
+
+
+\end{verbatim}
+\begin{verbatim}
+while ( $alive )
+{
+  if ( $needs_nutrients )
+  {
+    print "Needs nutrients\n";
+  }
+}
+\end{verbatim}
+\end{multicols}
+\vspace{-1em}
+
+\otherTail
+\newpage
+\otherHeader
+
+  \item 查找基序（50分钟）
+    \begin{enumerate}
+      \item 问题分析与解决策略：基序长度不定有变体；正则表达式
+      \item Perl程序5.3：在蛋白质序列中查找用户指定的基序
+      \item 获取键盘输入：\verb|<STDIN>|，chomp vs. chop
+      \item \textcolor{red}{【重点】}数组变标量：\verb|$protein = join ( '', @protein);|\textcolor{red}{（连接两个DNA片段的又一种方法）}
+      \item do-until：先执行后测试\textcolor{red}{（与until进行比较）}
+      \item 正则表达式：\verb|$protein =~ s/\s//g;|，\verb|$motif =~ /^\s*$/|\textcolor{red}{（结合实例解释其中的字符集、元字符、量词、锚位等）}
+      \item 模式匹配：\verb|$protein =~ /$motif/|\textcolor{red}{（比较变量内插和直接使用字符串的优缺点）}
+    \end{enumerate}
+  \item 计数核苷酸（70分钟）\textcolor{red}{（同样的碱基计数，不同的策略方法，各有优势与劣势）}
+    \begin{enumerate}
+      \item 伪代码\textcolor{red}{通过简洁的伪代码理清思路}
+      \item 策略\textcolor{red}{（思考每种策略的优缺点）}
+	\begin{enumerate}
+	  \item 把DNA拆解成单个碱基，存储到数组中，对数组中的元素进行迭代处理
+	  \item 对DNA字符串中的位置进行迭代处理
+	\end{enumerate}
+      \item 把字符串拆解成数组
+	\begin{enumerate}
+	  \item Perl程序5.4：对DNA序列中的碱基进行计数
+	  \item \textcolor{red}{【重点】}split：\verb|@DNA = split( '', $DNA );|\textcolor{red}{（和join进行比较）}
+	  \item 初始化
+	    \begin{itemize}
+	      \item 未初始化变量的值为\verb|'undef'|——0或者空字符串\textcolor{red}{（Perl中的上下文无处不在）}
+	      \item Perl程序5.5：Perl对数字和字符串的智能化处理
+	    \end{itemize}
+	  \item foreach：\verb|foreach $base (@DNA) {|\textcolor{red}{（比较自定义变量和内置变量的利弊）}
+	  \item +1：至少四种实现方法\textcolor{red}{（条条大路通罗马，比较各种方法的优缺点）}
+	\end{enumerate}
+      \item 操作字符串
+	\begin{enumerate}
+	  \item Perl程序5.6：对DNA序列中的碱基进行计数
+	  \item 文件测试：unless，-e
+	  \item for vs. foreach\textcolor{red}{（语法不同，本质一样）}
+	  \item 索引：不管是字符串还是数组元素，都从0开始索引
+	  \item \textcolor{red}{【重点】}substr：\verb|$base = substr($DNA, $position, 1);|\textcolor{red}{（通过实例详细讲解其用法）}
+	\end{enumerate}
+    \end{enumerate}
+  \item 写入文件（25分钟） 
+    \begin{enumerate}
+      \item Perl程序5.7：对DNA序列中的碱基进行计数，结果保存到文件
+      \item 读取文件 vs. 写入文件
+      \item while：妙用正则匹配进行计数
+      \item \textcolor{red}{【重点】}tr：妙用tr进行计数，优劣并存
+    \end{enumerate}
+  \item 总结与答疑（5分钟）
+    \begin{enumerate}
+      \item 知识点
+	\vspace{-1em}
+	\begin{multicols}{2}
+	\begin{itemize}
+	  \item 流程控制：条件、循环
+	  \item 文件交互：打开、读取、写入
+	  \item 正则匹配：正则表达式，模式匹配
+	  \item 字符串操作：join、split、substr、tr
+	  \item 其他：真与假、获取键盘输入、变量递增、文件测试、……
+	\end{itemize}
+      \end{multicols}
+	\vspace{-1em}
+      \item 技能
+	\begin{itemize}
+	  \item 熟练使用Perl语言中的各种流程控制语句
+	  \item 能够编写在DNA或者蛋白质序列中查找基序的程序
+	  \item 能编写对DNA序列中的核苷酸进行计数的程序
+	\end{itemize}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}

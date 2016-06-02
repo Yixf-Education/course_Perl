@@ -1,0 +1,565 @@
+\input{snippet/beamer_head}
+\input{snippet/class_head}
+
+%\includeonlyframes{current}
+
+\title[绪论]{第一章\quad 绪论}
+\author[Yixf]{伊现富（Yi Xianfu）}
+\institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
+\date{2015年9月}
+
+\input{snippet/beamer_toc.tex}
+
+\section{课程安排}
+\input{snippet/class_info.tex}
+
+\section{生物信息学}
+\begin{frame}
+  \frametitle{生物信息学（bioinformatics）}
+  \begin{quotation}
+    ``If you can't do bioinformatics, you can't do biology."
+    \begin{flushright}
+    Lincoln Stein\\
+    (Biologist and former CSHL Professor)
+  \end{flushright}
+  \end{quotation}
+  \vspace{-1em}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{c1.intro.code.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 维基百科}
+  生物信息学（bioinformatics）利用应用数学、信息学、统计学和计算机科学的方法研究生物学的问题。目前的生物信息学基本上只是分子生物学与信息技术（尤其是互联网技术）的结合体。\\
+  \vspace{1em}
+  生物信息学的研究材料和结果就是各种各样的生物学数据，其研究工具是计算机，研究方法包括对生物学数据的搜索（收集和筛选）、处理（编辑、整理、管理和显示）及利用（计算、模拟）。\\
+  \vspace{1em}
+  目前主要的研究方向有：序列比对、基因识别、基因重组、蛋白质结构预测、基因表达、蛋白质反应的预测，以及建立进化模型。
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 维基百科（续）}
+  生物学技术往往生成大量的嘈杂数据。与数据挖掘类似，生物信息学利用数学工具从大量数据中提取有用的生物学信息。生物信息学所要处理的典型问题包括：重新组装在霰弹枪测序法测序过程中被打散的DNA序列，从蛋白质的氨基酸序列预测蛋白质结构，利用mRNA微阵列或质谱仪的数据检验基因调控的假说。\\
+  \vspace{1em}
+  某些人将计算生物学作为生物信息学的同义词处理；但是另外一些人认为计算生物学和生物信息学应当被当作不同的条目处理，因为生物信息学更侧重于生物学领域中计算方法的使用和发展，而计算生物学强调应用信息学技术对生物学领域中的假说进行检验，并尝试发展新的理论。
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 维基百科（续）}
+  生物信息学可以定义为对分子生物学中两类信息流的研究：\\
+  \vspace{1em}
+  第一类信息流源于分子生物学的中心法则：DNA序列被转录为mRNA序列，后者被翻译为蛋白质序列。蛋白质序列继而折叠为具有功能的三维结构。按照达尔文演化理论，这些功能被生物体的环境所选择，从而驱动群体中DNA序列的进化。因此，第一类的生物信息学应用关注于中心法则中任一阶段的信息传递，包括DNA序列中基因的组织与控制、确定DNA中的转录单位、从序列预测蛋白质结构以及分子功能分析。\\
+  \vspace{1em}
+  第二类信息流是基于科学方法：提出关于生物学活动的假设，设计实验以验证这些假设，评估结果与假设的相容性，然后根据实验数据对原假设作扩展或修正。第二类的生物信息学应用关注于这一流程中的信息传递，包括产生假设、设计实验、通过数据库将实验结果组织起来、检验数据与模型的相容性以及修正假设的各个系统。
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 是什么？ | 学科角度}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10.5cm,height=7.5cm]{c1.intro.bioinfo.what.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 是什么？ | 学科角度}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c1.intro.bioinfo.what.02.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 是什么？ | \alert{学科角度}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c1.intro.bioinfo.what.03.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 是什么？ | \alert{技术角度}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8.5cm]{c1.intro.bioinfo.what.04.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | \alert{做什么？}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=7cm]{c1.intro.bioinfo.do.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 资源（数据库与工具）}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10.5cm]{c1.intro.bioinfo.resource.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 资源（技术与工具）}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c1.intro.bioinfo.tool.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 主题词}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10.5cm]{c1.intro.bioinfo.topic.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物信息学 | 主题词}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10.5cm]{c1.intro.bioinfo.topic.02.png}
+  \end{figure}
+\end{frame}
+
+\section{生物学}
+\begin{frame}
+  \frametitle{生物学 | 历史}
+  \begin{figure}
+    \centering
+    \includegraphics[width=12cm]{c1.intro.biology.history.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 中心法则（central dogma）}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10.5cm]{c1.intro.dogma.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | \alert{DNA}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=7cm]{c1.intro.dna.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | \alert{RNA}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9.5cm]{c1.intro.rna.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 蛋白质 | \alert{氨基酸}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=9.5cm,height=7.5cm]{c1.intro.aa.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 蛋白质 | 氨基酸 | 助记口诀}
+  \begin{block}{必需氨基酸}
+  甲携来一本亮色书（甲硫氨酸、缬氨酸、赖氨酸、异亮氨酸、苯丙氨酸、亮氨酸、色氨酸、苏氨酸）
+\end{block}
+\pause
+\begin{block}{20种氨基酸}
+  苏缬亮异亮，苯丙属芳香。\\
+  还有色赖蛋，缺一人遭殃。\\
+  （以上是必需氨基酸）\\
+  丙组丝甘半，天谷建酸胺。\\
+  精酪加一脯，20氨基酸。\\
+  （以上是非必需氨基酸）
+\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 蛋白质 | 多肽}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm,height=3cm]{c1.intro.peptide.01.png}\\
+    \includegraphics[width=7cm,height=4.8cm]{c1.intro.peptide.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 蛋白质 | 结构}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11.5cm]{c1.intro.protein.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | \alert{数据库}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c1.intro.db.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 数据格式}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c1.intro.data.format.01.jpg}
+  \end{figure}
+\end{frame}
+
+\section{计算机科学}
+\begin{frame}
+  \frametitle{计算机科学 | 历史}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm,height=7.5cm]{c1.intro.cs.history.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | \alert{术语}}
+  \begin{block}{\textit{in vivo}}
+  \textit{In vivo}为拉丁文“在活体内”之意。在科学文献中，\textit{in vivo}常指进行于完整且存活的个体内的组织的实验，以区别在生物体上移除下来的组织或死亡的组织上进行的实验（对应的拉丁文为\textit{in vitro }）。
+  \end{block}
+  \pause
+  \begin{block}{\textit{in vitro}}
+    \textit{In vitro}是拉丁语中“在玻璃里”的意思，意指进行或发生于试管内的实验与实验技术。更广义的意思，则指活生物体之外的环境中的操作。
+  \end{block}
+  \pause
+  \begin{block}{\textit{in silico}}
+    \textit{In
+    silico}是指“在硅之中”，也就是说“进行于电脑中，或是经由电脑模拟”之意，此用语是衍生自另外两个在生物学上常用的短语：\textit{in vivo}（生物活体内）及\textit{in vitro}（生物活体外）。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c1.intro.language.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 崇拜/鄙视链}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c1.intro.language.fanboys.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 特色}
+  \begin{figure}
+    \centering
+    \includegraphics[width=7cm]{c1.intro.language.knife.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 流行度}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c1.intro.language.rank.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 排名}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c1.intro.language.rate.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 生物信息学}
+  \begin{block}{\alert{生物信息学常用编程语言}}
+    Perl（1987）、Python（1991）、Ruby（1995）、Java（1995）
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=2.5cm]{c1.intro.perl.logo.png}
+    \hspace{2em}
+    \includegraphics[width=5.5cm]{c1.intro.python.logo.png}\\
+    \includegraphics[width=2cm]{c1.intro.ruby.logo.png}
+    \hspace{11em}
+    \includegraphics[width=1.5cm]{c1.intro.java.logo.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | BioX}
+  \begin{block}{\alert{生物信息学专用}}
+    BioPerl、Biopython、BioRuby、BioJava
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=2.5cm]{c1.intro.bioperl.logo.png}
+    \hspace{2em}
+    \includegraphics[width=6cm]{c1.intro.biopython.logo.jpg}\\
+    \includegraphics[width=2cm]{c1.intro.bioruby.logo.png}
+    \hspace{10em}
+    \includegraphics[width=3cm]{c1.intro.biojava.logo.jpg}
+  \end{figure}
+\end{frame}
+
+\section{编程}
+\begin{frame}
+  \frametitle{编程 | 与生物信息学}
+  \begin{block}{不需要！}
+    \begin{itemize}
+      \item 有现成的工具可以使用
+      \item 五湖四海皆兄弟
+      \item 有钱能使磨推鬼
+      \item ……
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{需要！}
+    \begin{itemize}
+      \item 没有现成的工具
+      \item 兄弟们都在忙着混江湖
+      \item 工资涨如龟速，物价涨如赤兔
+      \item ……
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 值得学习}
+  \begin{itemize}
+    \item 有助于理解现有工具的配置与个性化修改
+    \item 编写程序来批量运行现有程序
+    \item
+      数据分析很简单，前期数据处理很难难难……（二八定律，80/20法则，帕雷托法则）
+    \item 增强研究工作的可重复性
+    \item 人生苦短，学习编程
+    \item ……
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 与艺术}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c1.intro.programming.art.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 与艺术}
+  \begin{center}
+    \large{每一位程序员都是一位艺术家！\\
+    每一个程序都是一件艺术品！\\
+    编写程序 = 艺术创作！}
+\end{center}
+\vspace{-1em}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10.5cm]{c1.intro.programming.art.02.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 局限 | 理论上无解}
+  \begin{block}{任务}
+    \begin{enumerate}
+      \item<1-> 同时精确测量粒子的位置和动量
+      \item<2-> 寻找第四种可以镶嵌平面的凸六边形
+      \item<3-> 寻找可以镶嵌平面的边数大于6的凸多边形
+      \item<4-> 分析敲除所有必需基因后的基因表达
+    \end{enumerate}
+  \end{block}
+  \begin{block}{原理}
+    \begin{enumerate}
+      \item<1-> 海森堡不确定性原理
+      \item<2-> 有且只有三种凸六边形可以镶嵌平面
+      \item<3-> 边数大于6的凸多边形都无法镶嵌平面
+      \item<4-> 都说了是必需基因……
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 局限 | 实际上不可解}
+  \begin{block}{任务}
+    \begin{enumerate}
+      \item<1-> 破解RSA秘钥
+      \item<2-> 暴力破解由94个字符（26小写、26大写、10数字、32标点）随机组合成的长12个字符的密码
+      \item<3-> 蛋白质折叠中通过随机尝试找到总能量最低的构象状态
+    \end{enumerate}
+  \end{block}
+  \begin{block}{原因}
+    \begin{enumerate}
+      \item<1-> 对极大整数做因数分解非常困难（破解RSA-2048（2048-bit）的密钥可能需要耗费传统电脑10亿年的时间，而量子计算机只需要100秒就可以完成。）【量子计算机+秀尔算法】
+      \item<2-> 普通台式机，每秒运算40亿次，需要大约30万年以上才能破解
+      \item<3-> 利文索尔佯谬（Levinthal's paradox）：100氨基酸，每个2种构象，每次尝试耗时$10^{-13}$s，穷举需要40亿年
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\section{Bioinformatics Career Survey 2008}
+\begin{frame}
+  \frametitle{2008 | happiness}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.65\textwidth]{c1.intro.2008.happiness.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | happiness vs. career position}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.65\textwidth]{c1.intro.2008.happiness.position.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | likes vs. dislikes}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.9\textwidth]{c1.intro.2008.happiness.like.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | research area}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.65\textwidth]{c1.intro.2008.area.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | research area | clustering}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.55\textwidth]{c1.intro.2008.area.cluster.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | background}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.7\textwidth]{c1.intro.2008.background.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | language}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.9\textwidth]{c1.intro.2008.language.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2012 | language}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.95\textwidth]{c1.intro.2012.language.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | applications}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.53\textwidth]{c1.intro.2008.application.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | tools}
+   \begin{figure}
+     \centering
+     \includegraphics[width=0.55\textwidth]{c1.intro.2008.tool.png}
+   \end{figure} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | salary}
+  \begin{block}{industry vs. academic}
+    \begin{itemize}
+      \item Academic Salary Mean/Median: \$36,520 / \$33,712
+      \item Industry Salary Mean/Median: \$66,239 / \$64,235 
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{Salary/Years Experience}
+    \begin{itemize}
+      \item Academic Mean/Median: \$10,970 / \$8,333
+      \item Industry Mean/Median: \$17,410 / \$12,000 
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{2008 | 参考资料}
+  \begin{itemize}
+    \item \href{http://openwetware.org/wiki/Biogang:Projects/Bioinformatics\_Career\_Survey\_2008}{Bioinformatics Career Survey 2008}
+    \item \href{http://openwetware.org/wiki/Biogang:Projects/Bioinformatics\_Career\_Survey\_2008\_Results}{Bioinformatics Career Survey 2008 Results}
+    \item \href{https://github.com/michaelbarton/bioinformatics-career-survey}{bioinformatics-career-survey (GitHub)}
+    \item \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2267699/}{A comparison of common programming languages used in bioinformatics} 
+    \item \href{http://www.molecularecologist.com/2012/11/a-comparison-of-bioinformatics-programming-languages/}{A comparison of bioinformatics programming languages} 
+    \item \href{https://nlcb.wordpress.com/2013/02/23/programming-languages-of-bioinformatics-2/}{Programming Languages of Bioinformatics} 
+  \end{itemize}
+\end{frame}
+
+\section{回顾与总结}
+\subsection{总结}
+\begin{frame}
+  \frametitle{绪论 | 总结}
+  \begin{block}{知识点}
+    \begin{itemize}
+      \item 生物信息学：交叉学科，多种技能，领域宽泛
+      \item 生物学：DNA，RNA，蛋白质
+      \item 计算机科学：三个术语，编程语言
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{思考题}
+\begin{frame}
+  \frametitle{绪论 | 思考题}
+  \begin{enumerate}
+    \item 生物信息学主要是由哪些学科交叉而来的？
+    \item 生物信息学主要需要哪些方面的知识和技能？
+    \item DNA是由哪四种碱基组成的？RNA与之有何不同？
+    \item 列举常见的20种氨基酸，它们三字母和单字母的缩写分别是什么？
+    \item 列举常见的存储DNA序列和蛋白质结构的数据库。
+    \item \textit{in vivo}、\textit{in vitro}和\textit{in silico}分别代表什么含义？
+    \item 列举常见的编程语言，在生物信息学中常用的编程语言，专用于生物信息学的工具集。
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{下节预告}
+  \begin{block}{Markdown}
+    回顾、总结Markdown标记语言的基本语法：
+    \begin{itemize}
+      \item 标题
+      \item 强调
+      \item 列表
+      \item 代码
+      \item 引用
+      \item 链接
+      \item ……
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\input{snippet/class_tail}

@@ -1,0 +1,270 @@
+\documentclass{TIJMUjiaoanLL}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\neirong{子程序和Bugs \ / 第6章}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年10月9\&10日8:00-10:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\fangshi{理论讲授}
+\xueshi{4}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 掌握：子程序的使用——定义、调用、数据传递等。
+  \item 熟悉：Perl调试器的基本用法。
+  \item 了解：模块的编写与使用。
+  \item 自学：Perl调试器的高级用法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）引言与导入：对子程序和Perl调试器进行简介。
+  \item （30'）子程序：讲解子程序的基本用法，包括定义、调用、参数、作用域等。
+  \item （15'）命令行参数和数组：讲解命令行参数的使用，以及相关的特殊变量。
+  \item （50'）传递数据给子程序：讲解传递数据给子程序的方法，对值传递和引用传递进行比较。
+  \item （10'）模块和子程序库：介绍模块的编写和使用。
+  \item （85'）修复Bugs：总结调试程序的方法，讲解Perl调试器的使用。
+  \item （5'）总结与答疑：总结授课内容中的知识点与技能，解答学生疑问。
+\end{itemize}
+}
+
+\zhongdian{
+\begin{itemize}
+  \item 重点：子程序的基本用法；传递数据给子程序的方法。
+  \item 难点：传递数据给子程序的方法；Perl调试器的使用。
+  \item 解决策略：通过实例演示帮助学生理解、记忆。
+\end{itemize}
+}
+
+\waiyu{
+\vspace*{-10pt}
+\begin{multicols}{2}
+子程序（subroutine）
+
+调试器（debugger）
+
+程序错误（bug）
+
+参数（argument/parameter）
+
+值（value）
+
+引用（reference）
+
+模块（module）
+
+库（library）
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\fuzhu{
+\begin{itemize}
+  \item 多媒体：子程序的基本用法；模块的使用。
+  \item 板书：传递数据给子程序的方法。
+  \item 演示：Perl调试器的使用。
+\end{itemize}
+}
+
+\sikao{
+\vspace*{-10pt}
+\begin{multicols}{2}
+\begin{itemize}
+  \item 如何定义和调用子程序？
+  \item 举例说明作用域的概念。
+  \item 如何获取命令行参数？
+  \item 举例说明传递数据给子程序的方法。
+  \item 总结调试Perl程序的方法。
+  \item 如何使用Perl调试器调试程序？
+\end{itemize}
+\end{multicols}
+\vspace*{-10pt}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 引言与导入（5分钟）
+    \begin{itemize}
+      \item 子程序：对程序进行结构化组织
+      \item Perl调试器：使用“慢镜头”检查程序的行为
+    \end{itemize}
+  \item \textcolor{red}{【重点】}子程序（30分钟）
+    \begin{enumerate}
+      \item 简介
+	\begin{itemize}
+	  \item 简介：程序中的程序 $\Longrightarrow$ 包裹代码、起个名字、传递数据、运算返回结果
+	  \item 优势：一次编写、多次使用 $\Longrightarrow$ 简短易理解、稳健易测试、灵活模块化
+	  \item 原则：只做一件事情并把它做好 $\Longrightarrow$ 通用且有用、不止使用一次、代码不超过一页
+	\end{itemize}
+      \item 编写\textcolor{red}{（通过实例演示讲解）}
+	\begin{itemize}
+	  \item 程序分块：主程序（从开头到exit命令）+子程序（其余部分）
+	  \item 定义与调用：集中定义，通过子程序名（和参数）进行调用
+	\end{itemize}
+\vspace*{-1em}
+\begin{multicols}{2}
+      \item 定义
+	\begin{itemize}
+	  \item 语法：sub +名字+代码块
+	  \item 两类变量：传递给子程序的参数，子程序中声明的变量
+	  \item 返回值：return，标量、列表、数组等
+	\end{itemize}
+\begin{verbatim}
+sub addACGT {
+  my ($dna) = @_;
+  $dna .= 'ACGT';
+  return $dna;
+}
+\end{verbatim}
+\end{multicols}
+\vspace*{-1em}
+      \item 参数
+	\begin{itemize}
+	  \item 传递：变量名无关紧要，关键是值及其顺序
+	  \item 收集：特殊变量 \verb|@_| 数组
+	\end{itemize}
+      \item 作用域\textcolor{red}{（比较使用my前后程序的输出）}
+	\begin{itemize}
+	  \item 作用域：把变量隐藏起来，使它们仅局限在程序的特定部分
+	  \item 词法作用域：my，把变量限制在使用它们的代码块中
+	\end{itemize}
+    \end{enumerate}
+  \item 命令行参数和数组（15分钟）
+\vspace*{-1em}
+\begin{multicols}{2}
+    \begin{enumerate}
+      \item 命令行参数
+	\begin{itemize}
+	  \item 非交互、自动化
+	  \item \verb|$0|：程序名
+	  \item \verb|@ARGV|：所有的命令行参数
+	\end{itemize}
+      \item 数组使用
+	\begin{itemize}
+	  \item 起始索引为0
+	  \item 使用 \verb|$|而非 \verb|@|提取元素
+	  \item 在中括号中放置下标
+	\end{itemize}
+    \end{enumerate}
+\end{multicols}
+\vspace*{-1em}
+  \item \textcolor{red}{【重点、难点】}传递数据给子程序（50分钟）\textcolor{red}{（通过实例进行演示，并对两者进行比较）}
+    \begin{enumerate}
+      \item 通过值传递
+	\begin{itemize}
+	  \item 实例：\verb|simple_sub($i);|
+	  \item 说明
+	    \begin{itemize}
+	      \item 调用子程序时参数的值被复制并传递给子程序
+	      \item 子程序中值的变化不会影响到主程序中相应参数的值
+	    \end{itemize}
+	  \item 适用：单个标量、标量列表、单个数组等
+	\end{itemize}
+      \item 通过引用传递
+	\begin{itemize}
+	  \item 实例：\verb|reference_sub(\@i, \@j);|（\textcolor{red}{vs.} \verb|reference_sub(@i, @j);|
+	  \item 说明
+	    \begin{itemize}
+	      \item 引用：在变量名前加 \verb|\|，存储在标量变量中的一种特殊类型的数据
+	      \item 收集：从 \verb|@_|中读取参数时要保存为标量变量
+	      \item 使用：先解引用后使用
+	      \item 解引用：在引用前添加表明变量类型的符号（\verb|$|、\verb|@|、\verb|%|）
+	      \item 注意：子程序中对参数变量值的操作会影响到主程序中参数的值
+	    \end{itemize}
+	  \item 适用：复杂参数（混合标量、数组和散列）
+	\end{itemize}
+    \end{enumerate}
+
+\otherTail
+\newpage
+\otherHeader
+
+  \item 模块和子程序库（10分钟）
+    \begin{enumerate}
+      \item 模块
+        \begin{itemize}
+           \item 作用：避免繁琐、重复地复制粘贴子程序
+           \item 收集：把常用的子程序统一放在一个文件中
+	   \item 模块：最后一行必须是 \verb|1;|，后缀为 \verb|.pm|
+	   \item 使用：在程序顶部使用use语句，不需要后缀
+	   \item 实例：\verb|use BeginPerlBioinfo;|
+        \end{itemize}
+      \item 子程序库
+	\begin{itemize}
+	  \item 作用：指定保存模块的绝对路径
+	  \item 实例：\verb|use lib '/home';|
+	\end{itemize}
+    \end{enumerate}
+  \item 修复Bugs（85分钟）
+    \begin{enumerate}
+      \item bug
+	\begin{itemize}
+	  \item 简介：程序设计术语，程序错误/漏洞，源于历史中的典故
+	  \item 常见：括号没配对、没用分号结尾、拼写错误、索引错误、……
+	\end{itemize}
+      \item \verb|use warnings;|和\verb|use strict;|
+	\begin{itemize}
+	  \item \verb|use warnings;|：开启警告功能
+	  \item \verb|use strict;|：强制使用my声明变量……
+	\end{itemize}
+      \item 使用注释和print语句
+	\begin{itemize}
+	  \item 选择性注释：适用于没有精确定位错误、但是直到大体范围时
+	  \item 添加print语句：打印出变量的值，适用于差不多直到错误之处时
+	\end{itemize}
+      \item \textcolor{red}{【难点】}Perl调试器\textcolor{red}{（通过实例演示其使用）}
+	\begin{itemize}
+	  \item 启动与停止：perl -d script.pl；输入q退出
+	  \item 使用帮助：man perldebug；h；h h；h CMD
+	  \item 常用命令：p、n、s、v、b、c、R、……
+	\end{itemize}
+    \end{enumerate}
+  \item 总结与答疑（5分钟）
+    \begin{enumerate}
+      \item 知识点
+	\begin{itemize}
+	  \item 子程序：定义，调用，返回值，参数，作用域
+	  \item 命令行参数：特殊变量，提取数组元素
+	  \item 传递数据给子程序：通过值 vs. 通过引用
+	  \item 模块：编写、使用，指定库目录
+	  \item 调试：\verb|use warnings;|和\verb|use strict;|，注释和print，调试器
+	  \item Perl调试器：启动和停止，常用命令
+	\end{itemize}
+      \item 技能
+	\begin{itemize}
+	  \item 能够熟练使用子程序
+	  \item 能够调试Perl程序
+	  \item 能够熟练使用Perl调试器
+	\end{itemize}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+%\parpic[fr]{\includegraphics[width=\textwidth]{}}
+
+\end{document}

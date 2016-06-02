@@ -1,0 +1,181 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验7 \ 生成随机DNA并进行分析}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年10月26日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解伪代码和子程序的设计与编写。
+  \item 熟悉自上而下和自下而上的程序设计理念。
+  \item 掌握Perl语言中的嵌套循环。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （100）实验操作：编写Perl程序生成随机DNA序列并计算它们的相似性百分比。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：嵌套循环。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 比较自上而下和自下而上的两种程序设计理念。
+  \item 解释嵌套循环的逻辑步骤。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 实验操作（100分钟）
+    \begin{enumerate}
+      \item 生成一系列长短不一的随机DNA序列片段
+\begin{verbatim}
+#!/usr/bin/perl
+use strict; use warnings;
+my $maximum_length = 30; my $minimum_length = 15;
+my $size_of_set = 12; my @random_DNA = ();
+srand( time | $$ );
+@random_DNA = make_random_DNA_set( $minimum_length, $maximum_length, $size_of_set );
+print "Here is an array of $size_of_set randomly generated DNA sequences\n";
+print "  with lengths between $minimum_length and $maximum_length:\n\n";
+foreach my $dna (@random_DNA) {
+    print "$dna\n";
+}
+print "\n";
+
+sub make_random_DNA_set {
+    my ( $minimum_length, $maximum_length, $size_of_set ) = @_;
+    my $length;
+    my $dna;
+    my @set;
+    for ( my $i = 0 ; $i < $size_of_set ; ++$i ) {
+        $length = randomlength( $minimum_length, $maximum_length );
+        $dna = make_random_DNA($length);
+        push( @set, $dna );
+    }
+    return @set;
+}
+sub randomlength {
+    my ( $minlength, $maxlength ) = @_;
+    return ( int( rand( $maxlength - $minlength + 1 ) ) + $minlength );
+}
+sub make_random_DNA {
+    my ($length) = @_;
+    my $dna;
+    for ( my $i = 0 ; $i < $length ; ++$i ) {
+        $dna .= randomnucleotide();
+    }
+    return $dna;
+}
+sub randomnucleotide {
+    my (@nucleotides) = ( 'A', 'C', 'G', 'T' );
+    return randomelement(@nucleotides);
+}
+sub randomelement {
+    my (@array) = @_;
+    return $array[ rand @array ];
+}
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 计算随机DNA的相似性百分比
+\begin{verbatim}
+#!/usr/bin/perl
+use strict; use warnings;
+my $percent; my @percentages; my $result; my @random_DNA = ();
+srand( time | $$ );
+@random_DNA = make_random_DNA_set( 10, 10, 10 );
+for ( my $k = 0 ; $k < scalar @random_DNA - 1 ; ++$k ) {
+    for ( my $i = ( $k + 1 ) ; $i < scalar @random_DNA ; ++$i ) {
+        $percent = matching_percentage( $random_DNA[$k], $random_DNA[$i] );
+        push( @percentages, $percent );
+} }
+$result = 0;
+foreach $percent (@percentages) { $result += $percent; }
+$result = $result / scalar(@percentages); $result = int( $result * 100 );
+print "In this run of the experiment, the average percentage of \n";
+print "matching positions is $result%\n\n";
+sub matching_percentage {
+    my ( $string1, $string2 ) = @_;
+    my ($length) = length($string1); my ($position); my ($count) = 0;
+    for ( $position = 0 ; $position < $length ; ++$position ) {
+        if ( substr( $string1, $position, 1 ) eq substr( $string2, $position, 1 ))
+        { ++$count; }
+    }
+    return $count / $length;
+}
+sub make_random_DNA_set {
+    my ( $minimum_length, $maximum_length, $size_of_set ) = @_;
+    my $length; my $dna; my @set;
+    for ( my $i = 0 ; $i < $size_of_set ; ++$i ) {
+        $length = randomlength( $minimum_length, $maximum_length );
+        $dna = make_random_DNA($length); push( @set, $dna );
+    }
+    return @set;
+}
+sub randomlength {
+    my ( $minlength, $maxlength ) = @_;
+    return ( int( rand( $maxlength - $minlength + 1 ) ) + $minlength );
+}
+sub make_random_DNA {
+    my ($length) = @_; my $dna;
+    for ( my $i = 0 ; $i < $length ; ++$i ) {
+        $dna .= randomnucleotide(); }
+    return $dna;
+}
+sub randomnucleotide {
+    my (@nucleotides) = ( 'A', 'C', 'G', 'T' );
+    return randomelement(@nucleotides);
+}
+sub randomelement { my (@array) = @_; return $array[ rand @array ]; }
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+\end{document}

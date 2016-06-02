@@ -1,0 +1,1091 @@
+\input{snippet/beamer_head}
+\input{snippet/class_head}
+
+%\includeonlyframes{current}
+
+\title[Perl语言入门]{第二章\quad Perl语言入门}
+\author[Yixf]{伊现富（Yi Xianfu）}
+\institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
+\date{2015年9月}
+
+\input{snippet/beamer_toc.tex}
+
+\section{引言}
+\begin{frame}
+  \frametitle{引言 | 计算机}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c2.perl.computer.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | 计算机程序}
+  计算机程序（Computer Program）是指一组指示计算机或其他具有讯息处理能力装置每一步动作的指令，通常用某种程序设计语言编写，运行于某种目标体系结构上。\\
+  \vspace{1em}
+  打个比方，一个程序就像一个用汉语（程序设计语言）写下的红烧肉菜谱（程序），用于指导懂汉语和烹饪手法的人（体系结构）来做这个菜。\\
+  \vspace{1em}
+  通常，计算机程序要经过编译和链接而成为一种人们不易看清而计算机可解读的格式，然后运行。未经编译就可运行的程序，通常称之为脚本程序（script）。
+\end{frame}
+
+\begin{frame}
+  \frametitle{引言 | 编程语言}
+编程语言（programming language），是用来定义计算机程序的形式语言。它是一种被标准化的交流技巧，用来向计算机发出指令。一种计算机语言让程序员能够准确地定义计算机所需要使用的数据，并精确地定义在不同情况下所应当采取的行动。\\
+  \vspace{1em}
+与英语类似，编程语言其实就是一门外语，只不过是专门用于跟计算机进行沟通的外语。\\
+  \vspace{1em}
+在电脑领域已发明了上千种不同的编程语言，而且每年仍有新的编程语言诞生。有许多用于特殊用途的语言，只在特殊情况下使用。例如，PHP专门用来显示网页；Perl更适合文本处理；C语言被广泛用于操作系统和编译器的开发（所谓的系统编程）。
+\end{frame}
+
+\section{Perl简介}
+\begin{frame}
+  \frametitle{Perl | 简介}
+  \begin{block}{Perl}
+    \begin{itemize}
+      \item Perl是高级、通用、直译式、动态的程序语言
+      \item \alert{Practical Extraction and Report Language}，实用摘录与报表语言
+      \item Pathologically Eclectic Rubbish Lister，病态折中式垃圾列表器
+      \item 拉里·沃尔（\alert{Larry Wall}），1987年12月18日
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{特性}
+    \begin{itemize}
+      \item 具有动态语言强大灵活的特性
+      \item 借用了C、sed、awk、shell等语言的特性，提供了许多冗余语法
+      \item 使用了语言学的思维（泛型变量、动态数组、Hash表等）
+      \item 程序员可以忽略内部数据存储、类型、内存越界等细节
+      \item 内部集成了正则表达式的功能
+      \item 巨大的第三方代码库 \alert{CPAN}（\href{http://www.cpan.org/}{Comprehensive Perl Archive Network}，Perl综合典藏网）；搜索引擎 \href{https://metacpan.org/}{MetaCPAN}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 简介 | Larry Wall}
+  \begin{block}{简介}
+    1954年，程序员、系统管理员、语言学家和作家。
+  \end{block}
+  \pause
+  \begin{block}{在Perl里的工作（来自Perl官方文档）}
+    \begin{itemize}
+      \item 拉里对Perl如何表现的定义总是对的。这说明他对核心功能有最终否决权。
+      \item 拉里可以日后改变对任何东西的看法，不论他以前是否使用了规则1。（拉里总是对的，即使当他原来是错的。）
+      %\item （懂了么？拉里总是对的，即使他原来是错的。）
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{程序员的3个美德}
+    \begin{itemize}
+      %\item 懒惰：这个品质使你尽最大的努力去减少总的精力消耗。这让你写出节省劳动力的程序，而且别人会找到有用的地方，和你写的文档。所以你不需要回答关于该软件的很多问题。因此是程序员的第一个美德。参见不耐烦和骄傲。
+      %\item 不耐烦：当电脑懒惰的时候你感觉生气。这让你写出不仅反映你的需求，而实际上预先使用它们。或者至少假装。所以是程序员的第二个美德。参见懒惰和骄傲。
+      %\item 骄傲：极度骄傲，宙斯快速推动你想要的那种东西。同时这个品质让你写（和维护）别人支持的程序。所以是程序员的第三个美德。参见懒惰和不耐烦。
+      \item 懒惰；不耐烦；骄傲
+      \item （出处：《Programming Perl》（《骆驼书》）第二版，沃尔（和共同作者Randal L.  Schwartz与Tom Christiansen）
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 简介}
+  \begin{block}{\alert{书写规范}}
+    \begin{itemize}
+      \item Perl：程序语言本身
+      \item perl：实际编译并运行程序的解释器
+      \item PERL：错误的写法，外行的标志
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{应用领域}
+    \begin{itemize}
+      \item 脚本语言中的瑞士军刀
+      \item 网络编程、CGI（Common Gateway Interface，通用网关接口）
+      \item 图形编程
+      \item 系统管理
+      \item 生物信息
+      \item \ldots
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 标志}
+  \begin{figure}
+    \centering
+    \includegraphics[width=4cm]{c2.perl.logo.01.jpg}
+    \hspace{1cm}
+    \includegraphics[width=4cm]{c2.perl.logo.02.png}
+    \vspace{0.5cm}
+    \includegraphics[width=6cm]{c2.perl.logo.03.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 中心思想}
+  \begin{itemize}
+    \item \alert{TMTOWTDI}：There's More Than One Way To Do It. 不只一种方法来做一件事。发音为“Tim Toady”。
+    \item TIMTOWTDIBSCINABTE：There's more than one way to do it, but sometimes consistency is not a bad thing either.  不只一种方法来做一件事，但有时保持一致也不错。发音为“Tim Toady Bicarbonate”。
+    \item Easy things should be easy, and hard things should be possible. 简单的事情应该是简单的，复杂的事情应该变得可能。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 优缺点}
+  \begin{block}{优点}
+    \begin{itemize}
+      \item 很容易：容易使用，但学习Perl并不简单（入门容易精通难）
+      \item 几乎不受限制：几乎没有什么事是Perl办不到的
+      \item 速度通常很快
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{缺点}
+    \begin{itemize}
+      \item 灵活、随意和“过度”的冗余语法
+      \item write-only：代码有点难看，令人难以阅读
+      \item 解释器耗费资源
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 优缺点 | JAPH}
+\begin{lstlisting}[basicstyle=\small\tt]
+#JAPH(Just another Perl hacker) program without obfuscation:
+print "Just another Perl hacker,";
+
+#Embedding JAPH in opaque code:
+$_='987;s/^(\d+)/$1-1/e;$1?eval:print"Just another Perl hacker,"';eval;
+
+#Decoding JAPH from a transposed string literal:
+$_="krJhruaesrltre c a cnP,ohet";$_.=$1,print$2while s/(..)(.)//;
+
+#Appearing as if it does something completely unrelated to printing JAPH:
+$_ = "wftedskaebjgdpjgidbsmnjgc";
+tr/a-z/oh, turtleneck Phrase Jar!/; print;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 优缺点 | JAPH}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c2.perl.japh.01.png}\\
+    \vspace{1em}
+    \includegraphics[width=0.9\textwidth]{c2.perl.japh.02.png}\\
+    \vspace{1em}
+    \includegraphics[width=0.9\textwidth]{c2.perl.japh.03.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 优缺点 | JAPH}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{c2.perl.japh.04.png}
+    \quad
+    \includegraphics[width=0.4\textwidth]{c2.perl.japh.05.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 优势}
+  \begin{block}{易于编程}
+    Perl的一些特性，使得解决常见的生物信息学问题非常容易。
+  \end{block}
+  \pause
+  \begin{block}{快速成型}
+    程序员可以快速写出实用的Perl程序（尤其是频率低或需频繁修改）。
+  \end{block}
+  \pause
+  \begin{block}{可移植性好}
+    可以在不同的计算机、操作系统上运行Perl程序。
+  \end{block}
+  \pause
+  \begin{block}{速度还可以}
+    先用Perl编写程序，再用C重写需要提速的部分。（开发时间远比运行时间宝贵！）
+  \end{block}
+  \pause
+  \begin{block}{程序容易维护}
+    程序是死的，人是活的。（维护程序不比编写程序容易。）
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 版本}
+  \begin{block}{Perl5}
+    \begin{itemize}
+      \item 1994年——至今
+      \item 最新版：v5.22.0（2015-06-01）
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{Perl6}
+    \begin{itemize}
+      \item 2000年——至今
+      \item 最新版：仍在开发中……（Rakudo Star）
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{版本选择}
+    \begin{itemize}
+      \item 强烈推荐Perl5：兼容性好，稳定，模块丰富，资源丰富，……
+      \item (Perl5 vs. Perl6) vs. (Python2 vs. Python3)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 安装}
+  \begin{block}{查看版本确认是否已安装}
+\begin{lstlisting}[language=bash]
+perl -v
+\end{lstlisting}
+  \end{block}
+  \pause
+  \begin{block}{官网}
+    \href{https://www.perl.org/}{https://www.perl.org/}
+  \end{block}
+  \pause
+  \begin{block}{Unix/Linux/Mac OS X}
+    已经预装！
+  \end{block}
+  \pause
+  \begin{block}{Windows}
+    \begin{itemize}
+      \item \href{http://strawberryperl.com/}{Strawberry Perl}【推荐】
+      \item \href{http://www.activestate.com/activeperl/downloads}{ActivePerl}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 学习}
+  \begin{block}{基本策略}
+    先学习基础知识，当需要时再学习相关主题。\\
+    80/20定律：Perl里面80\%的功能可以用文档中20\%的部分加以描述，而另外20\%的功能却需要占据其他80\%的篇幅。（扩展：80\%的任务可以用20\%的知识解决，20\%的任务则需要剩余80\%的知识。）
+  \end{block}
+  \pause
+  \begin{block}{各种资源}
+    \begin{itemize}
+      \item 自带文档（\verb|man perl|）
+      \item 在线文档
+      \item 新闻组
+      \item FAQs
+      \item 邮件列表
+      \item 书籍
+      \item ……
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 学习 | 书籍}
+  \begin{block}{生物信息学角度}
+Beginning $\Longrightarrow$ Mastering Perl for Bioinformatics
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=4.5cm]{c2.perl.bpfb.jpg}
+    \hspace{1em}
+    \includegraphics[width=4.5cm]{c2.perl.mpfb.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 学习 | 书籍}
+  \begin{block}{编程语言角度：代号}
+小骆驼 $\Rightarrow$ 羊驼书 $\Rightarrow$ 小羊驼母亲和她的孩子 $\Rightarrow$ 大骆驼 $\Rightarrow$ 黑豹书
+  \end{block}
+  \pause
+  \begin{block}{英文名}
+Learning Perl $\Rightarrow$ Intermediate Perl $\Rightarrow$ Mastering Perl $\Rightarrow$ Programming Perl $\Rightarrow$ Advanced Perl Programming
+  \end{block}
+  \pause
+  \begin{block}{中文名}
+Perl语言入门 $\Rightarrow$ Intermediate Perl（影印版） $\Rightarrow$ 精通Perl $\Rightarrow$ Perl语言编程 $\Rightarrow$ 高级Perl编程
+  \end{block}
+  \pause
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 学习 | 书籍}
+  \begin{figure}
+    \centering
+    \includegraphics[width=3cm]{c2.perl.lp.png}
+    \qquad
+    \includegraphics[width=3cm]{c2.perl.ip.png}
+    \qquad
+    \includegraphics[width=3cm]{c2.perl.mp.jpg}\\
+    \includegraphics[width=3cm]{c2.perl.pp.png}
+    \hspace{2cm}
+    \includegraphics[width=3cm]{c2.perl.app.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+#!/usr/bin/perl
+# Classic "Hello World" as done with Perl
+
+use strict;
+use warnings;
+
+print "Hello World!\n";
+\end{lstlisting}
+\pause
+\begin{lstlisting}
+# Step 1：编写脚本
+vim hello.pl
+# Step 2：修改权限
+chmod 755 hello.pl
+# Step 3：运行脚本
+perl hello.pl
+./hello.pl
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 文本编辑器}
+  \begin{block}{Vim插件}
+    \href{https://github.com/vim-scripts/perl-support.vim}{perl-support.vim}: Perl IDE -- Write and run Perl-scripts using menus and hotkeys.
+  \end{block}
+  {\footnotesize
+  \begin{itemize}
+    \item insert various types of comments
+    \item insert complete but empty statements (e.g. `if \verb|{}| else \verb|{}|' )
+    \item insert often used code snippets (e.g. declarations, the opening of files, .. )
+    \item insert the names of file tests, character classes, special Perl-variables and POSIX-signals
+    \item read, write, maintain your own code snippets in a separate directory
+    \item run scripts or run syntax check from within the editor
+    \item show compilation erros in a quickfix window; navigate with hotkeys 
+    \item read perldoc for functions and modules 
+    \item run perltidy / run the profiler SmallProf
+    \item test / explain regular expressions (needs Vim with Perl interface)
+  \end{itemize}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 语法检查}
+  \begin{block}{\alert{检查语法}}
+\begin{lstlisting}[language=bash]
+perl -c script.pl
+\end{lstlisting}
+  \end{block}
+  \pause
+  \begin{block}{常见错误}
+    \begin{itemize}
+      \item Missing right curly or square bracket: 括号不匹配
+      \item 语句末尾少了分号
+      \item 关键字（内置函数）拼写错误
+      \item 变量类型符号错误/变量名拼写错误
+      \item ……
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 格式化 | \alert{perltidy}}
+\begin{lstlisting}[language=bash]
+# 安装perltidy
+sudo apt-get install perltidy
+
+# 保留原始文件，格式化后的文件为*.tdy
+perltidy script.pl
+
+# 备份原始文件为*.bak，格式化后的文件使用原文件名
+perltidy -b script.pl
+
+# perltidy使用帮助
+man perltidy
+perltidy -h
+\end{lstlisting} 
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 格式化 | 前}
+\begin{lstlisting}[language=Perl]
+#!/usr/bin/perl 
+
+use strict;use warnings;use utf8;
+
+for(my$i=1;$i<=9;$i++){for(my$j=1;$j<=$i;$j++){print"$j"."x"."$i"."=".$i*$j;
+if($j==$i){print"\n";}else{print"\t";}}}
+\end{lstlisting} 
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Perl | 格式化 | \alert{后}}
+\begin{lstlisting}[language=Perl,basicstyle=\small\tt]
+#!/usr/bin/perl 
+
+use strict;
+use warnings;
+use utf8;
+
+for ( my $i = 1 ; $i <= 9 ; $i++ ) {
+    for ( my $j = 1 ; $j <= $i ; $j++ ) {
+        print "$j" . "x" . "$i" . "=" . $i * $j;
+        if   ( $j == $i ) { print "\n"; }
+        else              { print "\t"; }
+    }
+}
+\end{lstlisting} 
+\end{frame}
+
+\section{变量}
+\begin{frame}[fragile]
+  \frametitle{变量}
+  \begin{block}{变量}
+    Perl是一种无类型语言（untyped），换句话说，在语言层面上，Perl和大多数编程语言不同，不把变量分成整数、字符、浮点数等等，而只有一种能接受各种类型数据的“无类型”变量。\\
+    Perl中各种变量的运算也很自由，数和含有数的字符串是等效的，可以把数字字符串参与数学计算，也可以反之，让数字参与字符串的构成和操作。
+  \end{block}
+  \pause
+  \begin{block}{\alert{类型}}
+    \begin{itemize}
+      \item 标量：scalar；只包含一个元素的变量；以 \verb|$|开头
+      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以 \verb|@|开头
+      \item 散列：hash，associative array（关联数组）；像字典一样，把不同的变量按照它们的逻辑关系组织起来，并以作为“键”的变量进行索引；以 \verb|%|开头
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{标量}
+\begin{frame}[fragile]
+  \frametitle{变量 | 标量 | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+# 标量：$scalar
+
+# 字符串，双引号
+$name = "Paul";
+
+# 数字，无引号
+$age = 29;
+
+# 字符串，单引号
+$where_to_find_him = 'http://www.weinstein.org';
+\end{lstlisting}
+\end{frame}
+
+\subsection{数组}
+\begin{frame}
+  \frametitle{变量 | 数组 | 简介}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c2.perl.array.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{变量 | 数组 | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+# 数组：@array
+# 索引值从0开始
+
+# 字符串
+@authors = ("Paul", "Joe", "Jeremy", "Harley");
+$authors[4] = "Tom";
+
+# 数字
+@list = (1, 2, 3, 4);
+
+# 解引用：$array[index]
+$authors[4] # Tom
+$list[0] # 1
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{变量 | 数组 | \alert{操作}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=10cm]{c2.perl.array.02.jpg}
+    \vspace{0.5cm}
+    \includegraphics[width=5.5cm]{c2.perl.array.03.png}
+    \includegraphics[width=5.5cm]{c2.perl.array.04.png}
+  \end{figure}
+\end{frame}
+
+\subsection{散列}
+\begin{frame}
+  \frametitle{变量 | 散列 | 简介}
+  \begin{figure}
+    \centering
+    \includegraphics[width=2.8cm]{c2.perl.hash.01.png}\qquad
+    \includegraphics[width=8.2cm]{c2.perl.hash.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{变量 | 散列 | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+# 散列：%hash
+
+# 创建散列
+%person = (
+name => 'Paul',
+age => '29',
+url => 'http://www.weinstein.org',
+)
+
+# 提取键值：$hash{key}
+$person{"age"} # 29
+\end{lstlisting}
+\end{frame}
+
+\subsection{内置变量}
+\begin{frame}
+  \frametitle{变量 | 内置变量}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c2.perl.buildin.01.jpg}
+  \end{figure}
+\end{frame}
+
+\section{操作符}
+\begin{frame}[fragile]
+  \frametitle{操作符 | \alert{数字操作符}}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabularx}{0.7\textwidth}{cX}
+      \hline
+      \rowcolor{blue!50}操作符 & 含义\\
+      \hline
+      \verb|+| & 加法\\
+      \verb|-| & 减法\\
+      \verb|*| & 乘法\\
+      \verb|/| & 除法\\
+      \verb|**| & 乘幂，乘方\\
+      \% & 取模，取余\\
+      \hline
+      \verb|<|  & 小于\\
+      \verb|>|  & 大于\\
+      \verb|==|  & 等于\\
+      \verb|<=|  & 小于等于\\
+      \verb|>= |  & 大于等于\\
+      \verb|!=|  & 不等于\\
+      \verb|<=>|  & 比较。\verb|a<=>b|：a等于b时返回0，a大于b时返回1，a小于b时返回-1\\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{操作符 | \alert{字符串操作符}}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabularx}{0.7\textwidth}{cX}
+      \hline
+      \rowcolor{blue!50}操作符 & 含义\\
+      \hline
+      \verb|.| & 连接。\verb|"string1" . "string2"|\\
+      \verb|x| & 重复。\verb|"string" x number|\\
+      \verb|lt| & 小于\\
+      \verb|gt| & 大于\\
+      \verb|eq| & 等于\\
+      \verb|le| & 小于等于\\
+      \verb|ge| & 大于等于\\
+      \verb|ne| & 不等于\\
+      \verb|cmp| & 比较。类似于数字比较的\verb|<=>|\\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{操作符 | \alert{逻辑操作符}}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabularx}{0.5\textwidth}{cX}
+      \hline
+      \rowcolor{blue!50}操作符 & 含义\\
+      \hline
+      \verb|&&| & 逻辑AND，与\\
+      \verb=||= & 逻辑OR，或\\
+      \verb|!| & 逻辑NOT，非\\
+      \verb|?=| & 条件操作符\\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{操作符 | 文件测试操作符}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabularx}{0.7\textwidth}{cX}
+      \hline
+      \rowcolor{blue!50}操作符 & 含义\\
+      \hline
+      -r & 可读\\
+      -w & 可写\\
+      -x & 可执行\\
+      -e & 存在\\
+      -z & 存在但没有内容\\
+      -s & 存在且有内容\\
+      -f & 普通文件\\
+      -d & 目录\\
+      -l & 符号链接\\
+      -T & 看起来像文本文件\\
+      -B & 看起来像二进制文件\\
+      -M & 最后被修改后至今的天数\\
+      -A & 最后被访问后至今的天数\\
+      -C & 最后inode变更后至今的天数\\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{操作符 | \alert{匹配操作符}}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabularx}{0.5\textwidth}{cX}
+      \hline
+      \rowcolor{blue!50}操作符 & 含义\\
+      \hline
+      \verb|=~| & 绑定操作符，匹配\\
+      \verb|!~| & 绑定操作符，不匹配\\
+      \verb|~~| & 智能匹配操作符\\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+\section{基本函数}
+\begin{frame}[fragile]
+  \frametitle{基本函数 | \alert{print,chomp}}
+\begin{lstlisting}[language=Perl]
+# 向标准输出打印文本
+print "Hello Again\n";
+
+# 向一个具有文件句柄的文件打印文本
+print FILE "Hello Again\n";
+
+# 打印变量的值
+print "How are on this day, the " . $date . "?\n";
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=Perl]
+# 删除变量末尾的（多个）换行符，返回删除的换行符的个数
+chomp $name;
+chomp @authors;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基本函数 | \alert{join,split}}
+\begin{lstlisting}[language=Perl]
+# joining a number of strings togother with a colon delimiter
+$fields = join ':', $data_field1, $data_field2, $data_field3;
+
+# splitting a string into substrings
+($field1, $field2) = split /:/, 'Hello:World', 2;
+
+# splitting a scalar and creating an array
+@fields = split /:/, $raw_data;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基本函数 | \alert{open,close}}
+\begin{lstlisting}[language=Perl]
+# open the file and slurp its contents into an array and then close the file
+open(FILE, "/etc/passwd");
+@filedata = <FILE>; #囫囵吞枣
+close(FILE);
+
+open my $IN, '<', $file_in or die "$0 : failed to open input file '$file_in' : $!\n";
+while(<$IN>){ #细嚼慢咽
+  chomp;
+  actions;
+}
+close $IN or warn "$0 : failed to close input file '$file_in' : $!\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基本函数 | opendir,readdir,closedir}
+\begin{lstlisting}[language=Perl]
+#!/usr/bin/perl -w
+
+print "Read user's home directory\n";
+opendir(HOMEDIR, ".");
+@ls = readdir HOMEDIR;
+closedir(HOMEDIR);
+
+print "Create file dirlist.txt with a directory listing of user's home dir\n";
+open(FILE, ">dirlist.txt");
+foreach $item (@ls) {
+  print FILE $item . "\n";
+}
+close(FILE);
+print "All done\n\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基本函数 | \alert{my},local}
+\begin{lstlisting}[language=Perl]
+# Global variable $name is given a name
+$name = "Paul";
+
+# Enter our loop
+foreach (@filedata) {
+  # declare a new variable for just the loop
+  my $current_file;
+
+  # create a local version of name to temporarily assign values within the loop to
+  local $name;
+
+  ...
+}
+\end{lstlisting}
+\end{frame}
+
+\section{判断语句}
+\subsection{if语句}
+\begin{frame}
+  \frametitle{判断语句 | if | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=5cm]{c2.perl.if.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{判断语句 | if | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+# if区块
+if ($hour > 22) {
+  print "should sleep...\n";
+}
+
+# if语句
+print "hello" if $guest >= 1;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{判断语句 | if-else | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=6cm]{c2.perl.if.else.01.png}
+    \includegraphics[width=5cm]{c2.perl.elsif.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{判断语句 | if-else | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+if ($name eq "Paul") {
+  print "Hi Paul\n";
+}
+elsif ($name eq "Joe") {
+  print "Hi Joe\n";
+}
+elsif ($name eq "Jeremy") {
+  print "Hi Jeremy\n";
+}
+else {
+  print "Sorry, have we meet before?";
+}
+\end{lstlisting}
+\end{frame}
+
+\subsection{unless语句}
+\begin{frame}
+  \frametitle{判断语句 | unless | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=3.5cm]{c2.perl.unless.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{判断语句 | unless | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+# unless区块
+unless ($credit > 100) {
+  print "You can not graduate!\n";
+}
+
+# unless语句
+print "eat\n" unless $food==0;
+\end{lstlisting}
+\end{frame}
+
+\subsection{given-when语句}
+\begin{frame}
+  \frametitle{判断语句 | given-when | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=4.5cm]{c2.perl.given.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{判断语句 | given-when | 语法}
+\begin{lstlisting}[language=Perl]
+use 5.010;
+given ($foo) {
+  say "a" when "a";
+  when (/b/) {say "b";}
+  default {say "not match";}
+}
+\end{lstlisting}
+\end{frame}
+
+\section{循环语句}
+\subsection{foreach语句}
+\begin{frame}
+  \frametitle{循环语句 | foreach | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=6cm]{c2.perl.foreach.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{循环语句 | foreach | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+@group = 1..10;
+
+# foreach循环
+foreach my $element (@group) {
+  print "$element\n";
+}
+
+# 等价的for循环
+for (@group) {
+  print "$_\n";
+}
+print "$_\n" for @group;
+\end{lstlisting}
+\end{frame}
+
+\subsection{for语句}
+\begin{frame}
+  \frametitle{循环语句 | for | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=5cm]{c2.perl.for.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{循环语句 | for | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+# 从1数到10
+for ($i = 1; $i <= 10; $i++) {
+  print "I can count to $i!\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\subsection{while语句}
+\begin{frame}
+  \frametitle{循环语句 | while | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=5cm]{c2.perl.while.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{循环语句 | while | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+$i = 0;
+while ($i < 10) {
+  print "$i\n";
+  $i++;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{循环语句 | do-while | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=5cm]{c2.perl.do.while.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{循环语句 | do-while | 语法}
+\begin{lstlisting}[language=Perl]
+$i = 0;
+do {
+  print "$i\n";
+  $i = $i + 1;
+} while ($i < 10);
+\end{lstlisting}
+\end{frame}
+
+\subsection{until语句}
+\begin{frame}
+  \frametitle{循环语句 | until | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=5cm]{c2.perl.until.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{循环语句 | until | \alert{语法}}
+\begin{lstlisting}[language=Perl]
+$i = 0;
+until ($i == 10) {
+  print "$i\n";
+  $i++;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{循环语句 | do-until | 逻辑流程}
+  \begin{figure}
+    \centering
+    \includegraphics[width=4cm]{c2.perl.do.until.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{循环语句 | do-until | 语法}
+\begin{lstlisting}[language=Perl]
+$i = 0;
+do {
+  print "$i\n";
+  $i++;
+} until ($i == 10);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{循环语句 | 思考}
+  \begin{block}{比较}
+    \begin{itemize}
+      \item 比较while和do-while
+      \item 比较until和do-until
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{提示}
+    \begin{itemize}
+      \item 如果一开始的条件测试就为假，两者的表现有何差异？
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{检修脚本}
+\begin{frame}[fragile]
+  \frametitle{\alert{检修脚本}}
+\begin{lstlisting}[language=Perl]
+# 不洁模式
+#!/usr/bin/perl -T
+
+# 打开警告
+use warnings;
+
+# 严格模式，语法更加规范
+use strcit;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\alert{检修脚本}}
+\begin{lstlisting}
+# 检查语法
+perl -c script.pl
+
+# 格式化脚本
+perltidy script.pl
+
+# 调试脚本
+perl -d script.pl
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{检修脚本 | 调试}
+  \begin{table}
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabularx}{0.8\textwidth}{cX}
+      \hline
+      \rowcolor{blue!50}命令 & 功能\\
+      \hline
+      s & 仅执行脚本中的一行\\
+      n & 按步执行以避免进入子程序\\
+      c & 继续运行直至遇到断点\\
+      r & 继续运行直至从当前子程序中执行返回命令\\
+      v & 显示当前行前后的代码\\
+      b & 设置断点\\
+      x & 显示变量的值\\
+      w & 设置监视表达式\\
+      T & 显示栈回溯追踪\\
+      L & 列出所有的断点\\
+      B & 删除断点\\
+      R & 重新启动脚本以便再次测试\\
+      \hline
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+
+\section{回顾与总结}
+\subsection{总结}
+\begin{frame}
+  \frametitle{Perl语言入门 | 总结}
+  \begin{block}{知识点}
+    \begin{itemize}
+      \item Perl语言简介：基本知识，中心思想，优缺点，语法结构
+      \item 变量：标量，数组，散列，内置变量
+      \item 操作符：数字、字符串、逻辑、文件测试、匹配操作符
+      \item 基本函数：print, chomp, join, split, open, close, my
+      \item 判断语句：if, unless, given-when
+      \item 循环语句：foreach, for, while, until
+      \item 检修脚本：检查语法，格式化脚本，调试脚本
+    \end{itemize}
+  \end{block}
+  \begin{block}{技能}
+    \begin{itemize}
+      \item 掌握Perl语言的基本语法
+      \item 使用Perl编写简单的应用脚本
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\subsection{思考题}
+\begin{frame}
+  \frametitle{Perl语言入门 | 思考题}
+  \begin{enumerate}
+    \item Perl语言的中心思想是什么？
+    \item Perl中的变量主要有哪三大类？
+    \item 列举Perl中的各种操作符。
+    \item chomp, join, split的作用是什么？
+    \item 在Perl中如何和文件进行交互？
+    \item Perl中的判断语句有哪些，语法是怎样的？
+    \item Perl中的循环语句有哪些，语法是怎样的？
+    \item 如何调试Perl脚本？
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{下节预告}
+  \begin{itemize}
+    \item 在面对问题的时候，你是如何构思解决策略的？
+    \item 在编程中，你是怎样保存和备份程序的？
+    \item 你是如何一步一步从零开始写出一个可用的程序的？
+  \end{itemize}
+\end{frame}
+
+
+\input{snippet/class_tail}

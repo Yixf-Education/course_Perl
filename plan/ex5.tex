@@ -1,0 +1,247 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验5 \ 子程序和Bugs}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年10月12日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解Perl语言中的模块和子程序库。
+  \item 熟悉Perl调试器。
+  \item 掌握Perl语言中的子程序。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （10'）子程序：回顾Perl语言中子程序的定义、使用等基本知识。
+  \item （5'）程序调试：总结调试Perl程序的方法。
+  \item （85'）实验操作：编写用于生物序列数据处理的子程序并进行调试。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：传递数据给子程序的方法；Perl调试器的使用。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 比较传递数据给子程序的方法。
+  \item 总结调试Perl程序的方法。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 子程序（10分钟）
+\vspace*{-1em}
+\begin{multicols}{3}
+    \begin{enumerate}
+      \item 定义：sub
+      \item 调用：\&
+      \item 返回值：reture
+      \item 收集参数：\verb|@_|
+      \item 作用域：my
+      \item 传递数据：值 vs. 引用
+    \end{enumerate}
+\end{multicols}
+\vspace*{-1em}
+  \item 程序调试（5分钟）
+\vspace*{-1em}
+\begin{multicols}{2}
+    \begin{enumerate}
+      \item use warnings;和use strict;
+      \item 选择性注释
+      \item 添加print语句
+      \item Perl调试器：p,n,s,v,c,b,B,w,R...
+    \end{enumerate}
+\end{multicols}
+\vspace*{-1em}
+  \item 实验操作（85分钟）
+    \begin{enumerate}
+      \item 编写子程序
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$dna = 'CGACGTCTTCTCAGGCGA';
+$longer_dna = addACGT($dna);
+print "I added ACGT to $dna and got $longer_dna\n\n";
+
+sub addACGT {
+    my ($dna) = @_;
+    $dna .= 'ACGT';
+    return $dna;
+}
+\end{verbatim}
+      \item 使用my限定作用域
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$dna = 'AAAAA';
+$result = A_to_T($dna);
+print "I changed all the A's in $dna to T's and got $result\n\n";
+
+sub A_to_T {
+    my ($input) = @_;
+    my $dna = $input;
+    $dna =~ s/A/T/g;
+    return $dna;
+}
+\end{verbatim}
+      \item 传递数据给子程序
+	\begin{enumerate}
+	  \item 通过值传递
+\begin{verbatim}
+#!/usr/bin/perl -w
+use strict;
+
+my $i = 2;
+simple_sub($i);
+print "In main program, after the subroutine call, \$i equals $i\n\n";
+
+sub simple_sub {
+    my($i) = @_;
+    $i += 100;
+    print "In subroutine simple_sub, \$i equals $i\n\n";
+}
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+	  \item 通过引用传递
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @i = ('1', '2', '3');
+my @j = ('a', 'b', 'c');
+print "In main program before calling subroutine: i = " .  "@i\n";
+print "In main program before calling subroutine: j = " .  "@j\n";
+reference_sub(\@i, \@j);
+print "In main program after calling subroutine: i = " .  "@i\n";
+print "In main program after calling subroutine: j = " .  "@j\n";
+exit;
+
+sub reference_sub {
+    my($i, $j) = @_;
+    print "In subroutine : i = " . "@$i\n";
+    print "In subroutine : j = " . "@$j\n";
+    push(@$i, '4');
+    shift(@$j);
+}
+\end{verbatim}
+	\end{enumerate}
+      \item 使用命令行参数
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+use strict;
+
+my ($USAGE) = "$0 DNA\n\n";
+unless (@ARGV) {
+    print $USAGE;
+    exit;
+}
+my ($dna) = $ARGV[0];
+my ($num_of_Gs) = countG($dna);
+print "\nThe DNA $dna has $num_of_Gs G\'s in it!\n\n";
+exit;
+
+sub countG {
+    my ($dna) = @_;
+    my ($count) = 0;
+    $count = ( $dna =~ tr/Gg// );
+    return $count;
+}
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 使用Perl调试器修复Bugs\textcolor{red}{（注意：程序中的bug不止一个）}
+\begin{verbatim}
+#!/usr/bin/perl
+
+my $dna = 'CGACGTCTTCTAAGGCGA';
+my @dna;
+my $receivingcommittment;
+my $previousbase = '';
+my $subsequence = '';
+
+if (@ARGV) {
+    my $subsequence = $ARGV[0];
+}
+else {
+    $subsequence = 'TA';
+}
+
+my $base1 = substr( $subsequence, 0, 1 );
+my $base2 = substr( $subsequence, 1, 1 );
+
+@dna = split( '', $dna );
+
+foreach (@dna) {
+    if ($receivingcommittment) {
+        print;
+        next;
+    }
+    elsif ( $previousbase eq $base1 ) {
+        if (/$base2/) {
+            print $base1, $base2;
+            $recievingcommitment = 1;
+        }
+    }
+    $previousbase = $_;
+}
+
+print "\n";
+exit;
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}

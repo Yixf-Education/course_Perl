@@ -1,0 +1,186 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验6 \ 模拟DNA突变}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年10月19日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解DNA突变中的点突变。
+  \item 熟悉Perl语言中的随机数生成器。
+  \item 掌握随机选取数组元素和随机选取字符串位置的方法。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （10'）随机：回顾Perl语言中随机的相关知识点。
+  \item （90'）实验操作：编写Perl程序模拟DNA突变。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：随机选取数组元素；随机选取字符串位置。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 在Perl语言中如何设置随机数种子？
+  \item 如何随机选取数组元素？
+  \item 如何随机选取字符串中的位置？
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 随机（10分钟）
+    \begin{itemize}
+      \item 设置随机数种子：\verb=srand(time | $$)=
+      \item 随机选取数组元素：\verb|$verbs[rand @verbs]|
+    \end{itemize}
+  \item 实验操作（90分钟）
+    \begin{enumerate}
+      \item 使用随机数生成器生成随机的语句
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $count;
+my $input;
+my $sentence;
+my $story;
+
+my @nouns = (
+    'Dad',     'TV',    'Mom',        'Groucho',
+    'Rebecca', 'Harpo', 'Robin Hood', 'Joe and Moe',
+);
+my @verbs = (
+    'ran to', 'giggled with', 'jumped with',
+    'put hot sauce into the orange juice of',
+    'exploded', 'dissolved', 'sang stupid songs with',
+);
+my @prepositions = (
+    'at the store', 'over the rainbow',
+    'just for the fun of it', 'at the beach',
+    'before dinner', 'in New York City',
+    'in a dream', 'around the world',
+);
+
+srand( time | $$ );
+
+do {
+    $story = '';
+    for ( $count = 0 ; $count < 6 ; $count++ ) {
+        $sentence =
+            $nouns[ int( rand( scalar @nouns ) ) ] . " "
+          . $verbs[ int( rand( scalar @verbs ) ) ] . " "
+          . $nouns[ int( rand( scalar @nouns ) ) ] . " "
+          . $prepositions[ int( rand( scalar @prepositions ) ) ] . '. ';
+        $story .= $sentence;
+    }
+
+    print "\n", $story, "\n";
+    print "\nType \"quit\" to quit, or press Enter to continue: ";
+    $input = <STDIN>;
+} until ( $input =~ /^\s*q/i );
+
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 模拟DNA突变
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $DNA = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+my $i;
+my $mutant;
+
+srand( time | $$ );
+$mutant = mutate($DNA);
+print "\nMutate DNA\n\n";
+print "\nHere is the original DNA:\n\n";
+print "$DNA\n";
+print "\nHere is the mutant DNA:\n\n";
+print "$mutant\n";
+print "\nHere are 10 more successive mutations:\n\n";
+for ( $i = 0 ; $i < 10 ; ++$i ) {
+    $mutant = mutate($mutant);
+    print "$mutant\n";
+}
+
+exit;
+
+sub mutate {
+    my ($dna) = @_;
+    my (@nucleotides) = ( 'A', 'C', 'G', 'T' );
+    my ($position) = randomposition($dna);
+    my ($newbase) = randomnucleotide(@nucleotides);
+    substr( $dna, $position, 1, $newbase );
+    return $dna;
+}
+
+sub randomelement {
+    my (@array) = @_;
+    return $array[ rand @array ];
+}
+
+sub randomnucleotide {
+    my (@nucleotides) = ( 'A', 'C', 'G', 'T' );
+    return randomelement(@nucleotides);
+}
+
+sub randomposition {
+    my ($string) = @_;
+    return int rand length $string;
+}
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+\end{document}

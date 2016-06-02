@@ -1,0 +1,183 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验9 \ 制作酶切图谱}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年11月9日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解REBASE数据库中bionet格式。
+  \item 熟悉模式匹配设计的特殊变量。
+  \item 掌握正则表达式在酶切图谱制作中的应用。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （100'）实验操作：编写Perl程序制作酶切图谱。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：正则表达式的应用。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 举例说明正则表达式中的元字符
+  \item 举例说明模式匹配中涉及的特殊变量。
+  \item 解释逻辑操作符的求值顺序。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 实验操作（100分钟）
+    \begin{enumerate}
+      \item 把IUB代码翻译成正则表达式
+\begin{verbatim}
+sub IUB_to_regexp {
+    my ($iub) = @_;
+    my $regular_expression = '';
+    my %iub2character_class = (
+        A => 'A',
+        C => 'C',
+        G => 'G',
+        T => 'T',
+        R => '[GA]',
+        Y => '[CT]',
+        M => '[AC]',
+        K => '[GT]',
+        S => '[GC]',
+        W => '[AT]',
+        B => '[CGT]',
+        D => '[AGT]',
+        H => '[ACT]',
+        V => '[ACG]',
+        N => '[ACGT]',
+    );
+    $iub =~ s/\^//g;
+    for ( my $i = 0 ; $i < length($iub) ; ++$i ) {
+        $regular_expression .= $iub2character_class{ substr( $iub, $i, 1 ) };
+    }
+    return $regular_expression;
+}
+\end{verbatim}
+      \item 解析REBASE中的bionet数据文件
+\begin{verbatim}
+sub parseREBASE {
+    my ($rebasefile) = @_;
+    use strict; use warnings; use BeginPerlBioinfo;
+    my @rebasefile  = ();
+    my %rebase_hash = ();
+    my $name; my $site; my $regexp;
+    my $rebase_filehandle = open_file($rebasefile);
+    while (<$rebase_filehandle>) {
+        ( 1 .. /Rich Roberts/ ) and next;
+        /^\s*$/ and next;
+        my @fields = split( " ", $_ );
+        $name = shift @fields;
+        $site = pop @fields;
+        $regexp = IUB_to_regexp($site);
+        $rebase_hash{$name} = "$site $regexp";
+    }
+    return %rebase_hash;
+}
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 根据用户的查询制作酶切图谱
+\begin{verbatim}
+#!/usr/bin/perl
+use strict; use warnings;
+use BeginPerlBioinfo;
+my %rebase_hash      = ();
+my @file_data        = ();
+my $query            = '';
+my $dna              = '';
+my $recognition_site = '';
+my $regexp           = '';
+my @locations        = ();
+@file_data = get_file_data("sample.dna");
+$dna = extract_sequence_from_fasta_data(@file_data);
+%rebase_hash = parseREBASE('bionet');
+do {
+    print "Search for what restriction site for (or quit)?: ";
+    $query = <STDIN>;
+    chomp $query;
+    if ( $query =~ /^\s*$/ ) {
+        exit;
+    }
+    if ( exists $rebase_hash{$query} ) {
+        ( $recognition_site, $regexp ) = split( " ", $rebase_hash{$query} );
+        @locations = match_positions( $regexp, $dna );
+        if (@locations) {
+            print "Searching for $query $recognition_site $regexp\n";
+            print "A restriction site for $query at locations:\n";
+            print join( " ", @locations ), "\n";
+        }
+        else {
+            print "A restriction enzyme $query is not in the DNA:\n";
+        }
+    }
+    print "\n";
+} until ( $query =~ /quit/ );
+exit;
+sub match_positions {
+    my ( $regexp, $sequence ) = @_;
+    use strict;
+    use BeginPerlBioinfo;    # see Chapter 6 about this module
+    my @positions = ();
+    while ( $sequence =~ /$regexp/ig ) {
+        push( @positions, pos($sequence) - length($&) + 1 );
+    }
+    return @positions;
+}
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+%\parpic[fr]{\includegraphics[width=\textwidth]{}}
+
+\end{document}

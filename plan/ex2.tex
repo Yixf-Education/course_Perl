@@ -1,0 +1,130 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验2 \ Perl语言编程}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年9月14日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解Perl的判断语句和循环语句。
+  \item 熟悉Perl脚本的语法检修。
+  \item 掌握Perl的基础知识。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （15'）Perl简介：总结Perl的基础知识。
+  \item （85'）实验操作：编写简单的Perl脚本。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：Perl脚本的编写。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item Perl中的变量主要有哪三大类？
+  \item 列举Perl中的操作符。
+  \item 列举Perl的判断语句和循环语句。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item Perl简介（15分钟）
+    \begin{enumerate}
+      \item 简介：Practical Extraction and Report Language，Larry Wall，1987年，CPAN，TMTOWTDI
+      \item 变量：标量（scalar，\verb|$|），数组（array，\verb|@|），散列（hash，\verb|%|）
+      \item 操作符：数字、字符串、逻辑、文件测试、匹配操作符
+      \item 基本函数：print，chomp，join，split，open，close，my
+      \item 判断语句：if，if-else，unless，given-when
+      \item 循环语句：foreach，for，while，do-while，until，do-until
+    \end{enumerate}
+  \item 实验操作（85分钟）
+    \begin{enumerate}
+      \item Hello World脚本
+\vspace*{-1em}
+\begin{multicols}{2}
+	\begin{enumerate}
+	  \item 基本步骤
+	    \begin{enumerate}
+	      \item 编写脚本：vim hello.pl
+	      \item 修改权限：chmod 755 hello.pl
+	      \item 运行脚本：./hello.pl，perl hello.pl
+	    \end{enumerate}
+	  \item hello.pl
+\begin{verbatim}
+#!/usr/bin/perl
+use strict;
+use warnings;
+print "Hello World!\n";
+\end{verbatim}
+	\end{enumerate}
+\end{multicols}
+\vspace*{-1em}
+      \item 语法检修与代码格式化
+	\begin{enumerate}
+	  \item 语法检修：perl -c hello.pl
+	  \item 代码格式化：perltidy hello.pl\textcolor{red}{（可能需要先安装perltidy）}
+	\end{enumerate}
+      \item 九九乘法口诀表\textcolor{red}{（学习for和if语句的使用，理解程序的逻辑过程）}
+\begin{verbatim}
+#!/usr/bin/perl 
+
+use strict;
+use warnings;
+use utf8;
+
+for ( my $i = 1 ; $i <= 9 ; $i++ ) {
+    for ( my $j = 1 ; $j <= $i ; $j++ ) {
+        print "$j x $i = " . $i * $j;
+        if   ( $j == $i ) { print "\n"; }
+        else              { print "\t"; }
+    }
+}
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}

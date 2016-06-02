@@ -1,0 +1,179 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验8 \ 翻译DNA序列}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年11月2日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解阅读框的概念。
+  \item 熟悉FASTA格式。
+  \item 掌握：散列的使用；子程序的应用。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （100'）实验操作：编写Perl程序把FASTA文件中的DNA序列翻译成蛋白质。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：散列的使用。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 如何使用正则表达式表征密码子？
+  \item 比较Perl语言中常见的三种数据类型。
+  \item 举例说明常见的序列格式。
+  \item 举例说明6种阅读框。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+  \item 实验操作（100分钟）
+    \begin{enumerate}
+      \item 相关的子程序
+	\begin{itemize}
+	  \item codon2aa：把密码子翻译成氨基酸
+	  \item dna2peptide：把DNA翻译成多肽
+	  \item get\_file\_data，extract\_sequence\_from\_fasta\_data：从FASTA文件中提取序列数据
+	  \item print\_sequence：输出格式化的序列数据
+	  \item revcom：获取反向互补序列
+	  \item translate\_frame：翻译DNA序列的一个阅读框
+	\end{itemize}
+      \item 把DNA序列翻译成蛋白质
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict; use warnings; use BeginPerlBioinfo;
+
+my $dna     = 'CGACGTCTTCGTACGGGACTAGCTCGTGTCGGTCGC';
+my $protein = '';
+my $codon;
+
+for ( my $i = 0 ; $i < ( length($dna) - 2 ) ; $i += 3 ) {
+    $codon = substr( $dna, $i, 3 );
+    $protein .= codon2aa($codon);
+}
+print "I translated the DNA\n\n$dna\n\n  into the protein\n\n$protein\n\n";
+\end{verbatim}
+      \item 读取FASTA文件并提取其中的序列数据
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict; use warnings; use BeginPerlBioinfo;
+
+my @file_data = ();
+my $dna       = '';
+
+@file_data = get_file_data("sample.dna");
+$dna = extract_sequence_from_fasta_data(@file_data);
+print_sequence( $dna, 25 );
+\end{verbatim}
+      \item 把FASTA文件中的DNA翻译成蛋白质并进行格式化输出
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict; use warnings; use BeginPerlBioinfo;
+
+my @file_data = ();
+my $dna       = '';
+my $protein   = '';
+
+@file_data = get_file_data("sample.dna");
+$dna = extract_sequence_from_fasta_data(@file_data);
+$protein = dna2peptide($dna);
+print_sequence( $protein, 25 );
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 从六个阅读框上翻译DNA序列
+\begin{verbatim}
+#!/usr/bin/perl
+
+use strict; use warnings; use BeginPerlBioinfo;
+
+my @file_data = ();
+my $dna       = '';
+my $revcom    = '';
+my $protein   = '';
+
+@file_data = get_file_data("sample.dna");
+$dna = extract_sequence_from_fasta_data(@file_data);
+
+print "\n -------Reading Frame 1--------\n\n";
+$protein = translate_frame( $dna, 1 );
+print_sequence( $protein, 70 );
+
+print "\n -------Reading Frame 2--------\n\n";
+$protein = translate_frame( $dna, 2 );
+print_sequence( $protein, 70 );
+
+print "\n -------Reading Frame 3--------\n\n";
+$protein = translate_frame( $dna, 3 );
+print_sequence( $protein, 70 );
+
+$revcom = revcom($dna);
+
+print "\n -------Reading Frame 4--------\n\n";
+$protein = translate_frame( $revcom, 1 );
+print_sequence( $protein, 70 );
+
+print "\n -------Reading Frame 5--------\n\n";
+$protein = translate_frame( $revcom, 2 );
+print_sequence( $protein, 70 );
+
+print "\n -------Reading Frame 6--------\n\n";
+$protein = translate_frame( $revcom, 3 );
+print_sequence( $protein, 70 );
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+%\parpic[fr]{\includegraphics[width=\textwidth]{}}
+
+\end{document}

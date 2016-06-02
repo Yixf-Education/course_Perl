@@ -1,0 +1,183 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验3 \ 生物序列处理}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年9月21日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解Perl语言中的标量和数组；Perl语言中的上下文。
+  \item 熟悉Perl语言中的字符串操作；读取文件中数据的方法。
+  \item 掌握Perl语言在生物序列数据处理中的应用。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）变量：比较Perl语言中的标量和数组。
+  \item （5'）字符串操作：总结Perl语言中常见的字符串操作。
+  \item （5'）读取文件：总结在Perl语言中读取文件数据的基本步骤。
+  \item （5'）上下文：比较Perl语言中的标量上下文和列表上下文。
+  \item （80'）实验操作：应用Perl语言处理生物序列数据。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：应用Perl语言处理生物序列数据。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 比较Perl语言中的标量和数组。
+  \item 总结Perl语言中常见的字符串操作。
+  \item 总结Perl语言中读取文件的基本步骤。
+  \item 比较Perl语言中的标量上下文和列表上下文。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+\vspace{-1em}
+\begin{multicols}{2}
+  \item 变量（5分钟）
+    \begin{enumerate}
+      \item 标量：scalar，单数，\verb|$|
+      \item 数组：array，复数，\verb|@|；其中的元素是标量
+    \end{enumerate}
+  \item 字符串操作（5分钟）
+    \begin{enumerate}
+      \item 连接：\verb|.|等多种方法
+      \item 替换：\verb|s///;|
+      \item 反转：reverse
+      \item 翻译：tr
+    \end{enumerate}
+  \item 读取文件（5分钟）
+    \begin{enumerate}
+      \item 关联文件和文件句柄
+      \item 通过文件句柄读取数据
+      \item 解关联文件和文件句柄
+    \end{enumerate}
+  \item 上下文（5分钟）
+    \begin{enumerate}
+      \item 标量上下文：返回标量
+      \item 列表上下文：返回列表
+    \end{enumerate}
+\end{multicols}
+\vspace{-1em}
+  \item 实验操作（80分钟）
+    \begin{enumerate}
+      \item 存储并打印DNA序列
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
+print $DNA;
+
+exit;
+\end{verbatim}
+      \item 连接DNA片段
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$DNA1 = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
+$DNA2 = 'ATAGTGCCGTGAGAGTGATGTAGTA';
+print "Here are the original two DNA fragments:\n\n";
+print $DNA1, "\n";
+print $DNA2, "\n\n";
+
+$DNA3 = "$DNA1$DNA2";
+print "Concatenation of the first two fragments (version 1):\n\n";
+print "$DNA3\n\n";
+
+$DNA3 = $DNA1 . $DNA2;
+print "Concatenation of the first two fragments (version 2):\n\n";
+print "$DNA3\n\n";
+
+print "Concatenation of the first two fragments (version 3):\n\n";
+print $DNA1, $DNA2, "\n";
+\end{verbatim}
+      \item 把DNA转录成RNA
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
+print "Here is the starting DNA:\n\n";
+print "$DNA\n\n";
+
+$RNA = $DNA;
+$RNA =~ s/T/U/g;
+print "Here is the result of transcribing the DNA to RNA:\n\n";
+print "$RNA\n";
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 获取DNA序列的反向互补序列
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
+print "Here is the starting DNA:\n\n";
+print "$DNA\n\n";
+
+$revcom = reverse $DNA;
+$revcom =~ tr/ACGTacgt/TGCAtgca/;
+print "Here is the reverse complement DNA:\n\n";
+print "$revcom\n";
+\end{verbatim}
+      \item 从文件中读取蛋白质序列
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$proteinfilename = 'NM_021964fragment.pep';
+
+open( PROTEINFILE, $proteinfilename );
+@protein = <PROTEINFILE>;
+print @protein;
+close PROTEINFILE;
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}

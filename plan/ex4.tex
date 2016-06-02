@@ -1,0 +1,330 @@
+\documentclass{TIJMUjiaoanSY}
+\pagestyle{empty}
+
+\begin{document}
+
+\kecheng{分子生物计算}
+\shiyan{实验4 \ 基序和循环}
+\jiaoshi{伊现富}
+\zhicheng{讲师}
+\riqi{2015年9月28日10:00-12:00}
+\duixiang{生物医学工程与技术学院2013级生信班（本）}
+\renshu{28}
+\leixing{验证型}
+\fenzu{一人一机}
+\xueshi{2}
+\jiaocai{Perl语言在生物信息学中的应用——基础篇}
+
+\firstHeader
+\maketitle
+\thispagestyle{empty}
+
+\mudi{
+\begin{itemize}
+  \item 了解Perl语言中的流程控制。
+  \item 熟悉Perl语言中的if-elsif-else和while；写入文件的方法。
+  \item 掌握Perl语言在生物序列数据处理中的应用。
+\end{itemize}
+}
+
+\fenpei{
+\begin{itemize}
+  \item （5'）流程控制：总结Perl语言中的条件判断和循环语句。
+  \item （5'）字符串操作：总结Perl语言中常见的字符串操作。
+  \item （5'）写入文件：总结在Perl语言中写入文件的基本步骤。
+  \item （85'）实验操作：应用Perl语言处理生物序列数据。
+\end{itemize}
+}
+
+\cailiao{
+\begin{itemize}
+  \item 主要仪器：一台安装有Perl语言（Linux操作系统）的计算机。
+\end{itemize}
+}
+\zhongdian{
+\begin{itemize}
+  \item 重点难点：应用Perl语言处理生物序列数据。
+  \item 解决策略：通过演示进行学习，通过练习熟练掌握。
+\end{itemize}
+}
+
+\sikao{
+\begin{itemize}
+  \item 总结Perl语言中的流程控制。
+  \item 总结Perl语言中常见的字符串操作。
+  \item 总结Perl语言中写入文件的基本步骤。
+\end{itemize}
+}
+
+\cankao{
+\begin{itemize}
+  \item Beginning Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2001.
+  \item Perl语言入门（第六版），Randal L. Schwartz, brian d foy \& Tom Phoenix著，盛春\ 译，东南大学出版社，2012。
+  \item Mastering Perl for Bioinformatics, James Tisdall, O'Reilly Media, 2003.
+  \item 维基百科等网络资源。
+\end{itemize}
+}
+
+\firstTail
+
+\newpage
+\otherHeader
+
+\begin{enumerate}
+\vspace{-1em}
+\begin{multicols}{2}
+  \item 流程控制（5分钟）
+    \begin{enumerate}
+      \item 条件判断：if，if-else，unless
+      \item 循环：while，for，foreach
+    \end{enumerate}
+  \item 字符串操作（5分钟）
+    \begin{enumerate}
+      \item 数组变标量：join
+      \item 字符串变数组：split
+      \item 提取子字符串：substr
+      \item 计数：tr
+    \end{enumerate}
+  \item 写入文件（5分钟）
+    \begin{enumerate}
+      \item 关联文件和文件句柄
+      \item 通过文件句柄写入数据
+      \item 解关联文件和文件句柄
+    \end{enumerate}
+\end{multicols}
+\vspace{-1em}
+  \item 实验操作（85分钟）
+    \begin{enumerate}
+      \item if-elsif-else
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$word = 'MNIDDKL';
+if ( $word eq 'QSTVSGE' ) {
+    print "QSTVSGE\n";
+}
+elsif ( $word eq 'MRQQDMISHDEL' ) {
+    print "MRQQDMISHDEL\n";
+}
+elsif ( $word eq 'MNIDDKL' ) {
+    print "MNIDDKL-the magic word!\n";
+}
+else {
+    print "Is \"$word\" a peptide? This program is not sure.\n";
+}
+\end{verbatim}
+      %\item 使用while从文件中读取蛋白质序列数据
+%\begin{verbatim}
+%#!/usr/bin/perl -w
+
+%unless ( open( PROTEINFILE, $proteinfilename ) ) {
+    %print "Could not open file $proteinfilename!\n";
+    %exit;
+%}
+%while ( $protein = <PROTEINFILE> ) {
+    %print "  ######  Here is the next line of the file:\n";
+    %print $protein;
+%}
+%close PROTEINFILE;
+%\end{verbatim}
+      \item 在蛋白质序列中查找用户指定的基序
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$proteinfilename = <STDIN>;
+chomp $proteinfilename;
+unless ( open( PROTEINFILE, $proteinfilename ) ) {
+    print "Cannot open file \"$proteinfilename\"\n\n";
+    exit;
+}
+@protein = <PROTEINFILE>;
+close PROTEINFILE;
+
+$protein = join( '', @protein );
+$protein =~ s/\s//g;
+do {
+    print "Enter a motif to search for: ";
+    $motif = <STDIN>;
+    chomp $motif;
+    if ( $protein =~ /$motif/ ) {
+        print "I found it!\n\n";
+    }
+    else {
+        print "I couldn\'t find it.\n\n";
+    }
+} until ( $motif =~ /^\s*$/ );
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 对DNA序列中的碱基进行计数（策略一）
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+print "Please type the filename of the DNA sequence data: ";
+$dna_filename = <STDIN>;
+chomp $dna_filename;
+unless ( open( DNAFILE, $dna_filename ) ) {
+    print "Cannot open file \"$dna_filename\"\n\n";
+    exit;
+}
+@DNA = <DNAFILE>;
+close DNAFILE;
+
+$DNA = join( '', @DNA );
+$DNA =~ s/\s//g;
+@DNA = split( '', $DNA );
+
+$count_of_A = 0;
+$count_of_C = 0;
+$count_of_G = 0;
+$count_of_T = 0;
+$errors     = 0;
+
+foreach $base (@DNA) {
+    if ( $base eq 'A' ) {
+        ++$count_of_A;
+    }
+    elsif ( $base eq 'C' ) {
+        ++$count_of_C;
+    }
+    elsif ( $base eq 'G' ) {
+        ++$count_of_G;
+    }
+    elsif ( $base eq 'T' ) {
+        ++$count_of_T;
+    }
+    else {
+        print "!!!!!!!! Error - I don\'t recognize this base: $base\n";
+        ++$errors;
+    }
+}
+
+print "A = $count_of_A\n";
+print "C = $count_of_C\n";
+print "G = $count_of_G\n";
+print "T = $count_of_T\n";
+print "errors = $errors\n";
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 对DNA序列中的碱基进行计数（策略二）
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+print "Please type the filename of the DNA sequence data: ";
+$dna_filename = <STDIN>;
+chomp $dna_filename;
+unless ( -e $dna_filename ) {
+    print "File \"$dna_filename\" doesn\'t seem to exist!!\n";
+    exit;
+}
+unless ( open( DNAFILE, $dna_filename ) ) {
+    print "Cannot open file \"$dna_filename\"\n\n";
+    exit;
+}
+@DNA = <DNAFILE>;
+close DNAFILE;
+
+$DNA = join( '', @DNA );
+$DNA =~ s/\s//g;
+$count_of_A = 0;
+$count_of_C = 0;
+$count_of_G = 0;
+$count_of_T = 0;
+$errors     = 0;
+
+for ( $position = 0 ; $position < length $DNA ; ++$position ) {
+    $base = substr( $DNA, $position, 1 );
+    if ( $base eq 'A' ) {
+        ++$count_of_A;
+    }
+    elsif ( $base eq 'C' ) {
+        ++$count_of_C;
+    }
+    elsif ( $base eq 'G' ) {
+        ++$count_of_G;
+    }
+    elsif ( $base eq 'T' ) {
+        ++$count_of_T;
+    }
+    else {
+        print "Error - I don\'t recognize this base: $base\n";
+        ++$errors;
+    }
+}
+print "A = $count_of_A\n";
+print "C = $count_of_C\n";
+print "G = $count_of_G\n";
+print "T = $count_of_T\n";
+print "errors = $errors\n";
+\end{verbatim}
+
+\otherTail
+\newpage
+\otherHeader
+
+      \item 对DNA序列中的碱基进行计数（策略三），结果保存到文件
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+print "Please type the filename of the DNA sequence data: ";
+$dna_filename = <STDIN>;
+chomp $dna_filename;
+unless ( -e $dna_filename ) {
+    print "File \"$dna_filename\" doesn\'t seem to exist!!\n";
+    exit;
+}
+unless ( open( DNAFILE, $dna_filename ) ) {
+    print "Cannot open file \"$dna_filename\"\n\n";
+    exit;
+}
+@DNA = <DNAFILE>;
+close DNAFILE;
+
+$DNA = join( '', @DNA );
+$DNA =~ s/\s//g;
+
+$a = 0; $c = 0; $g = 0; $t = 0; $e = 0;
+
+while ( $DNA =~ /a/ig )       { $a++ }
+while ( $DNA =~ /c/ig )       { $c++ }
+while ( $DNA =~ /g/ig )       { $g++ }
+while ( $DNA =~ /t/ig )       { $t++ }
+while ( $DNA =~ /[^acgt]/ig ) { $e++ }
+print "A=$a C=$c G=$g T=$t errors=$e\n";
+
+$outputfile = "countbase";
+unless ( open( COUNTBASE, ">$outputfile" ) ) {
+    print "Cannot open file \"$outputfile\" to write to!!\n\n";
+    exit;
+}
+print COUNTBASE "A=$a C=$c G=$g T=$t errors=$e\n";
+close(COUNTBASE);
+\end{verbatim}
+      \item Perl对数字和字符串的智能化处理
+\begin{verbatim}
+#!/usr/bin/perl -w
+
+$num = 1234;
+$str = '1234';
+print $num, " ", $str, "\n";
+
+$num_or_str = $num + $str;
+print $num_or_str, "\n";
+
+$num_or_str = $num . $str;
+print $num_or_str, "\n";
+\end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\otherTail
+
+
+\end{document}
