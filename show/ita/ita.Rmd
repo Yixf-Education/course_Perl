@@ -1,0 +1,224 @@
+---
+title: "天津医科大学试卷分析"
+author: "伊现富"
+date: "`r Sys.Date()`"
+documentclass: ctexart
+output:
+  rticles::ctex:
+    toc: yes
+    fig_caption: no
+    keep_tex: yes
+    number_sections: yes
+    template: ./default_yixf.latex
+    includes:
+      in_header: ./fix_linkcolor.tex
+classoption: "hyperref`r if (.Platform$OS.type != 'windows') ',adobefonts'`"
+geometry: tmargin=2.5cm, bmargin=1.5cm, rmargin=2.5cm, lmargin=2.5cm
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo=FALSE, comment=NA)
+```
+
+```{r message=FALSE}
+library(knitr)
+source("itemTestAnalysis.R")
+# library: tidyr, dplyr, moments, ggplot2, RColorBrewer
+```
+
+# 试卷基本信息
+```{r results='asis'}
+# test.info: character
+cat(test.info)
+```
+
+# 整卷质量分析
+```{r}
+# test: data.frame; columns:
+## [1] "item.id"        "item.chapter"   "item.type"      "item.answer"    "item.mark"     
+## [6] "chapter.score"  "type.score"     "student.id"     "student.name"   "student.answer"
+## [11] "student.mark"   "student.grade"  "student.zscore" "grade.group" 
+# grade: data.frame; columns:
+## [1] "student.id"     "student.name"   "student.grade"  "student.zscore" "第二章"        
+## [6] "第三章"         "第一章"         "解词"           "问答"           "选择"
+## "chapters, types""
+## [11] "grade.group"   
+```
+## 统计数据
+```{r}
+# grade.stats.brief: data.frame; columns:
+## [1] "number.student" "number.item"    "grade.total"    "grade.mean"     "grade.sd"      
+## [6] "grade.var"      "grade.median"  "grade.mode"     "pass.rate"  
+# grade.stats.detail: data.frame; columns:
+## [1] "grade.max"      "grade.min"      "grade.range"    "grade.skewness" "grade.kurtosis"
+## [6] "high.mean"      "middle.mean"    "low.mean"
+```
+```{r}
+colnames(grade.stats.brief) <- c("student", "item", "grade", "mean", "sd", "var", "median", "mode", "pass")
+colnames(grade.stats.detail) <- c("max", "min", "range", "skewness", "kurtosis", "mean(H)", "mean(M)", "mean(L)")
+kable(grade.stats.brief, format="latex", align="c", digits=2, longtable=TRUE)
+kable(grade.stats.detail, format="latex", align="c", digits=2, longtable=TRUE)
+```
+* 偏度（skewness）：衡量实数随机变量概率分布的不对称性，偏度的绝对值数值越大表示其分布形态的偏斜程度越大。偏度为0表示数值相对均匀地分布在平均值的两侧（但不一定意味着其为对称分布）；偏度大于0为正偏态或右偏态（右侧的尾部更长，分布的主体集中在左侧）；偏度小于0为负偏态或左偏态（左侧的尾部更长，分布的主体集中在右侧）。
+* 峰度（kurtosis）：衡量实数随机变量概率分布的峰态，峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。峰度为0表示总体数据分布与正态分布的陡缓程度相同；峰度大于0表示总体数据分布与正态分布相比较为陡峭，为尖峰态；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为低峰态。
+* H：表示高分组；M：表示中分组；L：表示低分组。
+
+## 试卷质量
+```{r}
+# quality: list
+## P: Difficulty
+## D: Discrimination
+## B: Reliability
+## R: Validity
+## N: Shapiro-Wilk Normality Test
+```
+### 难度（Difficulty，P）= `r round(quality$P, digits=2)`。
+* P > 0.8：试题太容易；P < 0.2：试题太难。
+* 单个试题的难度以0.3～0.7之间为好，整卷以0.4～0.6之间为最佳。
+* 一份试卷应该由不同难度的试题按一定比例组成。
+* 主观题（如计算题等）的难度在0.5左右最为适宜；客观题中“四选一”选择题的适宜难度为0.7左右，是非题的适宜难度为0.85左右。
+
+### 区分度（Discrimination，D）= `r round(quality$D, digits=2)`
+* 0.40以上：优秀。
+* 0.30~0.39：良好，如能改进更好。
+* 0.20~0.29：尚可，用时需作改进。
+* 0.19以下：劣，必须淘汰或改进以提高区分度后方可使用。
+
+### 信度（Reliability，B）= `r round(quality$B, digits=2)`
+* [0.9, 1)：信度很好，达到最好的标准化考试水平。
+* [0.8, 0.9)：对学校考试而言，非常好。
+* [0.7, 0.8)：对学校测试而言，大部分试题很好，可能少数试题需要改进。
+* [0.6, 0.7)：信度稍低，需要补充其他测验以确定分数或等次，部分试题需要改进。
+* [0.5, 0.6)：信度低，建议对试卷进行修改（如果试题数多于10道），需要补充其他考试来可靠地确定分数或等次。
+* (0, 0.5)：信度差，考试基本无效，需要修改
+
+### 效度（Validity，R）= `r round(quality$R, digits=2)`
+* 此处的效度是使用试题的平均区分度来进行衡量的。
+
+### 正态性检验（Shapiro-Wilk normality test，*p*）= `r round(quality$N, digits=2)`
+* *p* < 0.05：样本的总体很可能不是正态分布的。
+* *p* > 0.05：样本的总体可能是正态分布的。
+
+## 成绩分布
+```{r}
+# grade.distribution: data.frame; columns:
+## [1] "grade.interval"     "interval.count"     "interval.percent"   "cumulative.count"  
+## [5] "cumulative.percent"
+# p.distribution: plot (type=c("hist", "pie", "line"); default:hist)
+## p.distribution <- plotDistribution(df=grade.distribution, type="hist")
+```
+```{r dev='cairo_pdf', warning=FALSE}
+p.distribution
+```
+
+## 学生成绩
+```{r}
+# grade.brief: data.frame; columns:
+## [1] "student.id"     "student.name"   "student.grade"  "student.zscore"
+```
+```{r}
+colnames(grade.brief) <- c("id", "name", "grade", "zscore")
+kable(grade.brief, format="latex", align="c", digits=3, longtable=TRUE)
+```
+
+# 试题质量分析
+```{r}
+# item: data.frame; columns:
+## [1] "item.id"  "item.type"  "item.chapter"  "item.mark"  "item.mean"  "item.sd"  "item.P"  "item.D"
+```
+## 难度与区分度趋势图
+### 整卷趋势
+```{r}
+# p.item.line: plot
+```
+```{r dev='cairo_pdf', warning=FALSE, fig.width=9, fig.height=5}
+p.item.line
+```
+
+### 题型趋势
+```{r}
+# p.item.line.type: plot, facet_wrap: type
+```
+```{r dev='cairo_pdf', warning=FALSE, message=FALSE, fig.width=9, fig.height=5}
+p.item.line.type
+```
+
+### 章节趋势
+```{r}
+# p.item.line.chapter: plot, facet_wrap: chapter
+```
+```{r dev='cairo_pdf', warning=FALSE, message=FALSE, fig.width=9, fig.height=5}
+p.item.line.chapter
+```
+
+## 难度与区分度分布图
+```{r}
+# p.item.point: plot
+```
+```{r dev='cairo_pdf', warning=FALSE, fig.width=9, fig.height=6}
+p.item.point
+```
+
+## 有待改进的题目
+```{r}
+# item2check: data.frame; columns: (same to item data.frame)
+## [1] "item.id"   "item.type" "item.chapter" "item.mark" "item.mean" "item.sd"   "item.P"    "item.D"
+```
+部分题目（`r nrow(item2check)`/`r nrow(item)`）有待改进：难度不适宜（P>=0.80或者P<=0.20）且区分度不好（0<D<=0.20），或者没有区分度（D<=0）。
+```{r}
+colnames(item2check) <- c("id", "type", "chapter", "mark", "mean", "sd", "P", "D")
+kable(item2check, format="latex", align="c", digits=3, longtable=TRUE)
+```
+
+# 题型章节分析
+## 题型分析
+```{r}
+# type: data.frame; columns:
+## [1] "item.type"    "number.type"  "score.type"   "percent.type" "mean.type"    "sd.type"
+## [7] "P.type"       "D.type"
+```
+```{r}
+colnames(type) <- c("type", "number", "score", "percent", "mean", "sd", "P", "D")
+kable(type, format="latex", align="c", digits=3, longtable=TRUE)
+```
+
+## 章节分析
+```{r}
+# chapter: data.frame; columns:
+## [1] "item.chapter"    "number.chapter"  "score.chapter"   "percent.chapter" "mean.chapter"
+## [6] "sd.chapter"      "P.chapter"       "D.chapter"
+```
+```{r}
+colnames(chapter) <- c("chapter", "number", "score", "percent", "mean", "sd", "P", "D")
+kable(chapter, format="latex", align="c", digits=3, longtable=TRUE)
+```
+
+# 选择题分析
+```{r}
+# 选择题分析
+## 单选题分析
+# single.choice: data.frame; columns:
+##  [1] "item.id"     "item.answer" "item.mark"   "choice.mean" "choice.sd"   "choice.P"   
+## [7] "choice.D"    "choice.RPB"  "choice.IRI"  "percent.A"   "percent.B"   "percent.C"  
+## [13] "percent.D"   "percent.E"   "percent.X"   "mean.A"      "mean.B"      "mean.C"     
+## [19] "mean.D"      "mean.E"      "mean.X"
+## 多选题分析
+# multi.choice: data.frame; columns: similar to single.choice
+```
+## 单选题分析
+```{r}
+sc <- single.choice %>% select(item.id, item.answer, item.mark, choice.mean, choice.sd, choice.P, choice.D, choice.RPB, choice.IRI)
+colnames(sc) <- c("id", "answer", "mark", "mean", "sd", "P", "D", "RPB", "IRI")
+kable(sc, format="latex", align="c", digits=3, longtable=TRUE)
+```
+* RPB：点双列相关系数。
+* IRI：试题的信度。
+
+## 多选题分析
+```{r}
+mc <- multi.choice %>% select(item.id, item.answer, item.mark, choice.mean, choice.sd, choice.P, choice.D, choice.RPB, choice.IRI)
+colnames(mc) <- c("id", "answer", "mark", "mean", "sd", "P", "D", "RPB", "IRI")
+kable(mc, format="latex", align="c", digits=3, longtable=TRUE)
+```
+* RPB：点双列相关系数。
+* IRI：试题的信度。
