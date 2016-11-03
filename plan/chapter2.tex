@@ -105,7 +105,7 @@
 \begin{enumerate}
   \item 引言与导入（5分钟）
     \begin{itemize}
-      \item 计算机程序：指示计算机每一步动作的指令\textcolor{red}{（给计算机下达的命令）}
+      \item 计算机程序：指示计算机每一步动作的指令\textcolor{red}{（给计算机下达的命令；类比人的思想）}
       \item 脚本：不经编译即可运行的程序
       \item 编程语言：定义计算机程序的形式语言\textcolor{red}{（和计算机进行交流的一门外语）}
     \end{itemize}
@@ -121,7 +121,7 @@
       \item 版本\textcolor{red}{（Perl5 vs. Perl6, Python2 vs. Python3）}
 	\begin{itemize}
 	  \item Perl5：1994年-至今，兼容性好、资源丰富
-	  \item Perl6：2000年-至今，仍在开发中
+	  \item Perl6：2000年-至今，2015-12-25发布v1.0
 	\end{itemize}
 \parpic[fr]{\includegraphics[width=0.15\textwidth]{c2.perl.logo.02.png}}
       \item 安装
@@ -157,17 +157,17 @@ print "Hello World!\n";
   \item \textcolor{red}{【重点、难点】}变量（15分钟）\textcolor{red}{（与队列、字典等进行类比，演示实例）}
     \begin{enumerate}
       \item 简介：Perl是一种无类型语言，不把变量分成整数、字符、浮点数等，只有一种能接受各种类型数据的“无类型”变量。
-      \item 标量：scalar；只包含一个元素的变量；以\verb|$|开头
+      \item 标量：scalar；只包含一个元素的变量；以 \verb|$|开头
 	\begin{itemize}
 	  \item 使用：\verb|$name="Paul";|，\verb|$age=29;|
 	\end{itemize}
-      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以\verb|@|开头
+      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以 \verb|@|开头
 	\begin{itemize}
 	  \item 初始化：\verb|@base=("A","C","G","T");|，\verb|@list=(1,2,3,4);|
 	  \item 解引用：\verb|$base[0];|，\verb|$list[2];|
 	  \item 操作函数：shift、unshift，pop、push
 	\end{itemize}
-      \item 散列：hash；把不同的变量按照逻辑关系组织起来，并以“键”作为索引；以\verb|%|开头
+      \item 散列：hash；把不同的变量按照逻辑关系组织起来，并以“键”作为索引；以 \verb|%|开头
 	\begin{itemize}
 	  \item 初始化：\verb|%person=(name => 'paul', age => '29');|
 	  \item 提取键值：\verb|$person{"age"};|

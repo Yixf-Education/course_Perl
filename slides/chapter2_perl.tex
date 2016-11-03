@@ -21,7 +21,7 @@
 
 \begin{frame}
   \frametitle{引言 | 计算机程序}
-  计算机程序（Computer Program）是指一组指示计算机或其他具有讯息处理能力装置每一步动作的指令，通常用某种程序设计语言编写，运行于某种目标体系结构上。\\
+  计算机程序（Computer Program）是指一组指示计算机或其他具有信息处理能力装置每一步动作的指令，通常用某种程序设计语言编写，运行于某种目标体系结构上。\\
   \vspace{1em}
   打个比方，一个程序就像一个用汉语（程序设计语言）写下的红烧肉菜谱（程序），用于指导懂汉语和烹饪手法的人（体系结构）来做这个菜。\\
   \vspace{1em}
@@ -188,6 +188,33 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
   \end{figure}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Perl | 优缺点 | JAPH}
+  \begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
+                        #!/usr/bin/perl
+                          use strict;
+
+                     my$f=           $[;my
+                   $ch=0;sub       l{length}
+                 sub r{join"",   reverse split
+                ("",$_[$[])}sub ss{substr($_[0]
+                ,$_[1],$_[2])}sub be{$_=$_[0];p
+                 (ss($_,$f,1));$f+=l()/2;$f%=l 
+                  ();$f++if$ch%2;$ch++}my$q=r
+                   ("\ntfgpfdfal,ce?bngbjn".    
+                    "axfvxf"); $_=$q; $q=~
+                      tr/f[a-z]/ [l-za-k]
+                        /;my@ever=1..&l
+                          ;my$mine=$q
+                            ;sub p{
+                             print
+                              @_;
+                               }
+
+                       be $mine for @ever
+\end{lstlisting} 
+\end{frame}
+
 \begin{frame}
   \frametitle{Perl | 优势}
   \begin{block}{易于编程}
@@ -216,14 +243,14 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
   \begin{block}{Perl5}
     \begin{itemize}
       \item 1994年——至今
-      \item 最新版：v5.22.0（2015-06-01）
+      \item 最新版：v5.24.0（2016-05-09）
     \end{itemize}
   \end{block}
   \pause
   \begin{block}{Perl6}
     \begin{itemize}
       \item 2000年——至今（2015-12-25发布v1.0）
-      \item 最新版：Rakudo Star 2016.01（2016-02-07）
+      \item 最新版：Rakudo Star 2016.10（2016-10-23）
     \end{itemize}
   \end{block}
   \pause
@@ -320,11 +347,11 @@ Beginning $\Longrightarrow$ Mastering Perl for Bioinformatics
   \end{block}
   \pause
   \begin{block}{英文名}
-Learning Perl $\Rightarrow$ Intermediate Perl $\Rightarrow$ Mastering Perl $\Rightarrow$ Programming Perl $\Rightarrow$ Advanced Perl Programming
+    \textit{Learning Perl} $\Rightarrow$ \textit{Intermediate Perl} $\Rightarrow$ \textit{Mastering Perl} $\Rightarrow$ \textit{Programming Perl} $\Rightarrow$ \textit{Advanced Perl Programming}
   \end{block}
   \pause
   \begin{block}{中文名}
-Perl语言入门 $\Rightarrow$ Intermediate Perl（影印版） $\Rightarrow$ 精通Perl $\Rightarrow$ Perl语言编程 $\Rightarrow$ 高级Perl编程
+    《Perl语言入门》 $\Rightarrow$ 《Perl进阶》 $\Rightarrow$ 《精通Perl》 $\Rightarrow$ 《Perl语言编程》 $\Rightarrow$ 《高级Perl编程》
   \end{block}
   \pause
 \end{frame}
@@ -411,7 +438,8 @@ perl -c script.pl
   \frametitle{Perl | 格式化 | \alert{perltidy}}
 \begin{lstlisting}[language=bash]
 # 安装perltidy
-sudo apt-get install perltidy
+sudo apt install perltidy
+#sudo apt-get install perltidy
 
 # 保留原始文件，格式化后的文件为*.tdy
 perltidy script.pl
@@ -682,7 +710,7 @@ $person{"age"} # 29
 
 \section{基本函数}
 \begin{frame}[fragile]
-  \frametitle{基本函数 | \alert{print,chomp}}
+  \frametitle{基本函数 | \alert{print, chomp}}
 \begin{lstlisting}[language=Perl]
 # 向标准输出打印文本
 print "Hello Again\n";
@@ -702,7 +730,7 @@ chomp @authors;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基本函数 | \alert{join,split}}
+  \frametitle{基本函数 | \alert{join, split}}
 \begin{lstlisting}[language=Perl]
 # joining a number of strings togother with a colon delimiter
 $fields = join ':', $data_field1, $data_field2, $data_field3;
@@ -716,7 +744,7 @@ $fields = join ':', $data_field1, $data_field2, $data_field3;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基本函数 | \alert{open,close}}
+  \frametitle{基本函数 | \alert{open, close}}
 \begin{lstlisting}[language=Perl]
 # open the file and slurp its contents into an array and then close the file
 open(FILE, "/etc/passwd");
@@ -733,7 +761,7 @@ close $IN or warn "$0 : failed to close input file '$file_in' : $!\n";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基本函数 | opendir,readdir,closedir}
+  \frametitle{基本函数 | opendir, readdir, closedir}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl -w
 
@@ -753,7 +781,7 @@ print "All done\n\n";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基本函数 | \alert{my},local}
+  \frametitle{基本函数 | \alert{my}, local}
 \begin{lstlisting}[language=Perl]
 # Global variable $name is given a name
 $name = "Paul";
