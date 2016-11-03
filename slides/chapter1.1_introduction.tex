@@ -210,6 +210,23 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{生物学 | 数据库 | GenBank}
+  \begin{figure}
+    % \centering
+    \includegraphics[width=6cm]{c1.intro.db.02.png}
+    \includegraphics[width=6.2cm]{c1.intro.db.05.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{生物学 | 数据库 | PDB}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8.5cm]{c1.intro.db.06.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
   \frametitle{生物学 | 数据格式}
   \begin{figure}
     \centering
@@ -273,7 +290,7 @@
     \rowcolors[]{1}{blue!20}{blue!10}
     \begin{tabular}{clll}
       \hline
-      \rowcolor{blue!50}语言 & 宗教 & 超级英雄 & 哈利波特\\
+      \rowcolor{blue!50}语言 & 宗教 & 超级英雄 & 《哈利波特》\\
       \hline
       C & 犹太教 & --- & 伏地魔\\
       C++ & 伊斯兰教 & --- & 西弗勒斯·斯内普\\
@@ -316,7 +333,7 @@
   \frametitle{计算机科学 | 编程语言 | 流行度}
   \begin{figure}
     \centering
-    \includegraphics[width=11cm]{c1.intro.language.rank.png}
+    \includegraphics[width=11cm]{c1.intro.language.rank.2016.png}
   \end{figure}
 \end{frame}
 
@@ -324,7 +341,7 @@
   \frametitle{计算机科学 | 编程语言 | 排名 | 2016}
   \begin{figure}
     \centering
-    \includegraphics[width=10cm]{c1.intro.language.rate.2016.png}
+    \includegraphics[width=9cm]{c1.intro.language.rate.2016.png}
   \end{figure}
 \end{frame}
 
@@ -332,7 +349,15 @@
   \frametitle{计算机科学 | 编程语言 | 排名 | 趋势}
   \begin{figure}
     \centering
-    \includegraphics[width=12cm]{c1.intro.language.rate.period.png}
+    \includegraphics[width=12cm]{c1.intro.language.rate.period.2016.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 排名 | 历史}
+  \begin{figure}
+    \centering
+    \includegraphics[width=11cm]{c1.intro.language.rate.history.2016.png}
   \end{figure}
 \end{frame}
 
@@ -426,6 +451,18 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{编程 | 与艺术 | BTW}
+  \begin{center}
+    \large{If you program enough,\\ it can change the way you look at the world …}
+\end{center}
+\vspace{-1em}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8.5cm]{c1.intro.programming.art.03.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
   \frametitle{编程 | 局限 | 理论上无解}
   \begin{block}{任务}
     \begin{enumerate}
@@ -446,7 +483,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{编程 | 局限 | 实际上不可解}
+  \frametitle{编程 | 局限 | （现阶段）实际上不可解}
   \begin{block}{任务}
     \begin{enumerate}
       \item<1-> 破解RSA秘钥
@@ -571,6 +608,135 @@
     \item \href{http://www.molecularecologist.com/2012/11/a-comparison-of-bioinformatics-programming-languages/}{A comparison of bioinformatics programming languages} 
     \item \href{https://nlcb.wordpress.com/2013/02/23/programming-languages-of-bioinformatics-2/}{Programming Languages of Bioinformatics} 
   \end{itemize}
+\end{frame}
+
+\section{R}
+\begin{frame}
+  \frametitle{R | 简介}
+  \begin{block}{R}
+ R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. 
+  \end{block}
+  \pause
+  \begin{block}{\textcolor{red}{RStudio}}
+ RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.\\
+ \vspace{0.5em}
+ RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux) or in a browser connected to RStudio Server or RStudio Server Pro (Debian/Ubuntu, RedHat/CentOS, and SUSE Linux).
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Load data}
+    \begin{description}
+      \item[\alert{readr}] readr makes it easy to read many types of \textcolor{red}{tabular data} including: delimited files, fixed width files and web log files.
+      \item[XLConnect] Help you read, write and format \textbf{Micorsoft Excel} files from R.
+      \item[foreign] Functions for reading and writing data stored by some versions of Epi Info, Minitab, S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
+      \item[httr] A set of useful tools for working with \textbf{http} connections.
+      \item[XML] Read and create \textbf{XML} documents with R.
+      \item[jsonlite] Read and create \textbf{JSON} data tables with R.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Manipulate data}
+    \begin{description}
+      \item[\alert{tidyr}] Tools for changing the layout of your data sets. Use the gather and spread functions to convert your data into the \textcolor{red}{tidy format}, the layout R likes best.
+      \item[\alert{magrittr}] magrittr provides a mechanism for chaining commands with a new \textcolor{red}{forward-pipe operator}, \verb|%>%|.
+      \item[\alert{dplyr}] Essential shortcuts for subsetting, summarizing, rearranging, and joining together data sets for \textcolor{red}{fast data manipulation}.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Manipulate data}
+    \begin{description}
+      \item[\alert{lubridate}] Tools that make working with \textcolor{red}{dates and times} easier.
+      \item[\alert{stringr}] Easy to learn tools for \textcolor{red}{regular expressions and character strings}.
+      \item[plyr] plyr is a set of tools for a common set of problems: you need to \textbf{split} up a big data structure into homogeneous pieces, \textbf{apply} a function to each piece and then \textbf{combine} all the results back together.
+      \item[DT] The R package DT provides an R interface to the JavaScript library DataTables. R data objects (matrices or data frames) can be displayed as tables on HTML pages, and DataTables provides filtering, pagination, sorting, and many other features in the tables.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Visualize data}
+    \begin{description}
+      \item[\alert{ggplot2}] R's famous package for making beautiful graphics. ggplot2 lets you use \textcolor{red}{the grammar of graphics} to build layered, customizable plots.
+      \item[ggvis] \textbf{Interactive, web based graphics} built with the grammar of graphics.
+      \item[DiagrammeR] Create \textbf{graph diagrams and flowcharts} using R.
+      \item[htmlwidgets] The htmlwidgets package provides a framework for easily creating R bindings to JavaScript libraries.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Report results}
+    \begin{description}
+      \item[\alert{rmarkdown}] rmarkdown lets you insert R code into a \textcolor{red}{markdown document}. R then generates a final document, in a wide variety of formats, that replaces the R code with its results.
+      \item[\alert{knitr}] knitr is an elegant, flexible and fast dynamic report generation that combines R with TeX, Markdown, or HTML. For open access publishing, and \textcolor{red}{reproducible research} in statistics.
+      \item[\alert{xtable}] The xtable function takes an R object (like a data frame) and returns the latex or HTML code you need to paste a pretty version of the object into your documents. Copy and paste, or pair up with R Markdown.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Report results}
+    \begin{description}
+      \item[Shiny] Easily make \textbf{interactive, web apps} with R. A perfect way to explore data and share findings with non-programmers.
+      \item[shinydashboard] shinydashboard makes it easy to use Shiny to create dashboards.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: High performance}
+    \begin{description}
+      \item[\alert{data.table}] An alternative way to organize data sets for \textcolor{red}{very, very fast} operations. Useful for big data.
+      \item[parallel] Use \textbf{parallel processing} in R to speed up your code or to crunch large data sets.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Useful and popular packages: Development}
+    \begin{description}
+      \item[devtools] An essential suite of tools for turning your code into an R package.
+      \item[roxygen2] A quick way to \textbf{document} your R packages. roxygen2 turns inline code comments into documentation pages and builds a package namespace.
+      \item[testthat] testthat provides an easy way to write \textbf{unit tests} for your code projects.
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Bioconductor}
+  \begin{block}{Bioconductor}
+    Bioconductor provides tools for the analysis and comprehension of high-throughput genomic data. Bioconductor uses the R statistical programming language, and is open source and open development.
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c1.intro.bioconductor.logo.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | 参考资料}
+   \begin{itemize}
+     \item \href{https://www.r-project.org/}{The R Project for Statistical Computing}
+     \item \href{https://www.rstudio.com/}{RStudio}
+     \item \href{https://support.rstudio.com/hc/en-us/categories/200098757-Learn-R}{Learn R}
+     \item \href{https://www.rstudio.com/resources/cheatsheets/}{RStudio Cheat Sheets}
+     \item \href{https://www.rstudio.com/products/rpackages/}{R packages inspired by R and its community}
+     \item \href{https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages}{Quick list of useful R packages}
+     \item \href{https://www.bioconductor.org/}{Bioconductor}
+   \end{itemize} 
 \end{frame}
 
 \section{回顾与总结}
