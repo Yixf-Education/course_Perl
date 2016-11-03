@@ -1,7 +1,7 @@
 ---
 title: "knitr"
 author: "Yixf"
-date: "2015年8月21日"
+date: '2016-11-03'
 output: html_document
 ---
 

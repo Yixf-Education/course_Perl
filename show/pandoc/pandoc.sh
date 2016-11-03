@@ -1,3 +1,3 @@
-pandoc WEBSITE.mkd -o website.html
-pandoc WEBSITE.mkd -o website.docx
-pandoc WEBSITE.mkd -o website.pdf --latex-engine=xelatex -V mainfont="WenQuanYi Micro Hei"
+pandoc WEBSITE.md -o website.html
+pandoc WEBSITE.md -o website.docx
+pandoc WEBSITE.md -o website.pdf --latex-engine=xelatex -V mainfont="WenQuanYi Micro Hei"

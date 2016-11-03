@@ -24,16 +24,24 @@
   \frametitle{Markdown | 宗旨}
   Markdown的目标是实现“易读易写”，成为一种适用于网络的\textit{书写}语言。\\
   \vspace{1em}
-  一份使用Markdown格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown语法受到一些既有text-to-HTML格式的影响，包括Setext、atx、Textile、reStructuredText、Grutatext和EtText，而最大灵感来源其实是纯文本电子邮件的格式。\\
+一份使用Markdown格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown语法受到一些既有text-to-HTML格式的影响，包括Setext、atx、Textile、reStructuredText、Grutatext和EtText，而最大灵感来源其实是纯文本电子邮件的格式。\\
   \vspace{1em}
-  总之，Markdown的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像\textbf{强调}。Markdown的列表看起来，嗯，就是列表。Markdown的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。
+总之，Markdown的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像\textbf{强调}。Markdown的列表看起来，嗯，就是列表。Markdown的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。
 \end{frame}
 
 \begin{frame}
   \frametitle{Markdown | 兼容HTML}
-  Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看来，HTML已经很容易写了。Markdown的理念是，能让文档更容易读、写和随意改。HTML是一种\textbf{发布}的格式，Markdown是一种\textbf{书写}的格式。因此，Markdown的格式语法只涵盖纯文本可以涵盖的范围。\\
+Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看来，HTML已经很容易写了。Markdown的理念是，能让文档更容易读、写和随意改。HTML是一种\textbf{发布}的格式，Markdown是一种\textbf{书写}的格式。因此，Markdown的格式语法只涵盖纯文本可以涵盖的范围。\\
   \vspace{1em}
-  不在Markdown涵盖范围之内的标签，都可以直接在文档里面用HTML撰写。不需要额外标注这是HTML或是Markdown；只要直接加标签就可以了。
+不在Markdown涵盖范围之内的标签，都可以直接在文档里面用HTML撰写。不需要额外标注这是HTML或是Markdown；只要直接加标签就可以了。
+\end{frame}
+
+\begin{frame}
+  \frametitle{Markdown | vs. HTML}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{c1.markdown.html.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -52,7 +60,7 @@
 
 \begin{frame}
   \frametitle{Markdown | 编辑器}
-  作为一种小型标记语言，Markdown很容易阅读，也很容易用普通的文本编辑器编辑。另外也有一些编辑器专为Markdown设计，可以直接预览文档的样式。
+作为一种小型标记语言，Markdown很容易阅读，也很容易用普通的文本编辑器编辑。另外也有一些编辑器专为Markdown设计，可以直接预览文档的样式。
   \begin{itemize}
     \item Cmd Markdown编辑阅读器：支持实时同步预览，区分写作和阅读模式，支持在线存储，分享文稿网址。
     \item Dillinger.io：一个在线Markdown编辑器，提供实时预览以及到GitHub和Dropbox的拓展链接。
@@ -70,10 +78,17 @@
   \begin{itemize}
     \item Windows平台
       \begin{itemize}
-	\item MarkdownPad
-	\item MarkPad
+        \item MarkdownPad
+	      \item MarkPad
       \end{itemize}
-    \item Linux平台：ReText
+    \item Linux平台
+      \begin{itemize}
+        \item Typora
+        \item Haroopad
+        \item Remarkable
+        \item ReText
+        \item MdCharm
+      \end{itemize}
     \item Mac平台：Mou
     \item 在线编辑器
       \begin{itemize}
@@ -103,19 +118,19 @@
 \subsection{区块元素}
 \begin{frame}
   \frametitle{基本语法 | 区块元素 | 段落和换行}
-  一个Markdown段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。\\
+一个Markdown段落是由一个或多个连续的文本行组成，它的\textcolor{red}{前后要有一个以上的空行}（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。\\
   \vspace{1em}
-  “由一个或多个连续的文本行组成”这句话其实暗示了Markdown允许段落内的强迫换行（插入换行符），这个特性和其他大部分的text-to-HTML格式不一样。\\
+“由一个或多个连续的文本行组成”这句话其实暗示了Markdown允许段落内的强迫换行（插入换行符），这个特性和其他大部分的text-to-HTML格式不一样。\\
   \vspace{1em}
-  在文本中输入的换行会从最终生成的结果中删除，浏览器会根据可用空间自动换行。如果想强迫换行，可以在行尾插入至少两个空格。
+在文本中输入的换行会从最终生成的结果中删除，浏览器会根据可用空间自动换行。如果想\textcolor{red}{强迫换行}，可以在行尾插入至少两个空格。
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | 标题}
   Markdown支持两种标题的语法，类Setext和类atx形式。
   \begin{itemize}
-    \item 类Setext形式是用底线的形式，利用=（最高阶标题）和-（第二阶标题）。任何数量的=和-都可以有效果。
-    \item 类atx形式则是在行首插入1到6个\#，对应到标题1到6阶。你可以选择性地“闭合”类atx样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上\#，而行尾的\#数量也不用和开头一样（行首的井字符数量决定标题的阶数）。
+    \item 类Setext形式是用底线的形式，利用 \verb|=|（最高阶标题）和 \verb|-|（第二阶标题）。任何数量的 \verb|=| 和 \verb|-| 都可以有效果。
+    \item 类atx形式则是在行首插入1到6个 \verb|#|，对应到标题1到6阶。你可以选择性地“闭合”类atx样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 \verb|#|，而行尾的 \verb|#|数量也不用和开头一样（行首的井字符数量决定标题的阶数）。
   \end{itemize}
 \end{frame}
 
@@ -158,7 +173,7 @@ This is an H2
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | \alert{区块引用}}
-  Markdown标记区块引用是使用类似email中用\verb|>|的引用方式，看起来像是你自己先断好行，然后在每行的最前面加上\verb|>|。\\
+  Markdown标记区块引用是使用类似email中用 \verb|>|的引用方式，看起来像是你自己先断好行，然后在每行的最前面加上 \verb|>|。\\
 \begin{lstlisting}[language=]
 >半亩方塘一鉴开，天光云影共徘徊。
 >问渠那得清如许？为有源头活水来。
@@ -167,7 +182,7 @@ This is an H2
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | 区块引用}
-  Markdown也允许你偷懒只在整个段落的第一行最前面加上\verb|>|。\\
+  Markdown也允许你偷懒只在整个段落的第一行最前面加上 \verb|>|。\\
 \begin{lstlisting}[language=]
 >古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从师，其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之；生乎吾後，其闻道也亦先乎吾，吾从而师之。吾师道也，夫庸知其年之先後生於吾乎！是故无贵无贱无长无少，道之所存，师之所存也。
 >圣人无常师。孔子师郯子、苌子、师襄、老聃。郯子之徒，其贤不及孔子。孔子曰：“三人行，必有我师。”是故弟子不必不如师，师不必贤於弟子。闻道有先後，术业有专攻，如是而已。
@@ -176,7 +191,7 @@ This is an H2
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | 区块引用}
-  区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的\verb|>|。\\
+  区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 \verb|>|即可。\\
 \begin{lstlisting}[language=]
 >圣人无常师。孔子师郯子、苌子、师襄、老聃。郯子之徒，其贤不及孔子。孔子曰：
 >
@@ -202,11 +217,11 @@ This is an H2
   \begin{block}{列表}
     Markdown支持无序列表和有序列表。\\
     \vspace{1em}
-    列表项目标记通常是放在最左边，但是其实也可以缩进，最多3个空格，项目标记后面则一定要接着至少一个空格或制表符。
+ 列表项目标记通常是放在最左边，但是其实也可以缩进，最多3个空格，项目标记后面则一定要接着至少一个空格或制表符。
   \end{block}
   \pause
   \begin{block}{无序列表}
-    无序列表使用星号、加号或是减号作为列表标记。
+    无序列表使用星号（\verb|*|）、加号（\verb|+|）或是减号（\verb|-|）作为列表标记。
   \end{block}
   \pause
   \begin{block}{有序列表}
@@ -308,7 +323,7 @@ This is the second paragraph.
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | 列表 | 引用}
-  如果要在列表项目内放进引用，那么\verb|>|就需要缩进：
+  如果要在列表项目内放进引用，那么 \verb|>|就需要缩进：
 \begin{lstlisting}[language=]
 *   A list item with a blockquote:
 
@@ -335,7 +350,7 @@ This is the second paragraph.
 1986. What a great season.
 \end{lstlisting}
 \pause
-  要避免这样的状况，可以在句点前面加上反斜杠：
+  要避免这样的状况，可以在句点前面加上反斜线：
 \begin{lstlisting}[language=]
 1986\. What a great season.
 \end{lstlisting}
@@ -343,7 +358,7 @@ This is the second paragraph.
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | \alert{代码区块}}
-  和程序相关的写作或是标签语言源代码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示。\\
+和程序相关的写作或是标签语言源代码通常会有已经排版好的代码区块，对于这些区块，通常我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示。\\
   \vspace{1em}
   要在Markdown中建立代码区块很简单，只要简单地缩进4个空格或是1个制表符就可以：
 \begin{lstlisting}[language=]
@@ -359,9 +374,21 @@ A normal paragraph followed by a Perl script:
   \begin{itemize}
     \item 每行一阶的缩进，即4个空格或是1个制表符，都会被移除。
     \item 一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。
-    \item 在代码区块里面，\verb|&|、\verb|<|和\verb|>|会自动转成HTML实体，这样的方式让你非常容易使用Markdown插入范例用的HTML原代码，只需要复制贴上，再加上缩进就可以了，剩下的Markdown都会帮你处理。
+    \item 在代码区块里面，\verb|&|、\verb|<|和 \verb|>|会自动转成HTML实体，这样的方式让你非常容易使用Markdown插入范例用的HTML源代码——只需要复制贴上，再加上缩进就可以了——剩下的Markdown都会帮你处理。
     \item 代码区块中，一般的Markdown语法不会被转换，像是星号便只是星号，这表示你可以很容易地以Markdown语法撰写Markdown语法相关的文件。
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基本语法 | 区块元素 | 引用 vs. 代码}
+\begin{lstlisting}[language=]
+>May the Force be with you!
+\end{lstlisting}
+  \pause
+\begin{lstlisting}[language=]
+    #!/usr/bin/perl
+    print "Hello, world!\n";
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -461,7 +488,7 @@ This is [an example] [id] reference-style link.
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区段元素 | 链接 | 参考式 | 隐式}
-  隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字。要用隐式链接标记只要在链接文字后面加上一个空的方括号。比如要让“Google”链接到google.com：
+隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字。要用隐式链接标记只要在链接文字后面加上一个空的方括号。比如要让“Google”链接到google.com：
 \begin{lstlisting}[language=]
 [Google][]
 \end{lstlisting}
@@ -482,9 +509,9 @@ Visit [Daring Fireball][].
 
 \begin{frame}
   \frametitle{基本语法 | 区段元素 | 链接 | 参考式 | 补充}
-  链接的定义可以放在文件中的任何一个地方，我比较偏好直接放在链接出现段落的后面，你也可以把它放在文件最后面，就像是注解一样。\\
+链接的定义可以放在文件中的任何一个地方，我比较偏好直接放在链接出现段落的后面，你也可以把它放在文件最后面，就像是注解一样。\\
   \vspace{1em}
-  参考式的链接其实重点不在于它比较好写，而是它比较好读。使用Markdown的参考式链接，可以让文件更像是浏览器最后产生的结果，让你可以把一些标记相关的元数据移到段落文字之外，你就可以增加链接而不让文章的阅读感觉被打断。
+参考式的链接其实重点不在于它比较好写，而是它比较好读。使用Markdown的参考式链接，可以让文件更像是浏览器最后产生的结果。通过把一些标记相关的元数据移到段落文字之外，就可以增加链接而不让文章的阅读感觉被打断。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -507,17 +534,17 @@ I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3]
 \begin{lstlisting}[language=]
 I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3].
 
-  [1]: http://google.com/        "Google"
-  [2]: http://search.yahoo.com/  "Yahoo Search"
-  [3]: http://search.msn.com/    "MSN Search"
+  [1]: http://google.com/       "Google"
+  [2]: http://search.yahoo.com/ "Yahoo Search"
+  [3]: http://search.msn.com/   "MSN Search"
 \end{lstlisting}
 \pause
 \begin{lstlisting}[language=]
 I get 10 times more traffic from [Google][] than from [Yahoo][] or [MSN][].
 
-  [google]: http://google.com/        "Google"
-  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
-  [msn]:    http://search.msn.com/    "MSN Search"
+  [google]: http://google.com/       "Google"
+  [yahoo]:  http://search.yahoo.com/ "Yahoo Search"
+  [msn]:    http://search.msn.com/   "MSN Search"
 \end{lstlisting}
 \end{frame}
 
@@ -593,7 +620,7 @@ A backtick-delimited string in a code span: `` `foo` ``
   \frametitle{基本语法 | 区段元素 | 图片}
   Markdown使用一种和链接很相似的语法来标记图片，同样也允许两种样式：行内式和参考式。\\
   \vspace{1em}
-  到目前为止，Markdown还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的\verb|<img>|标签。
+  到目前为止，Markdown还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 \verb|<img>|标签。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -638,27 +665,27 @@ A backtick-delimited string in a code span: `` `foo` ``
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基本语法 | 其他 | \alert{反斜杠}}
-  Markdown可以利用反斜杠来插入一些在语法中有其它意义的符号，支持以下这些符号前面加上反斜杠来帮助插入普通的符号：
+  \frametitle{基本语法 | 其他 | \alert{反斜线}}
+Markdown可以利用反斜线来插入一些在语法中有其它意义的符号，支持以下这些符号前面加上反斜线来帮助插入普通的符号：
 \begin{lstlisting}[language=]
 \   反斜线
 `   反引号
 *   星号
 _   下划线
-{}  花括号
-[]  方括号
-()  括弧
+{}  大括号
+[]  中括号
+()  小括号
 #   井字号
 +   加号
 -   减号
 .   英文句点
-!   惊叹号
+!   感叹号
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 其他 | \alert{脚注}}
-  使用这样的占位符号可以将脚注添加到文本中：\verb|[^1]|。另外，你可以使用“n”而不是数字的\verb|[^n]|。所以你可以不必担心使用哪个号码。在您的文章的结尾，你可以如下所示定义匹配的注脚，URL将变成链接：
+使用这样的占位符号可以将脚注添加到文本中：\verb|[^1]|。另外，你可以使用“n”而不是数字的\verb|[^n]|。所以你可以不必担心使用哪个号码。在您的文章的结尾，你可以如下所示定义匹配的注脚，URL将变成链接：
 \begin{lstlisting}[language=]
 [^1]: This is my first footnote
 [^n]: Visit http://ghost.org
@@ -900,7 +927,8 @@ Bob-->Alice: I am good thanks!
   \frametitle{格式转换 | pandoc | 使用}
 \begin{lstlisting}[language=bash]
 # 安装
-sudo apt-get install pandoc
+sudo apt install pandoc
+#sudo apt-get install pandoc
 
 # 使用帮助
 man pandoc
