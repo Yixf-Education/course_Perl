@@ -6,9 +6,9 @@ use strict;
  sub r{join"",   reverse split
 ("",$_[$[])}sub ss{substr($_[0]
 ,$_[1],$_[2])}sub be{$_=$_[0];p
- (ss($_,$f,1));$f+=l()/2;$f%=l
+ (ss($_,$f,1));$f+=l()/2;$f%=l 
   ();$f++if$ch%2;$ch++}my$q=r
-   ("\ntfgpfdfal,thg?bngbj".
+   ("\ntfgpfdfal,thg?bngbj".    
     "naxfcixz");$_=$q; $q=~
       tr/f[a-z]/ [l-za-k]
         /;my@ever=1..&l
@@ -18,4 +18,4 @@ use strict;
               @_;
                }
                          
-       be $mine for @ever
+       be $mine for @ever 
