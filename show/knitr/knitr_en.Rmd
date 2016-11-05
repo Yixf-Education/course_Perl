@@ -1,8 +1,13 @@
 ---
 title: "knitr"
-author: "Yixf"
-date: '2016-11-03'
-output: html_document
+author: "伊现富 (Yixf)"
+date: '`r Sys.Date()`'
+output:
+  pdf_document:
+    keep_tex: yes
+    latex_engine: xelatex
+  html_document: default
+  word_document: default
 ---
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -20,3 +25,11 @@ plot(cars)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+文档中有中文也是没有任何问题的奥！（其实，我是骗你的，不行打开PDF文件，看看里面有没有中文。）
+
+```{r, echo=FALSE}
+boxplot(cars)
+```
+
+（……其实，我并没有骗你，看看中文版的示例文档就知道了……）
