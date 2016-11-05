@@ -15,6 +15,7 @@
 * Tie::File::AnyData::Bio::Fasta
 * Fcntl
 * List::Util
+* Term::Animation
 
 # R
 * knitr
