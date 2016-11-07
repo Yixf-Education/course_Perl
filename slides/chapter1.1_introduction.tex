@@ -726,6 +726,64 @@
   \end{figure}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{R | Example}
+\begin{lstlisting}[language=R]
+n <- 50000
+r <- 0.7
+r_e <- (1 - r * r) ^ 0.5
+X <- rnorm(n)
+Y <- X * r + r_e * rnorm(n)
+Y <- ifelse(X>0, Y, -Y)
+plot(X, Y, col="pink")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Example}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.35\textwidth]{c1.r.plot.01.png}\qquad
+    \includegraphics[width=0.4\textwidth]{c1.r.plot.03.png}\\
+    \includegraphics[width=0.3\textwidth]{c1.r.plot.02.png}
+    \hspace{4em}
+    \includegraphics[width=0.25\textwidth]{c1.r.plot.04.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{R | Example}
+\begin{lstlisting}[language=R,basicstyle=\footnotesize\tt]
+xrange <- c(-15, 15); yrange <- c(0, 16)
+plot(0, xlim=xrange, ylim=yrange, type="n")
+
+yr <- seq(yrange[1], yrange[2], len=50)
+offsetFn <- function(y) { 2 * sin(0 + y/3) }
+offset <- offsetFn(yr)
+leftE <- function(y) { -10 - offsetFn(y) }
+rightE <- function(y) { 10 + offsetFn(y) }
+xp <- c(leftE(yr), rev(rightE(yr)))
+yp <- c(yr, rev(yr))
+polygon(xp, yp, col="#ffeecc", border=NA)
+
+h <- 9
+xt <- seq(0, rightE(h), len=100)
+yt <- log(1 + log(1 + log(xt + 1)))
+yt <- yt - min(yt); yt <- h * yt/max(yt)
+x <- c(leftE(h), rightE(h), rev(xt), -xt)
+y <- c(h, h, rev(yt), yt)
+polygon(x, y, col="red", border=NA)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Example}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c1.r.gapminder.2016.png}
+  \end{figure}
+\end{frame}
+
 \begin{frame}
   \frametitle{R | 参考资料}
    \begin{itemize}
