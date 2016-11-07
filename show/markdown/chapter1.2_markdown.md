@@ -287,7 +287,7 @@ tags: 小书匠,语法,MARKDOWN,帮助
 ++插入的文字++
 ==被记号的文字==
 上角文字: 19^th^
-下角文字: H~2~o
+下角文字: H~2~O
 
 ##### 印刷字替换
 (c) (C) (r) (R) (tm) (TM) (p) (P) +-
@@ -307,6 +307,7 @@ The HTML specification is maintained by the W3C.
 苹果
 : 一种水果
 : 一种品牌，计算机，手持设备
+
 桔子
 : 一种水果
 
@@ -321,11 +322,11 @@ print "Hello, world!\n";
 
 Left align | Right align | Center align 
 :-----------|------------:|:------------:
- This       |        This |     This     
- column     |      column |    column    
- will       |        will |     will     
- be         |          be |      be      
- left       |       right |    center    
+ This       |        This |     This
+ column     |      column |    column
+ will       |        will |     will
+ be         |          be |      be
+ left       |       right |    center
  aligned    |     aligned |   aligned 
 
 * Outer pipes on tables are optional
