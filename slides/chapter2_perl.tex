@@ -812,7 +812,7 @@ close(FILE);
 open my $IN, '<', $file_in or die "$0 : failed to open input file '$file_in' : $!\n";
 while(<$IN>){ #细嚼慢咽
   chomp;
-  actions;
+  #...actions...;
 }
 close $IN or warn "$0 : failed to close input file '$file_in' : $!\n";
 \end{lstlisting}
@@ -925,7 +925,7 @@ unless ($credit > 100) {
 }
 
 # unless语句
-print "eat\n" unless $food==0;
+print "eat!\n" unless $food==0;
 \end{lstlisting}
 \end{frame}
 
@@ -1091,6 +1091,293 @@ do {
   \end{block}
 \end{frame}
 
+\section{列表操作}
+\begin{frame}
+  \frametitle{列表操作 | 简介}
+  \begin{block}{列表操作}
+    基于原来的列表创建一个新的列表：
+    \begin{description}
+      \item[sort] 将给定列表排序后返回一个新的已排序列表
+        \begin{itemize}
+          \item 按字母顺序排序 
+          \item 按数字顺序排序
+          \item 反向排序
+          \item 运用sort子程序进行排序
+        \end{itemize}
+      \item[grep] 筛选列表以寻找符合标准的表项
+        \begin{itemize}
+          \item 基于原列表筛选大于0的元素建立一个新列表
+        \end{itemize}
+      \item[map] 将一个列表转换成另一个列表
+        \begin{itemize}
+          \item 将原列表中的所有元素都乘以2得到新列表
+        \end{itemize}
+    \end{description}
+  \end{block}
+\end{frame}
+
+\subsection{sort}
+\begin{frame}[fragile]
+  \frametitle{列表操作 | sort | 语法}
+\begin{lstlisting}[language=Perl]
+sort LIST
+sort BLOCK LIST
+sort SUBNAME LIST
+\end{lstlisting}
+  \pause
+\begin{lstlisting}[language=Perl]
+@passengers = sort @passengers;
+@passengers = sort { $a->{age} <=> $b->{age} } @passengers;
+@passengers = sort  women_and_children_first @passengers;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | sort | 默认排序}
+\begin{lstlisting}[language=Perl]
+# sort默认是通过字符串的比较来进行排序的
+my @list = sort qw(this is a list);
+print "@list";
+# a is list this
+
+# sort默认将字符串分成单个字符来进行排序
+print join ",", sort qw/ 9 10 99 222/;
+# 1,10,222,9,99
+
+# 使用sort代码块将数字按照数字顺序进行排序
+print join ",", sort { $a <=> $b } qw /1 9 10 99 222/;
+# 1,9,10,99,222
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | sort | 反向排序}
+\begin{lstlisting}[language=Perl]
+# 执行效率较低：升序排列列表 + 反转列表 = 降序排列列表
+my @reversed_names = reverse sort @names;
+
+# 直接反向排序列表
+# 反向排序字符串
+my @reversed_names = sort { $b cmp $a } @names;
+# 降序排序数字
+my @descending = sort { $b <=> $a } @numbers;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | sort | 复杂排序}
+\begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
+my @employees = (
+    {
+        name     => 'Sally Jones',
+        years    => 4,
+        payscale => 4,
+    },
+    {
+        name     => 'Abby Hoffman',
+        years    => 1,
+        payscale => 10,
+    },
+    {
+        name     => 'Jack Johnson',
+        years    => 4,
+        payscale => 5,
+    },
+    {
+        name     => 'Mr. Magnate',
+        years    => 12,
+        payscale => 1,
+    },
+);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | sort | 复杂排序}
+\begin{lstlisting}[language=Perl]
+@employees = 
+    sort {
+        $b->{years}    <=> $a->{years}
+        ||
+        $a->{payscale} <=> $b->{payscale}
+        ||
+        $a->{name}     cmp $b->{name}
+    }
+    @employees;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | sort | 复杂排序}
+\begin{lstlisting}[language=Perl]
+# 将sort代码块放到子程序中，并用子程序的名称替代sort代码块
+sub by_seniority_then_pay_then_name {
+    $b->{years}    <=> $a->{years}
+    ||
+    $a->{payscale} <=> $b->{payscale}
+    ||
+    $a->{name}     cmp $b->{name}
+}
+
+@employees = sort by_seniority_then_pay_then_name @employees;
+# 当排序条件很复杂时，使用一个命名的排序子程序：
+# 1. 提高代码的可读性
+# 2. 便于重复使用
+\end{lstlisting}
+\end{frame}
+
+\subsection{grep}
+\begin{frame}[fragile]
+  \frametitle{列表操作 | grep | 语法}
+  \begin{block}{grep}
+    生成一个新的列表，该列表中的所有元素由一个给定列表中所有满足筛选标准的元素组成。 
+  \end{block}
+\begin{lstlisting}[language=Perl]
+NEWLIST = grep BLOCK       LIST;
+NEWLIST = grep EXPRESSION, LIST;
+# 注意逗号的有无！
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=Perl]
+my @greater = grep { $_ > 0 } @numbers;
+my @greater = grep   $_ > 0,  @numbers;
+my @greater = grep ( $_ > 0,  @numbers );
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | grep | 原理}
+  \begin{block}{原理}
+    在使用grep函数时，通过轮流地把每个元素设置成 \verb|$_|的方式，可以实现对列表中每个元素的迭代处理。grep函数只返回在BLOCK或EXPRESSION中值为真的那些元素。可以在grep函数中使用任意复杂的表达式。
+  \end{block}
+\begin{lstlisting}[language=Perl]
+# 获取回文字符串
+my @palindromes = grep { uc eq reverse uc } @words;
+
+# 查找给定列表中以元音字母开头的单词
+my @starts_with_vowels = grep { /^[aeiou]/ } @words;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | grep | 组合sort}
+\begin{lstlisting}[language=Perl]
+my @numbers = ( 13, 3, -2, 7, 270, 19, -3.2, 10.1 );
+my @result = sort { $a <=> $b } grep { $_ >= 10 } @numbers;
+print join ", ", @result;
+# 10.1, 13, 19, 270
+
+# 更加清晰易读
+my @result = sort { $a <=> $b }
+             grep { $_ >= 10  } @numbers;
+\end{lstlisting}
+\end{frame}
+
+\subsection{map}
+\begin{frame}[fragile]
+  \frametitle{列表操作 | map | 语法}
+  \begin{block}{map}
+在想要改变整个列表内容时使用map。它逐个对给定列表中的元素进行处理，然后新建一个列表，并将修改后的值返回到新的列表中。 
+  \end{block}
+\begin{lstlisting}[language=Perl]
+NEWLIST = map BLOCK       LIST;
+NEWLIST = map EXPRESSION, LIST;
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=Perl]
+# 将列表中的每一个字母大写
+my @UPPER = map { uc } @words;
+
+my @roots = map  { sqrt($_) }
+            grep { $_ > 0   } @numbers;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | map | 实例}
+\begin{lstlisting}[language=Perl]
+# 将华氏温度转换为摄氏温度
+my @fahrenheit = (
+    'absolute zero'    => -459.67,
+    'freezing water'   => 32,
+    'body temperature' => 98.6,
+    'boiling water'    => 212,
+);
+
+my %celsius = map 
+    { $_ => 5 / 9 * ($fahrenheit{$_} - 32) }
+    keys %fahrenheit;
+\end{lstlisting}
+\end{frame}
+
+\subsection{高效排序}
+\begin{frame}[fragile]
+  \frametitle{列表操作 | 高效排序}
+  \begin{block}{Orcish Maneuver}
+\begin{lstlisting}[language=Perl]
+keys my %or_cache = @in;
+@out = sort {
+    ($or_cache{$a} ||= foo($a))
+    cmp
+    ($or_cache{$b} ||= foo($b))
+} @in;
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | 高效排序}
+  \begin{block}{Schwartzian transform}
+\begin{lstlisting}[language=Perl,basicstyle=\small\tt]
+# The general form of the Schwartzian Transform:
+@sorted = map  { $_->[0] }
+          sort { $a->[1] cmp $b->[1] }
+          map  { [$_, foo($_)] }
+               @unsorted;
+
+# sort the word list ("aaaa","a","aa") according to word length
+@sorted = map  { $_->[0] }
+          sort { $a->[1] <=> $b->[1] } # use numeric comparison
+          map  { [$_, length($_)] }    # calculate the length of the string
+               @unsorted;
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | 高效排序}
+  \begin{block}{Schwartzian transform}
+\begin{lstlisting}[language=Perl]
+# James|007|Spy
+# Number 6|6|Ex-spy
+# Agent 99|99|Spy with unknown name
+# Napoleon Solo|11|Uncle spy
+# Unknown|666|Maybe a spy
+
+my @sorted = map { $_->[0] }          # undecorate
+    sort { $a->[1] <=> $b->[1] }      # sort
+    map { /\|(\d+)/; [ $_, $1 ] } <>; # decorate
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{列表操作 | 高效排序}
+  \begin{block}{Guttman-Rosler Transform}
+\begin{lstlisting}[language=Perl]
+# James|007|Spy
+# Number 6|6|Ex-spy
+# Agent 99|99|Spy with unknown name
+# Napoleon Solo|11|Uncle spy
+# Unknown|666|Maybe a spy
+
+my @sorted = map { substr $_, 4 }
+    sort
+    map {/\|(\d+)/; pack("A4", $1).$_ } <>;
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
 \section{检修脚本}
 \begin{frame}[fragile]
   \frametitle{\alert{检修脚本}}
@@ -1103,6 +1390,10 @@ use warnings;
 
 # 严格模式，语法更加规范
 use strcit;
+
+# 提供扩展描述来指明具体哪部分程序出了问题，以及关于如何解决这些问题的建议
+# 对于初学者非常有用，有经验的程序员通常将其省略
+use diagnostics;
 \end{lstlisting}
 \end{frame}
 
@@ -1146,7 +1437,6 @@ perl -d script.pl
   \end{table}
 \end{frame}
 
-
 \section{回顾与总结}
 \subsection{总结}
 \begin{frame}
@@ -1159,6 +1449,7 @@ perl -d script.pl
       \item 基本函数：print, chomp, join, split, open, close, my
       \item 判断语句：if, unless, given-when
       \item 循环语句：foreach, for, while, until
+      \item 列表操作：sort, grep, map
       \item 检修脚本：检查语法，格式化脚本，调试脚本
     \end{itemize}
   \end{block}
@@ -1181,6 +1472,7 @@ perl -d script.pl
     \item 在Perl中如何和文件进行交互？
     \item Perl中的判断语句有哪些，语法是怎样的？
     \item Perl中的循环语句有哪些，语法是怎样的？
+    \item 列举Perl中进行列表操作的函数。
     \item 如何调试Perl脚本？
   \end{enumerate}
 \end{frame}
