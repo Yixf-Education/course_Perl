@@ -958,6 +958,21 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{格式转换 | unoconv | 简介}
+  \begin{block}{unoconv}
+    Universal Office Converter (unoconv) is a command line tool to convert any document format that \textbf{LibreOffice} can import to any document format that LibreOffice can export. It makes use of the LibreOffice’s UNO bindings for non-interactive conversion of documents.
+  \end{block}
+  \begin{block}{\textcolor{red}{使用}}
+\begin{lstlisting}[language=bash]
+# odt to *
+unoconv -f pdf file.odt
+unoconv -f doc file.odt
+unoconv -f html file.odt
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
 \subsection{图片}
 \begin{frame}
   \frametitle{格式转换 | ImageMagick | 简介}
@@ -986,17 +1001,18 @@ Use ImageMagick to create, edit, compose, or convert bitmap images. It can read 
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{格式转换 | ImageMagick | 使用}
-  \begin{block}{\textcolor{red}{convert}}
+  \frametitle{格式转换 | ImageMagick | \textcolor{red}{使用}}
+  \begin{block}{convert}
 Use the convert program to convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more. 
   \end{block}
 \begin{lstlisting}[language=bash]
 # 安装
 sudo apt install imagemagick
+man convert
+convert -h
 
 # convert an image in the JPEG format to PNG
 convert rose.jpg rose.png
-
 # reduce the image size before it is written to the PNG format
 convert rose.jpg -resize 50% rose.png
 \end{lstlisting}
@@ -1037,6 +1053,166 @@ convert -size 320x90 canvas:none -stroke snow4 -size 1x90 -tile gradient:white-s
 \end{frame}
 
 \subsection{音/视频}
+\begin{frame}
+  \frametitle{格式转化 | FFmpeg | 简介}
+FFmpeg是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。
+\begin{block}{组件}
+  \begin{description}
+    \item[ffmpeg]一个命令行工具，用来\textcolor{red}{对视频文件转换格式}，也支持对电视卡即时编码
+    \item[ffserver]一个HTTP多媒体即时广播流服务器，支持时光平移
+    \item[ffplay]一个简单的播放器，基于SDL与FFmpeg库
+    \item[libavcodec]包含全部FFmpeg音频/视频编解码库
+    \item[libavformat]包含demuxers和muxer库
+    \item[libavutil]包含一些工具库
+    \item[libpostproc]对于视频做前处理的库
+    \item[libswscale]对于视频作缩放的库
+  \end{description}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | \textcolor{red}{使用}}
+\begin{lstlisting}[language=bash]
+# 安装
+sudo apt install ffmpeg
+# 帮助与手册
+man ffmpeg
+ffmpeg -h
+ffmpeg -formats
+
+# convert a file with the default settings
+ffmpeg -i input.avi output.mpg
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | 使用}
+\begin{lstlisting}[language=bash,basicstyle=\small\tt]
+# encode a video with a 128kbps audio bitrate and 1,200kbps video stream
+ffmpeg -i input.avi -ab 128 -b 1200 output.mpg
+
+# convert a WAV file to a 128kbps MP3 file
+ffmpeg -i input.wav -ab 128 output.mp3
+
+# encode using the MPEG-4 codec at 1,200kbps video bitrate and 128kbps audio bitrate
+ffmpeg -i input.mpg -ab 128 -b 1200 -vcodec mpeg4 output.avi
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | 使用}
+\begin{lstlisting}[language=bash,basicstyle=\small\tt]
+# Convert a video into mp3 format
+ffmpeg -i video.flv -vn -ar 44100 -ac 2 -ab 192 -f mp3 audio.mp3
+
+# Convert video from one format to another
+ffmpeg -i video.flv video.mpg
+ffmpeg -i video.mpg -ab 26k -f flv video1.flv
+ffmpeg -i youtube.flv -c:v libx264 filename.mp4
+ffmpeg -i video.wmv -c:v libx264 -preset ultrafast video.mp4
+
+# Convert a video to CD or DVD format
+ffmpeg -i video.mpg -target vcd vcd_video.mpg
+ffmpeg -i video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 video.mpeg
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | 使用}
+\begin{lstlisting}[language=bash,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+# Get Video File Information
+ffmpeg -i video.flv -hide_banner
+
+# Compare/Test Video and Audio Quality
+ffplay video1.mp4
+ffplay audio_filename1.mp3
+
+# Cut video file into a smaller clip
+ffmpeg -i input.mp4 -ss 00:00:50.0 -codec copy -t 20 output.mp4
+ffmpeg -ss 00:01:30 -t 30 -acodec copy -i input.mp3 output.mp3
+
+# Split a video into multiple parts
+ffmpeg -i video.mp4 -t 00:00:50 -c copy small-1.mp4 -ss 00:00:50 -codec copy small-2.mp4
+
+# Join (concatenate) video files
+ffmpeg -f concat -i file-list.txt -c copy output.mp4
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | 使用}
+\begin{lstlisting}[language=bash,basicstyle=\small\tt]
+# Resize a video
+ffmpeg -i input.mp4 -s 480x320 -c:a copy output.mp4
+
+# Change the audio volume
+ffmpeg -i input.wav -af 'volume=0.5' output.wav
+
+# Add subtitles to a movie
+ffmpeg -i movie.mp4 -i subtitles.srt -map 0 -map 1 -c copy -c:v libx264 -crf 23 -preset veryfast output.mkv
+
+# Rotate a video
+ffmpeg -i input.mp4 -filter:v 'transpose=1' rotated-video.mp4
+ffmpeg -i input.mp4 -filter:v 'transpose=2,transpose=2' rotated-video.mp4
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | 使用}
+\begin{lstlisting}[language=bash,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+# Mute a video (Remove the audio component)
+ffmpeg -i video.mp4 -an mute-video.mp4
+# Extract audio (Remove the video component)
+ffmpeg -i video.mp4 -vn -ab 256 audio.mp3
+ffmpeg -i video1.avi -vn -ar 44100 -ac 2 -ab 192 -f mp3 audio3.mp3
+
+# Merge an audio and video file
+ffmpeg -i audio.mp3 -i video.avi video_audio_mix.mpg
+ffmpeg -i video.mp4 -i audio.mp3 -c:v copy -c:a aac -strict experimental output.mp4
+
+# Speed up or Slow down the audio
+ffmpeg -i input.mkv -filter:a "atempo=2.0" -vn output.mkv
+# Speed up or Slow down the video
+ffmpeg -i video.mpg -vf "setpts=0.5*PTS" highspeed.mpg
+ffmpeg -i video.mpg -vf "setpts=4.0*PTS" lowerspeed.mpg -hide_banner
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转化 | FFmpeg | 使用}
+\begin{lstlisting}[language=bash,basicstyle=\scriptsize\tt,numberstyle=\tiny]
+# Convert a video into animated GIF
+ffmpeg -i video.flv animated.gif.mp4
+ffmpeg -i video.mp4 -vf scale=500:-1 -t 10 -r 10 image.gif
+# Extract image frames from a video
+ffmpeg -ss 00:00:15 -i video.mp4 -vf scale=800:-1 -vframes 1 image.jpg
+# Convert Video into Images
+ffmpeg -i video.flv image%d.jpg
+ffmpeg -i movie.mp4 -r 0.25 frames_%04d.png
+# Create video slideshow from images
+ffmpeg -f image2 -i image%d.jpg imagestovideo.mpg
+ffmpeg -r 1/5 -i img%03d.png -c:v libx264 -r 30 -pix_fmt yuv420p slideshow.mp4
+# Add a poster image or banner to audio
+ffmpeg -loop 1 -i image.jpg -i audio.mp3 -c:v libx264 -c:a aac -strict experimental -b:a 192k -shortest output.mp4
+# Convert a single image into a video
+ffmpeg -loop 1 -i image.png -c:v libx264 -t 30 -pix_fmt yuv420p video.mp4
+\end{lstlisting}
+\end{frame}
+
+\subsection{三合一}
+\begin{frame}
+  \frametitle{格式转换 | 三合一 | FF Multi Converter}
+  \begin{block}{FF Multi Converter}
+FF Multi Converter is a simple graphical application for Linux which enables you to convert audio, video, image and document files between all popular formats, by utilizing other command-line tools. It uses \textbf{FFmpeg} for audio/video files, the \textbf{ImageMagick} software suite for image conversions and \textbf{unoconv} for document files.
+  \end{block}
+  \begin{block}{Homepage}
+    \begin{itemize}
+      \item \href{https://sites.google.com/site/ffmulticonverter/}{FF Multi Converter@Google}
+      \item \href{https://github.com/Ilias95/FF-Multi-Converter}{FF Multi Converter@GitHub}
+      \item \href{https://sourceforge.net/projects/ffmulticonv/}{FF Multi Converter@SourceForge}
+    \end{itemize}
+  \end{block}
+\end{frame}
 
 \section{回顾与总结}
 \subsection{总结}
@@ -1046,6 +1222,7 @@ convert -size 320x90 canvas:none -stroke snow4 -size 1x90 -tile gradient:white-s
     \begin{itemize}
       \item Markdown的基本语法：标题、引用、列表、代码、链接、强调……
       \item Markdown相关：knitr，pandoc
+      \item 格式转换：pandoc，unoconv，ImageMagick，FFmpeg
     \end{itemize}
   \end{block}
   \begin{block}{技能}
@@ -1053,6 +1230,7 @@ convert -size 320x90 canvas:none -stroke snow4 -size 1x90 -tile gradient:white-s
       \item 熟练使用Markdown撰写文档
       \item 能够使用pandoc转换文档格式
       \item 能够使用ImageMagick转换图片格式
+      \item 能够使用FFmpeg转换视频格式
     \end{itemize}
   \end{block}
 \end{frame}
@@ -1063,7 +1241,7 @@ convert -size 320x90 canvas:none -stroke snow4 -size 1x90 -tile gradient:white-s
   \begin{enumerate}
     \item 常见的文档样式（标题、强调等）如何使用Markdown语法来实现？
     \item 如何把Markdown文件转换成其他常见的文档格式？
-    \item 如何转换图片格式？
+    \item 如何转换图片和视频格式？
   \end{enumerate}
 \end{frame}
 
