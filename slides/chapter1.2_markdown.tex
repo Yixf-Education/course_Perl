@@ -961,30 +961,82 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
 \subsection{图片}
 \begin{frame}
   \frametitle{格式转换 | ImageMagick | 简介}
-ImageMagick是一个用于查看、编辑位图文件以及进行图像格式转换的开放源代码软件套装。它可以读取、编辑超过100种图象格式。ImageMagick以ImageMagick许可证（一个类似BSD的许可证）发布。\\
+  \begin{columns}
+    \column{0.6\textwidth}
+ImageMagick是一个用于查看、编辑位图文件以及进行图像格式转换的开放源代码软件套装。它可以读取、编辑超过200种图象格式。ImageMagick以ImageMagick许可证（一个类似BSD的许可证）发布。\\
 \vspace{1em}
 ImageMagick主要由大量的命令行程序组成，而不提供像Adobe Photoshop、GIMP这样的图形界面。但是，ImageMagick也提供了一个基于X Window的简易GUI：IMDisplay。\\
 \vspace{1em}
 ImageMagick为很多程序语言提供了API库。在Perl语言中，ImageMagick的API叫做PerlMagick。\\
-\vspace{1em}
+    \column{0.4\textwidth}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{c1.im.png}
+  \end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{格式转换 | ImageMagick | 功能}
 ImageMagick最基本的一个功能是\textcolor{red}{准确高效地转换超过68种图片的格式}，包括众所周知的TIFF、JPEG、PNG、PDF、PhotoCD，以及GIF。Imagemagick使用特征签名识别文件类型。\\
 \vspace{1em}
-ImageMagick包括了大量用于特效的滤镜和扩展功能。
+ImageMagick包括了大量用于特效的滤镜和扩展功能。\\
+\vspace{1em}
+Use ImageMagick to create, edit, compose, or convert bitmap images. It can read and write images in a variety of formats (over 200) including PNG, JPEG, JPEG-2000, GIF, TIFF, DPX, EXR, WebP, Postscript, PDF, and SVG. Use ImageMagick to resize, flip, mirror, rotate, distort, shear and transform images, adjust image colors, apply various special effects, or draw text, lines, polygons, ellipses and Bézier curves.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转换 | ImageMagick | 使用}
+  \begin{block}{\textcolor{red}{convert}}
+Use the convert program to convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more. 
+  \end{block}
+\begin{lstlisting}[language=bash]
+# 安装
+sudo apt install imagemagick
+
+# convert an image in the JPEG format to PNG
+convert rose.jpg rose.png
+
+# reduce the image size before it is written to the PNG format
+convert rose.jpg -resize 50% rose.png
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{格式转换 | ImageMagick | 使用}
 \begin{lstlisting}[language=bash]
-# jpg2png
-convert figure.jpg figure.png
-# pdf2png
-convert figure.pdf figure.png
+# combine multiple image-processing operations to produce complex results
+convert -size 320x85 canvas:none -font Bookman-DemiItalic -pointsize 72 -draw "text 25,60 \'Magick\'" -channel RGBA -blur 0x6 -fill darkred -stroke magenta -draw "text 20,55 \'Magick\'" fuzzy-magick.png
+
+# resize an image with improved quality
+convert input.png -colorspace RGB +sigmoidal-contrast 11.6933 -define filter:filter=Sinc -define filter:window=Jinc -define filter:lobes=3 -resize 400% -sigmoidal-contrast 11.6933 -colorspace sRGB output.png
 \end{lstlisting}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.4\textwidth]{c1.im.png}
-  \end{figure}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转换 | ImageMagick | 实例}
+\begin{lstlisting}[language=bash]
+convert label.gif +matte \( +clone -shade 110x90 -normalize -negate +clone -compose Plus -composite \) \( -clone 0 -shade 110x50 -normalize -channel BG -fx 0 +channel -matte \) -delete 0 +swap -compose Multiply -composite button.gif
+\end{lstlisting}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.3\textwidth]{c1.im.label.png}\qquad
+  \includegraphics[width=0.3\textwidth]{c1.im.button.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转换 | ImageMagick | 实例}
+\begin{lstlisting}[language=bash,basicstyle=\tiny\tt]
+convert -size 320x90 canvas:none -stroke snow4 -size 1x90 -tile gradient:white-snow4 -draw 'roundrectangle 16, 5, 304, 85 20,40' +tile -fill snow -draw 'roundrectangle 264, 5, 304, 85  20,40' -tile gradient:chartreuse-green -draw 'roundrectangle 16, 5, 180, 85  20,40' -tile gradient:chartreuse1-chartreuse3 -draw 'roundrectangle 140, 5, 180, 85  20,40' +tile -fill none -draw 'roundrectangle 264, 5, 304, 85 20,40' -strokewidth 2 -draw 'roundrectangle 16, 5, 304, 85 20,40' \( +clone -background snow4 -shadow 80x3+3+3 \) +swap -background none -layers merge \( +size -font Helvetica -pointsize 90 -strokewidth 1 -fill red label:'50 %' -trim +repage \( +clone -background firebrick3 -shadow 80x3+3+3 \) +swap -background none -layers merge \) -insert 0 -gravity center -append -background white -gravity center -extent 320x200 cylinder_shaded.png
+\end{lstlisting}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{c1.im.cylinder.png}
+\end{figure}
+\end{frame}
+
+\subsection{音/视频}
 
 \section{回顾与总结}
 \subsection{总结}
