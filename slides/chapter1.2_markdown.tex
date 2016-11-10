@@ -906,6 +906,7 @@ Bob-->Alice: I am good thanks!
 \end{frame}
 
 \section{格式转换}
+\subsection{文档}
 \begin{frame}
   \frametitle{格式转换 | pandoc | 简介}
   pandoc是由John MacFarlane开发的标记语言转换工具，可实现不同标记语言间的格式转换，堪称该领域中的“瑞士军刀”。\\
@@ -957,6 +958,34 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
 \end{lstlisting}
 \end{frame}
 
+\subsection{图片}
+\begin{frame}
+  \frametitle{格式转换 | ImageMagick | 简介}
+ImageMagick是一个用于查看、编辑位图文件以及进行图像格式转换的开放源代码软件套装。它可以读取、编辑超过100种图象格式。ImageMagick以ImageMagick许可证（一个类似BSD的许可证）发布。\\
+\vspace{1em}
+ImageMagick主要由大量的命令行程序组成，而不提供像Adobe Photoshop、GIMP这样的图形界面。但是，ImageMagick也提供了一个基于X Window的简易GUI：IMDisplay。\\
+\vspace{1em}
+ImageMagick为很多程序语言提供了API库。在Perl语言中，ImageMagick的API叫做PerlMagick。\\
+\vspace{1em}
+ImageMagick最基本的一个功能是\textcolor{red}{准确高效地转换超过68种图片的格式}，包括众所周知的TIFF、JPEG、PNG、PDF、PhotoCD，以及GIF。Imagemagick使用特征签名识别文件类型。\\
+\vspace{1em}
+ImageMagick包括了大量用于特效的滤镜和扩展功能。
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式转换 | ImageMagick | 使用}
+\begin{lstlisting}[language=bash]
+# jpg2png
+convert figure.jpg figure.png
+# pdf2png
+convert figure.pdf figure.png
+\end{lstlisting}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{c1.im.png}
+  \end{figure}
+\end{frame}
+
 \section{回顾与总结}
 \subsection{总结}
 \begin{frame}
@@ -971,6 +1000,7 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
     \begin{itemize}
       \item 熟练使用Markdown撰写文档
       \item 能够使用pandoc转换文档格式
+      \item 能够使用ImageMagick转换图片格式
     \end{itemize}
   \end{block}
 \end{frame}
@@ -981,6 +1011,7 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
   \begin{enumerate}
     \item 常见的文档样式（标题、强调等）如何使用Markdown语法来实现？
     \item 如何把Markdown文件转换成其他常见的文档格式？
+    \item 如何转换图片格式？
   \end{enumerate}
 \end{frame}
 
