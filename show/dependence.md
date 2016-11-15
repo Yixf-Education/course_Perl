@@ -1,6 +1,7 @@
 # shell
 * pandoc
 * r-cran-rgl
+* imagemagick
 
 # tool
 * RStudio
