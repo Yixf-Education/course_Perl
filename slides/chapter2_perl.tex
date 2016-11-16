@@ -1381,11 +1381,14 @@ keys my %or_cache = @in;
           map  { [$_, foo($_)] }
                @unsorted;
 
-# sort the word list ("aaaa","a","aa") according to word length
-@sorted = map  { $_->[0] }
-          sort { $a->[1] <=> $b->[1] } # use numeric comparison
-          map  { [$_, length($_)] }    # calculate the length of the string
-               @unsorted;
+# sort the DNA list ("ACGT","A","AC","ACG") according to the sequence length
+@sorted_DNA = map  { $_->[0] }
+              # 3. extract DNA sequence
+              sort { $a->[1] <=> $b->[1] }
+              # 2. use numeric comparison
+              map  { [$_, length($_)] }
+              # 1. calculate the length of the DNA
+                   @unsorted_DNA;
 \end{lstlisting}
   \end{block}
 \end{frame}
@@ -1400,9 +1403,13 @@ keys my %or_cache = @in;
 # Napoleon Solo|11|Uncle spy
 # Unknown|666|Maybe a spy
 
-my @sorted = map { $_->[0] }          # undecorate
-    sort { $a->[1] <=> $b->[1] }      # sort
-    map { /\|(\d+)/; [ $_, $1 ] } <>; # decorate
+my @sorted = map  { $_->[0] }
+             # 3. undecorate
+             sort { $a->[1] <=> $b->[1] }
+             # 2. sort
+             map  { /\|(\d+)/; [ $_, $1 ] }
+             # 1. decorate
+                  <>;
 \end{lstlisting}
   \end{block}
 \end{frame}
