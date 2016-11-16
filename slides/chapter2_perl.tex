@@ -45,7 +45,7 @@
       \item Perl是高级、通用、直译式、动态的程序语言
       \item \alert{Practical Extraction and Report Language}，实用摘录与报表语言
       \item Pathologically Eclectic Rubbish Lister，病态折中式垃圾列表器
-      \item 拉里·沃尔（\alert{Larry Wall}），1987年12月18日
+      \item 拉里·沃尔（\alert{Larry Wall}），\alert{1987年}12月18日
     \end{itemize}
   \end{block}
   \pause
@@ -139,6 +139,14 @@
   \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{c2.perl.example.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 应用 | ack}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{c2.perl.example.11.png}
   \end{figure}
 \end{frame}
 
@@ -343,7 +351,7 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
 
 \begin{frame}[fragile]
   \frametitle{Perl | 安装}
-  \begin{block}{查看版本确认是否已安装}
+  \begin{block}{\alert{查看版本}确认是否已安装}
 \begin{lstlisting}[language=bash]
 perl -v
 \end{lstlisting}
@@ -1419,7 +1427,7 @@ my @sorted = map { substr $_, 4 }
 \section{检修脚本}
 \begin{frame}[fragile]
   \frametitle{\alert{检修脚本}}
-\begin{lstlisting}[language=Perl]
+\begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 # 不洁模式
 #!/usr/bin/perl -T
 
@@ -1429,9 +1437,12 @@ use warnings;
 # 严格模式，语法更加规范
 use strcit;
 
-# 提供扩展描述来指明具体哪部分程序出了问题，以及关于如何解决这些问题的建议
+# 开启诊断功能：提供扩展描述来指明具体哪部分程序出了问题，以及关于如何解决这些问题的建议
 # 对于初学者非常有用，有经验的程序员通常将其省略
 use diagnostics;
+
+# 启用UTF-8编码
+use utf8;
 \end{lstlisting}
 \end{frame}
 
