@@ -304,9 +304,7 @@ git pull
 \begin{lstlisting}[language=sh]
 # 克隆GitHub仓库到本地计算机（的当前目录下）
 git clone https://github.com/Yixf-Education/project_Perl.git
-
-# 进入项目目录
-cd project_Perl
+cd project_Perl # 进入项目目录
 # 更新本地仓库（从GitHub中拉取最新变化）
 #git pull
 
@@ -315,7 +313,8 @@ cd project_Perl
 #git commit -m "Fix typos in script.pl" 
 
 # 推送修改（把本地修改上传到GitHub仓库中）
-git push
+git push -u origin master # 第一次：关联本地的master和远端的origin
+git push origin master # 以后：就可以简化命令了
 \end{lstlisting}
 \end{frame}
 
