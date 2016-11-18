@@ -67,7 +67,7 @@
   \begin{block}{正则表达式}
     正则表达式，又称正规表示式、正规表示法、正规表达式、规则表达式、常规表示法（Regular Expression，在代码中常简写为regex、regexp或RE），计算机科学的一个概念。\\
     \vspace{1em}
-    \textcolor{red}{正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。}\\
+    \alert{正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。}\\
     \vspace{1em}
     在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。
   \end{block}
@@ -163,7 +163,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \begin{block}{正则理论}
     正则表达式可以用形式化语言理论的方式来表达。\\
     \vspace{1em}
-    \textcolor{red}{正则表达式由常量和算子组成，它们分别指示字符串的集合和在这些集合上的运算。}
+    \alert{正则表达式由常量和算子组成，它们分别指示字符串的集合和在这些集合上的运算。}
   \end{block}
   \pause
   \begin{block}{形式语言}
@@ -358,7 +358,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \pause
   \begin{block}{基本原则}
     \begin{itemize}
-      \item \textcolor{red}{使用圆括号来分组}（注意：圆括号同时也会有捕获的效果，因此尽可能使用非捕获圆括号来分组）
+      \item \alert{使用圆括号来分组}（注意：圆括号同时也会有捕获的效果，因此尽可能使用非捕获圆括号来分组）
     \end{itemize}
   \end{block}
 \end{frame}
@@ -404,7 +404,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
     \end{itemize}
   \end{block}
   \pause
-  \begin{block}{参考\textcolor{red}{（正确？）}}
+  \begin{block}{参考\alert{（正确？）}}
     \verb=/A[TU]G([ACGTU]{3}){29,}[TU](AA|AG|GA)/ig=
   \end{block}
 \end{frame}

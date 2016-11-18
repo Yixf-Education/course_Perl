@@ -118,11 +118,11 @@ Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看�
 \subsection{区块元素}
 \begin{frame}
   \frametitle{基本语法 | 区块元素 | 段落和换行}
-一个Markdown段落是由一个或多个连续的文本行组成，它的\textcolor{red}{前后要有一个以上的空行}（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。\\
+一个Markdown段落是由一个或多个连续的文本行组成，它的\alert{前后要有一个以上的空行}（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。\\
   \vspace{1em}
 “由一个或多个连续的文本行组成”这句话其实暗示了Markdown允许段落内的强迫换行（插入换行符），这个特性和其他大部分的text-to-HTML格式不一样。\\
   \vspace{1em}
-在文本中输入的换行会从最终生成的结果中删除，浏览器会根据可用空间自动换行。如果想\textcolor{red}{强迫换行}，可以在行尾插入至少两个空格。
+在文本中输入的换行会从最终生成的结果中删除，浏览器会根据可用空间自动换行。如果想\alert{强迫换行}，可以在行尾插入至少两个空格。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -963,7 +963,7 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
   \begin{block}{unoconv}
     Universal Office Converter (unoconv) is a command line tool to convert any document format that \textbf{LibreOffice} can import to any document format that LibreOffice can export. It makes use of the LibreOffice’s UNO bindings for non-interactive conversion of documents.
   \end{block}
-  \begin{block}{\textcolor{red}{使用}}
+  \begin{block}{\alert{使用}}
 \begin{lstlisting}[language=bash]
 # odt to *
 unoconv -f pdf file.odt
@@ -993,7 +993,7 @@ ImageMagick为很多程序语言提供了API库。在Perl语言中，ImageMagick
 
 \begin{frame}
   \frametitle{格式转换 | ImageMagick | 功能}
-ImageMagick最基本的一个功能是\textcolor{red}{准确高效地转换超过68种图片的格式}，包括众所周知的TIFF、JPEG、PNG、PDF、PhotoCD，以及GIF。Imagemagick使用特征签名识别文件类型。\\
+ImageMagick最基本的一个功能是\alert{准确高效地转换超过68种图片的格式}，包括众所周知的TIFF、JPEG、PNG、PDF、PhotoCD，以及GIF。Imagemagick使用特征签名识别文件类型。\\
 \vspace{1em}
 ImageMagick包括了大量用于特效的滤镜和扩展功能。\\
 \vspace{1em}
@@ -1001,7 +1001,7 @@ Use ImageMagick to create, edit, compose, or convert bitmap images. It can read 
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{格式转换 | ImageMagick | \textcolor{red}{使用}}
+  \frametitle{格式转换 | ImageMagick | \alert{使用}}
   \begin{block}{convert}
 Use the convert program to convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more. 
   \end{block}
@@ -1058,7 +1058,7 @@ convert -size 320x90 canvas:none -stroke snow4 -size 1x90 -tile gradient:white-s
 FFmpeg是一个自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。
 \begin{block}{组件}
   \begin{description}
-    \item[ffmpeg]一个命令行工具，用来\textcolor{red}{对视频文件转换格式}，也支持对电视卡即时编码
+    \item[ffmpeg]一个命令行工具，用来\alert{对视频文件转换格式}，也支持对电视卡即时编码
     \item[ffserver]一个HTTP多媒体即时广播流服务器，支持时光平移
     \item[ffplay]一个简单的播放器，基于SDL与FFmpeg库
     \item[libavcodec]包含全部FFmpeg音频/视频编解码库
@@ -1071,7 +1071,7 @@ FFmpeg是一个自由软件，可以运行音频和视频多种格式的录影�
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{格式转化 | FFmpeg | \textcolor{red}{使用}}
+  \frametitle{格式转化 | FFmpeg | \alert{使用}}
 \begin{lstlisting}[language=bash]
 # 安装
 sudo apt install ffmpeg

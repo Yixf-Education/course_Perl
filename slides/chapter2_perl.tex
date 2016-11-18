@@ -1140,7 +1140,7 @@ do {
 \section{列表操作}
 \begin{frame}
   \frametitle{列表操作 | 简介}
-  \begin{block}{\textcolor{red}{列表操作}}
+  \begin{block}{\alert{列表操作}}
     基于原来的列表创建一个新的列表：
     \begin{description}
       \item[sort] 将给定列表排序后返回一个新的已排序列表
@@ -1164,7 +1164,7 @@ do {
 
 \subsection{sort}
 \begin{frame}[fragile]
-  \frametitle{列表操作 | sort | \textcolor{red}{语法}}
+  \frametitle{列表操作 | sort | \alert{语法}}
 \begin{lstlisting}[language=Perl]
 sort LIST
 sort BLOCK LIST
@@ -1179,7 +1179,7 @@ sort SUBNAME LIST
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{列表操作 | sort | \textcolor{red}{默认排序}}
+  \frametitle{列表操作 | sort | \alert{默认排序}}
 \begin{lstlisting}[language=Perl]
 # sort默认是通过字符串的比较来进行排序的
 my @list = sort qw(this is a list);
@@ -1197,7 +1197,7 @@ print join ",", sort { $a <=> $b } qw /1 9 10 99 222/;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{列表操作 | sort | \textcolor{red}{反向排序}}
+  \frametitle{列表操作 | sort | \alert{反向排序}}
 \begin{lstlisting}[language=Perl]
 # 执行效率较低：升序排列列表 + 反转列表 = 降序排列列表
 my @reversed_names = reverse sort @names;
@@ -1274,7 +1274,7 @@ sub by_seniority_then_pay_then_name {
 
 \subsection{grep}
 \begin{frame}[fragile]
-  \frametitle{列表操作 | grep | \textcolor{red}{语法}}
+  \frametitle{列表操作 | grep | \alert{语法}}
   \begin{block}{grep}
     生成一个新的列表，该列表中的所有元素由一个给定列表中所有满足筛选标准的元素组成。 
   \end{block}
@@ -1321,7 +1321,7 @@ my @result = sort { $a <=> $b }
 
 \subsection{map}
 \begin{frame}[fragile]
-  \frametitle{列表操作 | map | \textcolor{red}{语法}}
+  \frametitle{列表操作 | map | \alert{语法}}
   \begin{block}{map}
 在想要改变整个列表内容时使用map。它逐个对给定列表中的元素进行处理，然后新建一个列表，并将修改后的值返回到新的列表中。 
   \end{block}
@@ -1373,7 +1373,7 @@ keys my %or_cache = @in;
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
-  \begin{block}{\textcolor{red}{Schwartzian transform}}
+  \begin{block}{\alert{Schwartzian transform}}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 # The general form of the Schwartzian Transform:
 @sorted = map  { $_->[0] }
