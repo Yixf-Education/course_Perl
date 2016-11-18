@@ -22,7 +22,7 @@
   \pause
   \begin{block}{DNA和蛋白质生物序列数据的处理}
     \begin{itemize}
-      \item 把DNA片段连接起来
+      \item 把DNA片段拼接起来
       \item 把DNA转录成RNA
       \item 获取反向互补序列
       \item 从文件中读取序列
@@ -32,6 +32,14 @@
 \end{frame}
 
 \section{序列数据的表征}
+\begin{frame}
+  \frametitle{序列和字符串 | 序列表征 | 核酸}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{c4.string.dna.00.png}
+  \end{figure}
+\end{frame}
+
 \begin{frame}
   \frametitle{序列和字符串 | 序列表征 | 核酸}
   \begin{figure}
@@ -67,7 +75,7 @@
       \item 通常以串的整体作为操作对象，如：在串中查找某个子串、求取一个子串、在串的某个位置上插入一个子串以及删除一个子串等。
       \item 两个字符串相等的充要条件是：长度相等，并且各个对应位置上的字符都相等。
       \item 设p、q是两个串，求q在p中首次出现的位置的运算叫做模式匹配。
-      \item 一个简单的字符串操作是“连接”：也就是说先写一个字符串S，随后在后面再写一个T得到ST这样一个过程。
+      \item 一个简单的字符串操作是“拼接”：也就是说先写一个字符串S，随后在后面再写一个T得到ST这样一个过程。
       \item 其它的常见操作包括在一个长字符串中搜索一个子串，排列一组字符串以及分析一个字符串。
     \end{itemize}
   \end{block}
@@ -75,7 +83,7 @@
 
 \begin{frame}
   \frametitle{序列和字符串 | 序列表征 | 字符串}
-  \begin{block}{序列与字符串}
+  \begin{block}{序列与字符串\alert{（问题转换）}}
     生物信息学：（生物学）DNA/RNA/蛋白质序列 $\Longrightarrow$ 字符串（计算机科学）
   \end{block}
   \begin{figure}
@@ -107,7 +115,7 @@ exit;
   \frametitle{序列和字符串 | 存储DNA | 程序 | \alert{补充}}
   \begin{itemize}
     \item 在Perl中，变量就是要处理的数据的名称，使用该名称，你可以对数据进行完全的访问。
-    \item 变量起名要清晰易懂；既然是存储DNA序列，起名为 \verb|$DNA|再自然不过了（或者\verb|$dna|、\verb|$dna_seq|……）。
+    \item 变量起名要清晰易懂；既然是存储DNA序列，起名为 \verb|$DNA|再自然不过了（或者 \verb|$dna|、\verb|$dna_seq|……）。
     \item 保存程序时一定要保存为ASCII或者纯文本格式。
     \item 运行程序：\verb|perl example4-1.pl|（或者：\verb|chmod 755 example4-1.pl; ./example4-1.pl|）。
   \end{itemize}
@@ -221,6 +229,10 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
 # 此处两者完全等价
 $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
 $DNA = "ACGGGAGGACGGGAAAATTACTACGGCATTAGC";
+
+# 此处结果完全不同（变量内插）
+print '$DNA';
+print "$DNA";
 \end{lstlisting}
 \end{frame}
 
@@ -283,27 +295,27 @@ exit;
 
 %\againframe{exam4.1}
 
-\section{连接DNA片段}
+\section{拼接DNA片段}
 \begin{frame}
-  \frametitle{序列和字符串 | 连接DNA}
-  \begin{block}{连接/串联（concatenate）}
+  \frametitle{序列和字符串 | 拼接DNA}
+  \begin{block}{拼接（concatenate）}
     \begin{itemize}
       \item 把一个字符串附加到另一个字符串的末尾。
-      \item 把AT和GC连接起来，得到ATGC。
+      \item 把AT和GC拼接起来，得到ATGC。
     \end{itemize}
   \end{block}
   \pause
   \begin{block}{生物学中的应用}
     \begin{itemize}
       \item 把克隆插入到细胞载体中
-      \item 把剪切后的外显子连接起来（“剪接”中的“接”）
+      \item 把剪切后的外显子拼接起来（“剪接”中的“接”）
       \item ……
     \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}[fragile,label=exam4.2.1]
-  \frametitle{序列和字符串 | 连接DNA | 程序4.2.1}
+  \frametitle{序列和字符串 | 拼接DNA | 程序4.2.1}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-2   Concatenating DNA
@@ -322,7 +334,7 @@ print $DNA2, "\n\n";
 \end{frame}
 
 \begin{frame}[fragile,label=exam4.2.2]
-  \frametitle{序列和字符串 | 连接DNA | 程序4.2.2}
+  \frametitle{序列和字符串 | 拼接DNA | 程序4.2.2}
 \begin{lstlisting}[firstnumber=15]
 # Concatenate the DNA fragments into a third variable and print them
 # Using "string interpolation"
@@ -335,7 +347,7 @@ print "$DNA3\n\n";
 \end{frame}
 
 \begin{frame}[fragile,label=exam4.2.3]
-  \frametitle{序列和字符串 | 连接DNA | 程序4.2.3}
+  \frametitle{序列和字符串 | 拼接DNA | 程序4.2.3}
 \begin{lstlisting}[firstnumber=23]
 # An alternative way using the "dot operator":
 # Concatenate the DNA fragments into a third variable and print them
@@ -348,7 +360,7 @@ print "$DNA3\n\n";
 \end{frame}
 
 \begin{frame}[fragile,label=exam4.2.4]
-  \frametitle{序列和字符串 | 连接DNA | 程序4.2.4}
+  \frametitle{序列和字符串 | 拼接DNA | 程序4.2.4}
 \begin{lstlisting}[firstnumber=31]
 # Print the same thing without using the variable $DNA3
 print "Here is the concatenation of the first two fragments (version 3):\n\n";
@@ -360,7 +372,7 @@ exit;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{序列和字符串 | 连接DNA | 程序4.2 | 输出}
+  \frametitle{序列和字符串 | 拼接DNA | 程序4.2 | 输出}
 \begin{lstlisting}[language=,basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
 Here are the original two DNA fragments:
 
@@ -382,7 +394,7 @@ ACGGGAGGACGGGAAAATTACTACGGCATTAGCATAGTGCCGTGAGAGTGATGTAGTA
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{序列和字符串 | 连接DNA | \alert{print语句}}
+  \frametitle{序列和字符串 | 拼接DNA | \alert{print语句}}
 \begin{lstlisting}
 print $DNA1, "\n";
 print $DNA2, "\n\n";
@@ -401,25 +413,27 @@ print $DNA2, "\n\n";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{序列和字符串 | 连接DNA | \alert{连接语句}}
+  \frametitle{序列和字符串 | 拼接DNA | \alert{拼接语句}}
 \begin{lstlisting}
 $DNA3 = "$DNA1$DNA2"; print "$DNA3\n\n";
 $DNA3 = $DNA1 . $DNA2; print "$DNA3\n\n";
 print $DNA1, $DNA2, "\n";
 print "$DNA1$DNA2\n";
+...
 \end{lstlisting}
 \begin{block}{说明}
 \begin{itemize}
   \item 字符串内插（string interpolation）／变量替换：双引号会把字符串中的变量替换成变量的值（必要时可以使用大括号来保护变量）
-  \item 点操作符：连接字符串
+  \item 点操作符：拼接字符串
   \item 使用print语句
   \item There's more than one way to do it.
+  \item There are more than two ways to do it.
 \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{序列和字符串 | 连接DNA | 标量变量}
+  \frametitle{序列和字符串 | 拼接DNA | 标量变量}
   \begin{block}{标量变量}
     \begin{itemize}
       \item 标量变量可以存储字符串、整数、浮点数、布尔值等
@@ -434,7 +448,7 @@ print $number, "\n";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{序列和字符串 | 连接DNA | \alert{程序4.2}}
+  \frametitle{序列和字符串 | 拼接DNA | \alert{程序4.2}}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 
@@ -767,7 +781,7 @@ exit;
   \begin{block}{已经学习}
     \begin{itemize}
       \item 存储DNA序列
-      \item 把DNA片段连接起来
+      \item 把DNA片段拼接起来
       \item 把DNA转录成RNA
       \item 获取反向互补序列
     \end{itemize}
@@ -841,7 +855,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.5 | 输出}
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here is the protein:
 
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
@@ -867,6 +881,25 @@ close PROTEINFILE;
     \item 好习惯：有open就有close
   \end{itemize}
 \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{序列和字符串 | 读取文件 | \alert{处理方法}}
+\begin{lstlisting}[basicstyle=\small\tt]
+# 读取文件
+open my $PROTEINFILE, '<', $proteinfilename
+    or die "$0 : failed to open input file '$proteinfilename' : $!\n";
+...
+close $PROTEINFILE
+    or warn "$0 : failed to close input file '$proteinfilename' : $!\n";
+
+# 写入文件
+open my $FH_OUT, '>', $fn_out
+    or die  "$0 : failed to open output file '$fn_out' : $!\n";
+...
+close $FH_OUT
+    or warn "$0 : failed to close output file '$fn_out' : $!\n";
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -938,7 +971,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.6 | 输出}
-\begin{lstlisting}[language=]
+\begin{lstlisting}[language=,basicstyle=\footnotesize\tt,xrightmargin=1em]
 Here is the first line of the protein file:
 
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
@@ -988,7 +1021,11 @@ exit;
     \begin{itemize}
       \item 一次只能读取输入文件的一行
       \item 如果一个文件有成千上万行怎么办？
-      \item 解决办法：数组和循环
+      \item 解决办法
+        \begin{itemize}
+          \item 数组
+          \item 循环
+        \end{itemize}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -1028,7 +1065,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | 程序4.7 | 输出}
-\begin{lstlisting}[language=]
+\begin{lstlisting}[language=,basicstyle=\footnotesize\tt,xrightmargin=1em]
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
 SVLQDRSMPHQEILAADEVLQESEMRQQDMISHDELMVHEETVKNDEEQMETHERLPQ
 GLQYALNVPISVKQEITFTDVSEQLMRDKKQIR
@@ -1095,7 +1132,8 @@ print $bases[3];
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | 初始化和元素访问}
-\begin{lstlisting}
+\begin{lstlisting}[language=]
+Here are the array elements:
 First element: A
 Second element: C
 Third element: G
@@ -1106,20 +1144,15 @@ Fourth element: T
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{初始化和元素访问}}
 \begin{lstlisting}
+@bases = ('A', 'C', 'G', 'T');
+print "\n\nHere are the array elements: ";
+
 # 元素肩并肩地输出
-@bases = ('A', 'C', 'G', 'T');
-print "\n\nHere are the array elements: ";
 print @bases;
-
 #Here are the array elements: ACGT
-\end{lstlisting}
-\pause
-\begin{lstlisting}
-# 输出用空格分隔的元素（注意print语句中的双引号）
-@bases = ('A', 'C', 'G', 'T');
-print "\n\nHere are the array elements: ";
-print "@bases";
 
+# 输出用空格分隔的元素（注意print语句中的双引号）
+print "@bases";
 #Here are the array elements: A C G T
 \end{lstlisting}
 \end{frame}
@@ -1136,7 +1169,7 @@ print "Here's the remaining array of bases: ";
 print "@bases";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's the element removed from the end: T
 
 Here's the remaining array of bases: A C G
@@ -1155,7 +1188,7 @@ print "Here's the remaining array of bases: ";
 print "@bases";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's an element removed from the beginning: A
 
 Here's the remaining array of bases: C G T
@@ -1173,7 +1206,7 @@ print "Here's the element from the end put on the beginning: ";
 print "@bases\n\n";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's the element from the end put on the beginning: T A C G
 \end{lstlisting}
 \end{frame}
@@ -1189,7 +1222,7 @@ print "Here's the element from the beginning put on the end: ";
 print "@bases\n\n";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's the element from the beginning put on the end: C G T A
 \end{lstlisting}
 \end{frame}
@@ -1201,10 +1234,10 @@ Here's the element from the beginning put on the end: C G T A
 @bases = ('A', 'C', 'G', 'T');
 @reverse = reverse @bases;
 print "Here's the array in reverse: ";
-print "@reverse\n\n";
+print "@reverse\n";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's the array in reverse: T G C A
 \end{lstlisting}
 \end{frame}
@@ -1218,7 +1251,7 @@ print "Here's the length of the array: ";
 print scalar @bases, "\n";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's the length of the array: 4
 \end{lstlisting}
 \end{frame}
@@ -1234,7 +1267,7 @@ print "Here's the array with an element inserted after the 2nd element:
 print "@bases\n";
 \end{lstlisting}
 \pause
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 Here's the array with an element inserted after the 2nd element: A C X G T
 \end{lstlisting}
 \end{frame}
@@ -1244,16 +1277,16 @@ Here's the array with an element inserted after the 2nd element: A C X G T
 \begin{lstlisting}
 my @bases = ( "A", "C", "G", "T" );
 
-splice( @bases, 4, 0, "U" );
+splice ( @bases, 4, 0, "U" );
 print "@bases\n"; # A C G T U
 
-splice( @bases, 3, 1, "U" );
+splice ( @bases, 3, 1, "U" );
 print "@bases\n"; # A C G U U
 
-splice( @bases, 3, 1 );
+splice ( @bases, 3, 1 );
 print "@bases\n"; # A C G U
 
-splice( @bases, 2 );
+splice ( @bases, 2 );
 print "@bases\n"; # A C
 
 splice(@bases); # 清空数组，等同于：
@@ -1262,7 +1295,7 @@ undef(@bases); 或 @bases=();
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{序列和字符串 | 数组 | splice}
+  \frametitle{序列和字符串 | 数组 | splice | 等价命令}
 \begin{lstlisting}
 push(@a,$x,$y)
 splice(@a,@a,0,$x,$y)
@@ -1286,15 +1319,15 @@ splice(@a,$i,1,$y)
   \frametitle{序列和字符串 | 上下文 | 生活实例}
   \begin{block}{笑话}
     \begin{itemize}
-      \item 小刘喜欢讲笑话，他的笑话说不完。
-      \item 小刘老是闹笑话，他的笑话说不完。
+      \item \textcolor{gray}{小刘喜欢讲笑话，}他的笑话说不完。
+      \item \textcolor{gray}{小刘老是闹笑话，}他的笑话说不完。
     \end{itemize}
   \end{block}
   \pause
   \begin{block}{难吃}
     \begin{itemize}
-      \item 一点盐都没放，鱼太难吃了。
-      \item 全都是毛毛刺，鱼太难吃了。
+      \item \textcolor{gray}{一点盐都没放，}鱼太难吃了。
+      \item \textcolor{gray}{全都是毛毛刺，}鱼太难吃了。
     \end{itemize}
   \end{block}
   \pause
@@ -1398,7 +1431,7 @@ $number = scalar @array;
     \begin{itemize}
       \item Perl语言基础：命令解释，注释，语句，运行，单引号与双引号，赋值，文档，读取文件，……
       \item 变量：标量，数组
-      \item 字符串操作：连接，替换，翻译，反转
+      \item 字符串操作：拼接，替换，翻译，反转
       \item 数组：初始化，索引，常见操作
       \item 上下文：标量上下文，列表上下文
     \end{itemize}
@@ -1406,7 +1439,7 @@ $number = scalar @array;
   \pause
   \begin{block}{技能}
     \begin{itemize}
-      \item 能够编写Perl程序：存储DNA序列、连接DNA片段、把DNA转录成RNA、获取DNA的反向互补序列。
+      \item 能够编写Perl程序：存储DNA序列、拼接DNA片段、把DNA转录成RNA、获取DNA的反向互补序列。
       \item 能够编写Perl程序：从文件中读取所需数据。
       \item 掌握Perl语言中数组的常见操作。
       \item 理解并能熟练应用标量上下文和列表上下文。
@@ -1418,7 +1451,7 @@ $number = scalar @array;
 \begin{frame}
   \frametitle{序列和字符串 | 思考题}
   \begin{enumerate}
-    \item 举例说明连接DNA片段的不同方法。
+    \item 举例说明拼接DNA片段的不同方法。
     \item 举例说明Perl语言中双引号和单引号的异同。
     \item 举例说明Perl语言中替换和翻译的函数及其语法。
     \item 在Perl语言中如何从文件读取数据？

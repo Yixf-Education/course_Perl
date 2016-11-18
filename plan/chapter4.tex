@@ -32,7 +32,7 @@
   \item （5'）引言与导入：回顾分子生物学的基础知识，介绍本章将要学习的内容。
   \item （10'）序列数据的表征：回顾核酸和蛋白质序列的表征方法，介绍序列和字符串之间的关系。
   \item （35'）存储DNA序列：通过存储DNA序列的Perl程序讲解Perl语言的基础知识。
-  \item （20'）连接DNA片段：通过连接DNA片段的Perl程序讲解字符串的连接操作。
+  \item （20'）拼接DNA片段：通过拼接DNA片段的Perl程序讲解字符串的拼接操作。
   \item （20'）DNA转录成RNA：通过DNA转录成RNA的Perl程序讲解字符串的替换操作。
   \item （10'）使用Perl文档：总结查找Perl文档的方法。
   \item （25'）序列反向互补：通过获取DNA反向互补序列的Perl程序讲解字符串的翻译反转操作。
@@ -85,7 +85,7 @@
 \vspace*{-10pt}
 \begin{multicols}{2}
 \begin{itemize}
-  \item 列举连接DNA片段的不同方法。
+  \item 列举拼接DNA片段的不同方法。
   \item 比较Perl语言中双引号和单引号的区别。
   \item 列举字符串的常见操作。
   \item 在Perl语言中如何从文件中读取数据？
@@ -123,7 +123,7 @@
       \item 本章内容
 	\begin{itemize}
 	  \item Perl语言：标量变量，数组变量，字符串操作，从文件中读取数据
-	  \item Perl语言在分子生物学中的应用：连接DNA片段，DNA转录成RNA，获取DNA的反向互补序列，从文件中读取序列信息，计算序列的统计信息
+	  \item Perl语言在分子生物学中的应用：拼接DNA片段，DNA转录成RNA，获取DNA的反向互补序列，从文件中读取序列信息，计算序列的统计信息
 	\end{itemize}
     \end{enumerate}
   \item 序列数据的表征（10分钟）
@@ -160,10 +160,10 @@
 \end{multicols}
 \vspace*{-1em}
     \end{enumerate}
-  \item \textcolor{red}{【重点、难点】}连接DNA片段（20分钟）\textcolor{red}{（结合程序讲解字符串的连接）}
+  \item \textcolor{red}{【重点、难点】}拼接DNA片段（20分钟）\textcolor{red}{（结合程序讲解字符串的拼接）}
     \begin{enumerate}
-      \item Perl程序4.2：使用Perl程序把两个DNA片段连接起来\textcolor{red}{（应用：外显子剪接）}
-      \item 同样的连接，不同的方法\textcolor{red}{（方法不止一种，注意开拓思路）}
+      \item Perl程序4.2：使用Perl程序把两个DNA片段拼接起来\textcolor{red}{（应用：外显子剪接）}
+      \item 同样的拼接，不同的方法\textcolor{red}{（方法不止一种，注意开拓思路）}
 	\begin{enumerate}
 	  \item \verb|$DNA3 = "$DNA1$DNA2"; print "$DNA3\n";|
 	  \item \verb|$DNA3 = $DNA1 . $DNA2; print "$DNA3\n";|
@@ -244,13 +244,13 @@
 	\begin{itemize}
 	  \item Perl语言基础：命令解释、注释、语句、赋值、……
 	  \item Perl中的变量：标量 vs. 数组
-	  \item 字符串操作：连接，替换，翻译，反转
+	  \item 字符串操作：拼接，替换，翻译，反转
 	  \item 数组：初始化，索引，常见操作
 	  \item 上下文：标量上下文 vs. 列表上下文
 	\end{itemize}
       \item 技能
 	\begin{itemize}
-	  \item 编写Perl程序处理DNA序列：存储DNA序列，连接DNA片段，把DNA转录成RNA，获取DNA的反向互补序列
+	  \item 编写Perl程序处理DNA序列：存储DNA序列，拼接DNA片段，把DNA转录成RNA，获取DNA的反向互补序列
 	  \item 编写Perl程序从文件中读取蛋白质序列数据
 	  \item 掌握Perl语言中数组的常见操作
 	  \item 熟练运用标量上下文和列表上下文
