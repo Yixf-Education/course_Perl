@@ -88,10 +88,14 @@
 \begin{frame}
   \frametitle{编程艺术 | 编写程序 | 版本控制 | \alert{Git}}
   Git是一个\alert{分散式版本控制软件}，最初由\alert{林纳斯·托瓦兹（Linus Torvalds）}创作，于2005年以GPL释出。最初目的是为更好地管理Linux内核开发而设计。\\
-  \vspace{1em}
-  Git是用于Linux内核开发的版本控制工具。与CVS、Subversion一类的集中式版本控制工具不同，它采用了\alert{分布式版本库}的做法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。Git的速度很快，这对于诸如Linux内核这样的大项目来说自然很重要。Git最为出色的是它的合并追踪（merge tracing）能力。\\
-  \vspace{1em}
-  在Git中的绝大多数操作都只需要访问本地文件和资源，不用连网。因为Git在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。
+  \vspace{0.5em}
+Git是用于Linux内核开发的版本控制工具。与CVS、Subversion一类的集中式版本控制工具不同，它采用了\alert{分布式版本库}的做法，不需要服务器端软件，就可以运作版本控制，使得源代码的发布和交流极其方便。Git最为出色的是它的合并追踪（merge tracing）能力。\\
+\vspace{0.5em}
+在Git中的绝大多数操作都只需要访问本地文件和资源，不用连网。因为Git在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{c3.programming.git.logo.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -323,6 +327,20 @@ git push origin master # 以后：就可以简化命令了
   \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{c3.programming.github.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程艺术 | 编写程序 | 版本控制 | Git | GUI}
+  \begin{block}{GUI Clients}
+    \begin{itemize}
+      % \item {\scriptsize Git comes with built-in GUI tools for committing (git-gui) and browsing (gitk), but there are several third-party tools for users looking for platform-specific experience.}
+      \item \href{https://git-scm.com/downloads/guis}{GUI Clients}
+    \end{itemize}
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{c3.programming.git.gui.png}
   \end{figure}
 \end{frame}
 
