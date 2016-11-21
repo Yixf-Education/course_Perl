@@ -206,6 +206,16 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
   \end{figure}
 \end{frame}
 
+\begin{frame}
+  \frametitle{序列和字符串 | 存储DNA | 变量}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.54\textwidth]{c4.string.name.01.jpg}
+    \quad
+    \includegraphics[width=0.4\textwidth]{c4.string.name.02.jpg}
+  \end{figure}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 存储DNA | \alert{变量}}
   \begin{block}{变量名}
@@ -222,6 +232,33 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
       \item 标量变量（scalar variable）：存储单个数据项目的变量，在Perl中以美元符号 \verb|$|起始。
       \item 一个标量变量一次只能存储数据中的一个项目。
       \item 使用标量变量存储字符串或者数字（比如：hello，25、6.234、3.5E10、-0.8373）。
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{序列和字符串 | 存储DNA | 变量 | perlstyle}
+  \begin{block}{变量}
+    \begin{itemize}
+      \item {\small 
+Perl语言从C那里继承了一部分命名约定。局部变量与子例程通常使用用下划线分隔开的小写单词来命名；如果是私有变量或子例程，则在前面加一个下划线以表明其私有性；Perl包中的变量命名则采用单词首字母大写的方式（像英文标题那样）；如果是声明的常量，需要全部大写；Perl包的名字，除了pragmata（如strict），则一律采用“CamelCase”的方式。}
+      \item \href{https://en.wikipedia.org/wiki/Naming\_convention\_(programming)}{Naming convention (programming)}
+    \end{itemize}
+  \end{block}
+  \pause
+  \vspace{-0.5em}
+  \begin{block}{缩进与大括号}
+    \begin{itemize}
+      \item K\&R style, Allman style, Whitesmiths style, GNU style
+      \item \href{http://catb.org/jargon/html/I/indent-style.html}{indent style}
+    \end{itemize}
+  \end{block}
+  \pause
+  \vspace{-0.5em}
+  \begin{block}{perlstyle}
+    \begin{itemize}
+      \item \verb|perldoc perlstyle|
+      \item \href{http://perldoc.perl.org/perlstyle.html}{perlstyle - Perl style guide}
     \end{itemize}
   \end{block}
 \end{frame}
