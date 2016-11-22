@@ -2747,5 +2747,148 @@ foreach $family ( keys %TV ) {
   \end{figure}
 \end{frame}
 
+\subsection{数据处理实例}
+\begin{frame}
+  \frametitle{扩展知识 | example | Tidy data}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c8.code.data.tidy.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{扩展知识 | example | wide vs. long}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.51\textwidth]{c8.code.data.wide.03.png}\qquad
+    \includegraphics[width=0.32\textwidth]{c8.code.data.long.03.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{扩展知识 | example | Reshaping data}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{c8.code.data.w2l.png}\\
+    \vspace{0.5em}
+    \includegraphics[width=0.65\textwidth]{c8.code.data.l2w.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{扩展知识 | example | R}
+\begin{lstlisting}[language=r]
+library(readr)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+
+score_wide <- read_csv("score.csv")
+score_long <- gather(score_wide, "class", "score", 3:7)
+
+score_long <- score_long %>% mutate(id2=as.factor(str_replace(id, "20130521", "")))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{扩展知识 | example | R}
+\begin{lstlisting}[language=r]
+score_long2 <- score_long %>% filter(str_detect(class, "e"))
+
+gb <- ggplot(score_long2, aes(class, score))
+gb <- gb + geom_boxplot(aes(color=class))
+
+ggsave("exp_boxplog.png", gb)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{扩展知识 | example | R | plot}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{c8.code.r.bp.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{扩展知识 | example | R}
+\begin{lstlisting}[language=r]
+gl <- ggplot(score_long2, aes(class, score, group=id2))
+gl <- gl + geom_point()
+gl <- gl + geom_line(aes(color=id2))
+
+ggsave("id_lineplot.png", gl)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{扩展知识 | example | R | plot}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{c8.code.r.lp.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{扩展知识 | example | R}
+\begin{lstlisting}[language=r]
+lm_eqn <- function(df) {
+  m <- lm(final ~ exp, df)
+  eq <- substitute(italic(y) == a + b %.% italic(x) *","* ~~italic(r)~"="~r1 *","* ~~italic(R)^2~"="~r2, 
+                   list(a = format(coef(m)[1], digits=2), 
+                        b = format(coef(m)[2], digits=2), 
+                        r1 = format(sqrt(summary(m)$r.squared), digits=3),
+                        r2 = format(summary(m)$r.squared, digits=3)))
+  as.character(as.expression(eq))
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{扩展知识 | example | R}
+\begin{lstlisting}[language=r]
+score_wide2 <- score_wide %>% group_by(id,name,final) %>% summarise(exp=mean(c(e6,e7,e8,e9))) 
+
+gr <- ggplot(score_wide2, aes(exp, final))
+gr <- gr + geom_point()
+gr <- gr + geom_smooth(method="lm", color="red", formula=y~x)
+gr <- gr + geom_text(x=82, y=100, label=lm_eqn(score_wide2), parse=TRUE, size=5, color="blue")
+
+ggsave("correlation_plot.png", gr)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{扩展知识 | example | R | plot}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{c8.code.r.cor.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{扩展知识 | example | R}
+\begin{lstlisting}[language=r]
+id1 <- score_wide2[which.min(score_wide2$final),]$id
+score_wide3 <- score_wide2 %>% filter(id!=id1)
+
+gr2 <- ggplot(score_wide3, aes(exp, final))
+gr2 <- gr2 + geom_point()
+gr2 <- gr2 + geom_smooth(method="lm", color="red", formula=y~x)
+gr2 <- gr2 + geom_text(x=82, y=100, label=lm_eqn(score_wide3), parse=TRUE, size=5, color="blue")
+
+ggsave("correlation_plot_correct.png", gr2)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{扩展知识 | example | R | plot}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{c8.code.r.cor.02.png}
+  \end{figure}
+\end{frame}
+
 
 \input{snippet/class_tail.tex}
