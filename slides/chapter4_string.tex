@@ -1471,6 +1471,26 @@ $number = scalar @array;
 \end{block}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{序列和字符串 | 上下文 | splice}
+\begin{lstlisting}
+my @bases = ('A', 'C', 'G', 'T');
+
+# 参数为负数
+splice (@bases, 1, -1);   # A T
+splice (@bases, -1, 1);   # A C G
+splice (@bases, -2, -1);  # A C T
+
+# 上下文
+my @base = splice (@bases, 1, 2);
+print "@base"; # C G
+my $base = splice (@bases, 1, 2);
+print "$base"; # G
+my $base = splice (@bases, 1, 0);
+print "$base"; # undef
+\end{lstlisting}
+\end{frame}
+
 \section{回顾与总结}
 \subsection{总结}
 \begin{frame}
