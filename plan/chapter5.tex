@@ -108,7 +108,7 @@
       \item 已经学习
 	\begin{itemize}
 	  \item Perl语言基础：标量、数组、字符串操作、读取文件
-	  \item 生物序列处理：连接DNA片段、DNA转录成RNA、获取反向互补序列
+	  \item 生物序列处理：拼接DNA片段、DNA转录成RNA、获取反向互补序列
 	\end{itemize}
       \item 即将学习
 	\begin{itemize}
@@ -202,14 +202,14 @@ while ( $alive )
       \item 问题分析与解决策略：基序长度不定有变体；正则表达式
       \item Perl程序5.3：在蛋白质序列中查找用户指定的基序
       \item 获取键盘输入：\verb|<STDIN>|，chomp vs. chop
-      \item \textcolor{red}{【重点】}数组变标量：\verb|$protein = join ( '', @protein);|\textcolor{red}{（连接两个DNA片段的又一种方法）}
+      \item \textcolor{red}{【重点】}数组变标量：\verb|$protein = join ( '', @protein);|\textcolor{red}{（拼接两个DNA片段的又一种方法）}
       \item do-until：先执行后测试\textcolor{red}{（与until进行比较）}
       \item 正则表达式：\verb|$protein =~ s/\s//g;|，\verb|$motif =~ /^\s*$/|\textcolor{red}{（结合实例解释其中的字符集、元字符、量词、锚位等）}
       \item 模式匹配：\verb|$protein =~ /$motif/|\textcolor{red}{（比较变量内插和直接使用字符串的优缺点）}
     \end{enumerate}
   \item 计数核苷酸（70分钟）\textcolor{red}{（同样的碱基计数，不同的策略方法，各有优势与劣势）}
     \begin{enumerate}
-      \item 伪代码\textcolor{red}{通过简洁的伪代码理清思路}
+      \item 伪代码\textcolor{red}{（通过简洁的伪代码理清思路）}
       \item 策略\textcolor{red}{（思考每种策略的优缺点）}
 	\begin{enumerate}
 	  \item 把DNA拆解成单个碱基，存储到数组中，对数组中的元素进行迭代处理
@@ -233,7 +233,7 @@ while ( $alive )
 	  \item 文件测试：unless，-e
 	  \item for vs. foreach\textcolor{red}{（语法不同，本质一样）}
 	  \item 索引：不管是字符串还是数组元素，都从0开始索引
-	  \item \textcolor{red}{【重点】}substr：\verb|$base = substr($DNA, $position, 1);|\textcolor{red}{（通过实例详细讲解其用法）}
+    \item \textcolor{red}{【重点】}substr：\verb|$base = substr($DNA, $position, 1);|\textcolor{red}{（通过实例详细讲解其用法；substr vs. splice——操作字符串 vs. 操作数组）}
 	\end{enumerate}
     \end{enumerate}
   \item 写入文件（25分钟） 
