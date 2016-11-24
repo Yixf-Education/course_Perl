@@ -1696,6 +1696,29 @@ $nonbase = (length $dna) - $basecount;
 \end{block}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | \alert{length}}
+\begin{lstlisting}
+my $dna = "ACGT";
+my $dna_len = length $dna;
+print "$dna_len"; # 4
+
+my @bases = ("A", "C", "G", "T");
+my $bases_len = length @bases; # NOT USE!
+print "$bases_len"; # 1
+#Warning: length() used on @bases (did you mean "scalar(@bases)"?)
+\end{lstlisting}
+\pause
+\vspace{-0.5em}
+\begin{block}{length}
+{\small
+Returns the length in characters of the value of EXPR. If EXPR is omitted, returns the length of \verb|$_|. If EXPR is undefined, returns ``undef".\\
+\vspace{0.2em}
+This function cannot be used on an entire array or hash to find out how many elements these have. For that, use ``\alert{scalar @array}" and ``\alert{scalar keys \%hash}", respectively.
+}
+\end{block}
+\end{frame}
+
 \section{回顾与总结}
 \subsection{总结}
 \begin{frame}
