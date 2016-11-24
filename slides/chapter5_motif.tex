@@ -22,7 +22,7 @@
   \pause
   \begin{block}{DNA和蛋白质生物序列数据的处理}
     \begin{itemize}
-      \item 把DNA片段连接起来
+      \item 拼接DNA片段
       \item 把DNA转录成RNA
       \item 获取反向互补序列
       \item 从文件中读取序列
@@ -204,12 +204,16 @@ unless( 1 == 0 ) {
       \item 字符串比较：eq, ne, lt, gt, le, ge
       \item 文件测试：-e, -s, -z, -f, -d, -l, -r, -w, -x, ...
       \item 变量测试
-	\begin{itemize}
-	  \item 如果是数字：0为假，其他所有数字都为真
-	  \item 如果是字符串：空字符串（用 \verb|""|或 \verb|''|表示）为假，其他所有字符串都为真
-	  \item 注意：字符串 \verb|'0'|（和数字0是同一个标量值）是唯一被当成假的非空字符串
-	  \item 如果既不是数字也不是字符串，先转换成数字或字符串再行判断
-	\end{itemize}
+       	\begin{itemize}
+	        \item 如果是数字：0为假，其他所有数字都为真
+	        \item 如果是字符串：空字符串（用 \verb|""|或 \verb|''|表示）为假，其他所有字符串都为真
+          \item 注意：字符串 \verb|'0'|或 \verb|"0"|（和数字0是同一个标量值）是唯一被当成假的非空字符串
+	        \item 如果既不是数字也不是字符串，先转换成数字或字符串再行判断
+        \end{itemize}
+      \item 补充说明
+       	\begin{itemize}
+          \item \verb|""|, \verb|''|（空字符串） vs. \verb|" "|, \verb|' '|（空白/格字符串）
+        \end{itemize}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -310,7 +314,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | 程序5.2 | 输出}
-\begin{lstlisting}
+  \begin{lstlisting}[language=,basicstyle=\footnotesize\tt,xrightmargin=1em]
   ######  Here is the next line of the file:
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
   ######  Here is the next line of the file:
@@ -410,13 +414,13 @@ while($alive){if($needs_nutrients){print "Cell needs nutrients\n"；}}
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{基序和循环 | 代码布局 | 总结}
   \begin{itemize}
     \item Perl只关心句法元素的正确顺序，不依赖语句布局
     \item 推荐格式A和B，不推荐格式C和D
     \item 推荐使用perltidy对代码进行格式化
-    \item Perl的风格指南：perldoc perlstyle
+    \item Perl的风格指南：\verb|perldoc perlstyle|
   \end{itemize}
 \end{frame}
 
@@ -494,6 +498,7 @@ chomp $proteinfilename;
 # open the file, or exit
 unless ( open( PROTEINFILE, $proteinfilename ) ) {
 
+   #print "Cannot open file '$proteinfilename'\n\n";
     print "Cannot open file \"$proteinfilename\"\n\n";
     exit;
 }
@@ -550,6 +555,7 @@ do {
     }
     else {
 
+       #print "I couldn't find it.\n\n";
         print "I couldn\'t find it.\n\n";
     }
 
@@ -652,7 +658,7 @@ $DNA3 = join ( "", ($DNA1, $DNA2) );
   \begin{itemize}
     \item 可以轻松处理各种各样的字符串（包括DNA和蛋白质序列数据）
     \item 使用元字符来匹配一个或多个字符串
-    \item 可以非常简单（比如匹配单词本身的一个单词，\verb|/bioinformatics/|）
+    \item 可以非常简单（比如匹配单词本身的一个单词，\verb|/Perl/|, \verb|/cell/|, \verb|/computer/|, \verb|/bioinformatics/|）
     \item 也可以非常复杂（比如匹配一个大的单词集合，甚至每一个单词）
   \end{itemize}
 \end{frame}
@@ -668,8 +674,8 @@ $protein =~ s/\s//g;
       \item 作用：删除序列中的换行符等非序列数据的字符（此处是非打印字符）
       \item \verb|s/\s//g|：把空白字符全部替换成空字符串（其实就是删除所有的空白字符）
       \item 元字符 \verb|\s|：匹配空格、制表符、换行符、换页符和回车符
-      \item 字符组 \verb|[ \t\n\f\r]|：分别表示空格、制表符、换行符、换页符和回车符
-      \item 元字符 \verb|\s|等同于字符组 \verb|[ \t\n\f\r]|
+      \item 字符集 \verb|[ \t\n\f\r]|：分别表示空格、制表符、换行符、换页符和回车符
+      \item 元字符 \verb|\s|等同于字符集 \verb|[ \t\n\f\r]|
       \item \verb|s///|中的前两个斜线之间：放置正则表达式（\verb|C|、\verb|\s|等）
     \end{itemize}
   \end{block}
@@ -705,7 +711,7 @@ if ( $protein =~ /$motif/ ) {
 \begin{block}{说明}
   \begin{itemize}
     \item 绑定操作符 \verb|=~|指定在 \verb|$protein|中进行查找
-    \item \verb|/$motif/|指定查找 \verb|$motif|变量中的正则表达式/基序
+    \item \verb|/$motif/|指定查找 \verb|$motif|变量中的正则表达式（此处是基序）
     \item 变量内插：把变量的值插入到字符串中（就像你直接把该字符串放在此处一样）
     \item 使用变量内插比直接放置字符串更加灵活
   \end{itemize}
@@ -1032,6 +1038,7 @@ $str = '1234';
 
 # print the variables
 print $num, " ", $str, "\n";
+#print "$num $str\n";
 \end{lstlisting}
 \end{frame}
 
@@ -1064,7 +1071,7 @@ exit;
   \begin{itemize}
     \item Perl能对标量变量的数据类型进行智能化处理
     \item 当你需要数字时（比如算数运算），Perl就会把它当做数字来处理
-    \item 当你需要字符串时（比如连接），Perl就会把它当做字符串来处理
+    \item 当你需要字符串时（比如拼接），Perl就会把它当做字符串来处理
   \end{itemize}
 \end{block}
 \end{frame}
@@ -1099,10 +1106,10 @@ foreach $base (@DNA) {
 \pause
 \begin{block}{foreach}
   \begin{itemize}
-    \item 使用foreach对 \verb|@DNA|数组的元素进行循环处理
+    \item 使用foreach对 \verb|@DNA|数组中的元素进行循环处理
     \item 每循环一次，\verb|$base|就会被设定成数组的下一个元素
     \item 如果不指明标量变量（此处是 \verb|$base|），Perl会使用特殊变量 \verb|$_|
-    \item 在不提供参数的情况下，Perl的许多内置函数都会对特殊变量进行操作（此处：模式匹配，\verb|print;|）
+    \item 在不提供参数的情况下，Perl的许多内置函数都会对特殊变量进行操作（此处的foreach，模式匹配，\verb|print;|，……）
   \end{itemize}
 \end{block}
 \end{frame}
@@ -1155,10 +1162,10 @@ $i = 0;
 $j = 0;
 
 # 先返回值，后加1
-print $i++;  # prints 0
+print $i++;  # 0
 
 # 先加1，后返回值
-print ++$j;  # prints 1
+print ++$j;  # 1
 
 # --（减1）用法同++（加1）
 \end{lstlisting}
@@ -1333,7 +1340,7 @@ unless ( -e $dna_filename ) {
 \begin{block}{说明}
   \begin{itemize}
     \item 作用：测试文件是否存在（exist）
-    \item 手册：\verb|perldoc -f -X|
+    \item 手册：\verb|perldoc -f -X|（文件测试）
   \end{itemize}
 \end{block}
 \end{frame}
@@ -1487,6 +1494,12 @@ $base = substr($DNA, $position, 1);
     \item 第二个参数指定要操作的位置索引（负值表示从字符串末尾开始）
     \item 第三个参数指定要操作的长度（负值表示字符串末尾剩余的字符数）
     \item 第四个参数指定要替换成的字符串
+    \item substr vs. splice （操作字符串 vs. 操作数组）
+      \begin{itemize}
+        \item 语法
+        \item 返回值
+        \item 对原数组的“伤害”
+      \end{itemize}
   \end{itemize}
 \end{block}
 \end{frame}
@@ -1526,7 +1539,25 @@ close(COUNTBASE);
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | 程序5.7.1}
+  \frametitle{基序和循环 | \alert{读写文件}}
+\begin{lstlisting}[basicstyle=\small\tt]
+# 读取文件
+open my $FH, '<', $filename or die "$0 : failed to open input file '$filename' : $!\n";
+... <$FH> ...
+close $FH or warn "$0 : failed to close input file '$filename' : $!\n";
+
+# 写入文件
+open my $FH_OUT, '>', $fn_out or die "$0 : failed to open output file '$fn_out' : $!\n";
+select $FH_OUT;
+# OR: use $FH_OUT for every print
+print $FH_OUT "something...";
+... 
+close $FH_OUT or warn "$0 : failed to close output file '$fn_out' : $!\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.1}
 \begin{lstlisting}[firstnumber=1,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl -w
 # Example 5-7   Determining frequency of nucleotides, take 3
@@ -1548,7 +1579,7 @@ unless ( -e $dna_filename ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | 程序5.7.2}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.2}
 \begin{lstlisting}[firstnumber=18,basicstyle=\small\tt]
 # Can we open the file?
 unless ( open( DNAFILE, $dna_filename ) ) {
@@ -1569,7 +1600,7 @@ $DNA =~ s/\s//g;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | 程序5.7.3}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.3}
 \begin{lstlisting}[firstnumber=34]
 # Initialize the counts.
 # Notice that we can use scalar variables to hold numbers.
@@ -1585,7 +1616,7 @@ $e = 0;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | 程序5.7.4}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.4}
 \begin{lstlisting}[firstnumber=44]
 while ( $DNA =~ /a/ig )       { $a++ }
 while ( $DNA =~ /c/ig )       { $c++ }
@@ -1598,7 +1629,7 @@ print "A=$a C=$c G=$g T=$t errors=$e\n";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | 程序5.7.5}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.5}
 \begin{lstlisting}[firstnumber=52,basicstyle=\small\tt]
 # Also write the results to a file called "countbase"
 $outputfile = "countbase";
@@ -1619,7 +1650,7 @@ exit;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | 程序5.7 | 输出}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7 | 输出}
 \begin{lstlisting}
 Please type the filename of the DNA sequence data: small.dna
 A=40 C=27 G=24 T=17 errors=1
@@ -1627,7 +1658,7 @@ A=40 C=27 G=24 T=17 errors=1
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | \alert{while循环}}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | \alert{while循环}}
 \begin{lstlisting}
 while ( $dna =~ /a/ig ) { $a++ }
 \end{lstlisting}
@@ -1643,7 +1674,7 @@ while ( $dna =~ /a/ig ) { $a++ }
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{基序和循环 | 写入文件 | \alert{tr}}
+  \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | \alert{tr}}
 \begin{lstlisting}
 $a = ($dna =~ tr/Aa//);
 $c = ($dna =~ tr/Cc//);
