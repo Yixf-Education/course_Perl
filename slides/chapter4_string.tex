@@ -935,18 +935,17 @@ close PROTEINFILE;
   \frametitle{序列和字符串 | 读取文件 | \alert{处理方法}}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 读取文件
-open my $PROTEINFILE, '<', $proteinfilename
-    or die "$0 : failed to open input file '$proteinfilename' : $!\n";
-...
-close $PROTEINFILE
-    or warn "$0 : failed to close input file '$proteinfilename' : $!\n";
+open my $FH, '<', $filename or die "$0 : failed to open input file '$filename' : $!\n";
+... <$FH> ...
+close $FH or warn "$0 : failed to close input file '$filename' : $!\n";
 
 # 写入文件
-open my $FH_OUT, '>', $fn_out
-    or die  "$0 : failed to open output file '$fn_out' : $!\n";
-...
-close $FH_OUT
-    or warn "$0 : failed to close output file '$fn_out' : $!\n";
+open my $FH_OUT, '>', $fn_out or die "$0 : failed to open output file '$fn_out' : $!\n";
+select $FH_OUT;
+# OR: use $FH_OUT for every print
+print $FH_OUT "something...";
+... 
+close $FH_OUT or warn "$0 : failed to close output file '$fn_out' : $!\n";
 \end{lstlisting}
 \end{frame}
 
@@ -1049,6 +1048,27 @@ $protein = <PROTEINFILE>;
 print $protein;
 $protein = <PROTEINFILE>;
 print $protein;
+
+close PROTEINFILE;
+
+exit;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{序列和字符串 | 读取文件| 程序4.6 | WRONG!}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl -w
+
+$proteinfilename = 'NM_021964fragment.pep';
+
+open( PROTEINFILE, $proteinfilename );
+
+$protein = <PROTEINFILE>;
+$protein = <PROTEINFILE>;
+$protein = <PROTEINFILE>;
+print $protein;
+# What is wrong?
 
 close PROTEINFILE;
 
