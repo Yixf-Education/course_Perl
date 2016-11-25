@@ -205,7 +205,7 @@ unless( 1 == 0 ) {
       \item 文件测试：-e, -s, -z, -f, -d, -l, -r, -w, -x, ...
       \item 变量测试
        	\begin{itemize}
-	        \item 如果是数字：0为假，其他所有数字都为真
+	        \item 如果是数字：0（0, 0.0, -0.0, ……）为假，其他所有数字都为真
 	        \item 如果是字符串：空字符串（用 \verb|""|或 \verb|''|表示）为假，其他所有字符串都为真
           \item 注意：字符串 \verb|'0'|或 \verb|"0"|（和数字0是同一个标量值）是唯一被当成假的非空字符串
 	        \item 如果既不是数字也不是字符串，先转换成数字或字符串再行判断
@@ -786,7 +786,7 @@ print count_of_A, count_of_C, count_of_G, count_of_T
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 策略}
-  \begin{block}{策略一}
+  \begin{block}{通用策略——策略一}
     把DNA拆解成单个碱基，存储到数组中，对数组中的元素进行迭代处理
 \begin{lstlisting}[language=]
 数组：A C G T G T A C
@@ -794,12 +794,20 @@ print count_of_A, count_of_C, count_of_G, count_of_T
 \end{lstlisting}
   \end{block}
   \pause
-  \begin{block}{策略二}
+  \vspace{-0.5em}
+  \begin{block}{通用策略——策略二}
     对DNA字符串中的位置进行迭代处理
 \begin{lstlisting}[language=]
 碱基：ACGTGTAC
 位置：12345678
 \end{lstlisting}
+  \end{block}
+  \pause
+  \vspace{-0.5em}
+  \begin{block}{专有策略}
+    \begin{itemize}
+      \item 策略三，策略四，……
+    \end{itemize}
   \end{block}
 \end{frame}
 
