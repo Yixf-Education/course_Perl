@@ -203,7 +203,40 @@ unless( 1 == 0 ) {
       \item 数字比较：==, !=, <, >, <=, >=
       \item 字符串比较：eq, ne, lt, gt, le, ge
       \item 文件测试：-e, -s, -z, -f, -d, -l, -r, -w, -x, ...
-      \item 变量测试
+      \item 变量测试：真（True），假（False）
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 流程控制 | 条件判断 | 补充说明}
+  \begin{block}{说谎者悖论}
+    \begin{block}{}
+      这个语句为假。
+    \end{block}
+    \begin{block}{}
+      这个语句不为真。
+    \end{block}
+    \begin{block}{}
+      这个语句只为假。
+    \end{block}
+    \begin{block}{}
+    下个语句为真。\\
+    上个语句为假。
+    \end{block}
+    \begin{block}{}
+    第二个语句为假。\\
+    第三个语句为假。\\
+    第一个语句为假。
+    \end{block}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 流程控制 | 条件判断 | \alert{补充说明}}
+  \begin{block}{真 vs. 假}
+    \begin{itemize}
+      \item 真假判定
        	\begin{itemize}
 	        \item 如果是数字：0（0, 0.0, -0.0, ……）为假，其他所有数字都为真
 	        \item 如果是字符串：空字符串（用 \verb|""|或 \verb|''|表示）为假，其他所有字符串都为真
