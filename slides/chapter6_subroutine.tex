@@ -78,7 +78,7 @@
   \frametitle{子程序和Bugs | 子程序 | 编写 | 实例}
   \begin{block}{实例}
     \begin{itemize}
-      \item 要求：把“ACGT”附加到指定DNA的末尾，返回新的、更长的DNA
+      \item 要求：把“ACGT”拼接到指定DNA的末尾，返回新的、更长的DNA
       \item 命名：addACGT
       \item \alert{调用}：子程序的名字后面跟上用小括号包裹起来的参数列表
     \end{itemize}
@@ -264,7 +264,7 @@ my ($x);
 my $x;
 
 # 声明变量的同时进行初始化
-my ($x) = '49';
+my $x = '49';
 
 # 在子程序中收集参数
 my ($x) = @_;
@@ -323,7 +323,7 @@ I changed all the A's in TTTTT to T's and got TTTTT
 \begin{lstlisting}[basicstyle=\small\tt]
 sub A_to_T {
     my ($input) = @_;
-    my ($dna) = $input;
+    my $dna = $input;
     $dna =~ s/A/T/g;
     return $dna;
 }
@@ -496,6 +496,8 @@ unless (@ARGV) {
   \frametitle{子程序和Bugs | 命令行参数 | \alert{提取数组元素}}
 \begin{lstlisting}
 my ($dna) = $ARGV[0];
+#my $dna = $ARGV[0];
+#my ($dna) = @ARGV;
 \end{lstlisting}
 \begin{block}{说明}
   \begin{itemize}
@@ -771,9 +773,9 @@ use BeginPerlBioinfo;
   \frametitle{子程序和Bugs | \alert{use warnings;和use strict;}}
   \begin{block}{use warnings;}
 \begin{lstlisting}
-#!/usr/bin/perl -w
-use warnings;
-perl -w script.pl
+#!/usr/bin/perl -w # 在Perl脚本中
+use warnings;      # 在Perl脚本中
+perl -w script.pl  # 在shell命令行上
 \end{lstlisting}
 开启Perl的警告功能，尝试寻找代码中潜在的问题（如：变量不止声明了一次），并给出警告。
   \end{block}
@@ -811,12 +813,14 @@ use strict;
 \subsection{Perl调试器}
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4 | 用途}
+  \begin{block}{程序功能设计}
   \begin{itemize}
     \item 程序处理一条序列和两个碱基
     \item 如果能够在序列中找到这两个碱基的话，就把从这两个碱基到序列末尾的所有内容输出出来
     \item 可以以命令行参数的形式把这两个碱基传递给程序
     \item 如果不给参数，默认使用TA这两个碱基
   \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -922,10 +926,10 @@ TAAGGCGA
   \begin{block}{启动}
 \begin{lstlisting}
 # 交互式运行
-perl -d script.pl
+perl -d script.pl  # 在shell命令行上
 
 #自动启动
-#!/usr/bin/perl -d
+#!/usr/bin/perl -d # 在Perl脚本中
 \end{lstlisting}
   \end{block}
   \pause
@@ -959,7 +963,7 @@ perl -d script.pl
   \frametitle{子程序和Bugs | Perl调试器 | \alert{补充说明}}
   \begin{itemize}
     \item 调试器显示的是将要执行的那一行代码，而不是已经执行的代码行
-    \item 使用v查看临近代码行时，当前行（即将被执行的行）会以 \verb|==>|进行标明
+    \item 使用v查看临近代码行时，当前行（即将被执行的行）会以 \verb|==>|进行标示
     \item 重复键入v可以持续显示更多代码，使用减号 \verb|-| 会上翻一屏
     \item 使用print打印数组时（\verb|print @array|）默认元素之间没有空格，把数组放在双引号中（\verb|print "@array"|）会使元素以空格分隔的形式展示出来
     \item 所谓断点（breakpoint）指的是程序中的一个点，调试器会在此处停止执行（避免从头开始一步一步执行代码中的每一行），便于检查附近的代码
