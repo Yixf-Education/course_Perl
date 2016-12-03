@@ -1280,6 +1280,43 @@ foreach (@DNA) {
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | foreach}
+\begin{lstlisting}[basicstyle=\small\tt]
+foreach $_ (@DNA) {
+  if ( $_ =~ /A/ ) {
+    ++$count_of_A;
+  } elsif ( $_ =~ /C/  ) {
+    ++$count_of_C;
+  } elsif ( $_ =~ /G/  ) {
+    ++$count_of_G;
+  } elsif ( $_ =~ /T/  ) {
+    ++$count_of_T;
+  } else {
+    print "!!!!!!!! Error - I don\'t recognize this base: ";
+    print $_;
+    print "\n";
+    ++$errors;
+  }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \$\_}
+\begin{lstlisting}
+while ( <$FH> ) {
+#while ( <> ) {
+  chomp;
+  if ( /pattern/ ) {
+    @fields = split /\t/;
+    ...
+  }
+  ...
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{加1}}
 \begin{lstlisting}
 # 在Perl中有四种方法给一个数字加1
@@ -1311,6 +1348,28 @@ print $i++;  # 0
 print ++$j;  # 1
 
 # --（减1）用法同++（加1）
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{双目赋值操作符}}
+  \begin{block}{双目赋值操作符}
+    几乎所有用来求值的双目操作符都可以接上等号，成为相应的双目赋值操作符（binary assignment operator）。
+  \end{block}
+  \pause
+  \vspace{-1em}
+\begin{lstlisting}
+$num = 9;
+$num += 1;  # $num = $num + 1;  #10
+$num -= 1;  # $num = $num - 1;  #9
+$num *= 2;  # $num = $num * 2;  #18
+$num /= 2;  # $num = $num / 2;  #9
+$num **= 2; # $num = $num ** 2; #81
+$num %= 2;  # $num = $num % 2;  #1
+
+$str = "2";
+$str .= "nd"; # $str = $str . "nd"; #2nd
+$str x= 2;    # $str = $str x 2;   #2nd2nd
 \end{lstlisting}
 \end{frame}
 
@@ -1486,6 +1545,34 @@ unless ( -e $dna_filename ) {
     \item 手册：\verb|perldoc -f -X|（文件测试）
   \end{itemize}
 \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{for}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{c5.motif.for.01.png}
+    \vspace{0.5em}
+    \includegraphics[width=0.6\textwidth]{c5.motif.for.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{for}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.56\textwidth]{c5.motif.for.flow.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{for}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{c5.motif.for.flow.02.png}
+    \vspace{0.5em}
+    \includegraphics[width=0.6\textwidth]{c5.motif.for.flow.03.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
