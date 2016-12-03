@@ -189,10 +189,31 @@ if( 1 == 0 ) {
 unless( 1 == 0 ) {
   print "1 does not equal 0\n\n";
 }
+# 1 does not equal 0
 
 # 类比自然语言
 # Unless you study Russian literature, you are ignorant of Chekov.
 # 除非下课铃响了，否则我们不会下课。
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 流程控制 | 条件判断 | unless vs. if}
+\begin{lstlisting}
+unless ( 1 == 0 ) {
+  print "1 does not equal 0\n\n";
+}
+# 1 does not equal 0
+
+if ( 1 != 0 ) {
+  print "1 does not equal 0\n\n";
+}
+# 1 does not equal 0
+
+if ( !(1 == 0) ) {
+  print "1 does not equal 0\n\n";
+}
+# 1 does not equal 0
 \end{lstlisting}
 \end{frame}
 
@@ -239,7 +260,7 @@ unless( 1 == 0 ) {
       \item 真假判定
        	\begin{itemize}
 	        \item 如果是数字：0（0, 0.0, -0.0, ……）为假，其他所有数字都为真
-	        \item 如果是字符串：空字符串（用 \verb|""|或 \verb|''|表示）为假，其他所有字符串都为真
+          \item 如果是字符串：空字符串（用 \verb|""|或 \verb|''|表示）为假，其他所有字符串都为真【参看下一条目】
           \item 注意：字符串 \verb|'0'|或 \verb|"0"|（和数字0是同一个标量值）是唯一被当成假的非空字符串
 	        \item 如果既不是数字也不是字符串，先转换成数字或字符串再行判断
         \end{itemize}
@@ -306,6 +327,65 @@ exit;
   \begin{block}{工作原理}
     只要测试为真，就会重复执行被成对大括号包裹起来的语句块。
   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 流程控制 | 循环 | 比较}
+  \begin{block}{while vs. until}
+    \begin{itemize}
+      \item until只不过是一个改装过的while循环罢了。
+      \item 唯一差别：until会在条件为假时重复执行，而不是为真时执行。
+      \item 类似if和unless转化的例子，你可以用否定条件表达式的方法，把任意一个until循环改写成while循环。
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{for vs. foreach}
+    \begin{itemize}
+      \item 在Perl解析器里，foreach和for这两个关键字实际上等价的。当Perl看到其中之一时，就好像看到了另一个。
+      \item Perl可以从圆括号里的内容判断出你的意图：如果里面有两个分号，它就是for循环；若没有分号，就说明它是一个foreach循环。
+      \item 在Perl世界里，纯正的foreach循环几乎总是更好地选择。
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 流程控制 | 循环 | while vs. until}
+\begin{lstlisting}[basicstyle=\small\tt]
+$count = 0;
+until ( $count >= 10 ) {
+  print "count is now $count\n";
+  $count += 2;
+}
+
+$count = 0;
+while ( $count < 10 ) {
+  print "count is now $count\n";
+  $count += 2;
+}
+
+$count = 0;
+while ( !($count >= 10) ) {
+  print "count is now $count\n";
+  $count += 2;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基序和循环 | 流程控制 | 循环 | for vs. foreach}
+\begin{lstlisting}
+for ( 1..10 ) {
+  print "I can count to $_!\n";
+}
+
+foreach ( 1..10 ) {
+  print "I can count to $_!\n";
+}
+
+for ( $i=1; $i<=10; $i++ ) {
+  print "I can count to $i!\n";
+}
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -583,14 +663,12 @@ do {
   \frametitle{基序和循环 | 基序| 程序5.3.5}
 \begin{lstlisting}[firstnumber=49]
     if ( $protein =~ /$motif/ ) {
-
+   #if ( $protein =~ m/$motif/ ) {
         print "I found it!\n\n";
-
     }
     else {
-
-       #print "I couldn't find it.\n\n";
         print "I couldn\'t find it.\n\n";
+       #print "I couldn't find it.\n\n";
     }
 
     # exit on an empty user input
@@ -740,6 +818,7 @@ $protein =~ s/\s//g;
   \frametitle{基序和循环 | 基序 | \alert{模式匹配}}
 \begin{lstlisting}
 if ( $protein =~ /$motif/ ) {
+#if ( $protein =~ m/$motif/ ) {
 \end{lstlisting}
 \pause
 \begin{block}{说明}
@@ -830,7 +909,7 @@ print count_of_A, count_of_C, count_of_G, count_of_T
   \pause
   \vspace{-0.5em}
   \begin{block}{通用策略——策略二}
-    对DNA字符串中的位置进行迭代处理
+    对DNA字符串中的位置（索引）进行迭代处理
 \begin{lstlisting}[language=]
 碱基：ACGTGTAC
 位置：12345678
@@ -978,7 +1057,7 @@ $errors     = 0;
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.5}
 \begin{lstlisting}[firstnumber=50,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 foreach $base (@DNA) {
-
+#for $base (@DNA) {
     if ( $base eq 'A' ) {
         ++$count_of_A;
     }
@@ -1065,6 +1144,7 @@ T = 17
     \item 声明（declare）变量：指定变量的名字与属性
     \item 变量的属性包括：初始值、作用域和变量类型（在Perl中不需要）等
     \item 在Perl中，在使用变量之前对其进行声明并不是必需的
+    \item Perl在判断标量变量是什么时非常智能（打印输出 vs. 算术运算；字符串 vs. 数字）
   \end{itemize}
 \end{frame}
 
@@ -1119,6 +1199,26 @@ exit;
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 上下文}
+\begin{lstlisting}
+#!/usr/bin/perl -w
+
+$num = 1234; $mix = '12ab';
+# print the variables
+print "$num $mix\n"; #1234 12ab
+
+# add the variables as numbers
+$sum = $num + $mix;
+print $sum, "\n"; #1246
+#Argument "12ab" isn't numeric in addition (+) at xxx.pl line NNN.
+
+# concatenate the variables as strings
+$cat = $num . $mix;
+print $cat, "\n"; #123412ab
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{程序5.5}}
 \begin{lstlisting}
 #!/usr/bin/perl -w
@@ -1144,6 +1244,7 @@ exit;
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{foreach}}
 \begin{lstlisting}
 foreach $base (@DNA) {
+#for $base (@DNA) {
 \end{lstlisting}
 \pause
 \begin{block}{foreach}
@@ -1507,7 +1608,7 @@ while ( $i <= 9 ) {
   \begin{block}{索引}
   \begin{itemize}
     \item 字符串：起始于0，最后一个字符的索引比字符串的长度小1
-    \item 数组元素：第一个元素的索引为0，最后一个元素的索引为 \verb|$length-1|
+    \item 数组元素：第一个元素的索引为0，最后一个元素的索引为 \verb|scalar(@array)-1|，或者 \verb|@array-1|
   \end{itemize}
   \end{block}
   \pause
@@ -1591,8 +1692,9 @@ close $FH or warn "$0 : failed to close input file '$filename' : $!\n";
 # 写入文件
 open my $FH_OUT, '>', $fn_out or die "$0 : failed to open output file '$fn_out' : $!\n";
 select $FH_OUT;
+print "something...";
 # OR: use $FH_OUT for every print
-print $FH_OUT "something...";
+#print $FH_OUT "something...";
 ... 
 close $FH_OUT or warn "$0 : failed to close output file '$fn_out' : $!\n";
 \end{lstlisting}
@@ -1733,7 +1835,7 @@ $nonbase = (length $dna) - $basecount;
     \item 如果替换的字符集为空，原始的字符串不会发生改变
     \item 速度快，一个很好的字符计数器
     \item 需要同时指定大小写字母
-    \item tr不接受字符组（没法直接对非碱基的字符进行计数）
+    \item tr不接受字符集（没法直接对非碱基的字符进行计数）
   \end{itemize}
 \end{block}
 \end{frame}
@@ -1759,6 +1861,95 @@ Returns the length in characters of the value of EXPR. If EXPR is omitted, retur
 This function cannot be used on an entire array or hash to find out how many elements these have. For that, use ``\alert{scalar @array}" and ``\alert{scalar keys \%hash}", respectively.
 }
 \end{block}
+\end{frame}
+
+\section{知识拓展}
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | \alert{基础}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.35\textwidth]{c5.motif.re.basic.01.png}
+    \includegraphics[width=0.32\textwidth]{c5.motif.re.basic.02.png}
+    \includegraphics[width=0.33\textwidth]{c5.motif.re.basic.04.png}
+    \vspace{0.5em}
+    \includegraphics[width=0.36\textwidth]{c5.motif.re.basic.05.png}
+    \includegraphics[width=0.22\textwidth]{c5.motif.re.basic.03.png}
+    \includegraphics[width=0.35\textwidth]{c5.motif.re.basic.06.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | \alert{基础}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{c5.motif.re.basic.07.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | \alert{基础}}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{c5.motif.re.meta.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 总结}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{c5.motif.re.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 总结}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c5.motif.re.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 实例}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.58\textwidth]{c5.motif.re.example.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 实例}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{c5.motif.re.example.02.png}
+    \includegraphics[width=0.53\textwidth]{c5.motif.re.example.03.jpg}
+    \vspace{0.51em}
+    \includegraphics[width=0.85\textwidth]{c5.motif.re.example.04.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 模块}
+  \begin{block}{Common::Regex}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 应用}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{c5.motif.re.use.01.png}\quad
+    \includegraphics[width=0.5\textwidth]{c5.motif.re.use.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 应用}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{c5.motif.re.use.03.png}
+  \end{figure}
 \end{frame}
 
 \section{回顾与总结}
