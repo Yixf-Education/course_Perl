@@ -1305,10 +1305,11 @@ foreach $_ (@DNA) {
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \$\_}
 \begin{lstlisting}
 while ( <$FH> ) {
-#while ( <> ) {
+#while ( <> ) { # 处理命令行中指定的文件
   chomp;
   if ( /pattern/ ) {
     @fields = split /\t/;
+   #@fields = split; # 以空格为分隔符
     ...
   }
   ...
@@ -2016,9 +2017,25 @@ This function cannot be used on an entire array or hash to find out how many ele
   \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{基序和循环 | 知识拓展 | 正则表达式 | 模块}
-  \begin{block}{Common::Regex}
+  \begin{block}{Regexp::Common}
+    Provide commonly requested regular expressions.
+  \end{block}
+  \vspace{-0.5em}
+  \begin{lstlisting}[basicstyle=\scriptsize\tt]
+use Regexp::Common;
+while (<>) {
+    /$RE{num}{real}/               and print q{a number};
+    /$RE{quoted}/                  and print q{a ['"`] quoted string};
+   m[$RE{delimited}{-delim=>'/'}]  and print q{a /.../ sequence};
+    /$RE{balanced}{-parens=>'()'}/ and print q{balanced parentheses};
+    /$RE{profanity}/               and print q{a #*@%-ing word};
+}
+\end{lstlisting}
+  \vspace{-0.5em}
+  \begin{block}{Regexp::Common::X}
+    Regexp::Common::time, Regexp::Common::URI, Regexp::Common::Email::Address, ...
   \end{block}
 \end{frame}
 
