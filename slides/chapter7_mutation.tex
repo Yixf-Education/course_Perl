@@ -24,7 +24,7 @@
   \begin{block}{影响}
     \begin{itemize}
       \item 突变通常会导致细胞运作不正常或死亡，甚至可以在较高等生物中引发癌症。
-      \item 同时，突变也被视为物种进化的“推动力”：不理想的突变会经天择过程被淘汰，而对物种有利的突变则会被累积下去。中性突变（neutral mutation）对物种没有影响而逐渐累积，会导致间断平衡。
+      \item 同时，突变也被视为物种进化的“推动力”：不理想的突变会经自然选择过程被淘汰，而对物种有利的突变则会被累积下去。中性突变（neutral mutation）对物种没有影响而逐渐累积，会导致间断平衡。
     \end{itemize}
   \end{block}
 \end{frame}
@@ -129,7 +129,7 @@
 \begin{frame}
   \frametitle{突变和随机化 | 随机数生成器}
   \begin{block}{随机数生成器}
-    随机数生成器（random number generator）是通过一些算法、物理讯号、环境噪音等来产生看起来似乎没有关联性的数列的方法或装置。丢硬币、掷骰子、洗牌就是生活上常见的随机数产生方式。\\
+    随机数生成器（random number generator）是通过一些算法、物理信号、环境噪音等来产生看起来似乎没有关联性的数列的方法或装置。丢硬币、掷骰子、洗牌就是生活上常见的随机数产生方式。\\
     %\vspace{1em}
     大部分计算机上的伪随机数，并不是真正的随机数，只是重复的周期比较大的数列，是按一定的算法和种子值生成的。
   \end{block}
@@ -163,7 +163,7 @@ use warnings;
 # Declare the variables
 my $count;
 my $input;
-my $number;
+#my $number;
 my $sentence;
 my $story;
 \end{lstlisting}
@@ -262,7 +262,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1 | 输出}
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\footnotesize\tt]
 Joe and Moe jumped with Rebecca in New York City. Rebecca exploded Groucho in a dream. Mom ran to Harpo over the rainbow. TV giggled with Joe and Moe over the rainbow. Harpo exploded Joe and Moe at the beach. Robin Hood giggled with Harpo at the beach. 
 
 Type "quit" to quit, or press Enter to continue: 
@@ -623,11 +623,11 @@ sub mutate {
 
     my ($dna) = @_;
 
-    my (@nucleotides) = ( 'A', 'C', 'G', 'T' );
-
     my ($position) = randomposition($dna);
 
-    my ($newbase) = randomnucleotide(@nucleotides);
+   #my (@nucleotides) = ( 'A', 'C', 'G', 'T' );
+   #my ($newbase) = randomnucleotide(@nucleotides);
+    my ($newbase) = randomnucleotide( );
 
     substr( $dna, $position, 1, $newbase );
 
@@ -737,19 +737,20 @@ Repeat:
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | bug? | \alert{修正}}
-\begin{lstlisting}[basicstyle=\small\tt]
+\begin{lstlisting}[basicstyle=\footnotesize\tt]
 # mutate_better
 # Subroutine to perform a mutation in a string of DNA--version 2, in which it is guaranteed that one base will change on each call
 
 sub mutate_better {
   my($dna) = @_;
-  my(@nucleotides) = ('A', 'C', 'G', 'T');
+ #my(@nucleotides) = ('A', 'C', 'G', 'T');
   my($position) = randomposition($dna);
   my($newbase);
   do {
-    $newbase = randomnucleotide(@nucleotides);
+   #$newbase = randomnucleotide(@nucleotides);
+    $newbase = randomnucleotide( );
   # Make sure it's different than the nucleotide we're mutating
-  }until ( $newbase ne substr($dna, $position,1));
+  } until ( $newbase ne substr($dna, $position,1));
   substr($dna,$position,1,$newbase);
   return $dna;
 }
@@ -809,13 +810,58 @@ AATTATTAAAAAGTGATAAAAACAACACAA
 \subsection{设计理念}
 \begin{frame}
   \frametitle{突变和随机化 | 生成随机DNA | \alert{设计理念}}
-  \begin{block}{自下而上}
+  \begin{block}{自下而上（Bottom-up）}
     从最基本的砖瓦（子程序）开始，逐步组装成高楼大厦（主程序）。
   \end{block}
   \pause
-  \begin{block}{自上而下}
+  \begin{block}{自上而下（Top-down）}
     从主程序开始，当需要子程序时再进行编写。
   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 生成随机DNA | 设计理念}
+  \begin{block}{费波那契数列}
+    费波那契数列（Successione di Fibonacci），又译为费波拿契数、费氏数列、黄金分割数列。\\
+在数学上，费波那契数列是以递归的方法来定义：
+\begin{itemize}
+  \item $F_{0}=0$
+  \item $F_{1}=1$
+  \item $F_{n}=F_{{n-1}}+F_{{n-2}}\quad (n\geq 2)$
+\end{itemize}
+用文字来说，就是费波那契数列由0和1开始，之后的费波那契系数就是由之前的两数相加而得出。
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{c7.mutation.fs.01.png}\quad
+    \includegraphics[width=0.4\textwidth]{c7.mutation.fs.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 生成随机DNA | 设计理念}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c7.mutation.bt.01.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 生成随机DNA | 设计理念}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.55\textwidth]{c7.mutation.bt.02.jpg}
+    \includegraphics[width=0.45\textwidth]{c7.mutation.bt.03.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 生成随机DNA | 设计理念}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{c7.mutation.bt.04.jpg}
+    \includegraphics[width=0.6\textwidth]{c7.mutation.bt.05.png}
+  \end{figure}
 \end{frame}
 
 \subsection{伪代码}
@@ -1360,6 +1406,179 @@ for (my $k = 0 ; $k < scalar @random_DNA - 1 ; ++$k) {
     \centering
     \includegraphics[width=0.7\textwidth,height=0.8\textheight]{c7.mutation.nested.loop.png}
   \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 分析DNA | 程序7.4 | 嵌套循环}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c7.mutation.nl.01.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 分析DNA | 程序7.4 | 嵌套循环}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.68\textwidth]{c7.mutation.nl.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 分析DNA | 程序7.4 | 嵌套循环}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{c7.mutation.nl.03.jpg}
+  \end{figure}
+\end{frame}
+
+\section{知识拓展}
+\begin{frame}
+  \frametitle{突变和随机化 | 知识拓展 | 嵌套}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.39\textwidth]{c7.mutation.supp.01.jpg}\quad
+    \includegraphics[width=0.56\textwidth]{c7.mutation.supp.02.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 知识拓展 | 死循环}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.34\textwidth]{c7.mutation.supp.05.jpg}\quad
+    \includegraphics[width=0.62\textwidth]{c7.mutation.supp.06.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 知识拓展 | 递归}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.49\textwidth]{c7.mutation.supp.07.jpg}\quad
+    \includegraphics[width=0.47\textwidth]{c7.mutation.supp.08.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 知识拓展 | GEB}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{c7.mutation.supp.09.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 知识拓展 | GEB}
+  \begin{block}{《哥德尔、埃舍尔、巴赫》}
+    《哥德尔、埃舍尔、巴赫：集异璧之大成》（Gödel, Escher, Bach: an Eternal Golden Braid），是一本赢得普立兹奖的书。它是侯世达的著作，由Basic Books出版社在1979年出版的。这本书的二十周年版本在1999年发行，而且由侯世达加上新的前言。《集异璧之大成》（ISBN 7-100-01323-2）是商务印书馆在1996年出版的根据1995年英文版翻译的中文版。\\
+    \vspace{0.3em}
+本书的英文副标题意译为“一条永恒的金带”，其首字母与哥德尔、埃舍尔、巴赫三人的英文名字首字母GEB相同，而商务印书馆中文译本的副标题中的“集异璧”则与GEB谐音。本书一共有两篇，上篇译为“集异璧GEB”，下篇译为“异集璧EGB”。 \\
+    \vspace{0.3em}
+本书主要讲述了逻辑学家哥德尔，艺术家埃舍尔，和作曲家巴赫的创造性的成就怎样交织在一起。正如作者所说：“我认识到，哥德尔、埃舍尔和巴赫只是用不同的方式来表达一样相同的本质。我尝试重现这种本质而写出这本书。”
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{突变和随机化 | 知识拓展 | GEB | 侯世达}
+  \begin{block}{侯世达}
+    侯世达因其著作《哥德尔、埃舍尔、巴赫》获得普立兹奖（非小说类别）和美国国家图书奖（科学类别）。
+  \end{block}
+  \begin{block}{侯世达定律}
+    侯世达定律（Hofstadter's law）是一句自指的格言，由侯世达在《哥德尔、埃舍尔、巴赫》一书中提出：
+    \begin{quote}
+    侯世达定律：做事所花费的时间总是比你预期的要长，即使你的预期中考虑了侯世达定律。 ——侯世达，《哥德尔、埃舍尔、巴赫》
+    \end{quote}
+侯世达定律指做复杂任务需要花费的时间总是很难预计的。程序员经常会引用这一定律，特别是在进行有关提高效率的讨论时（如《人月神话》和极限编程）。其自指的特征反映了即便意识到任务的复杂性，预计花费的时间仍是困难的。
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 递归}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub F {
+    my $n = shift;
+    return 0 if $n == 0;
+    return 1 if $n == 1;
+    return F( $n - 1 ) + F( $n - 2 );
+}
+
+print F( $ARGV[0] ), "\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 缓存}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+
+use strict; use warnings;
+
+{
+    my %fib;
+    sub F {
+        my $n = shift;
+        return 0 if $n == 0;
+        return 1 if $n == 1;
+        if ( not exists $fib{$n} ) {
+            $fib{$n} = F( $n - 1 ) + F( $n - 2 );
+        }
+        return $fib{$n};
+    }
+}
+
+print F( $ARGV[0] ), "\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 缓存}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use strict; use warnings;
+use Memoize;
+
+memoize('F');
+
+sub F {
+    my $n = shift;
+    return 0 if $n == 0;
+    return 1 if $n == 1;
+    return F( $n - 1 ) + F( $n - 2 );
+}
+
+print F( $ARGV[0] ), "\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 总结}
+  \begin{lstlisting}[basicstyle=\small\tt]
+# 1. Compute Fibonacci numbers
+sub fib {
+  my $n = shift;
+  return $n if $n < 2;
+  fib($n-1) + fib($n-2);
+}
+# 2. Compute Fibonacci numbers, memoized version
+{ my @fib;
+  sub fib {
+    my $n = shift;
+    return $fib[$n] if defined $fib[$n];
+    return $fib[$n] = $n if $n < 2;
+    $fib[$n] = fib($n-1) + fib($n-2);
+  }
+}
+# 3. Compute Fibonacci numbers, module version
+use Memoize;
+memoize('fib');
+\end{lstlisting}
 \end{frame}
 
 \section{回顾和总结}
