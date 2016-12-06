@@ -17,6 +17,7 @@
 * Fcntl
 * List::Util
 * Term::Animation
+* Memoize
 
 # R
 * knitr
