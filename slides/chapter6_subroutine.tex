@@ -976,6 +976,69 @@ perl -d script.pl  # 在shell命令行上
   \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{子程序和Bugs | Perl调试器 | 程序6.5}
+  \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+#!/usr/bin/perl
+use warnings; use strict;
+
+my $dna = "CGACGTCTTCTAAGGCGA";
+my $subsequence = @ARGV ? $ARGV[0] : "TC";
+
+my @dna = split "", $dna;
+my $base1 = substr( $subsequence, 0, 1 );
+my $base2 = substr( $subsequence, 1, 1 );
+
+for ( my $i = 0 ; $i < @dna - 1 ; $i++ ) {
+    if ( $dna[$i] eq $base1 ) {
+        if ( $dna[ $i + 1 ] eq $base2 ) {
+            print join "", @dna[ $i .. $#dna ];
+            print "\n";
+            # last;
+        }
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{子程序和Bugs | Perl调试器 | 程序6.6}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+my $dna = "CGACGTCTTCTAAGGCGA";
+my $subsequence = @ARGV ? $ARGV[0] : "TC";
+
+for ( my $i = 0 ; $i < length($dna) - 1 ; $i++ ) {
+    if ( substr( $dna, $i, 2 ) eq $subsequence ) {
+        print substr( $dna, $i );
+        print "\n";
+        # last;
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{子程序和Bugs | Perl调试器 | 程序6.6 | 补充说明}
+\begin{lstlisting}
+my $subsequence = @ARGV ? $ARGV[0] : "TC";
+\end{lstlisting}
+\begin{lstlisting}
+my $subsequence;
+
+if (@ARGV) {
+    $subsequence = $ARGV[0];
+}
+else {
+    $subsequence = "TC";
+}
+\end{lstlisting}
+\end{frame}
+
 \section{回顾和总结}
 \subsection{总结}
 \begin{frame}
