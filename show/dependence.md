@@ -18,6 +18,7 @@
 * List::Util
 * Term::Animation
 * Memoize
+* Parallel::Loops
 
 # R
 * knitr
