@@ -762,16 +762,19 @@ if ( defined $myhash{'mykey'} ) { ... }
   \begin{block}{Solution}
     Use \textbf{dbmopen} or \textbf{tie} to open the database and make it accessible through a hash. Then use the hash as you normally would. When you’re done, call \textbf{dbmclose} or \textbf{untie}.
   \end{block}
-  \pause
+\end{frame}
+
+\begin{frame}
+  \frametitle{数据结构和算法 | DBM | Perl}
   \begin{block}{Discussion}
-    {\small Accessing a database as a hash is powerful but easy, giving you a persistent hash that sticks around after the program using it has finished running. It's also much faster than loading in a new hash every time; even if the hash has a million entries, your program starts up virtually instantaneously.}\\
-    \vspace{0.1em}
-    {\small The program treats the database as though it were a normal hash. You can even call keys or each on it. Likewise, exists ...}
+    Accessing a database as a hash is powerful but easy, giving you a persistent hash that sticks around after the program using it has finished running. It's also much faster than loading in a new hash every time; even if the hash has a million entries, your program starts up virtually instantaneously.\\
+    \vspace{0.5em}
+    The program treats the database as though it were a normal hash. You can even call \textbf{keys} or \textbf{each} on it. Likewise, \textbf{exists} and \textbf{defined} are implemented for tied DBM hashes. Unlike a normal hash, a DBM hash does not distinguish between those two functions.
   \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{数据结构和算法 | DBM | Perl | dbmopen}
+  \frametitle{数据结构和算法 | DBM | Perl | \textcolor{gray}{dbmopen}}
 \begin{lstlisting}
 use DB_File;  # optional; overrides default
 dbmopen %HASH, $FILENAME, 0666  # open database, accessed through %HASH
@@ -802,6 +805,33 @@ if (exists $HASH{$KEY}) {  # check whether in database
 }
 delete $HASH{$KEY};  # delete from database
 untie %HASH;  # close the database
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{数据结构和算法 | DBM | Perl | 实例}
+\begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
+#!/usr/bin/perl
+
+use warnings; use strict;
+use DB_File;
+
+my ( %h, $k, $v );
+unlink "fruit";
+
+tie %h, "DB_File", "fruit", O_RDWR | O_CREAT, 0666, $DB_HASH or die "Cannot open file 'fruit': $!\n";
+
+# Add a few key/value pairs to the file
+$h{"apple"}  = "red"; $h{"orange"} = "orange";
+$h{"banana"} = "yellow"; $h{"tomato"} = "red";
+# Check for existence of a key
+print "Banana Exists\n\n" if $h{"banana"};
+# Delete a key/value pair.
+delete $h{"apple"};
+# print the contents of the file
+while ( ( $k, $v ) = each %h ) { print "$k -> $v\n" }
+
+untie %h;
 \end{lstlisting}
 \end{frame}
 
