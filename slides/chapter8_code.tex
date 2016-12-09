@@ -312,20 +312,101 @@ unless ( $hash{x} ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{数据结构和算法 | 简介}
+  \frametitle{数据结构和算法 | 算法 | 简介}
   \begin{block}{算法}
-    算法（algorithm）指定义良好的计算过程，它取一个或一组值作为输入，经过一系列定义好的计算过程，得到一个或一组输出。\\
+算法（algorithm）指定义良好的计算过程，它取一个或一组值作为输入，经过一系列定义好的计算过程，得到一个或一组输出。\\
+    \vspace{0.5em}
+    在数学和计算机科学/算学之中，算法/演算法/算则法（Algorithm）为一个计算的具体步骤，常用于计算、数据处理和自动推理。精确而言，算法是一个表示为有限长列表的有效方法。算法应包含清晰定义的指令用于计算函数。\\
+    \vspace{0.5em}
+算法中的指令描述的是一个计算，当其运行时能从一个初始状态和初始输入（可能为空）开始，经过一系列有限而清晰定义的状态最终产生输出并停止于一个终态。\\
     \vspace{0.5em}
     \alert{不同的算法通常需要不同的数据结构。}
   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{数据结构和算法 | 算法 | 简介}
+  \begin{block}{特征}
+高德纳在他的著作《计算机程序设计艺术》里对算法的特征归纳：
+\begin{itemize}
+  \item 输入：一个算法必须有零个或以上输入量。
+  \item 输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。
+  \item 明确性：算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望，通常要求实际运行结果是确定的。
+  \item 有限性：依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵机只有有限个状态、有限个输入符号和有限个转移函数（指令）。而一些定义更规定算法必须在有限个步骤内完成任务。
+  \item 有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。
+\end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{数据结构和算法 | 算法 | 简介}
+  \begin{block}{基本要素}
+算法的核心是\alert{创建问题抽象的模型和明确求解目标}，之后可以根据具体的问题选择不同的模式和方法完成算法的设计。
+  \end{block}
   \pause
+  \begin{block}{形式化算法}
+算法是计算机处理信息的本质，因为\alert{计算机程序本质上是一个算法来告诉计算机确切的步骤来执行一个指定的任务}。一般地，当算法在处理信息时，会从输入设备或数据的存储地址读取数据，把结果写入输出设备或某个存储地址供以后再调用。
+  \end{block}
+  \pause
+  \begin{block}{常用实现方法}
+    \begin{itemize}
+      \item 递归方法与迭代方法
+      \item 顺序计算、并行计算和分布式计算
+      \item 确定性算法和非确定性算法
+      \item 精确求解和近似求解 
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{数据结构和算法 | 算法 | 简介}
+  \begin{block}{常用设计模式}
+    \begin{itemize}
+      \item 完全遍历法和不完全遍历法：把解空间的所有元素完全遍历一遍，逐个检测元素是否是我们要的解。
+      \item 分治法：把一个问题分区成互相独立的多个部分分别求解的思路，便于进行并行计算。
+      \item 动态规划法：当问题的整体最优解就是由局部最优解组成的时候，经常采用的一种方法。
+      \item 贪婪算法：常见的近似求解思路。当问题的整体最优解不是（或无法证明是）由局部最优解组成，且对解的最优性没有要求的时候，可以采用的一种方法。
+      \item 线性规划法：线性规划是最优化问题中的一个重要领域。很多最优化问题算法都可以分解为线性规划子问题，然后逐一求解。
+      \item 简并法：把一个问题通过逻辑或数学推理，简化成与之等价或者近似的、相对简单的模型，进而求解的方法。
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{数据结构和算法 | 数据结构 | 简介}
   \begin{block}{数据结构}
     数据结构（data structure）是计算机中存储、组织数据的方式。\\
     \vspace{0.5em}
-    数据结构意味着接口或封装：一个数据结构可被视为两个函数之间的接口，或者是由数据类型联合组成的存储内容的访问方法封装。\\
+数据结构意味着接口或封装：一个数据结构可被视为两个函数之间的接口，或者是由数据类型联合组成的存储内容的访问方法封装。\\
     \vspace{0.5em}
-    不同种类的数据结构适合不同种类的应用，部分数据结构甚至是为了解决特定问题而设计出来的。\alert{正确的数据结构选择可以提高算法的效率。}在计算机程序设计的过程里，选择适当的数据结构是一项重要工作。许多大型系统的编写经验显示，程序设计的困难程度与最终成果的质量与表现，取决于是否选择了最适合的数据结构。
+数据结构可透过程序语言所提供的数据类型、引用及其他操作加以实现。一个设计良好的数据结构，应该在尽可能使用较少的时间与空间资源的前提下，支持各种程序运行。\\
+    \vspace{0.5em}
+不同种类的数据结构适合不同种类的应用，部分数据结构甚至是为了解决特定问题而设计出来的。\alert{正确的数据结构选择可以提高算法的效率。}在计算机程序设计的过程里，选择适当的数据结构是一项重要工作。许多大型系统的编写经验显示，程序设计的困难程度与最终成果的质量与表现，取决于是否选择了最适合的数据结构。
   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{数据结构和算法 | 简介}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.9\textwidth]{c8.code.alg.png}
+    \end{figure}
+    \column{0.4\textwidth}
+  \begin{block}{常见数据结构}
+    \begin{itemize}
+      \item 数组（Array）
+      \item 堆栈（Stack）
+      \item 队列（Queue）
+      \item 链表（Linked List）
+      \item 树（Tree）
+      \item 图（Graph）
+      \item 堆（Heap）
+      \item 散列表（Hash）
+    \end{itemize}
+  \end{block}
+\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -509,6 +590,57 @@ Until you find the element or discover it's not there,
     \includegraphics[width=0.55\textwidth]{c8.code.binary.search.01.jpg}
     \includegraphics[width=0.42\textwidth]{c8.code.binary.search.02.png}
   \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{数据结构和算法 | 普通查找}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my @numbers = map { $_ * 3 } ( 0 .. 1000000 );
+
+sub search {
+    my ( $numbers, $target ) = @_;
+    for my $i ( 0 .. $#$numbers ) {
+        return $i if $numbers->[$i] == $target;
+    }
+    return;
+}
+
+print search( \@numbers, 699 ), "\n";
+print search( \@numbers, 28 ),  "\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{数据结构和算法 | 折半查找}
+\begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
+#!/usr/bin/perl
+use strict; use warnings;
+
+my @numbers = map { $_ * 3 } ( 0 .. 1000000 );
+sub search {
+   my ( $numbers, $target ) = @_;
+   return binary_search( $numbers, $target, 0, $#$numbers );
+}
+sub binary_search {
+   my ( $numbers, $target, $low, $high ) = @_;
+   return if $high < $low;
+   my $middle = int( ( $low + $high ) / 2 );
+   if ( $numbers->[$middle] > $target ) {
+      return binary_search($numbers, $target, $low, $middle-1);
+   }
+   elsif ( $numbers->[$middle] < $target ) {
+      return binary_search($numbers, $target, $middle+1, $high);
+   }
+   return $middle;
+}
+print search( \@numbers, 699 ), "\n";
+print search( \@numbers, 28 ),  "\n";
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
