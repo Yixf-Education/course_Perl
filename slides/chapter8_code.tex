@@ -2081,10 +2081,10 @@ PPRPLSAAI
   \end{block}
 \end{frame}
 
-\section{扩展知识}
+\section{知识拓展}
 \subsection{Perl里面的复杂数据结构}
 \begin{frame}
-  \frametitle{扩展知识 | 复杂数据结构 | 简介}
+  \frametitle{知识拓展 | 复杂数据结构 | 简介}
   \begin{itemize}
     \item arrays of arrays，数组的数组
     \item hashes of arrays，散列的元素为数组
@@ -2095,7 +2095,7 @@ PPRPLSAAI
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的数组 | 声明}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 声明}
 \begin{lstlisting}
 @AoA = (
     [ "fred", "barney" ],
@@ -2106,7 +2106,7 @@ PPRPLSAAI
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的数组 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 生成}
 \begin{lstlisting}
 # reading from file
 while ( <> ) {
@@ -2127,7 +2127,7 @@ push @{ $AoA[0] }, "wilma", "betty";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的数组 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 访问}
 \begin{lstlisting}
 # one element
 $AoA[0][0] = "Fred";
@@ -2138,7 +2138,7 @@ $AoA[1][1] =~ s/(\w)/\u$1/;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的数组 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 访问}
 \begin{lstlisting}
 # print the whole thing with refs
 for $aref ( @AoA ) {
@@ -2158,7 +2158,7 @@ for $i ( 0 .. $#AoA ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为数组 | 声明}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 声明}
 \begin{lstlisting}
 %HoA = (
   flintstones => [ "fred", "barney" ],
@@ -2169,7 +2169,7 @@ for $i ( 0 .. $#AoA ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为数组 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 生成}
 \begin{lstlisting}
 # reading from file
 # flintstones: fred barney wilma dino
@@ -2189,7 +2189,7 @@ while ( $line = <> ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为数组 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 生成}
 \begin{lstlisting}
 # calling a function that returns a list
 for $group ( "simpsons", "jetsons", "flintstones" ) {
@@ -2207,7 +2207,7 @@ push @{ $HoA{"flintstones"} }, "wilma", "betty";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为数组 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 访问}
 \begin{lstlisting}
 # one element
 $HoA{flintstones}[0] = "Fred";
@@ -2229,7 +2229,7 @@ foreach $family ( keys %HoA ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为数组 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 访问}
 \begin{lstlisting}
 # print the whole thing sorted by number of members
 foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} } keys %HoA ) {
@@ -2244,7 +2244,7 @@ foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} || $a cmp $b } keys %HoA  )
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的元素为散列 | 声明}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 声明}
 \begin{lstlisting}
 @AoH = (
   {
@@ -2266,7 +2266,7 @@ foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} || $a cmp $b } keys %HoA  )
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的元素为散列 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 生成}
 \begin{lstlisting}
 # reading from file
 # format: LEAD=fred FRIEND=barney
@@ -2287,7 +2287,7 @@ while ( <>  ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的元素为散列 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 生成}
 \begin{lstlisting}
 # calling a function  that returns a key/value pair list, like
 # "lead","fred","daughter","pebbles"
@@ -2307,7 +2307,7 @@ $AoH[2]{pet} = "santa's little helper";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 访问}
 \begin{lstlisting}
 # one element
 $AoH[0]{lead} = "fred";
@@ -2318,7 +2318,7 @@ $AoH[1]{lead} =~ s/(\w)/\u$1/;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 访问}
 \begin{lstlisting}
 # print the whole thing with refs
 for $href ( @AoH ) {
@@ -2340,7 +2340,7 @@ for $i ( 0 .. $#AoH ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 数组的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 访问}
 \begin{lstlisting}
 # print the whole thing one at a time
 for $i ( 0 .. $#AoH ) {
@@ -2352,7 +2352,7 @@ for $i ( 0 .. $#AoH ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 声明}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 声明}
 \begin{lstlisting}
 %HoH = (
   flintstones => {
@@ -2374,7 +2374,7 @@ for $i ( 0 .. $#AoH ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
 \begin{lstlisting}
 # reading from file
 # flintstones: lead=fred pal=barney wife=wilma pet=dino
@@ -2390,7 +2390,7 @@ while ( <> ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
 \begin{lstlisting}
 # reading from file; more temps
 # flintstones: lead=fred pal=barney wife=wilma pet=dino
@@ -2408,7 +2408,7 @@ while ( <> ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
 \begin{lstlisting}
 # calling a function that returns a key,value hash
 for $group ( "simpsons", "jetsons", "flintstones" ) {
@@ -2424,7 +2424,7 @@ for $group ( "simpsons", "jetsons", "flintstones" ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
 \begin{lstlisting}
 # append new members to an existing family
 %new_folks = (
@@ -2439,7 +2439,7 @@ for $what (keys %new_folks) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
 \begin{lstlisting}
 # one element
 $HoH{flintstones}{wife} = "wilma";
@@ -2450,7 +2450,7 @@ $HoH{simpsons}{lead} =~ s/(\w)/\u$1/;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
 \begin{lstlisting}
 # print the whole thing
 foreach $family ( keys %HoH ) {
@@ -2464,7 +2464,7 @@ foreach $family ( keys %HoH ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
 \begin{lstlisting}
 # print the whole thing somewhat sorted
 foreach $family ( sort keys %HoH ) {
@@ -2478,7 +2478,7 @@ foreach $family ( sort keys %HoH ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
 \begin{lstlisting}
 # print the whole thing sorted by number of members
 foreach $family ( sort { keys %{$HoH{$b}} <=> keys %{$HoH{$a}} } keys %HoH  ) {
@@ -2492,7 +2492,7 @@ foreach $family ( sort { keys %{$HoH{$b}} <=> keys %{$HoH{$a}} } keys %HoH  ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
 \begin{lstlisting}
 # establish a sort order (rank) for each role
 $i = 0;
@@ -2510,7 +2510,7 @@ foreach $family ( sort { keys %{ $HoH{$b}  } <=> keys %{ $HoH{$a} } } keys %HoH 
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 声明}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 声明}
 \begin{lstlisting}
 $rec = {
   TEXT      => $string,
@@ -2524,7 +2524,7 @@ $rec = {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 声明}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 声明}
 \begin{lstlisting}
 print $rec->{TEXT};
 print $rec->{SEQUENCE}[0];
@@ -2542,7 +2542,7 @@ $rec->{HANDLE}->print(" a string\n");
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 定义}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 定义}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 %TV = (
   flintstones => {
@@ -2577,7 +2577,7 @@ $rec->{HANDLE}->print(" a string\n");
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
 \begin{lstlisting}
 # reading from file
 # here's a piece by piece build up
@@ -2597,7 +2597,7 @@ $TV{ $rec->{series} } = $rec;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
 \begin{lstlisting}[basicstyle=\small\tt]
 ###########################################################
 # now, you might want to make interesting extra fields that
@@ -2611,7 +2611,7 @@ $TV{ $rec->{series} } = $rec;
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
 \begin{lstlisting}
 foreach $family (keys %TV) {
   $rec = $TV{$family}; # temp pointer
@@ -2628,7 +2628,7 @@ foreach $family (keys %TV) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
 \begin{lstlisting}
 # you copied the array, but the array itself contains pointers
 # to uncopied objects. this means that if you make bart get
@@ -2642,7 +2642,7 @@ print $TV{simpsons}{members}[2]{age};
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
 \begin{lstlisting}[basicstyle=\small\tt]
 # print the whole thing
 foreach $family ( keys %TV ) {
@@ -2662,7 +2662,7 @@ foreach $family ( keys %TV ) {
 
 \subsection{数据共享}
 \begin{frame}
-  \frametitle{扩展知识 | datasharing}
+  \frametitle{知识拓展 | datasharing}
   \begin{block}{What you should deliver to the statistician}
     For maximum speed in the analysis this is the information you should pass to a statistician:
     \begin{enumerate}
@@ -2675,7 +2675,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | raw data}
+  \frametitle{知识拓展 | datasharing | raw data}
   It is critical that you include the rawest form of the data that you have access to. Here are some examples of the raw form of data:
   \begin{itemize}
     \item The strange binary file your measurement machine spits out
@@ -2686,7 +2686,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | raw data}
+  \frametitle{知识拓展 | datasharing | raw data}
   You know the raw data is in the right format if you:
   \begin{enumerate}
     \item Ran no software on the data
@@ -2697,12 +2697,12 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | raw data}
+  \frametitle{知识拓展 | datasharing | raw data}
   If you did any manipulation of the data at all it is not the raw form of the data. Reporting manipulated data as raw data is a very common way to slow down the analysis process, since the analyst will often have to do a forensic study of your data to figure out why the raw data looks weird.
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | tidy data}
+  \frametitle{知识拓展 | datasharing | tidy data}
   The four general principles you should pay attention to are:
   \begin{enumerate}
     \item Each \textbf{variable} you measure should be in one \textbf{column}
@@ -2713,19 +2713,19 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | datasharing | tidy data}
+  \frametitle{知识拓展 | datasharing | tidy data}
   While these are the hard and fast rules, there are a number of other things that will make your data set much easier to handle. First is to include \textbf{a row} at the \textbf{top} of each data table/spreadsheet that contains \textbf{full variable names}. So if you measured age at diagnosis for patients, you would head that column with the name \verb|AgeAtDiagnosis| instead of something like \verb|ADx| or another abbreviation that may be hard for another person to understand. \\
   \vspace{1em}
   If you are sharing your data with the collaborator in Excel, the tidy data should be in one Excel file per table. They should not have multiple worksheets, no macros should be applied to the data, and no columns/cells should be highlighted. Alternatively share the data in a CSV or TAB-delimited text file.
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | tidy data | example}
+  \frametitle{知识拓展 | datasharing | tidy data | example}
   Here is an example of how this would work from genomics. Suppose that for 20 people you have collected gene expression measurements with RNA-sequencing. You have also collected demographic and clinical information about the patients including their age, treatment, and diagnosis. You would have one table/spreadsheet that contains the clinical/demographic information. It would have four columns (patient id, age, treatment, diagnosis) and 21 rows (a row with variable names, then one row for every patient). You would also have one spreadsheet for the summarized genomic data. Usually this type of data is summarized at the level of the number of counts per exon. Suppose you have 100,000 exons, then you would have a table/spreadsheet that had 21 rows (a row for gene names, and one row for each patient) and 100,001 columns (one column for patient ids and one column for each data type). 
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | tidy data}
+  \frametitle{知识拓展 | datasharing | tidy data}
   \begin{enumerate}
     \item Each variable forms a column (Each variable in the data set is placed in its own column)
     \item Each observation forms a row (Each observation is placed in its own row)
@@ -2739,7 +2739,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | tidy data | raw2tidy}
+  \frametitle{知识拓展 | datasharing | tidy data | raw2tidy}
   \begin{columns}
     \column{0.5\textwidth}
   \begin{figure}
@@ -2759,7 +2759,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | tidy data | raw2tidy}
+  \frametitle{知识拓展 | datasharing | tidy data | raw2tidy}
   \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{c8.code.data.molten2tidy.raw.png}
@@ -2767,7 +2767,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | tidy data | raw2tidy}
+  \frametitle{知识拓展 | datasharing | tidy data | raw2tidy}
   \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{c8.code.data.molten2tidy.png}
@@ -2775,7 +2775,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | cook book}
+  \frametitle{知识拓展 | datasharing | cook book}
   For almost any data set, the measurements you calculate will need to be described in more detail than you will sneak into the spreadsheet.  The code book contains this information. At minimum it should contain:
   \begin{enumerate}
     \item Information about the variables (including units!) in the data set not contained in the tidy data
@@ -2787,12 +2787,12 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | cook book | example}
+  \frametitle{知识拓展 | datasharing | cook book | example}
   In our genomics example, the analyst would want to know what the unit of measurement for each clinical/demographic variable is (age in years, treatment by name/dose, level of diagnosis and how heterogeneous). They would also want to know how you picked the exons you used for summarizing the genomic data (UCSC/Ensembl, etc.). They would also want to know any other information about how you did the data collection/study design. For example, are these the first 20 patients that walked into the clinic? Are they 20 highly selected patients by some characteristic like age? Are they randomized to treatments? 
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | datasharing | code variables}
+  \frametitle{知识拓展 | datasharing | code variables}
   When you put variables into a spreadsheet there are several main categories you will run into depending on their data type:
   \begin{enumerate}
     \item Continuous
@@ -2806,21 +2806,21 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | code variables}
+  \frametitle{知识拓展 | datasharing | code variables}
   In general, try to avoid coding categorical or ordinal variables as numbers. When you enter the value for sex in the tidy data, it should be "male" or "female". The ordinal values in the data set should be "poor", "fair", and "good" not 1, 2 ,3. This will avoid potential mixups about which direction effects go and will help identify coding errors.\\
   \vspace{1em}
   Always encode every piece of information about your observations using \textbf{text}. For example, if you are storing data in Excel and use a form of colored text or cell background formatting to indicate information about an observation ("red variable entries were observed in experiment 1.") then this information will not be exported (and will be lost!) when the data is exported as raw text. Every piece of data should be encoded as actual text that can be exported. 
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | datasharing | instruction list/script}
+  \frametitle{知识拓展 | datasharing | instruction list/script}
   You may have heard this before, but reproducibility is kind of a big deal in computational science. That means, when you submit your paper, the reviewers and the rest of the world should be able to exactly replicate the analyses from raw data all the way to final results. If you are trying to be efficient, you will likely perform some summarization/data analysis steps before the data can be considered tidy.\\
   \vspace{1em}
   The ideal thing for you to do when performing summarization is to create a computer script (in \verb|R|, \verb|Python|, or something else) that takes the raw data as input and produces the tidy data you are sharing as output. You can try running your script a couple of times and see if the code produces the same output. 
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | instruction list/script}
+  \frametitle{知识拓展 | datasharing | instruction list/script}
   In many cases, the person who collected the data has incentive to make it tidy for a statistician to speed the process of collaboration. They may not know how to code in a scripting language. In that case, what you should provide the statistician is something called pseudocode. It should look something like:
   \begin{enumerate}
     \item Step 1 - take the raw file, run version 3.1.2 of summarize software with parameters a=1, b=2, c=3
@@ -2832,12 +2832,12 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | expect from the analyst}
+  \frametitle{知识拓展 | datasharing | expect from the analyst}
   When you turn over a properly tidied data set it dramatically decreases the workload on the statistician. So hopefully they will get back to you much sooner. But most careful statisticians will check your recipe, ask questions about steps you performed, and try to confirm that they can obtain the same tidy data that you did with, at minimum, spot checks.
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | datasharing | expect from the analyst}
+  \frametitle{知识拓展 | datasharing | expect from the analyst}
   You should then expect from the statistician:
   \begin{enumerate}
     \item An analysis script that performs each of the analyses (not just instructions)
@@ -2849,7 +2849,7 @@ foreach $family ( keys %TV ) {
 
 \subsection{宽格式和长格式的数据}
 \begin{frame}
-  \frametitle{扩展知识 | data | wide vs. long}
+  \frametitle{知识拓展 | data | wide vs. long}
   \begin{block}{wide-format}
   Wide data has a column for each variable.
   \end{block}
@@ -2868,7 +2868,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | data | wide vs. long}
+  \frametitle{知识拓展 | data | wide vs. long}
   \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{c8.code.data.wide.01.png}
@@ -2877,7 +2877,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | data | wide vs. long}
+  \frametitle{知识拓展 | data | wide vs. long}
   \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{c8.code.data.wide.02.png}
@@ -2887,7 +2887,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | data | wide vs. long}
+  \frametitle{知识拓展 | data | wide vs. long}
   \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{c8.code.data.wide.vs.long.png}
@@ -2895,7 +2895,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | data | wide2long}
+  \frametitle{知识拓展 | data | wide2long}
   \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{c8.code.data.wide2long.png}
@@ -2903,7 +2903,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | data | long2wide}
+  \frametitle{知识拓展 | data | long2wide}
   \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{c8.code.data.long2wide.png}
@@ -2912,7 +2912,7 @@ foreach $family ( keys %TV ) {
 
 \subsection{数据处理实例}
 \begin{frame}
-  \frametitle{扩展知识 | example | Tidy data}
+  \frametitle{知识拓展 | example | Tidy data}
   \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{c8.code.data.tidy.02.png}
@@ -2920,7 +2920,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | example | wide vs. long}
+  \frametitle{知识拓展 | example | wide vs. long}
   \begin{figure}
     \centering
     \includegraphics[width=0.51\textwidth]{c8.code.data.wide.03.png}\qquad
@@ -2929,7 +2929,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | example | Reshaping data}
+  \frametitle{知识拓展 | example | Reshaping data}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.data.w2l.png}\\
@@ -2939,7 +2939,7 @@ foreach $family ( keys %TV ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | example | R}
+  \frametitle{知识拓展 | example | R}
 \begin{lstlisting}[language=r]
 library(readr)
 library(tidyr)
@@ -2947,7 +2947,7 @@ library(dplyr)
 library(stringr)
 library(ggplot2)
 
-score_wide <- read_csv("score.csv")
+score_wide <- read_csv("score_2013.csv")
 score_long <- gather(score_wide, "class", "score", 3:7)
 
 score_long <- score_long %>% mutate(id2=as.factor(str_replace(id, "20130521", "")))
@@ -2955,7 +2955,7 @@ score_long <- score_long %>% mutate(id2=as.factor(str_replace(id, "20130521", ""
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | example | R}
+  \frametitle{知识拓展 | example | R}
 \begin{lstlisting}[language=r]
 score_long2 <- score_long %>% filter(str_detect(class, "e"))
 
@@ -2967,7 +2967,7 @@ ggsave("exp_boxplog.png", gb)
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.bp.png}
@@ -2975,7 +2975,7 @@ ggsave("exp_boxplog.png", gb)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | example | R}
+  \frametitle{知识拓展 | example | R}
 \begin{lstlisting}[language=r]
 gl <- ggplot(score_long2, aes(class, score, group=id2))
 gl <- gl + geom_point()
@@ -2986,7 +2986,7 @@ ggsave("id_lineplot.png", gl)
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.lp.png}
@@ -2994,7 +2994,7 @@ ggsave("id_lineplot.png", gl)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | example | R}
+  \frametitle{知识拓展 | example | R}
 \begin{lstlisting}[language=r]
 lm_eqn <- function(df) {
   m <- lm(final ~ exp, df)
@@ -3009,7 +3009,7 @@ lm_eqn <- function(df) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | example | R}
+  \frametitle{知识拓展 | example | R}
 \begin{lstlisting}[language=r]
 score_wide2 <- score_wide %>% group_by(id,name,final) %>% summarise(exp=mean(c(e6,e7,e8,e9))) 
 
@@ -3023,7 +3023,7 @@ ggsave("correlation_plot.png", gr)
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.cor.01.png}
@@ -3031,7 +3031,7 @@ ggsave("correlation_plot.png", gr)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{扩展知识 | example | R}
+  \frametitle{知识拓展 | example | R}
 \begin{lstlisting}[language=r]
 id1 <- score_wide2[which.min(score_wide2$final),]$id
 score_wide3 <- score_wide2 %>% filter(id!=id1)
@@ -3046,10 +3046,38 @@ ggsave("correlation_plot_correct.png", gr2)
 \end{frame}
 
 \begin{frame}
-  \frametitle{扩展知识 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.cor.02.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{知识拓展 | example | R}
+\begin{lstlisting}[basicstyle=\footnotesize\tt]
+m <- lm(final ~ exp, score_wide3)
+score2014 <- read_csv("score_2014.csv")
+mp <- predict(m, score2014, interval="prediction")
+s4 <- bind_cols(score2014, as.data.frame(mp))
+colnames(s4) <- c("ID", "name", "exp", "final", "fl", "fu")
+s4 <- s4 %>% mutate(id=as.factor(str_replace(ID, "20140521", "")))
+g <- ggplot(s4, aes(x=id, y=final, fill=id))
+g <- g + theme_gray(base_size=18)
+g <- g + geom_bar(stat="identity")
+g <- g + geom_errorbar(aes(ymin=fl, ymax=fu), width=0.2)
+g <- g + geom_hline(yintercept=60, color="red", size=1.5)
+g <- g + labs(x="Student ID", y="Predicted final exam score")
+g <- g + guides(fill=FALSE)
+ggsave("prediction_2014.png", g, width=10)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{知识拓展 | example | R | plot}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.95\textwidth]{c8.code.r.pre.png}
   \end{figure}
 \end{frame}
 
