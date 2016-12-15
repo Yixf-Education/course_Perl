@@ -2946,6 +2946,8 @@ library(tidyr)
 library(dplyr)
 library(stringr)
 library(ggplot2)
+library(ComplexHeatmap)
+library(circlize)
 
 score_wide <- read_csv("score_2013.csv")
 score_long <- gather(score_wide, "class", "score", 3:7)
@@ -2955,19 +2957,19 @@ score_long <- score_long %>% mutate(id2=as.factor(str_replace(id, "20130521", ""
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{知识拓展 | example | R}
+  \frametitle{知识拓展 | example | R | boxplot}
 \begin{lstlisting}[language=r]
 score_long2 <- score_long %>% filter(str_detect(class, "e"))
 
 gb <- ggplot(score_long2, aes(class, score))
-gb <- gb + geom_boxplot(aes(color=class))
+gb <- gb + geom_boxplot(aes(fill=class, color=class), alpha=0.5)
 
-ggsave("exp_boxplog.png", gb)
+ggsave("exp_boxplot.png", gb)
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}
-  \frametitle{知识拓展 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot | boxplot}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.bp.png}
@@ -2975,7 +2977,59 @@ ggsave("exp_boxplog.png", gb)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{知识拓展 | example | R}
+  \frametitle{知识拓展 | example | R | violin}
+\begin{lstlisting}[language=r]
+gv <- ggplot(score_long2, aes(class, score))
+gv <- gv + geom_violin(aes(fill=class, color=class), alpha=0.2)
+gv <- gv + geom_boxplot(aes(fill=class, color=class), width=0.1)
+gv <- gv + stat_summary(fun.y="mean", geom="point", shape=23, size=3, fill="red")
+gv <- gv + stat_summary(fun.y="median", geom="point", shape=21, size=3, fill="blue")
+gv <- gv + geom_dotplot(binaxis="y", binwidth=0.3, stackdir="center", fill=NA)
+
+ggsave("exp_violin.png", gv)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{知识拓展 | example | R | plot | violin}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{c8.code.r.vp.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{知识拓展 | example | R | heatmap}
+\begin{lstlisting}[language=r,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+tri2mat <- function(tp, pf) {
+  tp <- cbind(tp, rep(NA, nrow(tp)))
+  tp <- rbind(rep(NA, ncol(tp)), tp)
+  colnames(tp) <- pf; rownames(tp) <- pf
+  tp[upper.tri(tp)] <- t(tp)[upper.tri(tp)]
+  tp
+}
+
+t_test <- pairwise.t.test(score_long2$score, score_long2$class, p.adjust.method="none", pool.sd=FALSE)
+tp <- t_test$p.value
+pf <- levels(as.factor(score_long2$class))
+tm <- tri2mat(tp, pf)
+col = colorRamp2(seq(min(tm, na.rm=TRUE), max(tm, na.rm=TRUE), length=3), c("red", "#EEEEEE", "blue"), space="RGB")
+png("exp_heatmap.png", width=1024, height=960, res=200)
+Heatmap(tm, col=col, heatmap_legend_param=list(title="p.value"), cluster_rows=FALSE, cluster_columns=FALSE)
+dev.off()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{知识拓展 | example | R | plot | heatmap}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{c8.code.r.hm.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{知识拓展 | example | R | line}
 \begin{lstlisting}[language=r]
 gl <- ggplot(score_long2, aes(class, score, group=id2))
 gl <- gl + geom_point()
@@ -2986,7 +3040,7 @@ ggsave("id_lineplot.png", gl)
 \end{frame}
 
 \begin{frame}
-  \frametitle{知识拓展 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot | line}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.lp.png}
@@ -2994,7 +3048,7 @@ ggsave("id_lineplot.png", gl)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{知识拓展 | example | R}
+  \frametitle{知识拓展 | example | R | correlation(1/3)}
 \begin{lstlisting}[language=r]
 lm_eqn <- function(df) {
   m <- lm(final ~ exp, df)
@@ -3009,21 +3063,23 @@ lm_eqn <- function(df) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{知识拓展 | example | R}
+  \frametitle{知识拓展 | example | R | correlation(2/3)}
 \begin{lstlisting}[language=r]
+plot_cor <- function (df){
+  gr <- ggplot(df, aes(exp, final))
+  gr <- gr + geom_point()
+  gr <- gr + geom_smooth(method="lm", color="red", formula=y~x)
+  gr <- gr + geom_text(x=82, y=100, label=lm_eqn(df), parse=TRUE, size=5, color="blue")
+}
+
 score_wide2 <- score_wide %>% group_by(id,name,final) %>% summarise(exp=mean(c(e6,e7,e8,e9))) 
-
-gr <- ggplot(score_wide2, aes(exp, final))
-gr <- gr + geom_point()
-gr <- gr + geom_smooth(method="lm", color="red", formula=y~x)
-gr <- gr + geom_text(x=82, y=100, label=lm_eqn(score_wide2), parse=TRUE, size=5, color="blue")
-
+gr <- plot_cor(score_wide2)
 ggsave("correlation_plot.png", gr)
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}
-  \frametitle{知识拓展 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot | correlation(1/2)}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.cor.01.png}
@@ -3031,22 +3087,19 @@ ggsave("correlation_plot.png", gr)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{知识拓展 | example | R}
+  \frametitle{知识拓展 | example | R | correlation(3/3)}
 \begin{lstlisting}[language=r]
 id1 <- score_wide2[which.min(score_wide2$final),]$id
 score_wide3 <- score_wide2 %>% filter(id!=id1)
 
-gr2 <- ggplot(score_wide3, aes(exp, final))
-gr2 <- gr2 + geom_point()
-gr2 <- gr2 + geom_smooth(method="lm", color="red", formula=y~x)
-gr2 <- gr2 + geom_text(x=82, y=100, label=lm_eqn(score_wide3), parse=TRUE, size=5, color="blue")
+gr2 <- plot_cor(score_wide3)
 
 ggsave("correlation_plot_correct.png", gr2)
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}
-  \frametitle{知识拓展 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot | correlation(2/2)}
   \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{c8.code.r.cor.02.png}
@@ -3054,14 +3107,15 @@ ggsave("correlation_plot_correct.png", gr2)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{知识拓展 | example | R}
-\begin{lstlisting}[basicstyle=\footnotesize\tt]
+  \frametitle{知识拓展 | example | R | bar}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 m <- lm(final ~ exp, score_wide3)
 score2014 <- read_csv("score_2014.csv")
 mp <- predict(m, score2014, interval="prediction")
 s4 <- bind_cols(score2014, as.data.frame(mp))
 colnames(s4) <- c("ID", "name", "exp", "final", "fl", "fu")
 s4 <- s4 %>% mutate(id=as.factor(str_replace(ID, "20140521", "")))
+
 g <- ggplot(s4, aes(x=id, y=final, fill=id))
 g <- g + theme_gray(base_size=18)
 g <- g + geom_bar(stat="identity")
@@ -3074,7 +3128,7 @@ ggsave("prediction_2014.png", g, width=10)
 \end{frame}
 
 \begin{frame}
-  \frametitle{知识拓展 | example | R | plot}
+  \frametitle{知识拓展 | example | R | plot | barplot}
   \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{c8.code.r.pre.png}
