@@ -414,9 +414,9 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 \begin{frame}
   \frametitle{酶切图谱 | 限制酶 | 简介}
   \begin{block}{限制酶}
-    限制酶（restriction enzyme）又称限制内切酶或限制性内切酶（restriction endonuclease），全称限制性核酸内切酶，是一种能将双股DNA切开的酶。\\
+    限制酶（restriction enzyme）又称限制内切酶或限制性内切酶（restriction endonuclease），全称限制性核酸内切酶，是一种能将双链DNA切开的酶。\\
     \vspace{1em}
-    切割方法是将糖类分子与磷酸之间的键切断，进而于两条DNA链上各产生一个切口，且不破坏核苷酸与碱基。切割形式有两种，分别是可产生具有突出单股DNA的黏状末端，以及末端平整无凸起的平滑末端。由于断开的DNA片段可由DNA连接酶黏合，因此染色体或DNA上不同的限制片段，可以经由剪接作用而结合在一起。\\
+    切割方法是将糖类分子与磷酸之间的键切断，进而于两条DNA链上各产生一个切口，且不破坏核苷酸与碱基。切割形式有两种，分别是可产生具有突出单链DNA的黏状末端，以及末端平整无凸起的平滑末端。由于断开的DNA片段可由DNA连接酶黏合，因此染色体或DNA上不同的限制片段，可以经由剪接作用而结合在一起。\\
     \vspace{1em}
     限制酶在分子生物学与遗传工程领域有广泛的应用。
   \end{block}
@@ -424,10 +424,10 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 
 \begin{frame}
   \frametitle{酶切图谱 | 限制酶 | 分类}
-  根据限制酶的结构，辅因子的需求切位与作用方式，可将限制酶分为三种类型，分别是第一型（Type I）、第二型（Type II）及第三型（Type III）。
+  根据限制酶的结构、辅因子的需求切位与作用方式，可将限制酶分为三种类型，分别是第一型（Type I）、第二型（Type II）及第三型（Type III）。
   \begin{itemize}
     \item 第一型限制酶：同时具有修饰（modification）及识别切割（restriction）的作用；另有识别（recognize）DNA上特定碱基序列的能力，通常其切割位（cleavage site）距离识别位（recognition site）可达数千个碱基之远，并不能准确定位切割位点，所以并不常用。例如：\textit{Eco}B、\textit{Eco}K。
-    \item 第二型限制酶：只具有识别切割的作用，修饰作用由其他酶进行。所识别的位置多为短的\alert{回文序列（palindrome sequence）}；所剪切的碱基序列通常即为所识别的序列。是遗传工程上，实用性较高的限制酶种类。例如：\textit{Eco}RI、\textit{Hin}dIII。
+    \item 第二型限制酶：只具有识别切割的作用，修饰作用由其他酶进行。所识别的位置多为短的\alert{回文序列（palindrome sequence）}；所剪切的碱基序列通常即为所识别的序列。是遗传工程上实用性较高的限制酶种类。例如：\textit{Eco}RI、\textit{Hin}dIII。
     \item 第三型限制酶：与第一型限制酶类似，同时具有修饰及识别切割的作用。可识别短的不对称序列，切割位与识别序列约距24-26个碱基对，并不能准确定位切割位点，所以并不常用。例如：\textit{Eco}PI、\textit{Hin}fIII。
   \end{itemize}
 \end{frame}
@@ -791,7 +791,7 @@ sub parseREBASE {
     use BeginPerlBioinfo;    # see Chapter 6 about this module
 
     # Declare variables
-    my @rebasefile  = ();
+    #my @rebasefile  = ();
     my %rebase_hash = ();
     my $name;
     my $site;
@@ -822,7 +822,7 @@ sub parseREBASE {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.4}
-\begin{lstlisting}[firstnumber=37,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+\begin{lstlisting}[firstnumber=39,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
         # Remove parenthesized names, for simplicity's sake,
         # by not saving the middle field, if any,
         # just the first and last
@@ -839,6 +839,31 @@ sub parseREBASE {
 
     # Return the hash containing the reformatted REBASE data
     return %rebase_hash;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.5}
+\begin{lstlisting}[firstnumber=57,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+##################################################
+# Subroutines
+##################################################
+
+# open_file
+#
+#   - given filename, set filehandle
+
+sub open_file {
+
+    my ($filename) = @_;
+    my $fh;
+
+    unless ( open( $fh, $filename ) ) {
+        print "Cannot open file $filename\n";
+        exit;
+    }
+    return $fh;
 }
 \end{lstlisting}
 \end{frame}
