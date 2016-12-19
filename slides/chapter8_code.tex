@@ -708,7 +708,7 @@ if ( defined $myhash{'mykey'} ) { ... }
 \vspace{1em}
 \alert{关系数据库把数据组织成表格进行存储。}表是以\alert{行和列的形式}组织起来的数据的集合。一个数据库包括一个或多个表。例如，可能有一个有关作者信息的名为authors的表。每列都包含特定类型的信息，如作者的姓氏。每行都包含有关特定作者的所有信息：姓、名、住址等等。在关系型数据库当中一个表就是一个关系，一个关系数据库可以包含多个表。\\
 \vspace{1em}
-数据通常通过一种查询语言进行输入和提取，即\alert{结构化查询语言（SQL, Structured Query Language）语言}。SQL是1974年由Boyce和Chamberlin提出的一种介于关系代数与关系演算之间的结构化查询语言，是一个通用的、功能极强的关系型数据库语言。
+数据通常通过一种查询语言进行输入和提取，即\alert{结构化查询语言（SQL, Structured Query Language）}。SQL是1974年由Boyce和Chamberlin提出的一种介于关系代数与关系演算之间的结构化查询语言，是一个通用的、功能极强的关系型数据库语言。
 \end{frame}
 
 \begin{frame}
@@ -791,6 +791,28 @@ dbmclose %HASH;  # close the database
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{数据结构和算法 | DBM | Perl | \textcolor{gray}{实例}}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+use warnings; use strict;
+ 
+my %MYDB;
+# 创建或打开DBM；如果是新建DBM，会自动生成mydb.dir和mydb.pag两个文件
+dbmopen(%MYDB, "mydb", 0644)  or die "Can not access the database";
+
+# 添加key/value对
+$MYDB{name1} = "will1"; $MYDB{name2} = "will2";
+# 读取内容
+foreach my $key (keys %MYDB) {
+  print "$key\t$MYDB{$key}\n";
+}
+
+# 关闭DBM
+dbmclose(%MYDB) or die "Can not close database";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{数据结构和算法 | DBM | Perl | tie}
 \begin{lstlisting}
 use DB_File;  # load database module
@@ -832,28 +854,6 @@ delete $h{"apple"};
 while ( ( $k, $v ) = each %h ) { print "$k -> $v\n" }
 
 untie %h;
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{数据结构和算法 | DBM | Perl | 实例}
-\begin{lstlisting}[basicstyle=\small\tt]
-#!/usr/bin/perl
-use warnings; use strict;
- 
-my %MYDB;
-# 创建或打开DBM；如果是新建DBM，会自动生成mydb.dir和mydb.pag两个文件
-dbmopen(%MYDB, "mydb", 0644)  or die "Can not access the database";
-
-# 添加key/value对
-$MYDB{name1} = "will1"; $MYDB{name2} = "will2";
-# 读取内容
-foreach my $key (keys %MYDB) {
-  print "$key\t$MYDB{$key}\n";
-}
-
-# 关闭DBM
-dbmclose(%MYDB) or die "Can not close database";
 \end{lstlisting}
 \end{frame}
 
