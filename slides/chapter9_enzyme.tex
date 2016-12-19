@@ -163,7 +163,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \begin{block}{正则理论}
     正则表达式可以用形式化语言理论的方式来表达。\\
     \vspace{1em}
-    \alert{正则表达式由常量和算子组成，它们分别指示字符串的集合和在这些集合上的运算。}
+    \alert{正则表达式由常量和算子组成，它们分别表示字符串的集合和在这些集合上的运算。}
   \end{block}
   \pause
   \begin{block}{形式语言}
@@ -174,18 +174,18 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 \begin{frame}
   \frametitle{酶切图谱 | 正则表达式 | 理论 | 常量}
   \begin{description}
-    \item[空集] $\varnothing$ 指示集合 $\varnothing$
-    \item[空串] $\varepsilon$ 指示集合 \{$\varepsilon$\}
-    \item[文字字符] $\Sigma$ 中的a指示集合\{a\}
+    \item[空集] $\varnothing$ 表示集合 $\varnothing$
+    \item[空串] $\varepsilon$ 表示集合 \{$\varepsilon$\}
+    \item[文字字符] $\Sigma$ 中的a表示集合\{a\}
   \end{description}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 正则表达式 | 理论 | 运算}
   \begin{description}
-    \item[串接] RS指示集合\{ $\alpha\beta$ $|$ $\alpha$ $\in$  $R,$ $\beta$ $\in$ $S$ \}。例如：\\ \verb|{"ab", "c"}{"d", "ef"}| \\\verb|= {"abd", "abef", "cd", "cef"}|。
-    \item[选择] R|S指示R和S的并集。例如：\\ \verb+{"ab", "c"}|{"ab", "d", "ef"}={"ab", "c", "d", "ef"}+。
-    \item[Kleene星号] \verb|R*|指示包含$\varepsilon$并且闭合在字符串串接下的R的最小超集。这是通过R中的零或多个字符串的串接得到的所有字符串的集合。例如：\\ \verb|{"ab", "c"}*|\\ \verb|= {|$\varepsilon$\verb|,"ab","c","abab","abc","cab","cc","ccc",...}|。
+    \item[串接] RS表示集合\{ $\alpha\beta$ $|$ $\alpha$ $\in$  $R,$ $\beta$ $\in$ $S$ \}。例如：\\ \verb|{"ab", "c"}{"d", "ef"}| \\\verb|= {"abd", "abef", "cd", "cef"}|。
+    \item[选择] R|S表示R和S的并集。例如：\\ \verb+{"ab", "c"}|{"ab", "d", "ef"}={"ab", "c", "d", "ef"}+。
+    \item[Kleene星号] \verb|R*|表示包含$\varepsilon$并且闭合在字符串串接下的R的最小超集。这是通过R中的零或多个字符串的串接得到的所有字符串的集合。例如：\\ \verb|{"ab", "c"}*|\\ \verb|= {|$\varepsilon$\verb|,"ab","c","abab","abc","cab","cc","ccc",...}|。
   \end{description}
 \end{frame}
 
@@ -206,9 +206,9 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 正则表达式 | 理论 | 实例}
   \begin{itemize}
-    \item \verb=a|b*=指示 \verb={a, =$\varepsilon$\verb=, b, bb, bbb, ...}=。
-    \item \verb=(a|b)*=指示由包括空串、任意数目个a或b字符组成的所有字符串的集合。
-    \item \verb=ab*(c|=$\varepsilon$\verb=)=指示开始于一个a接着零或多个b和最终可选的一个c的字符串的集合。
+    \item \verb=a|b*=表示 \verb={a, =$\varepsilon$\verb=, b, bb, bbb, ...}=。
+    \item \verb=(a|b)*=表示由包括空串、任意数目个a或b字符组成的所有字符串的集合。
+    \item \verb=ab*(c|=$\varepsilon$\verb=)=表示开始于一个a接着零或多个b和最终可选的一个c的字符串的集合。
   \end{itemize}
 \end{frame}
 
