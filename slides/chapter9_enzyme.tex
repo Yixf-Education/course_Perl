@@ -885,6 +885,24 @@ sub open_file {
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | \alert{范围操作符}}
+\begin{lstlisting}
+foreach my $number (100..200) {
+    print "$number is a very big number\n";
+}
+
+foreach my $letter ("a".."z", "A".."Z") {
+    print "I know the letter $letter\n";
+}
+
+# a..z          = 26 combinations
+# aa..zz        = 676 combinations
+# aaa..zzz      = 17576 combinations
+# aaaa..zzzz    = 456976 combinations
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | \alert{逻辑操作符}}
   \begin{block}{逻辑操作符（logical operator）}
     \begin{itemize}
@@ -973,6 +991,65 @@ open(MYFILE, $file) or die "I cannot open file $file: $!";
 
 # 跳过空白行
 /^\s*$/ and next;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | 循环控制}
+  \begin{block}{next}
+    The \textbf{next} function immediately sends a loop back to check its condition statement and start over. No code from the rest of the block is run. You can use this to skip over certain values when processing a list.
+  \end{block}
+  \pause
+\begin{lstlisting}
+my @days = ("Mon","Tue","Wed","Thur","Fri","Sat","Sun");
+foreach my $day (@days) {
+    next if ($day eq "Sun" or $day eq "Sat");
+    print "Ho hum it's $day - time to go to work\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | 循环控制}
+  \begin{block}{last}
+    {\small To break out of a loop completely you can use the \textbf{last} function. This exits the loop immediately and moves on to the next statement below the loop. Using \textbf{last} you can break out of what would otherwise appear to be an infinite loop.}
+  \end{block}
+  \vspace{-0.5em}
+  \pause
+\begin{lstlisting}
+while (1) { # Infinite loop
+    my $guess = int(rand(10));
+    if ($guess==5) {
+        print "You guessed!\n";
+        last;
+    }
+    else {
+        print "No, not $guess, try again!\n";
+   }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | 循环控制}
+  \begin{block}{tag}
+    {\footnotesize Next and last affect whatever is the closest enclosing loop block, but sometimes you want to have a loop within a loop, and be able to use next or last on the outer loop. To do this you can optionally tag a loop with a name which you can use with next and last to move around in nested loops.}
+  \end{block}
+  \vspace{-1em}
+  \pause
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+YEARS: foreach my $year (2000..2005) {
+  if (($year % 4) != 0) {
+    foreach my $month (1..12) {
+      if ($month == 7) { # I only work until July
+        print "Yippee, 6 months off!\n";
+        next YEARS;
+      }
+      print "I do some work in month $month of $year\n";
+    }
+  }
+  print "Ooh $year is a leapyear!\n";
+}
 \end{lstlisting}
 \end{frame}
 
