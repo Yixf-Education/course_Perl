@@ -1,0 +1,420 @@
+\input{snippet/beamer_head.tex}
+\input{snippet/class_head.tex}
+
+\title[其他]{第10..13章\quad GenBank、PDB、BLAST、其他}
+\author[Yixf]{伊现富（Yi Xianfu）}
+\institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
+\date{2016年12月}
+
+\input{snippet/beamer_toc.tex}
+
+
+\section{模式匹配}
+\begin{frame}[fragile]
+  \frametitle{模式匹配 | 界定符 | =$\sim$m}
+\begin{lstlisting}
+if ( $line =~ /^\/\/\n/ ) {
+  last;
+}
+
+if ( $line =~ m!//\n! ) {
+  last;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模式匹配 | 修饰符 | /m}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use warnings;
+
+"AAC\nGTT" =~ /^.*$/;
+print "Without /m:\n", $&, "\n";
+#Without /m:
+#Use of uninitialized value $& in print at XXX.pl line N.
+
+"AAC\nGTT" =~ /^.*$/m;
+print "With /m:\n", $&, "\n";
+#With /m:
+#AAC
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模式匹配 | 修饰符 | /s}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use warnings;
+
+"AAC\nGTT" =~ /^.*$/;
+print "Without /s:\n", $&, "\n";
+#Without /s:
+#Use of uninitialized value $& in print at XXX.pl line N.
+
+"AAC\nGTT" =~ /^.*$/s;
+print "With /s:\n", $&, "\n";
+#With /s:
+#AAC
+#GTT
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模式匹配 | 捕获}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use strict; use warnings;
+
+my $alphabet = join "", 'a' .. 'z';
+$alphabet =~ /k(lmnop)q/;
+print $1, "\n\n";
+#lmnop
+
+$alphabet =~ /(((a)b)c)/;
+print "First pattern = ",  $1, "\n";
+print "Second pattern = ", $2, "\n";
+print "Third pattern = ",  $3, "\n";
+#First pattern = abc
+#Second pattern = ab
+#Third pattern = a
+\end{lstlisting}
+\end{frame}
+
+\section{输入记录分隔符}
+\begin{frame}[fragile]
+  \frametitle{输入记录分隔符}
+\begin{lstlisting}
+my $save_input_separator = $/;
+
+$/ = "//\n";
+$record = <GBFILE>;
+
+$/ = $save_input_separator;
+\end{lstlisting}  
+\end{frame}
+
+\section{读取文件}
+\begin{frame}[fragile]
+  \frametitle{读取文件 | tell \& seek}
+\begin{lstlisting}
+for (;;) {
+    for ($curpos = tell(FILE); $_ = <FILE>; $curpos = tell(FILE)) {
+        # search for some stuff and put it into files
+    }
+    sleep($for_a_while);
+    seek(FILE, $curpos, 0);
+}
+\end{lstlisting}
+\end{frame}
+
+\section{文件夹处理}
+\begin{frame}[fragile]
+  \frametitle{文件夹处理 | 递归}
+\begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
+#!/usr/bin/perl
+use strict; use warnings;
+list_recursively('pdb');
+
+sub list_recursively {
+    my ($directory) = @_;
+    my @files = ();
+    unless ( opendir( DIRECTORY, $directory ) ) {
+        print "Cannot open directory $directory!\n";
+        exit;
+    }
+    @files = grep ( !/^\.\.?$/, readdir(DIRECTORY) );
+    closedir(DIRECTORY);
+    foreach my $file (@files) {
+        if ( -f "$directory/$file" ) {
+            print "$directory/$file\n";
+        }
+        elsif ( -d "$directory/$file" ) {
+            list_recursively("$directory/$file");
+        }
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{文件夹处理 | 模块}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use File::Find;
+#perldoc File::Find
+
+find( \&my_sub, ('pdb') );
+
+sub my_sub {
+    -f and ( print $File::Find::name, "\n" );
+}
+\end{lstlisting}
+\end{frame}
+
+\section{格式化输出}
+\begin{frame}[fragile]
+  \frametitle{格式化输出 | printf}
+\begin{lstlisting}
+while(<>) {
+  /^ATOM/ or next;
+
+  my($n, $x, $y, $z, $element)
+    = ($_ =~ /^.{6}(.{5}).{19}(.{8})(.{8})(.{8}).{22}(..)/);
+
+  $n      =~ s/^\s*//;
+  $element =~ s/^\s*//;
+
+  if (($n == 1) or ($n == 1078)) {
+    printf "%8.3f%8.3f%8.3f %2s\n", $x, $y, $z, $element;
+  }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式化输出 | printf}
+\begin{lstlisting}
+my $first  = '3.14159265';
+my $second  = 76;
+my $third = "Hello world!";
+
+printf STDOUT "A float: %6.4f An integer: %-5d and a string: %s\n", $first, $second,  $third;
+#A float:  3.1416 An integer: 76    and a string: Hello world!
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式化输出 | here文档}
+\begin{lstlisting}
+#!/usr/bin/perl
+use strict; use warnings;
+my $DNA = 'AAACCCCCCGGGGGGGGTTTTTT';
+for ( my $i = 0 ; $i < 2 ; ++$i ) {
+    print <<HEREDOC;
+     On iteration $i of the loop!
+    $DNA
+
+HEREDOC
+}
+#     On iteration 0 of the loop!
+#    AAACCCCCCGGGGGGGGTTTTTT
+#
+#     On iteration 1 of the loop!
+#    AAACCCCCCGGGGGGGGTTTTTT
+#
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式化输出 | format \& write}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+#!/usr/bin/perl
+use strict; use warnings;
+my $id          = 'A0000';
+my $description = 'Highly weird DNA.  This DNA is so unlikely!';
+my $DNA = 'AAAAAACCCCCCCCCCCCCCGGGGGGGGGGGGGGGGGGGGGGTTTTTTTTTTTTTTTTTTTTT';
+# Define the format
+format STDOUT =
+# The header line
+>@<<<<<<<<< @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<...
+$id,        $description
+# The DNA lines
+^<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<~~
+$DNA
+.
+# Print the fasta-formatted DNA output
+write;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{格式化输出 | format \& write}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+>A0000      Highly weird DNA.  This DNA is so un...
+AAAAAACCCCCCCCCCCCCCGGGGGGGGGGGGGGGGGGGGGGTTTTTTTT
+TTTTTTTTTTTTT
+\end{lstlisting}
+\end{frame}
+
+\section{运行外部程序}
+\begin{frame}[fragile]
+  \frametitle{运行外部程序}
+\begin{lstlisting}[basicstyle=\small\tt]
+my $filename = $ARGV[0];
+my $stride = '/usr/local/bin/stride';
+my $options = '';
+# 捕获输出
+my @results = `$stride $options $filename`;
+my $now = `date`;
+my @functions = qw{ int rand length };
+my %about;
+foreach (@functions) {
+  #$about{$_} = `perldoc -t -f $_`;
+  $about{$_} = qx(perldoc -t -f $_);
+}
+
+# 不捕获输出，返回值为程序退出状态
+system "$stride $options $filename";
+system 'date';
+system 'tar', 'cvf', $tarfile, @dirs;
+\end{lstlisting}
+\end{frame}
+
+\section{浮点数比较}
+\begin{frame}[fragile]
+  \frametitle{浮点数比较}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+
+if ( 10 / 3 == ( ( 1 / 3 ) * 10 ) ) {
+    print "Success!\n";
+}
+else { print "Failure!\n"; }
+#Failure!
+
+if ( abs( 10/3 - ( ( 1/3 ) * 10 ) ) < 1e-10 ) {
+    print "Right!\n";
+    print "E=", abs(10/3 - ( (1/3) * 10 )), "\n";
+}
+else { print "Wrong!\n"; }
+#Right!
+#E=4.44089209850063e-16
+\end{lstlisting}
+\end{frame}
+
+\section{BioPerl}
+\begin{frame}[fragile]
+  \frametitle{BioPerl}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+use Bio::SeqIO;
+
+my $string = ">SEQ1\nacgt\n>revseq1\ntgca "; 
+my $format = "fasta";
+
+my $stringfh = IO::String->new($string); 
+open($stringfh, "<", $string) or die "Could not open string for reading: $!";
+
+my $seqio = Bio::SeqIO-> new(-fh     => $stringfh,
+                             -format => $format,
+                            );
+
+while( my $seq = $seqio->next_seq ) {
+   print $seq->id . ' = ' . $seq->seq() . "\n"; 
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{BioPerl}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+use strict; use Bio::SeqIO;
+my $input_file = shift;
+my $seq_in = Bio::SeqIO->new( -format => 'embl',
+                              -file   => $input_file,
+                             );
+my @seq_array; 
+while ( my $seq = $seq_in->next_seq() ) {
+   push(@seq_array,$seq);
+}
+@seq_array = sort { $a->length <=> $b->length } @seq_array;
+my $total = 0; 
+my $count = 0; 
+for my $seq ( @seq_array ) {
+   $total += $seq->length;
+   $count++;
+}
+print "Mean length ", $total/$count, " Median ", 
+      $seq_array[$count/2]->length, "\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{BioPerl}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+use Bio::SeqIO;
+
+my $usage = "x2y.pl infile informat outfile outformat "; 
+my $infile = shift or die $usage; 
+my $informat = shift or die $usage; 
+my $outfile = shift or die $usage; 
+my $outformat = shift or die $usage;
+
+my $seq_in = Bio::SeqIO->new( -file   => "$infile",
+                              -format => $informat,
+                            );
+my $seq_out = Bio::SeqIO->new( -file   => ">$outfile",
+                               -format => $outformat,
+                             );
+while (my $inseq = $seq_in->next_seq) {
+   $seq_out->write_seq($inseq);
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{BioPerl}
+\begin{lstlisting}[basicstyle=\tiny\tt,numberstyle=\tiny]
+use Bio::SeqIO;
+my $usage = "splitgb.pl infile "; my $infile = shift or die $usage;
+my $inseq = Bio::SeqIO->new( -file   => "<$infile", -format => 'Genbank',);
+my %outfiles = ( human => {
+                         Genbank => Bio::SeqIO->new(
+                                                    -file   => '>human.gb',
+                                                    -format => 'Genbank',
+                                                    ),
+                         Fasta   => Bio::SeqIO->new(
+                                                    -file   => '>human.fa',
+                                                    -format => 'Fasta',
+                                                    ),
+                         },
+                 other => {
+                         Genbank => Bio::SeqIO->new(
+                                                    -file   => '>other.gb',
+                                                    -format => 'Genbank',),
+                         Fasta   => Bio::SeqIO->new(
+                                                    -file => '>other.fa',
+                                                    -format => 'Fasta',),
+                         }
+               );
+while (my $seqin = $inseq->next_seq) {
+   if ($seqin->species->binomial =~ m/Homo sapiens/) {
+       $outfiles{'human'}->{'Genbank'}->write_seq($seqin);
+       $outfiles{'human'}->{'Fasta'}->write_seq($seqin);
+   } else {
+       $outfiles{'other'}->{'Genbank'}->write_seq($seqin);
+       $outfiles{'other'}->{'Fasta'}->write_seq($seqin);
+   }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{BioPerl}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+use Bio::DB::GenBank;
+use Bio::DB::Query::GenBank;
+
+$query = "Arabidopsis[ORGN] AND topoisomerase[TITL] and 0:3000[SLEN]"; 
+$query_obj = Bio::DB::Query::GenBank->new(-db => 'nucleotide', 
+                                          -query => $query );
+
+$gb_obj = Bio::DB::GenBank->new;
+
+$stream_obj = $gb_obj->get_Stream_by_query($query_obj);
+
+while ($seq_obj = $stream_obj->next_seq) {
+    # do something with the sequence object    
+    print $seq_obj->display_id, "\t", $seq_obj->length, "\n";
+}
+\end{lstlisting}
+\end{frame}
+
+
+\input{snippet/class_tail.tex}
