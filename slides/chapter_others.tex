@@ -11,6 +11,22 @@
 
 \section{模式匹配}
 \begin{frame}[fragile]
+  \frametitle{模式匹配 | 单词}
+\begin{lstlisting}
+my $name = "manfred";
+
+if ($name =~/fred/) {
+    print "You could be fred\n";
+}
+#You could be fred
+
+if ($name =~ /\bfred\b/) {
+    print "You ARE fred\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{模式匹配 | 界定符 | =$\sim$m}
 \begin{lstlisting}
 if ( $line =~ /^\/\/\n/ ) {
@@ -84,6 +100,54 @@ print "Third pattern = ",  $3, "\n";
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{模式匹配 | 捕获}
+\begin{lstlisting}[basicstyle=\small\tt]
+my $string = "File code=123 name=test.txt";
+if ($string =~ /code=(\d+)\s+name=([\w\.]+)/) {
+    print "Code is $1\nName is '$2'\n";
+}
+\end{lstlisting}
+\begin{lstlisting}[basicstyle=\small\tt]
+my %q_count;
+while (<>) {
+    while (/\b(Q\w+)\b/g) {
+        ++$q_count{$1};
+    }
+}
+foreach my $word (sort {$q_count{$b}<=>$q_count{$a}} keys %q_count) {
+    print "The word $word appeared ",$q_count{$word}," times\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模式匹配 | 正则表达式}
+  \begin{block}{When not to use Regular Expressions}
+    \begin{itemize}
+      \item Splitting delimited data: \texttt{split}
+      \item Swapping single characters: \texttt{tr}
+      \item Extracting fixed position data: \texttt{substr}
+      \item Finding the position of an exact string: \texttt{index}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模式匹配 | index}
+\begin{lstlisting}
+my $string = "xxxxxxhixxxxxxxxxhixxxxxxxxhi";
+my $lastpos = 0;
+
+while (1){
+    my $pos = index($string,"hi",$lastpos);
+    last if ($pos == -1); # Substring not found
+    print "Found hi at index $pos\n";
+    $lastpos = ++$pos;
+}
+\end{lstlisting}
+\end{frame}
+
 \section{输入记录分隔符}
 \begin{frame}[fragile]
   \frametitle{输入记录分隔符}
@@ -154,6 +218,24 @@ find( \&my_sub, ('pdb') );
 
 sub my_sub {
     -f and ( print $File::Find::name, "\n" );
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{文件夹处理 | 通配}
+\begin{lstlisting}
+# <*>
+my @files = <*.doc>;
+print "I have ",scalar @files," doc files in my work directory\n";
+
+# glob
+my @files2 = glob("*.rtf");
+print "I have ",scalar @files2," rtf files in my work directory\n";
+
+chdir ("/home") or die "Can't move to work directory: $!";
+while (my $file = <*.doc>) {
+    print "Found file $file\n";
 }
 \end{lstlisting}
 \end{frame}
@@ -286,6 +368,153 @@ if ( abs( 10/3 - ( ( 1/3 ) * 10 ) ) < 1e-10 ) {
 else { print "Wrong!\n"; }
 #Right!
 #E=4.44089209850063e-16
+\end{lstlisting}
+\end{frame}
+
+\section{引用}
+\begin{frame}[fragile]
+  \frametitle{引用 | 匿名}
+\begin{lstlisting}
+my @array = (1, 2, 3, 4);
+my $slow_arrayref = \@array;
+my $quick_arrayref = [1, 2, 3, 4];
+
+my %hash = (
+    dog => 'woof',
+    cat => 'meow',
+);
+my $slow_hashref = \%hash;
+my $quick_hashref = {
+    dog => 'woof',
+    cat => 'meow',
+};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 解引用}
+\begin{lstlisting}
+my $arrayref = [10, 20, 30];
+print "First element is ", $$arrayref[0],  "\n";
+print "First element is ", $arrayref->[0], "\n";
+
+my $hashref = {
+    duck => 'quack',
+};
+print "The duck says ", $$hashref{duck},  "\n";
+print "The duck says ", $hashref->{duck}, "\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 拷贝}
+\begin{lstlisting}
+my @original = (2, 4, 6, 8);
+my @copy = @original;
+for (0..$#copy){ $copy[$_] *= 10; }
+print "Copy says ",$copy[1]," but original was ",$original[1];
+# The copy is altered so the second element is 40, but the original still says 4.
+
+my $original = [2, 4, 6, 8];
+my $copy = $original;
+for (0..(@$copy-1)){ $copy->[$_] *= 10; }
+print "Copy says ",$copy->[1]," but original was ",$original->[1];
+# Both the original and copy references point to an array whose second element is 40.
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{引用 | 复杂数据结构}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c9.enzyme.ref.cds.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构}
+\begin{lstlisting}[basicstyle=\small\tt]
+my %countries;
+my %uk_info = (
+    population => 60441457,
+    language => 'English',
+    currency => 'Pounds',
+);
+my %france_info = (
+    population => 60656178, language => 'French', currency => 'Euros',
+);
+my %ireland_info = ( ... );
+
+$countries{uk} = \%uk_info;
+$countries{france} = \%france_info;
+#$countries{ireland} = \%ireland_info;
+
+print "Population of France is ",
+    $countries{france}->{population},"\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构}
+\begin{lstlisting}[basicstyle=\small\tt]
+my %countries = (
+    uk => {
+        population => 60441457,
+        language => 'English',
+        currency => 'Pounds',
+    },
+    france => {
+        population => 60656178,
+        language => 'French',
+        currency => 'Euros',
+    },
+    ireland => {
+        ...
+    },
+);
+
+print "Population of France is ",
+    $countries{france}->{population},"\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构}
+\begin{lstlisting}[basicstyle=\small\tt]
+my %countries;
+
+$countries{uk}     -> {population} = 60441457;
+$countries{france} -> {population} = 60656178;
+$countries{france} -> {currency}   = 'Euros';
+
+print "Population of France is ",
+    $countries{france}->{population},"\n";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+my @experiments = (
+    {
+        sample_id => 1,
+        sample_name => 'kidney',
+        sample_measures => [12,56,34,65,76],
+    },
+    {
+        sample_id => 4,
+        sample_name => 'liver',
+        sample_measures => [24,66,12,17,26],
+    },
+    { ... },
+);
+
+foreach my $expt (@experiments) {
+    print "The first measure for sample ",
+          $expt->{sample_id},
+          " (",$expt->{sample_name},") was ",
+          $expt->{sample_measures}->[0],"\n";
+}
 \end{lstlisting}
 \end{frame}
 
