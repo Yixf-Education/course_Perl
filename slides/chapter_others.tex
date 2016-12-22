@@ -240,6 +240,22 @@ while (my $file = <*.doc>) {
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{文件夹处理 | 定位}
+\begin{lstlisting}
+#!/usr/bin/perl
+use warnings; use strict;
+
+# If you want to open a file in a location relative to the location of your script then you can use the FindBin module to get the filesystem location of your Perl program.
+use FindBin qw($Bin);
+
+# This code will add the ExtraModules directory to the module search path.
+use lib "$Bin/ExtraModules";
+
+print "Script is located in $Bin\n";
+\end{lstlisting}
+\end{frame}
+
 \section{格式化输出}
 \begin{frame}[fragile]
   \frametitle{格式化输出 | printf}
@@ -325,9 +341,36 @@ TTTTTTTTTTTTT
 \end{lstlisting}
 \end{frame}
 
-\section{运行外部程序}
+\section{与外部程序进行交互}
 \begin{frame}[fragile]
-  \frametitle{运行外部程序}
+  \frametitle{外部程序 | 运行 | 简介}
+  \begin{block}{用途}
+    Using the functions described in this next slide it is straightforward to either pass data through an external program as part of your Perl script, use Perl as a glue language to automate the execution of other programs, or simply use Perl as a convenient way to launch anther program.
+  \end{block}
+  \pause
+  \begin{block}{三种方法}
+    There are three different functions you can use within Perl to launch an external program. These are \verb|system|, backticks (\verb|` `|) and \verb|exec| and they all have slightly different purposes.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{外部程序 | 运行 | 方法}
+  \begin{block}{system}
+    System is used where you want to launch an external program and check that it worked, but
+you don't need to collect any data back from it.
+  \end{block}
+  \pause
+  \begin{block}{backticks}
+    If you want to get hold of the output of programs then you need to use backticks rather than system.
+  \end{block}
+  \pause
+  \begin{block}{exec}
+    Exec is a somewhat unusual function in perl as it causes execution of your perl program to end immediately, and your running perl program is replaced by whatever program you specify.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{外部程序 | 运行 | 举例}
 \begin{lstlisting}[basicstyle=\small\tt]
 my $filename = $ARGV[0];
 my $stride = '/usr/local/bin/stride';
@@ -335,7 +378,7 @@ my $options = '';
 # 捕获输出
 my @results = `$stride $options $filename`;
 my $now = `date`;
-my @functions = qw{ int rand length };
+my @functions = qw( int rand length );
 my %about;
 foreach (@functions) {
   #$about{$_} = `perldoc -t -f $_`;
@@ -347,6 +390,34 @@ system "$stride $options $filename";
 system 'date';
 system 'tar', 'cvf', $tarfile, @dirs;
 \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{外部程序 | 管道 | 接入}
+  \begin{block}{Piping data out of an external program}
+\begin{lstlisting}
+open (my $log, "tail -f /var/log/httpd/access_log |") or die "Can't open pipe to web logs: $!";
+
+while (<$log>) {
+    if (/Safari/) {
+        print "Oooh, a Mac user...\n";
+    }
+}
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{外部程序 | 管道 | 导出}
+  \begin{block}{Piping data into an external program}
+\begin{lstlisting}
+open (my $zip, "| zip compress.zip -") or die "Can't open pipe to zip: $!";
+
+print $zip "I want to be smaller...";
+
+close $zip or die "Can't close pipe to zip : $!";
+\end{lstlisting}
+  \end{block}
 \end{frame}
 
 \section{浮点数比较}
@@ -515,6 +586,144 @@ foreach my $expt (@experiments) {
           " (",$expt->{sample_name},") was ",
           $expt->{sample_measures}->[0],"\n";
 }
+\end{lstlisting}
+\end{frame}
+
+\section{模块}
+\begin{frame}[fragile]
+  \frametitle{模块 | 使用 | 函数式编程}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+use Date::Calc qw(:all);
+#use Date::Calc qw(Days_in_Year Days_in_Month);
+
+print "In Feb 2020 there are ",Days_in_Month(2020,2)," days";
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 使用 | 面向对象编程}
+  \begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+
+use warnings; use strict;
+
+use LWP::UserAgent;
+ 
+my $ua = LWP::UserAgent->new;
+$ua->timeout(10);
+$ua->env_proxy;
+ 
+my $response=$ua->get('http://search.cpan.org/');
+ 
+if ($response->is_success) {
+    print $response->decoded_content;
+}
+else {
+    die $response->status_line;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 编写 | 函数式编程}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+package Example::Module;
+
+# Module code goes here
+
+1;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 编写 | 函数式编程}
+\begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
+#!/usr/bin/perl
+use warnings; use strict;
+
+use Exporter;
+our @ISA = qw(Exporter);
+our @EXPORT_OK = qw(will_be_exported);
+
+sub public {
+    # This is designed to be seen, but can only be addressed by using its fully qualified name eg Example::Functional::public()
+}
+sub _private {
+    # This is only for internal use and shouldn't be used from outside the module.
+}
+sub will_be_exported {
+    # This can be exported into the namespace of the calling program
+}
+
+1;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 编写 | 面向对象编程（1/2）}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+package Example::Object_oriented;
+
+sub new {
+    # This creates the refernece which is going to be our object
+    my $hashref = {};
+    # We then call bless to associate it with this module.
+    bless $hashref;
+    # Finally we return it so the calling program can start using it.
+    return $hashref;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 编写 | 面向对象编程（2/2）}
+\begin{lstlisting}[firstnumber=16,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+sub save_value {
+    # This subroutine takes a single arguement which it stores in the hash reference. The $object is provided automatically as the first argument to every object oriented subroutine (other than 'new').
+    my ($object, $new_value) = @_;
+    $object->{value} = $new_value;
+}
+sub get_value {
+    # This subroutine retrieves a value which was previously stored via the save_value subroutine. If there isn't a value to retrieve it returns the undefined value.
+    my ($object) = @_;
+    if (exists $object->{value}) {return $object->{value};}
+    else { return undef; }
+}
+
+1;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 编写 | 面向对象编程 | 使用}
+\begin{lstlisting}
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+use Example::Object_oriented;
+
+my $object = Example::Object_oriented->new();
+
+$object->save_value("Hello");
+
+print "The object says '". $object->get_value() . "'\n";
 \end{lstlisting}
 \end{frame}
 
