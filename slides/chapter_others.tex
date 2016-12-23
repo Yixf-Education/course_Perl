@@ -591,6 +591,28 @@ foreach my $expt (@experiments) {
 
 \section{模块}
 \begin{frame}[fragile]
+  \frametitle{模块 | 安装}
+\begin{lstlisting}
+#METHOD 1: cpan
+#Open cpan shell
+sudo cpan
+#Or
+perl -MCPAN -e shell
+#Install modules
+cpan>install Date::Calc
+
+# METHOD 2: cpanm
+#Install cpanm
+perlbrew install-cpanm
+#Install modules
+cpanm Bio::Perl
+
+# METHOD 3: manual
+...
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{模块 | 使用 | 函数式编程}
 \begin{lstlisting}
 #!/usr/bin/perl
