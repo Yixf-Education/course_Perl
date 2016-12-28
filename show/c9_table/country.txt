@@ -1,0 +1,4 @@
+Country	Population	Language	Currency
+UK	60,441,457	English	Pounds
+France	60,656,178	French	Euros
+Ireland	4,015,676	English/Irish	Euros

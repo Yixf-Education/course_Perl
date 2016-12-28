@@ -564,6 +564,107 @@ print "Population of France is ",
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构 | 多种方法}
+  \begin{block}{Data: country.txt}
+\begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+|----------+------------+---------------+-----------|
+|  Country | Population | Language      | Currency  |
+|----------+------------+---------------+-----------|
+|  UK      | 60,441,457 | English       | Pounds    |
+|  France  | 60,656,178 | French        | Euros     |
+|  Ireland | 4,015,676  | English/Irish | Euros     |
+|----------+------------+---------------+-----------|
+\end{lstlisting}
+  \end{block}
+  \pause
+  \begin{block}{Task}
+    Q: Population of France\\
+    A: 60,656,178
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构 | 多种方法}
+  \begin{block}{shell}
+\begin{lstlisting}
+grep -i -w France country.txt | cut -f2
+\end{lstlisting}
+  \end{block}
+  \pause
+  \begin{block}{csvkit}
+\begin{lstlisting}
+# Method 1
+csvsql --query "select Population from country where Country=='France'" country.txt | csvlook
+# Method 2
+csvgrep -t -c Country -m France country.txt | csvcut -c Population | csvlook
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构 | 多种方法}
+  \begin{block}{Perl-hash}
+\begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
+#!/usr/bin/perl
+use strict; use warnings;
+my $fi = "country.txt";
+my ( @header, @fields, %countries);
+open my $IN, '<', $fi or die "$0 : failed to open  input file '$fi' : $!\n";
+while (<$IN>) {
+    chomp;
+    if ( $. == 1 ) {
+        @header = map { lc } split /\t/;
+    }
+    else {
+        @fields = map { lc } split /\t/;
+        for ( my $i = 1 ; $i < @header ; $i++ ) {
+            $countries{$fields[0]}->{$header[$i]}=$fields[$i];
+        }
+    }
+}
+close $IN or warn "$0: failed to close input file '$fi': $!\n";
+print "Population of France is ", $countries{france}->{population}, "\n";
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构 | 多种方法}
+  \begin{block}{Perl-Data::Table}
+\begin{lstlisting}[basicstyle=\small\tt]
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::Table;
+
+my $countries = Data::Table::fromFile("country.txt");
+
+print "Population of France is ",
+  $countries->
+  match_pattern_hash('$_{Country} eq "France"')->
+  col('Population'),
+  "\n";
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{引用 | 复杂数据结构 | 多种方法}
+  \begin{block}{R}
+\begin{lstlisting}[language=r]
+library(readr)
+library(dplyr)
+
+countries <- read_tsv("country.txt")
+countries %>% 
+  filter(Country=="France") %>% 
+  select(Population)
+\end{lstlisting}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 my @experiments = (
