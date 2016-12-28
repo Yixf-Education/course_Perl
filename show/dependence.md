@@ -19,13 +19,18 @@
 * Term::Animation
 * Memoize
 * Parallel::Loops
+* Data::Table
 
 # R
 * knitr
 * rmarkdown
 * rticles
+* readr
 * tidyr
 * dplyr
+* stringr
 * moments
 * ggplot2
+* ComplexHeatmap
+* circlize
 
