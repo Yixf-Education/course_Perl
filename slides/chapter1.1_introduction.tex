@@ -750,6 +750,41 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Easily install and load packages from the tidyverse}
+    The \alert{tidyverse} is a collection of R packages that share common philosophies and are designed to work together.\\
+    The core tidyverse packages that you are likely to use in almost every analysis:
+    \begin{itemize}
+      \item readr, for data import.
+      \item tidyr, for data tidying.
+      \item dplyr, for data manipulation.
+      \item ggplot2, for data visualisation.
+      \item tibble, for tibbles, a modern re-imagining of data frames.
+      \item purrr, for functional programming.
+    \end{itemize}
+    It also installs a selection of other tidyverse packages that you're likely to use frequently, but probably not in every analysis. This includes packages for:
+    \begin{itemize}
+      \item Working with specific types of vectors: hms (times), stringr (strings), lubridate (date/times), forcats (factors).
+      \item Importing other types of data: DBI (databases), haven (SPSS, SAS and Stata files), httr (web apis), jsonlite (JSON), readxl (.xls and .xlsx files), rvest (web scraping), xml2 (XML).
+      \item Modelling: modelr (modelling within a pipeline), broom (turning models into tidy data).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Others}
+    \begin{description}
+      \item[viridis] Use the color scales in this package to make plots that are pretty, better represent your data, easier to read by those with colorblindness, and print well in grey scale. 
+      \item[argparse] A command line parser to be used with Rscript to write "#!" shebang scripts that gracefully accept positional and optional arguments and automatically generate usage.
+      \item[ggtree] Visualization and annotation of phylogenetic trees.
+      \item[ComplexHeatmap] ComplexHeatmap package provides a highly flexible way to arrange multiple heatmaps and supports self-defined annotation graphics. 
+      \item[...] ...
+    \end{description}
+  \end{block}
+\end{frame}
+
+\begin{frame}
   \frametitle{R | \alert{Bioconductor}}
   \begin{block}{Bioconductor}
     Bioconductor provides tools for the analysis and comprehension of high-throughput genomic data. Bioconductor uses the R statistical programming language, and is open source and open development.
