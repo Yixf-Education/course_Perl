@@ -1514,6 +1514,167 @@ perl -d script.pl
   \end{table}
 \end{frame}
 
+\section{模块}
+\begin{frame}
+  \frametitle{模块 | Popular Distributions}
+  \begin{center}
+    \href{https://metacpan.org/favorite/leaderboard}{https://metacpan.org/favorite/leaderboard}
+  \begin{figure}
+    \includegraphics[width=0.9\textwidth]{c2.perl.metacpan.01.png}
+  \end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模块 | 面向对象}
+    \begin{description}
+      \item[Moose] A postmodern object system for Perl 5 
+      \item[Moo] Minimalist Object Orientation (with Moose compatibility)
+      \item[Moops] Moops Object-Oriented Programming Sugar
+      \item[Mouse] Moose minus the antlers, a postmodern object system for Perl5
+      \item[Role::Tiny] Roles. Like a nouvelle cuisine portion size slice of Moose.
+    \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模块 | 网站相关}
+  {\footnotesize
+    \begin{description}
+      \item[Mojolicious] Real-time web framework 
+      \item[Dancer] lightweight yet powerful web application framework 
+      \item[Dancer2] Lightweight yet powerful web application framework 
+      \item[Catalyst] The Elegant MVC Web Application Framework 
+      \item[PSGI] Perl Web Server Gateway Interface Specification
+      %\item[Mojo::Pg] Mojolicious ♥ PostgreSQL
+    \item[Mojo::Pg] Mojolicious $\varheartsuit$ PostgreSQL
+      \item[LWP] The World-Wide Web library for Perl 
+      \item[Plack] Perl Superglue for Web frameworks and Web Servers (PSGI toolkit) 
+      \item[Starman] High-performance preforking PSGI/Plack web server
+      \item[Template] Front-end module to the Template Toolkit
+      \item[Text::Xslate] Scalable template engine for Perl5
+      \item[HTTP::Tiny] A small, simple, correct HTTP/1.1 client
+      \item[WWW::Mechanize] Handy web browsing in a Perl object
+      \item[HTML::FormHandler] HTML forms using Moose
+      \item[URI] Uniform Resource Identifiers (absolute and relative)
+      \item[HTTP::Message] HTTP style message (base class)
+    \end{description}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 实用工具}
+    \begin{description}
+      \item[App::perlbrew] Manage perl installations in your \verb|$HOME| 
+      \item[App::cpanminus] get, unpack, build and install modules from CPAN
+      \item[ack] grep-like text finder
+      \item[Perl::Tidy] Parses and beautifies perl source
+      \item[App::FatPacker] pack your dependencies onto your script file
+      \item[Devel::NYTProf] Powerful fast feature-rich Perl source code profiler
+      \item[Carton] Perl module dependency manager (aka Bundler for Perl)
+      \item[Devel::REPL] A modern perl interactive shell
+      \item[Reply] read, eval, print, loop, yay!
+      \item[Ubic] polymorphic service manager
+      \item[Rex] Remote Execution
+    \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模块 | Utils}
+    \begin{description}
+      \item[Scalar::Util] A selection of general-utility scalar subroutines
+      \item[List::Util] A selection of general-utility list subroutines
+      \item[List::MoreUtils] Provide the stuff missing in List::Util
+      \item[List::UtilsBy] higher-order list utility functions
+      \item[List::AllUtils] Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package
+      \item[Hash::Util] A selection of general-utility hash subroutines
+      \item[Sub::Util] A selection of utility subroutines for subs and CODE references
+    \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模块 | 脚本编写}
+    \begin{description}
+      \item[Modern::Perl] enable all of the features of Modern Perl with one import
+      \item[Cwd] get pathname of current working directory
+      \item[File::Spec] portably perform operations on file names
+      \item[FindBin] Locate directory of original perl script
+      \item[Path::Tiny] File path utility
+      \item[Path::Class] Cross-platform path specification manipulation
+      \item[local::lib] create and use a local lib/ for perl modules with PERL5LIB
+      \item[Type::Tiny] tiny, yet Moo(se)-compatible type constraint
+      \item[Term::ANSIColor] Color screen output using ANSI escape sequences
+      \item[AnyEvent] the DBI of event loop programming
+      \item[File::Temp] return name and handle of a temporary file safely
+      \item[Log::Log4perl] Log4j implementation for Perl
+      \item[Log::Any] Bringing loggers and listeners together
+      \item[IO] load various IO modules
+      \item[Sereal] Fast, compact, powerful binary (de-)serialization
+    \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{模块 | 开发测试}
+    \begin{description}
+      \item[Perl::Critic] Critique Perl source code for best-practices
+      \item[Encode] character encodings in Perl
+      \item[Regexp::Debugger] Visually debug regexes in-place
+      \item[autodie] Replace functions with ones that succeed or die with lexical scope
+      \item[Carp] alternative warn and die for modules
+      \item[Devel::Cover] Code coverage metrics for Perl
+      \item[Devel::hdb] Perl debugger as a web page and REST service
+      \item[Test::Harness] Run Perl standard test scripts with statistics
+      \item[Test::Simple] Basic utilities for writing tests
+      \item[Test::Deep] - Extremely flexible deep comparison
+      \item[Try::Tiny] minimal try/catch with proper preservation of \verb|$@| 
+      \item[Capture::Tiny] Capture STDOUT and STDERR from Perl, XS or external programs
+      \item[PPI] Parse, Analyze and Manipulate Perl (without perl)
+    \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模块 | 数据格式}
+  {\footnotesize
+    \begin{description}
+      \item[DBIx::Class] Extensible and flexible object <-> relational mapper
+      \item[DBI] Database independent interface for Perl 
+      \item[DBIx::Class::Schema::Loader] Create a DBIx::Class::Schema based on a database
+      \item[MongoDB] Official MongoDB Driver for Perl
+      \item[Mango] Pure-Perl non-blocking I/O MongoDB driver
+      \item[JSON] JSON (JavaScript Object Notation) encoder/decoder
+      \item[DateTime] A date and time object for Perl 
+      \item[Time::Moment] Represents a date and time of day with an offset from UTC
+      \item[Data::Printer] colored pretty-print of Perl data structures and objects
+      \item[Data::Dumper] stringified perl data structures, suitable for both printing and eval
+      \item[Imager] Perl extension for Generating 24 bit Images
+      \item[Text::CSV] comma-separated values manipulator (using XS or PurePerl)
+      \item[XML::LibXML] Perl Binding for libxml2
+      \item[SQL::Abstract] Generate SQL from Perl data structures
+      %\item[YAML] YAML Ain't Markup Language™
+      \item[YAML] YAML Ain't Markup Language\texttrademark
+      \item[XML::Twig] A perl module for processing huge XML documents in tree mode
+      \item[Redis] Perl binding for Redis database
+    \end{description}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{模块 | Others}
+    \begin{description}
+      \item[Getopt::Long] Extended processing of command line options
+      \item[File::Slurp] Simple and Efficient Reading/Writing/Modifying of Complete Files
+      \item[IO::All] IO::All to Larry Wall!
+      \item[Parallel::ForkManager] A simple parallel processing fork manager
+      \item[MCE] Many-Core Engine for Perl providing parallel processing capabilities
+      \item[POE] portable multitasking and networking framework for any event loop
+      \item[Coro] the only real threads in perl
+      \item[Dist::Zilla] distribution builder; installer not included
+      \item[Time::HiRes] High resolution alarm, sleep, gettimeofday, interval timers
+      \item[CHI] Unified cache handling interface
+      \item[Minion] Job queue
+      \item[Daemon::Control]Create init scripts in Perl
+    \end{description}
+\end{frame}
+
 \section{回顾与总结}
 \subsection{总结}
 \begin{frame}
