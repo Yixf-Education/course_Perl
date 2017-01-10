@@ -1355,6 +1355,26 @@ sub randomelement {
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{突变和随机化 | 分析DNA | 程序7.4 | \alert{子程序}}
+\begin{lstlisting}
+sub matching_percentage {
+    my ( $string1, $string2 ) = @_;
+    my ($length) = length($string1);
+    my ($position); my ($count) = 0;
+    for ( $position = 0 ; $position < $length ; ++$position ) {
+        if (
+            substr( $string1, $position, 1 ) eq substr( $string2, $position, 1 )
+          )
+        {
+            ++$count;
+        }
+    }
+    return $count / $length;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4 | 输出}
 \begin{lstlisting}[firstnumber=1]
 In this run of the experiment, the average number of 
