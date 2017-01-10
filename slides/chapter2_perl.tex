@@ -914,13 +914,37 @@ $name = "Paul";
 # Enter our loop
 foreach (@filedata) {
   # declare a new variable for just the loop
+  # 声明局部变量
   my $current_file;
 
   # create a local version of name to temporarily assign values within the loop to
+  # 在局部声明全局变量
   local $name;
-
   ...
 }
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{基本函数 | my vs. local}
+\begin{lstlisting}[language=Perl,basicstyle=\small\tt]
+#!/usr/bin/perl
+$x = 9;
+sub echo_self { print "echo_self: $x\n"; }
+sub echo_my {
+    my $x = 19;
+    print "#MY#\n"; print "echo_my: $x\n";
+    echo_self;
+}
+sub echo_local {
+    local $x = 29;
+    print "#LOCAL#\n"; print "echo_local: $x\n";
+    echo_self;
+}
+echo_my;
+echo_local;
+print "#MAIN#\n"; print "main: $x\n";
+#19 9 29 29 9
 \end{lstlisting}
 \end{frame}
 
