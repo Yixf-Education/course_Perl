@@ -744,6 +744,24 @@ sub IUB_to_regexp {
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1 | \alert{子程序}}
+\begin{lstlisting}
+sub IUB_to_regexp {
+    my ($iub) = @_;
+    my $regular_expression = '';
+
+    $iub =~ s/\^//g;
+
+    for ( my $i = 0 ; $i < length($iub) ; ++$i ) {
+        $regular_expression .= $iub2character_class{ substr( $iub, $i, 1 ) };
+    }
+
+    return $regular_expression;
+}
+\end{lstlisting}
+\end{frame}
+
 \begin{frame}
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 返回数据}
   \begin{block}{目标}
