@@ -6,7 +6,7 @@
 \title[绪论]{第一章\quad 绪论}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2016年11月}
+\date{2018年11月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -19,40 +19,41 @@
   \begin{quotation}
     ``If you can't do bioinformatics, you can't do biology."
     \begin{flushright}
-    Lincoln Stein\\
-    (Biologist and former CSHL Professor)
+    Lincoln Stein (Biologist and former CSHL Professor)
   \end{flushright}
   \end{quotation}
-  \vspace{-1em}
+  \vspace{-1.5em}
   \begin{figure}
     \centering
     \includegraphics[width=8cm]{c1_intro_code.jpg}
   \end{figure}
+  \vspace{-1.5em}
+  Nothing in Biology Makes Sense Except in the Light of Evolution\\ \textcolor{gray}{and Bioinformatics}.
 \end{frame}
 
 \begin{frame}
   \frametitle{生物信息学 | 维基百科}
-  生物信息学（bioinformatics）利用应用数学、信息学、统计学和计算机科学的方法研究生物学的问题。目前的生物信息学基本上只是分子生物学与信息技术（尤其是互联网技术）的结合体。\\
+生物信息学（bioinformatics）利用应用数学、信息学、统计学和计算机科学的方法研究生物学的问题。\\
   \vspace{1em}
-  生物信息学的研究材料和结果就是各种各样的生物学数据，其研究工具是计算机，研究方法包括对生物学数据的搜索（收集和筛选）、处理（编辑、整理、管理和显示）及利用（计算、模拟）。\\
+生物信息学的\alert{研究材料和结果}就是各种各样的生物学数据，其\alert{研究工具}是计算机，\alert{研究方法}包括对生物学数据的搜索（收集和筛选）、处理（编辑、整理、管理和显示）及利用（计算、模拟）。\\
   \vspace{1em}
-  目前主要的研究方向有：序列比对、基因识别、基因重组、蛋白质结构预测、基因表达、蛋白质反应的预测，以及建立进化模型。
+  目前主要的研究方向有：序列比对、序列组装、基因识别、基因重组、蛋白质结构预测、基因表达、蛋白质反应的预测，以及建立进化模型。\\
 \end{frame}
 
 \begin{frame}
   \frametitle{生物信息学 | 维基百科（续）}
-  生物学技术往往生成大量的嘈杂数据。与数据挖掘类似，生物信息学利用数学工具从大量数据中提取有用的生物学信息。生物信息学所要处理的典型问题包括：重新组装在霰弹枪测序法测序过程中被打散的DNA序列，从蛋白质的氨基酸序列预测蛋白质结构，利用mRNA微阵列或质谱仪的数据检验基因调控的假说。\\
+生物学技术往往生成大量的嘈杂数据。与数据挖掘类似，生物信息学利用数学工具从大量数据中提取有用的生物学信息。生物信息学所要处理的典型问题包括：重新组装在霰弹枪测序法测序过程中被打散的DNA序列，从蛋白质的氨基酸序列预测蛋白质结构，利用mRNA微阵列或质谱仪的数据检验基因调控的假说。\\
   \vspace{1em}
-  某些人将计算生物学作为生物信息学的同义词处理；但是另外一些人认为计算生物学和生物信息学应当被当作不同的条目处理，因为生物信息学更侧重于生物学领域中计算方法的使用和发展，而计算生物学强调应用信息学技术对生物学领域中的假说进行检验，并尝试发展新的理论。
+某些人将计算生物学作为生物信息学的同义词处理；但是另外一些人认为计算生物学和生物信息学应当被当作不同的条目处理，因为生物信息学更侧重于生物学领域中计算方法的使用和发展，而计算生物学强调应用信息学技术对生物学领域中的假说进行检验，并尝试发展新的理论。
 \end{frame}
 
 \begin{frame}
   \frametitle{生物信息学 | 维基百科（续）}
   生物信息学可以定义为对分子生物学中两类信息流的研究：\\
   \vspace{1em}
-  第一类信息流源于分子生物学的中心法则：DNA序列被转录为mRNA序列，后者被翻译为蛋白质序列。蛋白质序列继而折叠为具有功能的三维结构。按照达尔文演化理论，这些功能被生物体的环境所选择，从而驱动群体中DNA序列的进化。因此，第一类的生物信息学应用关注于中心法则中任一阶段的信息传递，包括DNA序列中基因的组织与控制、确定DNA中的转录单位、从序列预测蛋白质结构以及分子功能分析。\\
+第一类信息流源于分子生物学的中心法则：DNA序列被转录为mRNA序列，后者被翻译为蛋白质序列。蛋白质序列继而折叠为具有功能的三维结构。按照达尔文演化理论，这些功能被生物体的环境所选择，从而驱动群体中DNA序列的进化。因此，第一类的生物信息学应用关注于中心法则中任一阶段的信息传递，包括DNA序列中基因的组织与控制、确定DNA中的转录单位、从序列预测蛋白质结构以及分子功能分析。\\
   \vspace{1em}
-  第二类信息流是基于科学方法：提出关于生物学活动的假设，设计实验以验证这些假设，评估结果与假设的相容性，然后根据实验数据对原假设作扩展或修正。第二类的生物信息学应用关注于这一流程中的信息传递，包括产生假设、设计实验、通过数据库将实验结果组织起来、检验数据与模型的相容性以及修正假设的各个系统。
+第二类信息流是基于科学方法：提出关于生物学活动的假设，设计实验以验证这些假设，评估结果与假设的相容性，然后根据实验数据对原假设作扩展或修正。第二类的生物信息学应用关注于这一流程中的信息传递，包括产生假设、设计实验、通过数据库将实验结果组织起来、检验数据与模型的相容性以及修正假设的各个系统。
 \end{frame}
 
 \begin{frame}
@@ -191,7 +192,7 @@
   还有色赖蛋，缺一人遭殃。\\
   （以上是必需氨基酸）\\
   丙组丝甘半，天谷建酸胺。\\
-  精酪加一脯，20氨基酸。\\
+  精酪加一脯，二十氨基酸。\\
   （以上是非必需氨基酸）
 \end{block}
 \end{frame}
@@ -225,8 +226,8 @@
   \frametitle{生物学 | 数据库 | GenBank}
   \begin{figure}
     % \centering
-    \includegraphics[width=6cm]{c1_intro_db_02.png}
-    \includegraphics[width=6.2cm]{c1_intro_db_05.png}
+    \includegraphics[width=5.5cm]{c1_intro_db_02.png}
+    \includegraphics[width=5.8cm]{c1_intro_db_05.png}
   \end{figure}
 \end{frame}
 
@@ -341,35 +342,36 @@
   \end{table}
 \end{frame}
 
+% reference 00_website.md to update figures
 \begin{frame}
   \frametitle{计算机科学 | 编程语言 | 流行度}
   \begin{figure}
     \centering
-    \includegraphics[width=11cm]{c1_intro_language_rank_2016.png}
+    \includegraphics[width=11cm]{c1_intro_language_rank_2018.png}
   \end{figure}
 \end{frame}
 
 \begin{frame}
-  \frametitle{计算机科学 | 编程语言 | 排名 | 2016}
+  \frametitle{计算机科学 | 编程语言 | 排名 | 2018}
   \begin{figure}
     \centering
-    \includegraphics[width=9cm]{c1_intro_language_rate_2016.png}
+    \includegraphics[width=9cm]{c1_intro_language_rate_2018.png}
   \end{figure}
 \end{frame}
 
-\begin{frame}
-  \frametitle{计算机科学 | 编程语言 | 排名 | 趋势}
-  \begin{figure}
-    \centering
-    \includegraphics[width=12cm]{c1_intro_language_rate_period_2016.png}
-  \end{figure}
-\end{frame}
+% \begin{frame}
+%   \frametitle{计算机科学 | 编程语言 | 排名 | 趋势}
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=12cm]{c1_intro_language_rate_period_2018.png}
+%   \end{figure}
+% \end{frame}
 
 \begin{frame}
   \frametitle{计算机科学 | 编程语言 | 排名 | 历史}
   \begin{figure}
     \centering
-    \includegraphics[width=11cm]{c1_intro_language_rate_history_2016.png}
+    \includegraphics[width=11cm]{c1_intro_language_rate_history_2018.png}
   \end{figure}
 \end{frame}
 
@@ -434,23 +436,46 @@
     \begin{itemize}
       \item 没有现成的工具
       \item 兄弟们都在忙着混江湖
-      \item 工资涨如龟速，物价涨如赤兔
+      \item 工资涨如龟速，物价飙如赤兔
       \item ……
     \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}
-  \frametitle{编程 | 值得学习}
+  \frametitle{编程 | 值得学习 | 现实需求}
   \begin{itemize}
     \item 有助于理解现有工具的配置与个性化修改
     \item 编写程序来批量运行现有程序
-    \item
-      数据分析很简单，前期数据处理很难难难……（二八定律，80/20法则，帕雷托法则）
+    \item 数据分析很简单，前期数据处理很难难难……（二八定律，80/20法则，帕雷托法则）
     \item 增强研究工作的可重复性
     \item 人生苦短，学习编程
     \item ……
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 值得学习 | 智力投资}
+  编程有助于逻辑思维的锻炼，系统观的形成，以及创造能力和解决问题能力的培养。但这些都是潜移默化的，需要有一个积累的过程。
+    \begin{itemize}
+      \item 试错力：编程的试错成本比较低，在一次次修复bug的过程中，慢慢地就不怕去试错了
+      \item 创造力：编程可以把想象变为现实，不断去创造奇迹
+      \item 学习能力：编程独特的操作和思考性，不仅会让编程者爱上学习，还会帮助养成严谨、认真的学习习惯
+      \item 逻辑思维：一个人语言组织、领导能力的基础
+      \item 科学思维：编程就是用科学的眼光去思考问题、分析问题，更全面地去看待这个世界
+      \item ……
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{编程 | 值得学习 | \alert{编程思维}}
+  \begin{block}{编程思维}
+    编程思维（computational thinking）就是“理解问题-找出路径”的思维过程，它由分解、模式识别、抽象、算法四个步骤组成。\\
+    \vspace{1em}
+通过这四个步骤，一个棘手的复杂问题先被拆解成一系列好解决的小问题；每一个小问题被单独检视、思考，搜索解决方法；然后，聚焦几个重要节点，忽视小细节，形成解决思路；最后，设计步骤，执行——问题解决！\\
+\vspace{1em}
+通过编程做一个作品的过程，就是自己创造一个事物的过程。最起码首先要在心里大致构造出自己想要的作品模样，然后开始思考第一步该怎么做，第二步该怎么做。
+  \end{block}
 \end{frame}
 
 \begin{frame}
@@ -518,7 +543,7 @@
   \end{block}
   \begin{block}{原因}
     \begin{enumerate}
-      \item<1-> 对极大整数做因数分解非常困难（破解RSA-2048（2048-bit）的密钥可能需要耗费传统电脑10亿年的时间，而量子计算机只需要100秒就可以完成。）【量子计算机+秀尔算法】
+      \item<1-> 对极大整数做因数分解非常困难（破解RSA-2048（2048-bit）的密钥可能需要耗费传统电脑10亿年的时间，而量子计算机只需要100秒就可以完成。）【量子计算机+秀尔算法】/【黎曼猜想】
       \item<2-> 普通台式机，每秒运算40亿次，需要大约30万年以上才能破解
       \item<3-> 利文索尔佯谬（Levinthal's paradox）：100氨基酸，每个2种构象，每次尝试耗时$10^{-13}$s，穷举需要40亿年
     \end{enumerate}
@@ -641,6 +666,7 @@
     \item \href{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2267699/}{A comparison of common programming languages used in bioinformatics}
     \item \href{http://www.molecularecologist.com/2012/11/a-comparison-of-bioinformatics-programming-languages/}{A comparison of bioinformatics programming languages}
     \item \href{https://nlcb.wordpress.com/2013/02/23/programming-languages-of-bioinformatics-2/}{Programming Languages of Bioinformatics}
+    \item \href{https://www.ncbi.nlm.nih.gov/pubmed/28968751}{A global perspective on evolving bioinformatics and data science training needs}
   \end{itemize}
 \end{frame}
 
@@ -828,6 +854,7 @@ plot(X, Y, col="pink")
 
 \begin{frame}[fragile]
   \frametitle{R | Example}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=R,basicstyle=\footnotesize\tt]
 xrange <- c(-15, 15); yrange <- c(0, 16)
 plot(0, xlim=xrange, ylim=yrange, type="n")
@@ -1011,6 +1038,7 @@ polygon(x, y, col="red", border=NA)
       \item 《R语言实战》
       \item 《R语言经典实例》
       \item 《R数据可视化手册》
+      \item 《R数据科学》
     \end{itemize}
   \end{block}
     \column{0.5\textwidth}
@@ -1021,6 +1049,7 @@ polygon(x, y, col="red", border=NA)
       \item \textit{R in Action}
       \item \textit{R Cookbook}
       \item \textit{R Graphics Cookbook}
+      \item \textit{R for Data Science}
     \end{itemize}
   \end{block}
 \end{columns}
@@ -1034,8 +1063,23 @@ polygon(x, y, col="red", border=NA)
     \includegraphics[height=3.8cm]{c1_book_r_trsc.jpg}\qquad
     \includegraphics[height=3.8cm]{c1_book_r_ria.jpg}\\
     \includegraphics[height=3.8cm]{c1_book_r_rc.jpg}\qquad
-    \includegraphics[height=3.8cm]{c1_book_r_rgc.jpg}
+    \includegraphics[height=3.8cm]{c1_book_r_rgc.jpg}\qquad
+    \includegraphics[height=3.8cm]{c1_book_r_rfds.png}\\
   \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{书籍 | Python与R | 补遗}
+  \begin{itemize}
+    \item 《Python数据科学手册》
+    \item 《Python数据科学入门》
+    \item 《Python数据分析基础》
+    \item 《Python编程入门》
+    \item 《Python基础教程》
+    \item 《Python语言及其应用》
+    \item 《Python编程——从入门到实践》
+    \item 《R语言入门与实践》
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -1044,7 +1088,10 @@ polygon(x, y, col="red", border=NA)
     \begin{columns}
         \column{0.4\textwidth}
     \begin{itemize}
+      \item 《Linux Shell脚本攻略》
       \item 《我的第一本编程书》
+      \item 《教孩子学编程》
+      \item 《编程导论》
       \item 《深入浅出程序设计》
       \item 《程序是怎样跑起来的》
       \item 《写给大家看的算法书》
@@ -1053,10 +1100,10 @@ polygon(x, y, col="red", border=NA)
       \item 《算法帝国》
       \item 《算法笔记》
       \item 《轻松学算法》
-      \item 《大话数据结构》
     \end{itemize}
         \column{0.6\textwidth}
     \begin{itemize}
+      \item 《大话数据结构》
       \item 《程序员的数学》
       \item 《程序员的数学2：概率统计》
       \item 《程序员的数学3：线性代数》
@@ -1069,29 +1116,54 @@ polygon(x, y, col="red", border=NA)
 
 \begin{frame}
   \frametitle{书籍 | 其他}
-    \begin{block}{统计学与数据分析}
-      \begin{multicols}{2}
+    \begin{block}{数据科学}
+      \begin{itemize}
+        \item 《数据科学入门》
+        \item 《面向数据科学家的实用统计学》
+        \item 《命令行中的数据科学》
+        \item 《深入浅出数据分析》
+        \item 《菜鸟侦探挑战数据分析》
+      \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{书籍 | 其他}
+    \begin{block}{统计学}
     \begin{itemize}
-      \item 《命令行中的数据科学》
-      \item 《深入浅出数据分析》
+      \item 《统计学》（\textit{Statistics for Engineers and the Sciences}）
+      \item 《统计学及其应用》
       \item 《深入浅出统计学》
+      \item 《从零开始学统计》
+      \item 《从零开始读懂统计学》
       \item 《白话统计学》
       \item 《爱上统计学》
       \item 《赤裸裸的统计学》
-      \item 《介绍丛书:统计学》
-      \item 《从零开始读懂统计学》
-      \item 《菜鸟侦探挑战数据分析》
       \item 《你一定爱读的极简统计学》
+      \item 《介绍丛书:统计学》
       \item 《漫画玩转统计学》
       \item 《漫画统计学》
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{书籍 | 其他}
+    \begin{block}{统计学科普}
+      \begin{itemize}
+      \item 《统计学的世界》
+      \item 《统计学漫话》
+      \item 《统计学七支柱》
       \item 《数字唬人》
       \item 《统计数字会撒谎》
       \item 《统计数据的真相》
       \item 《生活中的概率趣事》
       \item 《改变世界的134个概率统计故事》
-    \end{itemize}
-  \end{multicols}
-  \end{block}
+      \item 《统计会犯错——如何避免数据分析中的统计陷阱》
+      \item 《妙趣横生的统计学——培养大数据时代的统计思维》
+      \item 《别拿相关当因果——因果关系简易入门》
+      \end{itemize}
+    \end{block}
 \end{frame}
 
 \section{回顾与总结}
@@ -1103,7 +1175,7 @@ polygon(x, y, col="red", border=NA)
       \item 生物信息学：交叉学科，多种技能，领域宽泛
       \item 生物学：DNA，RNA，蛋白质
       \item 计算机科学：三个术语，编程语言
-      \item R：readr、dplyr、ggplot2等常用包
+      \item R：readr、tidyr、dplyr、ggplot2等常用包
     \end{itemize}
   \end{block}
 \end{frame}
