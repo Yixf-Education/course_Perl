@@ -82,7 +82,6 @@ This is an H2
 
 2.  This is another...
 
-
 ---
 
 1.  This is a list item with two paragraphs.
@@ -105,16 +104,13 @@ This is the second paragraph.
         #!/usr/bin/perl
         print "Hello, world!\n";
 
-
 ---
 
 1986. What a great season.
 
-
 ---
 
 1986\. What a great season.
-
 
 ---
 
@@ -122,7 +118,7 @@ A normal paragraph followed by a Perl script:
 
     #!/usr/bin/perl
     print "Hello, world!\n";
-    
+
 ---
 
 >May the Force be with you!
@@ -157,9 +153,9 @@ This is [an example] [id] reference-style link.
 
 [foo1]: http://example.com/  "Optional Title Here"
 
-[foo2]: http://example.com/  'Optional Title Here'
+[foo2]: http://example.com/  "Optional Title Here"
 
-[foo3]: http://example.com/  (Optional Title Here)
+[foo3]: http://example.com/  "Optional Title Here"
 
 - - -
 
@@ -179,26 +175,26 @@ I get 10 times more traffic from [Google](http://google.com/ "Google") than from
 
 I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3].
 
-  [1]: http://google.com/        "Google"
-  [2]: http://search.yahoo.com/  "Yahoo Search"
-  [3]: http://search.msn.com/    "MSN Search"
-  
+[1]: http://google.com/        "Google"
+[2]: http://search.yahoo.com/  "Yahoo Search"
+[3]: http://search.msn.com/    "MSN Search"
+
 ---
 
 I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3].
 
-  [1]: http://google.com/       "Google"
-  [2]: http://search.yahoo.com/ "Yahoo Search"
-  [3]: http://search.msn.com/   "MSN Search"
-  
+[1]: http://google.com/       "Google"
+[2]: http://search.yahoo.com/ "Yahoo Search"
+[3]: http://search.msn.com/   "MSN Search"
+
 ---
 
 I get 10 times more traffic from [Google][] than from [Yahoo][] or [MSN][].
 
-  [google]: http://google.com/       "Google"
-  [yahoo]:  http://search.yahoo.com/ "Yahoo Search"
-  [msn]:    http://search.msn.com/   "MSN Search"
-  
+[google]: http://google.com/       "Google"
+[yahoo]:  http://search.yahoo.com/ "Yahoo Search"
+[msn]:    http://search.msn.com/   "MSN Search"
+
 ---
 
 *single asterisks*
@@ -226,7 +222,7 @@ Use the `printf()` function.
 ``There is a literal backtick (`) here.``
 
 A single backtick in a code span: `` ` ``
-  
+
 A backtick-delimited string in a code span: `` `foo` ``
 
 ---
@@ -274,7 +270,7 @@ Footnotes[^1] have a label[^label] and a definition[^!DEF].
 #扩展语法：
 
 ##### 目录
-[toc]
+[TOC]
 
 ##### 元数据
 ---
@@ -359,7 +355,7 @@ cond(no)->op
 
 ---
 
-```seq
+```sequence
 Alice->Bob: Hello Bob, how are you?
 Note right of Bob: Bob thinks
 Bob-->Alice: I am good thanks!

@@ -6,14 +6,14 @@
 \title[Markdown]{第一章\quad Markdown标记语言}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2016年11月}
+\date{2018年11月}
 
 \input{snippet/beamer_toc.tex}
 
 \section{Markdown简介}
 \begin{frame}
   \frametitle{Markdown | 简介}
-  Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
+  Markdown是于2004年被创造出来的一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML（或者HTML）文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。
   \begin{figure}
     \centering
     \includegraphics[width=7cm]{c1_markdown_logo.jpg}
@@ -67,7 +67,7 @@ Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看�
     \item 简书：一个在线Markdown编辑器与阅读社区，支持实时预览，提供分享网址。
     \item Mou：一个Mac OS X上的Markdown编辑器。
     \item MarkdownPad：Windows上的全功能Markdown编辑器。
-    \item PageDown：一个Javascript写的``WYSIWYM"（所见即所得）Markdown编辑器 (来自 StackOverflow)
+    \item PageDown：一个Javascript写的``WYSIWYM"（所见即所得）Markdown编辑器
     \item IPython Notebook：以IPython为后台，利用浏览器做IDE，支持Markdown与\LaTeX 公式。
     \item ……
   \end{itemize}
@@ -95,7 +95,7 @@ Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看�
         \item \href{https://markable.in/}{Markable.in}
         \item \href{https://github.com/joemccann/dillinger}{Dillinger.io}
       \end{itemize}
-    \item 浏览器插件：\textcolor{gray}{MaDe (Chrome)}
+    % \item 浏览器插件：\textcolor{gray}{MaDe (Chrome)}
     \item 高级应用：Sublime Text 2 + MarkdownEditing
   \end{itemize}
 \end{frame}
@@ -118,11 +118,11 @@ Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看�
 \subsection{区块元素}
 \begin{frame}
   \frametitle{基本语法 | 区块元素 | 段落和换行}
-一个Markdown段落是由一个或多个连续的文本行组成，它的\alert{前后要有一个以上的空行}（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。\\
+  一个Markdown段落是由一个或多个连续的文本行组成，它的\alert{前后要有一个以上的空行}（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。\alert{普通段落不该用空格或制表符来缩进}。\\
   \vspace{1em}
 “由一个或多个连续的文本行组成”这句话其实暗示了Markdown允许段落内的强迫换行（插入换行符），这个特性和其他大部分的text-to-HTML格式不一样。\\
   \vspace{1em}
-在文本中输入的换行会从最终生成的结果中删除，浏览器会根据可用空间自动换行。如果想\alert{强迫换行}，可以在行尾插入至少两个空格。
+  \alert{在文本中输入的换行会从最终生成的结果中删除}，浏览器会根据可用空间自动换行。如果想\alert{强迫换行}，可以在行尾插入至少两个空格。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -130,7 +130,7 @@ Markdown的构想\textbf{不是}要使得HTML文档更容易书写。在我看�
   Markdown支持两种标题的语法，类Setext和类atx形式。
   \begin{itemize}
     \item 类Setext形式是用底线的形式，利用 \verb|=|（最高阶标题）和 \verb|-|（第二阶标题）。任何数量的 \verb|=| 和 \verb|-| 都可以有效果。
-    \item 类atx形式则是在行首插入1到6个 \verb|#|，对应到标题1到6阶。你可以选择性地“闭合”类atx样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 \verb|#|，而行尾的 \verb|#|数量也不用和开头一样（行首的井字符数量决定标题的阶数）。
+    \item 类atx形式则是在行首插入1到6个 \verb|#|，对应到标题1到6阶。你可以选择性地“闭合”类atx样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 \verb|#|，而行尾的 \verb|#|数量也不用和开头一样（\alert{行首的井字符数量决定标题的阶数}）。
   \end{itemize}
 \end{frame}
 
@@ -217,7 +217,7 @@ This is an H2
   \begin{block}{列表}
     Markdown支持无序列表和有序列表。\\
     \vspace{1em}
- 列表项目标记通常是放在最左边，但是其实也可以缩进，最多3个空格，项目标记后面则一定要接着至少一个空格或制表符。
+    列表项目标记通常是放在最左边，但是其实也可以缩进，最多3个空格，项目标记后面则一定要接着\alert{至少一个空格或制表符}。
   \end{block}
   \pause
   \begin{block}{无序列表}
@@ -360,7 +360,7 @@ This is the second paragraph.
   \frametitle{基本语法 | 区块元素 | \alert{代码区块}}
 和程序相关的写作或是标签语言源代码通常会有已经排版好的代码区块，对于这些区块，通常我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示。\\
   \vspace{1em}
-  要在Markdown中建立代码区块很简单，只要简单地缩进4个空格或是1个制表符就可以：
+  要在Markdown中建立代码区块很简单，只要简单地\alert{缩进4个空格或是1个制表符}就可以：
 \begin{lstlisting}[language=]
 A normal paragraph followed by a Perl script:
 
@@ -415,8 +415,12 @@ _ _ _ _ _
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区段元素 | 链接}
   Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。\\
-  \vspace{1em}
+  \vspace{0.5em}
   不管是哪一种，链接文字都是用\verb|[ ]|（方括号）来标记。
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c1_markdown_links.jpg}
+  \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -447,7 +451,7 @@ This is [an example] [id] reference-style link.
 [id]: http://example.com/  "Optional Title Here"
 \end{lstlisting}
 \pause
-网址定义只有在产生链接的时候用到，并不会直接出现在文件之中。
+网址标记只有在产生链接的时候用到，并不会直接出现在文件之中。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -479,7 +483,7 @@ This is [an example] [id] reference-style link.
     "Optional Title Here"
 \end{lstlisting}
 \pause
-链接辨别标签可以有字母、数字、空白和标点符号，但是并不区分大小写，因此下面两个链接是一样的：
+链接辨识标签可以有字母、数字、空白和标点符号，但是并不区分大小写，因此下面两个链接是一样的：
 \begin{lstlisting}[language=]
 [link text][a]
 [link text][A]
@@ -489,19 +493,24 @@ This is [an example] [id] reference-style link.
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区段元素 | 链接 | 参考式 | 隐式}
 隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字。要用隐式链接标记只要在链接文字后面加上一个空的方括号。比如要让“Google”链接到google.com：
+\vspace{-0.5em}
 \begin{lstlisting}[language=]
 [Google][]
 \end{lstlisting}
 然后定义链接内容：
+\vspace{-0.5em}
 \begin{lstlisting}[language=]
 [Google]: http://google.com/
 \end{lstlisting}
 \pause
+\vspace{0.5em}
 由于链接文字可能包含空白，所以这种简化型的标记内也许包含多个单词：
+\vspace{-0.5em}
 \begin{lstlisting}[language=]
 Visit [Daring Fireball][].
 \end{lstlisting}
 然后接着定义链接：
+\vspace{-0.5em}
 \begin{lstlisting}[language=]
 [Daring Fireball]: http://daringfireball.net/
 \end{lstlisting}
@@ -531,6 +540,7 @@ I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3]
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区段元素 | 链接 | 范例 | 显式 vs. 隐式}
+  \vspace{-2em}
 \begin{lstlisting}[language=]
 I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3].
 
@@ -552,7 +562,7 @@ I get 10 times more traffic from [Google][] than from [Yahoo][] or [MSN][].
   \frametitle{基本语法 | 区段元素 | \alert{强调}}
   Markdown使用星号（\verb|*|）和下划线（\verb|_|）作为标记强调字词的符号。分为强调（斜体）、加重强调（粗体）和特别强调（粗斜体）。
 \begin{columns}
-  \column{0.6\textwidth}
+  \column{0.58\textwidth}
 \begin{lstlisting}[language=]
 *single asterisks*
 
@@ -566,7 +576,7 @@ __double underscores__
 
 ___three underscores___
 \end{lstlisting}
-  \column{0.4\textwidth}
+  \column{0.32\textwidth}
   \begin{block}{预览}
     \textit{single asterisks}\\
     \textit{single underscores}\\
@@ -599,16 +609,19 @@ un*frigging*believable
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区段元素 | \alert{行内代码}}
   如果要标记一小段行内代码，你可以用反引号把它包起来（\verb|`|）：
+  \vspace{-0.3em}
 \begin{lstlisting}[language=]
 Use the `printf()` function.
 \end{lstlisting}
 \pause
 如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：
+  \vspace{-0.3em}
 \begin{lstlisting}[language=]
 ``There is a literal backtick (`) here.``
 \end{lstlisting}
 \pause
 代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：
+  \vspace{-0.3em}
 \begin{lstlisting}[language=]
 A single backtick in a code span: `` ` ``
   
@@ -629,7 +642,7 @@ A backtick-delimited string in a code span: `` `foo` ``
   \begin{itemize}
     \item 一个感叹号（!）
     \item 接着一个方括号，里面放上图片的替代文字
-    \item 接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的“title”文字。
+    \item 接着一个普通括号，里面放上图片的网址或地址，最后还可以用引号包住并加上选择性的“title”文字。
   \end{itemize}
 \begin{lstlisting}[language=]
 ![Alt text](/path/to/img.jpg)
@@ -653,11 +666,14 @@ A backtick-delimited string in a code span: `` `foo` ``
 \begin{frame}[fragile]
   \frametitle{基本语法 | 其他 | \alert{自动链接}}
   Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包起来，Markdown就会自动把它转成链接。一般网址的链接文字就和链接地址一样：
+  \vspace{-0.3em}
 \begin{lstlisting}[language=]
 <http://example.com/>
 \end{lstlisting}
+\vspace{1em}
 \pause
 电子邮箱地址的自动链接也很类似，只是Markdown会先做一个编码转换的过程，把文字字符转成16进位码的HTML实体，这样的格式可以糊弄一些不好的邮址收集机器人：
+  \vspace{-0.3em}
 \begin{lstlisting}[language=]
 <address@example.com>
 \end{lstlisting}
@@ -685,12 +701,16 @@ _   下划线
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 其他 | \alert{脚注}}
-使用这样的占位符号可以将脚注添加到文本中：\verb|[^1]|。另外，你可以使用“n”而不是数字的\verb|[^n]|。所以你可以不必担心使用哪个号码。在您的文章的结尾，你可以如下所示定义匹配的注脚，URL将变成链接：
+使用这样的占位符号可以将脚注添加到文本中：\verb|[^1]|。另外，你可以使用“n”而不是数字的\verb|[^n]|。所以你可以不必担心使用哪个号码。在文章的结尾，你可以如下所示定义匹配的注脚，URL将变成链接：
+\vspace{-0.3em}
 \begin{lstlisting}[language=]
 [^1]: This is my first footnote
 [^n]: Visit http://ghost.org
 [^n]: A final footnote
 \end{lstlisting}
+\vspace{1em}
+一个完整的脚注实例：
+\vspace{-0.3em}
 \begin{lstlisting}[language=]
 Footnotes[^1] have a label[^label] and a definition[^!DEF].
 
@@ -721,6 +741,7 @@ Footnotes[^1] have a label[^label] and a definition[^!DEF].
 \section{扩展语法}
 \begin{frame}[fragile]
   \frametitle{扩展语法 | 杂项}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 # 目录
 [toc]
@@ -773,18 +794,21 @@ The HTML specification is maintained by the W3C.
 
 \begin{frame}[fragile]
   \frametitle{扩展语法 | \alert{代码}}
-  标准Markdown基于缩进代码行或者4个空格位：
+  \begin{itemize}
+    \item 标准Markdown基于缩进代码行或者4个空格位：
 \begin{lstlisting}[language=]
     #!/usr/bin/perl
     print "Hello, world!\n";
 \end{lstlisting}
-  GFM（GitHub Flavored Markdown）使用三个反引号\verb|```|：
+\vspace{1em}
+    \item GFM（GitHub Flavored Markdown）使用三个反引号\verb|```|：
 \begin{lstlisting}[language=]
 ```perl
 #!/usr/bin/perl
 print "Hello, world!\n";
 ```
 \end{lstlisting}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -821,6 +845,8 @@ $$
 
 \begin{frame}[fragile]
   \frametitle{扩展语法 | 流程图}
+\begin{columns}
+  \column{0.75\textwidth}
 \begin{lstlisting}[language=]
 ```flow
 st=>start: Start
@@ -833,6 +859,12 @@ cond(yes)->e
 cond(no)->op
 ```
 \end{lstlisting}
+  \column{0.25\textwidth}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c1_markdown_flow.png}
+  \end{figure}
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -844,6 +876,11 @@ Note right of Bob: Bob thinks
 Bob-->Alice: I am good thanks!
 ```
 \end{lstlisting}
+\vspace{-1em}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{c1_markdown_seq.png}
+  \end{figure}
 \end{frame}
 
 \section{语法参考卡片}
@@ -942,6 +979,7 @@ pandoc [options] [input-file] ...
 
 \begin{frame}[fragile]
   \frametitle{格式转换 | pandoc | \alert{使用}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash]
 # Pandoc会根据文件的后缀名自动判断格式
 pandoc -o output.html input.md
@@ -961,7 +999,7 @@ pandoc input.md -o output.pdf --latex-engine=xelatex -V mainfont="SimSun" --temp
 \begin{frame}[fragile]
   \frametitle{格式转换 | unoconv | 简介}
   \begin{block}{unoconv}
-    Universal Office Converter (unoconv) is a command line tool to convert any document format that \textbf{LibreOffice} can import to any document format that LibreOffice can export. It makes use of the LibreOffice’s UNO bindings for non-interactive conversion of documents.
+    Universal Office Converter (unoconv) is a command line tool to convert any document format that \textbf{LibreOffice} can import to any document format that LibreOffice can export. It makes use of the LibreOffice's UNO bindings for non-interactive conversion of documents.
   \end{block}
   \begin{block}{\alert{使用}}
 \begin{lstlisting}[language=bash]
@@ -1005,6 +1043,7 @@ Use ImageMagick to create, edit, compose, or convert bitmap images. It can read 
   \begin{block}{convert}
 Use the convert program to convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more. 
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash]
 # 安装
 sudo apt install imagemagick
@@ -1020,6 +1059,7 @@ convert rose.jpg -resize 50% rose.png
 
 \begin{frame}[fragile]
   \frametitle{格式转换 | ImageMagick | 使用}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash]
 # combine multiple image-processing operations to produce complex results
 convert -size 320x85 canvas:none -font Bookman-DemiItalic -pointsize 72 -draw "text 25,60 \'Magick\'" -channel RGBA -blur 0x6 -fill darkred -stroke magenta -draw "text 20,55 \'Magick\'" fuzzy-magick.png
@@ -1119,6 +1159,7 @@ ffmpeg -i video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 video.mpeg
 
 \begin{frame}[fragile]
   \frametitle{格式转化 | FFmpeg | 使用}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # Get Video File Information
 ffmpeg -i video.flv -hide_banner
@@ -1141,6 +1182,7 @@ ffmpeg -f concat -i file-list.txt -c copy output.mp4
 
 \begin{frame}[fragile]
   \frametitle{格式转化 | FFmpeg | 使用}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash,basicstyle=\small\tt]
 # Resize a video
 ffmpeg -i input.mp4 -s 480x320 -c:a copy output.mp4
@@ -1159,6 +1201,7 @@ ffmpeg -i input.mp4 -filter:v 'transpose=2,transpose=2' rotated-video.mp4
 
 \begin{frame}[fragile]
   \frametitle{格式转化 | FFmpeg | 使用}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # Mute a video (Remove the audio component)
 ffmpeg -i video.mp4 -an mute-video.mp4
@@ -1239,7 +1282,7 @@ FF Multi Converter is a simple graphical application for Linux which enables you
 \begin{frame}
   \frametitle{Markdown | 思考题}
   \begin{enumerate}
-    \item 常见的文档样式（标题、强调等）如何使用Markdown语法来实现？
+    \item 对于常见的文档样式（标题、强调等），如何使用Markdown语法来实现？
     \item 如何把Markdown文件转换成其他常见的文档格式？
     \item 如何转换图片和视频格式？
   \end{enumerate}
