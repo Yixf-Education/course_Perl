@@ -175,9 +175,10 @@
 
 \begin{frame}
   \frametitle{生物学 | 蛋白质 | \alert{氨基酸}}
+  \vspace{-0.6em}
   \begin{figure}
     \centering
-    \includegraphics[width=9.5cm,height=7.5cm]{c1_intro_aa_01.png}
+    \includegraphics[width=9.5cm,height=7.8cm]{c1_intro_aa_01.png}
   \end{figure}
 \end{frame}
 
@@ -407,18 +408,18 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}
-  \frametitle{计算机科学 | 编程语言 | BioSQL}
-  \begin{block}{BioSQL}
-    BioSQL is a generic relational model covering sequences, features, sequence and feature annotation, a reference taxonomy, and ontologies (or controlled vocabularies).\\
-    \vspace{0.3em}
-    Each Bio* project has a language binding (object-relational mapping, ORM) to BioSQL.
-  \end{block}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.85\textwidth]{c1_intro_biosql.png}
-  \end{figure}
-\end{frame}
+% \begin{frame}
+%   \frametitle{计算机科学 | 编程语言 | BioSQL}
+%   \begin{block}{BioSQL}
+%     BioSQL is a generic relational model covering sequences, features, sequence and feature annotation, a reference taxonomy, and ontologies (or controlled vocabularies).\\
+%     \vspace{0.3em}
+%     Each Bio* project has a language binding (object-relational mapping, ORM) to BioSQL.
+%   \end{block}
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=0.85\textwidth]{c1_intro_biosql.png}
+%   \end{figure}
+% \end{frame}
 
 \section{编程}
 \begin{frame}
@@ -449,6 +450,7 @@
     \item 编写程序来批量运行现有程序
     \item 数据分析很简单，前期数据处理很难难难……（二八定律，80/20法则，帕雷托法则）
     \item 增强研究工作的可重复性
+    \item 数据越来越大，时间越来越少
     \item 人生苦短，学习编程
     \item ……
   \end{itemize}
@@ -489,8 +491,8 @@
 \begin{frame}
   \frametitle{编程 | 与艺术}
   \begin{center}
-    \large{每一位程序员都是一位艺术家！\\
-    每一个程序都是一件艺术品！\\
+    \large{每一位程序员都是一位艺术家\\
+    每一个程序都是一件艺术品\\
     编写程序 = 艺术创作！}
 \end{center}
 \vspace{-1em}
@@ -545,7 +547,7 @@
     \begin{enumerate}
       \item<1-> 对极大整数做因数分解非常困难（破解RSA-2048（2048-bit）的密钥可能需要耗费传统电脑10亿年的时间，而量子计算机只需要100秒就可以完成。）【量子计算机+秀尔算法】/【黎曼猜想】
       \item<2-> 普通台式机，每秒运算40亿次，需要大约30万年以上才能破解
-      \item<3-> 利文索尔佯谬（Levinthal's paradox）：100氨基酸，每个2种构象，每次尝试耗时$10^{-13}$s，穷举需要40亿年
+      \item<3-> 利文索尔佯谬（Levinthal's paradox）：100氨基酸，每个2种构象，每次尝试耗时$10^{-13}$s，穷举需要40亿年【深度学习？】
     \end{enumerate}
   \end{block}
 \end{frame}
@@ -674,13 +676,42 @@
 \begin{frame}
   \frametitle{R | 简介}
   \begin{block}{R}
- R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS.
+ R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS.\\
+\vspace{0.3em}
+R语言，一种自由软体程式语言与操作环境，主要用于统计分析、绘图、数据挖掘。R本来是由来自新西兰奥克兰大学的罗斯·伊哈卡和罗伯特·杰特曼开发（也因此称为R），现在由“R开发核心团队”负责开发。\\
+\begin{itemize}
+  \item R内建多种统计学及数字分析功能。R的功能也可以透过安装套件（Packages，用户撰写的功能）增强。
+  \item R的另一强项是绘图功能，制图具有印刷的素质，也可加入数学符号。
+  \item 虽然R主要用于统计分析或者开发统计相关的软体，但也有人用作矩阵计算。其分析速度可媲美专用于矩阵计算的自由软件GNU Octave和商业软件MATLAB。
+\end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | Packages}
+  \begin{block}{Packages}
+R的功能能够透过由用户撰写的套件增强。增加的功能有特殊的统计技术、绘图功能，以及编程介面和数据输出/输入功能。这些软件包是由R语言、LaTeX、Java及最常用C语言和Fortran撰写。
   \end{block}
   \pause
+  \begin{block}{CRAN}
+    CRAN为Comprehensive R Archive Network（R综合典藏网）的简称。它除了收藏了R的执行档下载版、原始码和说明文件，也收录了各种用户撰写的软件包。现时，全球有超过一百个CRAN镜像站。
+  \end{block}
+  \pause
+  \begin{block}{Bioconductor}
+    生物信息学社群时常使用R进行分子生物学数据分析。Bioconductor计划就是让R作为基因图谱分析工具。
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{R | IDE}
   \begin{block}{\alert{RStudio}}
  RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.\\
- \vspace{0.5em}
+ \vspace{0.3em}
  RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux) or in a browser connected to RStudio Server or RStudio Server Pro (Debian/Ubuntu, RedHat/CentOS, and SUSE Linux).
+  \end{block}
+  \pause
+  \begin{block}{RCode}
+    A modern environment for R.
   \end{block}
 \end{frame}
 
@@ -760,6 +791,8 @@
     \begin{description}
       \item[\alert{data.table}] An alternative way to organize data sets for \alert{very, very fast} operations. Useful for big data.
       \item[parallel] Use \textbf{parallel processing} in R to speed up your code or to crunch large data sets.
+      \item[\alert{foreach}] Provides Foreach Looping Construct for R. Foreach is an idiom that allows for iterating over elements in a collection, without the use of an explicit loop counter. Using foreach without side effects also facilitates \textbf{executing the loop in parallel}.
+      \item[\alert{doParallel}] Foreach Parallel Adaptor for the `parallel' Package. Provides a parallel backend for the \textbf{\%dopar\%} function using the parallel package.
     \end{description}
   \end{block}
 \end{frame}
@@ -779,6 +812,7 @@
   \frametitle{R | Packages}
   \begin{block}{Easily install and load packages from the tidyverse}
     The \alert{tidyverse} is a collection of R packages that share common philosophies and are designed to work together.\\
+    \vspace{0.3em}
     The \alert{core tidyverse packages} that you are likely to use in almost every analysis:
     \begin{itemize}
       \item readr, for data import.
