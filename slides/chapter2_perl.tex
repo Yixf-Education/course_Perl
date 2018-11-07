@@ -21,18 +21,18 @@
 
 \begin{frame}
   \frametitle{引言 | 计算机程序}
-  计算机程序（Computer Program）是指一组指示计算机或其他具有信息处理能力装置每一步动作的指令，通常用某种程序设计语言编写，运行于某种目标体系结构上。\\
+  计算机程序（computer program）是指一组指示计算机或其他具有信息处理能力装置每一步动作的\alert{指令}，通常用某种程序设计语言编写，运行于某种目标体系结构上。\\
   \vspace{1em}
   打个比方，一个程序就像一个用汉语（程序设计语言）写下的红烧肉菜谱（程序），用于指导懂汉语和烹饪手法的人（体系结构）来做这个菜。\\
   \vspace{1em}
-  通常，计算机程序要经过编译和链接而成为一种人们不易看清而计算机可解读的格式，然后运行。未经编译就可运行的程序，通常称之为脚本程序（script）。
+  通常，计算机程序要经过编译和链接而成为一种人们不易看懂而计算机可解读的格式，然后运行。未经编译就可运行的程序，通常称之为脚本程序（script）。
 \end{frame}
 
 \begin{frame}
   \frametitle{引言 | 编程语言}
 编程语言（programming language），是用来定义计算机程序的形式语言。它是一种被标准化的交流技巧，用来向计算机发出指令。一种计算机语言让程序员能够准确地定义计算机所需要使用的数据，并精确地定义在不同情况下所应当采取的行动。\\
   \vspace{1em}
-与英语类似，编程语言其实就是一门外语，只不过是专门用于跟计算机进行沟通的外语。\\
+  与英语类似，编程语言其实就是一门\alert{外语}，只不过是专门用于跟计算机进行沟通的外语。\\
   \vspace{1em}
 在电脑领域已发明了上千种不同的编程语言，而且每年仍有新的编程语言诞生。有许多用于特殊用途的语言，只在特殊情况下使用。例如，PHP专门用来显示网页；Perl更适合文本处理；C语言被广泛用于操作系统和编译器的开发（所谓的系统编程）。
 \end{frame}
@@ -45,14 +45,14 @@
       \item Perl是高级、通用、直译式、动态的程序语言
       \item \alert{Practical Extraction and Report Language}，实用摘录与报表语言
       \item Pathologically Eclectic Rubbish Lister，病态折中式垃圾列表器
-      \item 拉里·沃尔（\alert{Larry Wall}），\alert{1987年}12月18日
+      \item 拉里·沃尔（\alert{Larry Wall}），\alert{1987年} 12月18日
     \end{itemize}
   \end{block}
   \pause
   \begin{block}{特性}
     \begin{itemize}
       \item 具有动态语言强大灵活的特性
-      \item 借用了C、sed、awk、shell等语言的特性，提供了许多冗余语法
+      \item 借用了C、sed、AWK、shell等语言的特性，提供了许多冗余语法
       \item 使用了语言学的思维（泛型变量、动态数组、Hash表等）
       \item 程序员可以忽略内部数据存储、类型、内存越界等细节
       \item 内部集成了正则表达式的功能
@@ -80,9 +80,30 @@
       %\item 懒惰：这个品质使你尽最大的努力去减少总的精力消耗。这让你写出节省劳动力的程序，而且别人会找到有用的地方，和你写的文档。所以你不需要回答关于该软件的很多问题。因此是程序员的第一个美德。参见不耐烦和骄傲。
       %\item 不耐烦：当电脑懒惰的时候你感觉生气。这让你写出不仅反映你的需求，而实际上预先使用它们。或者至少假装。所以是程序员的第二个美德。参见懒惰和骄傲。
       %\item 骄傲：极度骄傲，宙斯快速推动你想要的那种东西。同时这个品质让你写（和维护）别人支持的程序。所以是程序员的第三个美德。参见懒惰和不耐烦。
-      \item 懒惰；不耐烦；骄傲
+      \item 懒惰（Laziness）；不耐烦（Impatience）；骄傲（Hubris）
       \item （出处：《Programming Perl》（《骆驼书》）第二版，沃尔（和共同作者Randal L.  Schwartz与Tom Christiansen）
     \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 简介 | “三美”程序员}
+  \vspace{-0.5em}
+  \begin{block}{懒惰（Laziness）}
+ {\footnotesize   是这样一种品质，它使得你花大力气去避免消耗过多的精力。它敦促你写出节省体力的程序，同时别人也能利用它们。为此你会写出完善的文档，以免别人问你太多问题。\\
+ The quality that makes you go to great effort to reduce overall energy expenditure. It makes you write labor-saving programs that other people will find useful, and document what you wrote so you don't have to answer so many questions about it.}
+  \end{block}
+  \vspace{-0.5em}
+  \begin{block}{急躁（Impatience）}
+{\footnotesize
+    是这样一种愤怒——当你发现计算机懒洋洋地不给出结果。于是你写出更优秀的代码，能尽快真正的解决问题。至少看上去是这样。\\
+    The anger you feel when the computer is being lazy. This makes you write programs that don't just react to your needs, but actually anticipate them. Or at least pretend to.}
+  \end{block}
+  \vspace{-0.5em}
+  \begin{block}{傲慢（Hubris）}
+{\footnotesize
+    极度的自信，使你有信心写出（或维护）别人挑不出毛病的程序。\\
+    Excessive pride, the sort of thing Zeus zaps you for. Also the quality that makes you write (and maintain) programs that other people won't want to say bad things about.}
   \end{block}
 \end{frame}
 
@@ -199,11 +220,15 @@
   \frametitle{Perl | 标志}
   \begin{figure}
     \centering
-    \includegraphics[width=4cm]{c2_perl_logo_01.jpg}
-    \hspace{1cm}
-    \includegraphics[width=4cm]{c2_perl_logo_02.png}
-    \vspace{0.5cm}
-    \includegraphics[width=6cm]{c2_perl_logo_03.jpg}
+    \includegraphics[width=3.3cm]{c2_perl_logo_01.jpg}
+    \hspace{0.1cm}
+    \includegraphics[width=3.5cm]{c2_perl_logo_02.png}
+    \hspace{0.1cm}
+    \includegraphics[width=4.5cm]{c2_perl_perl6.png}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width=8cm]{c2_perl_logo_03.jpg}
   \end{figure}
 \end{frame}
 
@@ -237,6 +262,7 @@
 
 \begin{frame}[fragile]
   \frametitle{Perl | 优缺点 | JAPH}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #JAPH(Just another Perl hacker) program without obfuscation:
 print "Just another Perl hacker,";
@@ -269,15 +295,16 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
   \frametitle{Perl | 优缺点 | JAPH}
   \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{c2_perl_japh_04.png}
+    \includegraphics[width=0.51\textwidth]{c2_perl_japh_04.png}
     \quad
-    \includegraphics[width=0.4\textwidth]{c2_perl_japh_05.png}
+    \includegraphics[width=0.365\textwidth]{c2_perl_japh_05.png}
   \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Perl | 优缺点 | JAPH}
-  \begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
+  \vspace{-1.5em}
+\begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
                         #!/usr/bin/perl
                           use strict;
 
@@ -317,11 +344,11 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
   \end{block}
   \pause
   \begin{block}{速度还可以}
-    先用Perl编写程序，再用C重写需要提速的部分。（开发时间远比运行时间宝贵！）
+    先用Perl编写程序，再用C重写需要提速的部分。（\alert{开发时间远比运行时间宝贵！}）
   \end{block}
   \pause
   \begin{block}{程序容易维护}
-    程序是死的，人是活的。（维护程序不比编写程序容易。）
+    程序是死的，人是活的。（\alert{维护程序不比编写程序容易。}）
   \end{block}
 \end{frame}
 
@@ -330,14 +357,14 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
   \begin{block}{Perl5}
     \begin{itemize}
       \item 1994年——至今
-      \item 最新版：v5.24.0（2016-05-09）
+      \item 最新版：v5.28.0（2018-06-22）
     \end{itemize}
   \end{block}
   \pause
   \begin{block}{Perl6}
     \begin{itemize}
       \item 2000年——至今（2015-12-25发布v1.0）
-      \item 最新版：Rakudo Star 2016.10（2016-10-23）
+      \item 最新版：Rakudo Star 2018.06（2018-08-06）
     \end{itemize}
   \end{block}
   \pause
@@ -397,8 +424,8 @@ perl -v
 \begin{frame}[fragile]
   \frametitle{Perl | 学习}
   \begin{block}{基本策略}
-    先学习基础知识，当需要时再学习相关主题。\\
-    80/20定律：Perl里面80\%的功能可以用文档中20\%的部分加以描述，而另外20\%的功能却需要占据其他80\%的篇幅。（扩展：80\%的任务可以用20\%的知识解决，20\%的任务则需要剩余80\%的知识。）
+    基础毛坯，主题精装。（先学习基础知识，当需要时再学习相关主题。）\\
+80/20定律：Perl里面80\%的功能可以用文档中20\%的部分加以描述，而另外20\%的功能却需要占据其他80\%的篇幅。（扩展：80\%的任务可以用20\%的知识解决，20\%的任务则需要剩余80\%的知识。）
   \end{block}
   \pause
   \begin{block}{各种资源}
@@ -498,6 +525,7 @@ perl -v
 
 \begin{frame}[fragile]
   \frametitle{Perl | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl
 # Classic "Hello World" as done with Perl
@@ -553,7 +581,7 @@ perl -c script.pl
       \item Missing right curly or square bracket: 括号不匹配
       \item 语句末尾少了分号
       \item 关键字（内置函数）拼写错误
-      \item 变量类型符号错误/变量名拼写错误
+      \item 变量类型符号（\verb|$@%|）错误/变量名拼写错误
       \item ……
     \end{itemize}
   \end{block}
@@ -561,6 +589,7 @@ perl -c script.pl
 
 \begin{frame}[fragile]
   \frametitle{Perl | 格式化 | \alert{perltidy}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=bash]
 # 安装perltidy
 sudo apt install perltidy
@@ -580,6 +609,7 @@ perltidy -h
 
 \begin{frame}[fragile]
   \frametitle{Perl | 格式化 | 前}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl 
 
@@ -592,6 +622,7 @@ if($j==$i){print"\n";}else{print"\t";}}}
 
 \begin{frame}[fragile]
   \frametitle{Perl | 格式化 | \alert{后}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 #!/usr/bin/perl 
 
@@ -619,9 +650,9 @@ for ( my $i = 1 ; $i <= 9 ; $i++ ) {
   \pause
   \begin{block}{\alert{类型}}
     \begin{itemize}
-      \item 标量：scalar；只包含一个元素的变量；以 \verb|$|开头
-      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以 \verb|@|开头
-      \item 散列：hash，associative array（关联数组）；像字典一样，把不同的变量按照它们的逻辑关系组织起来，并以作为“键”的变量进行索引；以 \verb|%|开头
+      \item 标量：scalar；只包含一个元素的变量；以 \verb|$|开头；类比“个体”
+      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以 \verb|@|开头；类比“队列”
+      \item 散列：hash，associative array（关联数组）；像字典一样，把不同的变量按照它们的逻辑关系组织起来，并以作为“键”的变量进行索引；以 \verb|%|开头；类比“字典”
     \end{itemize}
   \end{block}
 \end{frame}
@@ -629,6 +660,7 @@ for ( my $i = 1 ; $i <= 9 ; $i++ ) {
 \subsection{标量}
 \begin{frame}[fragile]
   \frametitle{变量 | 标量 | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 标量：$scalar
 
@@ -654,6 +686,7 @@ $where_to_find_him = 'http://www.weinstein.org';
 
 \begin{frame}[fragile]
   \frametitle{变量 | 数组 | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 数组：@array
 # 索引值从0开始
@@ -694,6 +727,7 @@ $list[0] # 1
 
 \begin{frame}[fragile]
   \frametitle{变量 | 散列 | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 散列：%hash
 
@@ -703,6 +737,7 @@ name => 'Paul',
 age => '29',
 url => 'http://www.weinstein.org',
 )
+# 友情提示：注意最后一个元素（括号前的最后一行）的末尾
 
 # 提取键值：$hash{key}
 $person{"age"} # 29
@@ -710,12 +745,15 @@ $person{"age"} # 29
 \end{frame}
 
 \subsection{内置变量}
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{变量 | 内置变量}
   \begin{figure}
     \centering
     \includegraphics[width=11cm]{c2_perl_buildin_01.jpg}
   \end{figure}
+  \begin{center}
+其中重要/常用的几个\alert{内置变量}：\verb|$_|，\verb|$!|，\verb|$0|，\verb|@ARGV|，\verb|@_|
+  \end{center}
 \end{frame}
 
 \section{操作符}
@@ -836,12 +874,14 @@ $person{"age"} # 29
 \section{基本函数}
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{print, chomp}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 向标准输出打印文本
 print "Hello Again\n";
 
 # 向一个具有文件句柄的文件打印文本
 print FILE "Hello Again\n";
+print $FILE "Hello Again\n";
 
 # 打印变量的值
 print "How are on this day, the " . $date . "?\n";
@@ -856,6 +896,7 @@ chomp @authors;
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{join, split}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # joining a number of strings togother with a colon delimiter
 $fields = join ':', $data_field1, $data_field2, $data_field3;
@@ -870,6 +911,7 @@ $fields = join ':', $data_field1, $data_field2, $data_field3;
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{open, close}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # open the file and slurp its contents into an array and then close the file
 open(FILE, "/etc/passwd");
@@ -887,6 +929,7 @@ close $IN or warn "$0 : failed to close input file '$file_in' : $!\n";
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | opendir, readdir, closedir}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl -w
 
@@ -907,6 +950,7 @@ print "All done\n\n";
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{my}, local}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # Global variable $name is given a name
 $name = "Paul";
@@ -927,6 +971,7 @@ foreach (@filedata) {
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | my vs. local}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 #!/usr/bin/perl
 $x = 9;
@@ -960,6 +1005,7 @@ print "#MAIN#\n"; print "main: $x\n";
 
 \begin{frame}[fragile]
   \frametitle{判断语句 | if | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # if区块
 if ($hour > 22) {
@@ -982,6 +1028,7 @@ print "hello" if $guest >= 1;
 
 \begin{frame}[fragile]
   \frametitle{判断语句 | if-else | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 if ($name eq "Paul") {
   print "Hi Paul\n";
@@ -1053,6 +1100,7 @@ given ($foo) {
 
 \begin{frame}[fragile]
   \frametitle{循环语句 | foreach | \alert{语法}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 @group = 1..10;
 
@@ -1219,7 +1267,7 @@ sort SUBNAME LIST
 \begin{lstlisting}[language=Perl]
 @passengers = sort @passengers;
 @passengers = sort { $a->{age} <=> $b->{age} } @passengers;
-@passengers = sort  women_and_children_first @passengers;
+@passengers = sort women_and_children_first @passengers;
 \end{lstlisting}
 \end{frame}
 
@@ -1257,6 +1305,7 @@ my @descending = sort { $b <=> $a } @numbers;
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | sort | 复杂排序}
+  \vspace{-1.8em}
 \begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
 my @employees = (
     {
@@ -1300,6 +1349,7 @@ my @employees = (
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | sort | 复杂排序}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 将sort代码块放到子程序中，并用子程序的名称替代sort代码块
 sub by_seniority_then_pay_then_name {
@@ -1320,9 +1370,10 @@ sub by_seniority_then_pay_then_name {
 \subsection{grep}
 \begin{frame}[fragile]
   \frametitle{列表操作 | grep | \alert{语法}}
-  \begin{block}{grep}
+  \begin{block}{grep：筛选}
     生成一个新的列表，该列表中的所有元素由一个给定列表中所有满足筛选标准的元素组成。 
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 NEWLIST = grep BLOCK       LIST;
 NEWLIST = grep EXPRESSION, LIST;
@@ -1341,6 +1392,7 @@ my @greater = grep ( $_ > 0,  @numbers );
   \begin{block}{原理}
     在使用grep函数时，通过轮流地把每个元素设置成 \verb|$_|的方式，可以实现对列表中每个元素的迭代处理。grep函数只返回在BLOCK或EXPRESSION中值为真的那些元素。可以在grep函数中使用任意复杂的表达式。
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 获取回文字符串
 my @palindromes = grep { uc eq reverse uc } @words;
@@ -1367,18 +1419,21 @@ my @result = sort { $a <=> $b }
 \subsection{map}
 \begin{frame}[fragile]
   \frametitle{列表操作 | map | \alert{语法}}
-  \begin{block}{map}
+  \begin{block}{map：变换}
 在想要改变整个列表内容时使用map。它逐个对给定列表中的元素进行处理，然后新建一个列表，并将修改后的值返回到新的列表中。 
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 NEWLIST = map BLOCK       LIST;
 NEWLIST = map EXPRESSION, LIST;
+# 注意逗号的有无！
 \end{lstlisting}
 \pause
 \begin{lstlisting}[language=Perl]
 # 将列表中的每一个字母大写
 my @UPPER = map { uc } @words;
 
+# 对列表中的正数求平方根
 my @roots = map  { sqrt($_) }
             grep { $_ > 0   } @numbers;
 \end{lstlisting}
@@ -1386,9 +1441,10 @@ my @roots = map  { sqrt($_) }
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | map | 实例}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl]
 # 将华氏温度转换为摄氏温度
-my @fahrenheit = (
+my %fahrenheit = (
     'absolute zero'    => -459.67,
     'freezing water'   => 32,
     'body temperature' => 98.6,
@@ -1405,6 +1461,7 @@ my %celsius = map
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{Orcish Maneuver}
+    \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 keys my %or_cache = @in;
 @out = sort {
@@ -1414,11 +1471,18 @@ keys my %or_cache = @in;
 } @in;
 \end{lstlisting}
   \end{block}
+  \begin{block}{参考资料}
+    \begin{itemize}
+      \item \href{https://www.perlmonks.org/?node=130021}{Orcish Maneuver}
+      \item \href{https://blog.gtwang.org/perl/orcish-maneuver-perl-sorting/}{Orcish Maneuver：让Perl排序程序加速的方法}
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{\alert{Schwartzian transform}}
+    \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 # The general form of the Schwartzian Transform:
 @sorted = map  { $_->[0] }
@@ -1441,6 +1505,7 @@ keys my %or_cache = @in;
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{Schwartzian transform}
+    \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # James|007|Spy
 # Number 6|6|Ex-spy
@@ -1459,9 +1524,22 @@ my @sorted = map  { $_->[0] }
   \end{block}
 \end{frame}
 
+\begin{frame}
+  \frametitle{列表操作 | 高效排序}
+  \begin{block}{参考资料（Schwartzian transform）}
+    \begin{itemize}
+      \item \href{https://www.wikiwand.com/en/Schwartzian_transform}{Schwartzian transform}
+      \item \href{https://www.perl.com/article/the-history-of-the-schwartzian-transform/}{The History of the Schwartzian Transform}
+      \item \href{https://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Schwartzian_transform}{Algorithm Implementation/Sorting/Schwartzian transform}
+      \item \href{https://blog.csdn.net/iSpeller/article/details/48161395}{使用施瓦茨变换（Schwartzian Transform）进行高速排序}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{Guttman-Rosler Transform}
+    \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # James|007|Spy
 # Number 6|6|Ex-spy
@@ -1474,11 +1552,18 @@ my @sorted = map { substr $_, 4 }
     map {/\|(\d+)/; pack("A4", $1).$_ } <>;
 \end{lstlisting}
   \end{block}
+  \begin{block}{参考资料}
+    \begin{itemize}
+      \item \href{http://www.lowlevelmanager.com/2010/10/grt-guttman-rosler-transform.html}{GRT : Guttman Rosler Transform}
+      \item \href{https://www.perlmonks.org/?node_id=145659}{Advanced Sorting - GRT - Guttman Rosler Transform}
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \section{检修脚本}
 \begin{frame}[fragile]
   \frametitle{\alert{检修脚本}}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 # 不洁模式
 #!/usr/bin/perl -T
@@ -1544,7 +1629,7 @@ perl -d script.pl
   \begin{center}
     \href{https://metacpan.org/favorite/leaderboard}{https://metacpan.org/favorite/leaderboard}
   \begin{figure}
-    \includegraphics[width=0.9\textwidth]{c2_perl_metacpan_01.png}
+    \includegraphics[width=\textwidth]{c2_perl_metacpan_02.png}
   \end{figure}
 \end{center}
 \end{frame}
@@ -1709,7 +1794,7 @@ perl -d script.pl
       \item 变量：标量，数组，散列，内置变量
       \item 操作符：数字、字符串、逻辑、文件测试、匹配操作符
       \item 基本函数：print, chomp, join, split, open, close, my
-      \item 判断语句：if, unless, given-when
+      \item 判断语句：if, unless, if-else, given-when
       \item 循环语句：foreach, for, while, until
       \item 列表操作：sort, grep, map
       \item 检修脚本：检查语法，格式化脚本，调试脚本
@@ -1744,7 +1829,7 @@ perl -d script.pl
   \begin{itemize}
     \item 在面对问题的时候，你是如何构思解决策略的？
     \item 在编程中，你是怎样保存和备份程序的？
-    \item 你是如何一步一步从零开始写出一个可用的程序的？
+    \item 你是如何一步一步从零开始写出一个可用程序的？
   \end{itemize}
 \end{frame}
 
