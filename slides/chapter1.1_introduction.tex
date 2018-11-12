@@ -678,7 +678,7 @@
   \begin{block}{R}
  R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS.\\
 \vspace{0.3em}
-R语言，一种自由软体程式语言与操作环境，主要用于统计分析、绘图、数据挖掘。R本来是由来自新西兰奥克兰大学的罗斯·伊哈卡和罗伯特·杰特曼开发（也因此称为R），现在由“R开发核心团队”负责开发。\\
+\alert{R语言}，一种自由软体程式语言与操作环境，主要用于\alert{统计分析、绘图、数据挖掘}。R本来是由来自新西兰奥克兰大学的罗斯·伊哈卡和罗伯特·杰特曼开发（也因此称为R），现在由“R开发核心团队”负责开发。\\
 \begin{itemize}
   \item R内建多种统计学及数字分析功能。R的功能也可以透过安装套件（Packages，用户撰写的功能）增强。
   \item R的另一强项是绘图功能，制图具有印刷的素质，也可加入数学符号。
@@ -693,11 +693,11 @@ R语言，一种自由软体程式语言与操作环境，主要用于统计分�
 R的功能能够透过由用户撰写的套件增强。增加的功能有特殊的统计技术、绘图功能，以及编程介面和数据输出/输入功能。这些软件包是由R语言、LaTeX、Java及最常用C语言和Fortran撰写。
   \end{block}
   \pause
-  \begin{block}{CRAN}
+  \begin{block}{\alert{CRAN}}
     CRAN为Comprehensive R Archive Network（R综合典藏网）的简称。它除了收藏了R的执行档下载版、原始码和说明文件，也收录了各种用户撰写的软件包。现时，全球有超过一百个CRAN镜像站。
   \end{block}
   \pause
-  \begin{block}{Bioconductor}
+  \begin{block}{\alert{Bioconductor}}
     生物信息学社群时常使用R进行分子生物学数据分析。Bioconductor计划就是让R作为基因图谱分析工具。
   \end{block}
 \end{frame}
@@ -720,6 +720,7 @@ R的功能能够透过由用户撰写的套件增强。增加的功能有特殊�
   \begin{block}{Useful and popular packages: Load data}
     \begin{description}
       \item[\alert{readr}] readr makes it easy to read many types of \alert{tabular data} including: delimited files, fixed width files and web log files.
+      \item[\alert{readxl}] Import \alert{excel files} into R. readxl supports both the legacy .xls format and the modern xml-based .xlsx format.
       \item[XLConnect] Help you read, write and format \textbf{Micorsoft Excel} files from R.
       \item[foreign] Functions for reading and writing data stored by some versions of Epi Info, Minitab, S, SAS, SPSS, Stata, Systat and Weka and for reading and writing some dBase files.
       \item[httr] A set of useful tools for working with \textbf{http} connections.
@@ -817,22 +818,24 @@ R的功能能够透过由用户撰写的套件增强。增加的功能有特殊�
     \begin{itemize}
       \item readr, for data import.
       \item tidyr, for data tidying.
-      \item dplyr, for data manipulation.
+      \item dplyr, for data manipulations.
       \item ggplot2, for data visualisation.
-      \item tibble, for tibbles, a modern re-imagining of data frames.
+      \item stringr, for string manipulations.
       \item purrr, for functional programming.
+      \item tibble, for tibbles, a modern re-imagining of data frames.
+      \item forcats, a suite of useful tools that solve common problems with factors.
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{R | Packages}
   \begin{block}{Easily install and load packages from the tidyverse}
     It also installs a selection of other tidyverse packages that you're likely to use frequently, but probably not in every analysis. This includes packages for:
     \begin{itemize}
-      \item Working with specific types of vectors: hms (times), stringr (strings), lubridate (date/times), forcats (factors).
+      \item Working with specific types of vectors: hms (times), stringr (strings), lubridate (date/times), forcats (factors), blob (blob/binary data).
       \item Importing other types of data: DBI (databases), haven (SPSS, SAS and Stata files), httr (web apis), jsonlite (JSON), readxl (.xls and .xlsx files), rvest (web scraping), xml2 (XML).
-      \item Modelling: modelr (modelling within a pipeline), broom (turning models into tidy data).
+      \item Programming and modelling: magrittr (\verb|%>%|), glue (alternative to paste()), modelr (modelling within a pipeline), broom (turning models into tidy data).
     \end{itemize}
   \end{block}
 \end{frame}
