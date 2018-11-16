@@ -31,13 +31,13 @@
 \begin{itemize}
   \item （5'）引言与导入：回顾分子生物学的基础知识，介绍本章将要学习的内容。
   \item （10'）序列数据的表征：回顾核酸和蛋白质序列的表征方法，介绍序列和字符串之间的关系。
-  \item （35'）存储DNA序列：通过存储DNA序列的Perl程序讲解Perl语言的基础知识。
+  \item （30'）存储DNA序列：通过存储DNA序列的Perl程序讲解Perl语言的基础知识。
   \item （20'）拼接DNA片段：通过拼接DNA片段的Perl程序讲解字符串的拼接操作。
   \item （20'）DNA转录成RNA：通过DNA转录成RNA的Perl程序讲解字符串的替换操作。
-  \item （10'）使用Perl文档：总结查找Perl文档的方法。
+  \item （5'）使用Perl文档：总结查找Perl文档的方法。
   \item （25'）序列反向互补：通过获取DNA反向互补序列的Perl程序讲解字符串的翻译反转操作。
-  \item （25'）从文件读取数据：通过读取文件数据的Perl程序讲解读取文件的基本方法和策略。
-  \item （30'）数组：通过读取文件中多行数据的Perl程序讲解数组的基本使用与常见操作。
+  \item （20'）从文件读取数据：通过读取文件数据的Perl程序讲解读取文件的基本方法和策略。
+  \item （25'）数组：通过读取文件中多行数据的Perl程序讲解数组的基本使用与常见操作。
   \item （15'）上下文：通过实例介绍上下文的概念，比较标量上下文和列表上下文。
   \item （5'）总结与答疑：总结授课内容中的知识点与技能，解答学生疑问。
 \end{itemize}
@@ -139,7 +139,7 @@
 	  \item （生物学）DNA/RNA/蛋白质序列 $\Longrightarrow$ （计算机科学）字符串
 	\end{itemize}
     \end{enumerate}
-  \item 存储DNA序列（35分钟）
+  \item 存储DNA序列（30分钟）
     \begin{enumerate}
       \item Perl程序4.1：使用Perl程序存储DNA序列并将其打印出来
       \item \textcolor{red}{【重点】}程序4.1的解释说明\textcolor{red}{（结合程序逐一讲解）}
@@ -182,7 +182,7 @@
 	  \item \verb|($RNA = $DNA) =~ s/T/U/g;|
 	\end{enumerate}
     \end{enumerate}
-  \item 使用Perl文档（10分钟）
+  \item 使用Perl文档（5分钟）
 \vspace*{-1em}
 \begin{multicols}{2}
     \begin{enumerate}
@@ -206,7 +206,7 @@
 	  \item tr：字符集翻译；\verb|$revcom =~ tr/ACGT/TGCA/;|
 	\end{itemize}
     \end{enumerate}
-  \item 从文件读取数据（25分钟）
+  \item 从文件读取数据（20分钟）
     \begin{enumerate}
       \item 创建数据：文件和文件夹的组织与命名\textcolor{red}{（养成好习惯，终生会收益）}
       \item Perl程序4.5/4.6：使用Perl程序从文件中读取蛋白质序列数据（一行/多行）
@@ -217,7 +217,7 @@
 	  \item 解关联文件和文件句柄：\verb|close PROTEINFILE;|\textcolor{red}{（有开有关、有始有终）}
 	\end{enumerate}
     \end{enumerate}
-  \item 数组（30分钟）
+  \item 数组（25分钟）
     \begin{enumerate}
       \item Perl程序4.7：通过数组，使用Perl程序从文件中读取全部的蛋白质序列数据\textcolor{red}{（和4.5/4.6进行比较）}
       \item \textcolor{red}{【重点、难点】}数组操作\textcolor{red}{（演示数组操作实例）}

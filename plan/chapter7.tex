@@ -29,12 +29,12 @@
 
 \fenpei{
 \begin{itemize}
-  \item （15'）引言与导入：回顾突变的概念、原因和类型，介绍随机和模拟及其在DNA突变中的应用。
+  \item （10'）引言与导入：回顾突变的概念、原因和类型，介绍随机和模拟及其在DNA突变中的应用。
   \item （10'）随机数生成器：介绍随机数生成器、伪随机数以及种子的相关概念。
-  \item （75'）随机化程序：通过生成随机句子的Perl程序讲解随机化在Perl语言中的实现。
-  \item （50'）模拟DNA突变：通过模拟DNA突变的Perl程序讲解随机化在模拟DNA突变中的应用。
-  \item （50'）生成随机DNA：通过生成随机DNA序列的Perl程序讲解随机化在生成随机DNA序列中的应用。
-  \item （90'）分析DNA：详细讲解如何基于已有的知识生成随机DNA序列并对它们进行相似性比较。
+  \item （70'）随机化程序：通过生成随机句子的Perl程序讲解随机化在Perl语言中的实现。
+  \item （45'）模拟DNA突变：通过模拟DNA突变的Perl程序讲解随机化在模拟DNA突变中的应用。
+  \item （45'）生成随机DNA：通过生成随机DNA序列的Perl程序讲解随机化在生成随机DNA序列中的应用。
+  \item （80'）分析DNA：详细讲解如何基于已有的知识生成随机DNA序列并对它们进行相似性比较。
   \item （10'）总结与答疑：总结授课内容中的知识点与技能，解答学生疑问。
 \end{itemize}
 }
@@ -104,7 +104,7 @@
 \otherHeader
 
 \begin{enumerate}
-  \item 引言与导入（15分钟）
+  \item 引言与导入（10分钟）
     \begin{enumerate}
       \item 突变
 	\begin{enumerate}
@@ -142,7 +142,7 @@
       \item 伪随机数：重复周期比较大的数列，并不是真正的随机数，按一定的算法和种子值生成
       \item 种子：种子改变，伪随机数随之改变；种子本身应该是随机选择的
     \end{enumerate}
-  \item 随机化程序（75分钟）
+  \item 随机化程序（70分钟）
     \begin{enumerate}
       \item Perl程序7.1：通过随机选取名词、动词和介词构造句子
       \item 设置随机数种子：\verb=srand(time | $$);=
@@ -167,7 +167,7 @@
 \newpage
 \otherHeader
 
-  \item 模拟DNA突变（50分钟）
+  \item 模拟DNA突变（45分钟）
     \begin{enumerate}
       \item \textcolor{red}{【重点】}编写子程序\textcolor{red}{（对每一个子程序都单独进行测试）}
 	\begin{itemize}
@@ -186,7 +186,7 @@
 	  \item 局部变量（在代码块中声明） vs. 全局变量（在主程序中声明）
 	\end{itemize}
     \end{enumerate}
-  \item 生成随机DNA（50分钟）
+  \item 生成随机DNA（45分钟）
     \begin{enumerate}
       \item 设计理念\textcolor{red}{（理念不同，目的相同；比较并练习不同的设计理念）}
 	\begin{itemize}
@@ -212,7 +212,7 @@
 	    \end{itemize}
 	\end{itemize}
     \end{enumerate}
-  \item 分析DNA（90分钟）
+  \item 分析DNA（80分钟）
     \begin{enumerate}
 \parpic[fr]{\includegraphics[width=0.45\textwidth]{c7_mutation_nested_loop.png}}
       \item 问题：两条DNA序列的相似性如何？

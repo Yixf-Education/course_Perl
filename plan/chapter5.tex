@@ -30,10 +30,10 @@
 \fenpei{
 \begin{itemize}
   \item （5'）引言与导入：回顾上一章学习的知识点，介绍本章将要学习的内容。
-  \item （35'）流程控制：介绍流程控制的概念和指令，讲解流程控制的分类及各自的语法。
+  \item （30'）流程控制：介绍流程控制的概念和指令，讲解流程控制的分类及各自的语法。
   \item （10'）代码布局：比较不同的代码布局。
-  \item （50'）查找基序：通过在蛋白质序列中查找用户指定基序的Perl程序讲解Perl语言的相关知识。
-  \item （70'）计数核苷酸：通过计数核苷酸的Perl程序讲解字符串操作等Perl语言的相关知识。
+  \item （45'）查找基序：通过在蛋白质序列中查找用户指定基序的Perl程序讲解Perl语言的相关知识。
+  \item （60'）计数核苷酸：通过计数核苷酸的Perl程序讲解字符串操作等Perl语言的相关知识。
   \item （25'）写入文件：通过保存核苷酸计数结果的Perl程序讲解写入文件的方法。
   \item （5'）总结与答疑：总结授课内容中的知识点与技能，解答学生疑问。
 \end{itemize}
@@ -116,7 +116,7 @@
 	  \item 生物序列处理：查找基序、计数核苷酸
 	\end{itemize}
     \end{enumerate}
-  \item 流程控制（35分钟）
+  \item 流程控制（30分钟）
     \begin{enumerate}
       \item 简介
 	\begin{enumerate}
@@ -197,7 +197,7 @@ while ( $alive )
 \newpage
 \otherHeader
 
-  \item 查找基序（50分钟）
+  \item 查找基序（45分钟）
     \begin{enumerate}
       \item 问题分析与解决策略：基序长度不定有变体；正则表达式
       \item Perl程序5.3：在蛋白质序列中查找用户指定的基序
@@ -207,7 +207,7 @@ while ( $alive )
       \item 正则表达式：\verb|$protein =~ s/\s//g;|，\verb|$motif =~ /^\s*$/|\textcolor{red}{（结合实例解释其中的字符集、元字符、量词、锚位等）}
       \item 模式匹配：\verb|$protein =~ /$motif/|\textcolor{red}{（比较变量内插和直接使用字符串的优缺点）}
     \end{enumerate}
-  \item 计数核苷酸（70分钟）\textcolor{red}{（同样的碱基计数，不同的策略方法，各有优势与劣势）}
+  \item 计数核苷酸（60分钟）\textcolor{red}{（同样的碱基计数，不同的策略方法，各有优势与劣势）}
     \begin{enumerate}
       \item 伪代码\textcolor{red}{（通过简洁的伪代码理清思路）}
       \item 策略\textcolor{red}{（思考每种策略的优缺点）}
