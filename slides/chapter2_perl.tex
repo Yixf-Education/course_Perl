@@ -444,7 +444,7 @@ perl -v
 \begin{frame}
   \frametitle{Perl | 学习 | 书籍}
   \begin{block}{生物信息学角度}
-    \textit{Beginning} $\Longrightarrow$ \textit{Mastering Perl for Bioinformatics}
+    \textit{\alert{Beginning}} $\Longrightarrow$ \textit{Mastering Perl for Bioinformatics}
   \end{block}
   \begin{figure}
     \centering
@@ -465,7 +465,7 @@ perl -v
   \end{block}
   \pause
   \begin{block}{中文名}
-    《Perl语言入门》 $\Rightarrow$ 《Perl进阶》 $\Rightarrow$ 《精通Perl》 $\Rightarrow$ 《Perl语言编程》 $\Rightarrow$ 《高级Perl编程》
+    \alert{《Perl语言入门》} $\Rightarrow$ 《Perl进阶》 $\Rightarrow$ 《精通Perl》 $\Rightarrow$ 《Perl语言编程》 $\Rightarrow$ 《高级Perl编程》
   \end{block}
   \pause
 \end{frame}
@@ -491,7 +491,7 @@ perl -v
     \column{0.4\textwidth}
   \begin{block}{中文名}
     \begin{itemize}
-      \item 《Perl入门经典》
+      \item \alert{《Perl入门经典》}
       \item 《高阶Perl》
       \item 《Perl高效编程》
       \item 《Perl最佳实践》
@@ -667,11 +667,11 @@ for ( my $i = 1 ; $i <= 9 ; $i++ ) {
 # 字符串，双引号
 $name = "Paul";
 
-# 数字，无引号
-$age = 29;
-
 # 字符串，单引号
 $where_to_find_him = 'http://www.weinstein.org';
+
+# 数字，无引号
+$age = 29;
 \end{lstlisting}
 \end{frame}
 
@@ -1480,6 +1480,17 @@ keys my %or_cache = @in;
 \end{frame}
 
 \begin{frame}[fragile]
+  \frametitle{列表操作 | 高效排序 | foobar}
+  \begin{block}{foobar}
+foobar是电脑程式领域里的术语，并无实际用途和参考意义。在计算机程序设计与计算机技术的相关文档中，术语foobar是一个常见的无名氏化名，常被作为“伪变量（metasyntactic variable）”使用。\\
+\vspace{0.5em}
+单词“foobar”或分离的“foo”与“bar”常出现于程序设计的案例中，如同Hello World程序一样，它们常被用于向学习者介绍某种程序语言。\\
+\vspace{0.5em}
+“foo”“bar”常被作为函数/方法的名称或变量名。
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{\alert{Schwartzian transform}}
     \vspace{-1em}
@@ -1684,6 +1695,7 @@ perl -d script.pl
       \item[Reply] read, eval, print, loop, yay!
       \item[Ubic] polymorphic service manager
       \item[Rex] Remote Execution
+      \item[\alert{Smart::Comments}] Comments that do more than just sit there
     \end{description}
 \end{frame}
 
@@ -1691,8 +1703,9 @@ perl -d script.pl
   \frametitle{模块 | Utils}
     \begin{description}
       \item[Scalar::Util] A selection of general-utility scalar subroutines
-      \item[List::Util] A selection of general-utility list subroutines
+      \item[\alert{List::Util}] A selection of general-utility list subroutines
       \item[List::MoreUtils] Provide the stuff missing in List::Util
+      \item[List::SomeUtils] Provide the stuff missing in List::Util
       \item[List::UtilsBy] higher-order list utility functions
       \item[List::AllUtils] Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package
       \item[Hash::Util] A selection of general-utility hash subroutines
@@ -1753,7 +1766,7 @@ perl -d script.pl
       \item[DateTime] A date and time object for Perl 
       \item[Time::Moment] Represents a date and time of day with an offset from UTC
       \item[Data::Printer] colored pretty-print of Perl data structures and objects
-      \item[Data::Dumper] stringified perl data structures, suitable for both printing and eval
+      \item[\alert{Data::Dumper}] stringified perl data structures, suitable for both printing and eval
       \item[Imager] Perl extension for Generating 24 bit Images
       \item[Text::CSV] comma-separated values manipulator (using XS or PurePerl)
       \item[XML::LibXML] Perl Binding for libxml2
@@ -1769,10 +1782,10 @@ perl -d script.pl
 \begin{frame}
   \frametitle{模块 | Others}
     \begin{description}
-      \item[Getopt::Long] Extended processing of command line options
+      \item[\alert{Getopt::Long}] Extended processing of command line options
       \item[File::Slurp] Simple and Efficient Reading/Writing/Modifying of Complete Files
       \item[IO::All] IO::All to Larry Wall!
-      \item[Parallel::ForkManager] A simple parallel processing fork manager
+      \item[\alert{Parallel::ForkManager}] A simple parallel processing fork manager
       \item[MCE] Many-Core Engine for Perl providing parallel processing capabilities
       \item[POE] portable multitasking and networking framework for any event loop
       \item[Coro] the only real threads in perl
