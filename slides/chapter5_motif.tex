@@ -4,7 +4,7 @@
 \title[基序和循环]{第五章\quad 基序和循环}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2016年11月}
+\date{2018年11月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -106,6 +106,7 @@
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | \alert{if} | 真}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # =表示赋值，==表示数字相等
 if( 1 == 1 ) {
@@ -120,6 +121,7 @@ if( 1 ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | \alert{if} | 假}
+  \vspace{-1.5em}
 \begin{lstlisting}
 if( 1 == 0 ) {
   print "1 equals 0\n\n";
@@ -133,6 +135,7 @@ if( 0 ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | if | \alert{简写}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 两种写法完全等价
 # 比较“标准”，易读易懂
@@ -151,6 +154,7 @@ print "1 equals 1\n\n" if (1 == 1);
     
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | \alert{if-else} | 真}
+  \vspace{-1.5em}
 \begin{lstlisting}
 if( 1 == 1 ) {
   print "1 equals 1\n\n";
@@ -164,6 +168,7 @@ if( 1 == 1 ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | \alert{if-else} | 假}
+  \vspace{-1.5em}
 \begin{lstlisting}
 if( 1 == 0 ) {
   print "1 equals 0\n\n";
@@ -185,6 +190,7 @@ if( 1 == 0 ) {
     \end{itemize}
   \end{block}
   \pause
+  \vspace{-1.5em}
 \begin{lstlisting}
 unless( 1 == 0 ) {
   print "1 does not equal 0\n\n";
@@ -199,6 +205,7 @@ unless( 1 == 0 ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | unless vs. if}
+  \vspace{-1.5em}
 \begin{lstlisting}
 unless ( 1 == 0 ) {
   print "1 does not equal 0\n\n";
@@ -293,6 +300,7 @@ if ( !(1 == 0) ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 条件判断 | \alert{if-elsif-else}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -341,15 +349,16 @@ exit;
   \pause
   \begin{block}{for vs. foreach}
     \begin{itemize}
-      \item 在Perl解析器里，foreach和for这两个关键字实际上等价的。当Perl看到其中之一时，就好像看到了另一个。
+      \item 在Perl解析器里，foreach和for这两个关键字实际上是等价的。当Perl看到其中之一时，就好像看到了另一个。
       \item Perl可以从圆括号里的内容判断出你的意图：如果里面有两个分号，它就是for循环；若没有分号，就说明它是一个foreach循环。
-      \item 在Perl世界里，纯正的foreach循环几乎总是更好地选择。
+      \item 在Perl世界里，纯正的foreach循环几乎总是更好的选择。
     \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | while vs. until}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 $count = 0;
 until ( $count >= 10 ) {
@@ -373,6 +382,7 @@ while ( !($count >= 10) ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | for vs. foreach}
+  \vspace{-1.5em}
 \begin{lstlisting}
 for ( 1..10 ) {
   print "I can count to $_!\n";
@@ -390,6 +400,7 @@ for ( $i=1; $i<=10; $i++ ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | 程序5.2.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example 5-2   Reading protein sequence data from a file, take 4
@@ -409,6 +420,7 @@ unless ( open( PROTEINFILE, $proteinfilename ) ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | 程序5.2.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=15]
 # Read the protein sequence data from the file in a "while" loop,
 # printing each line as it is read.
@@ -428,6 +440,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | 程序5.2 | 输出}
+  \vspace{-1.5em}
   \begin{lstlisting}[language=,basicstyle=\footnotesize\tt,xrightmargin=1em]
   ######  Here is the next line of the file:
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
@@ -440,6 +453,7 @@ LQYALNVPISVKQEITFTDVSEQLMRDKKQIR
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 流程控制 | 循环 | \alert{程序5.2}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 #!/usr/bin/perl -w
 
@@ -492,6 +506,7 @@ exit;
 \section{代码布局}
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 代码布局 | 格式A \& B}
+  \vspace{-1.5em}
 \begin{lstlisting}
 while ( $alive ) {
   if ( $needs_nutrients ) {
@@ -513,6 +528,7 @@ while ( $alive )
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 代码布局 | 格式C \& D}
+  \vspace{-1.5em}
 \begin{lstlisting}
    while ( $alive )
     {
@@ -547,6 +563,12 @@ while($alive){if($needs_nutrients){print "Cell needs nutrients\n"；}}
       \item For proteins, a sequence motif is distinguished from a structural motif, a motif formed by the three-dimensional arrangement of amino acids which may not be adjacent.
     \end{itemize}
   \end{block}
+  \vspace{-0.5em}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.28\textwidth]{c5_motif_seq_dna.png}
+    \includegraphics[width=0.7\textwidth]{c5_motif_seq_aa.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -557,6 +579,11 @@ while($alive){if($needs_nutrients){print "Cell needs nutrients\n"；}}
       \item Motifs do not allow us to predict the biological functions: they are found in proteins and enzymes with dissimilar functions.
     \end{itemize}
   \end{block}
+  \vspace{-0.5em}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{c5_motif_structure.jpg}
+  \end{figure}
 \end{frame}
 
 
@@ -591,6 +618,7 @@ while($alive){if($needs_nutrients){print "Cell needs nutrients\n"；}}
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序| 程序5.3.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 5-3   Searching for motifs
@@ -608,6 +636,7 @@ chomp $proteinfilename;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序| 程序5.3.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13,basicstyle=\small\tt]
 # open the file, or exit
 unless ( open( PROTEINFILE, $proteinfilename ) ) {
@@ -628,6 +657,7 @@ close PROTEINFILE;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序| 程序5.3.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=27]
 # Put the protein sequence data into a single string, as it's easier
 # to search for a motif in a string than in an array of
@@ -645,6 +675,7 @@ $protein =~ s/\s//g;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序| 程序5.3.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=38]
 do {
     print "Enter a motif to search for: ";
@@ -661,6 +692,7 @@ do {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序| 程序5.3.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=49]
     if ( $protein =~ /$motif/ ) {
    #if ( $protein =~ m/$motif/ ) {
@@ -681,6 +713,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序| 程序5.3 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\small\tt]
 Please type the filename of the protein sequence data:
 NM_021964fragment.pep
@@ -704,6 +737,7 @@ I couldn't find it.
 \subsection{获取键盘输入}
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序 | \alert{获取键盘输入}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 文件句柄可以和文件相关联
 @protein = <PROTEINFILE>;
@@ -726,6 +760,7 @@ chomp $proteinfilename;
 \subsection{数组变标量}
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序 | \alert{数组变标量}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $protein = join ( '', @protein );
 \end{lstlisting}
@@ -777,6 +812,7 @@ $DNA3 = join ( "", ($DNA1, $DNA2) );
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序 | \alert{正则表达式}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $protein =~ s/\s//g;
 \end{lstlisting}
@@ -795,6 +831,7 @@ $protein =~ s/\s//g;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序 | \alert{正则表达式}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 } until ( $motif =~ /^\s*$/ );
 \end{lstlisting}
@@ -816,6 +853,7 @@ $protein =~ s/\s//g;
 \subsection{模式匹配}
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序 | \alert{模式匹配}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 if ( $protein =~ /$motif/ ) {
 #if ( $protein =~ m/$motif/ ) {
@@ -833,6 +871,7 @@ if ( $protein =~ /$motif/ ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 基序 | \alert{程序5.3}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
 #!/usr/bin/perl -w
 $proteinfilename = <STDIN>;
@@ -881,6 +920,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}
 for each base in the DNA
   if base is A
@@ -901,19 +941,23 @@ print count_of_A, count_of_C, count_of_G, count_of_T
   \frametitle{基序和循环 | 计数核苷酸 | 策略}
   \begin{block}{通用策略——策略一}
     把DNA拆解成单个碱基，存储到数组中，对数组中的元素进行迭代处理
+  \vspace{-0.5em}
 \begin{lstlisting}[language=]
 数组：A C G T G T A C
 索引：0 1 2 3 4 5 6 7
 \end{lstlisting}
+  \vspace{-0.5em}
   \end{block}
   \pause
   \vspace{-0.5em}
   \begin{block}{通用策略——策略二}
     对DNA字符串中的位置（索引）进行迭代处理
+  \vspace{-0.5em}
 \begin{lstlisting}[language=]
 碱基：ACGTGTAC
 位置：12345678
 \end{lstlisting}
+  \vspace{-0.5em}
   \end{block}
   \pause
   \vspace{-0.5em}
@@ -926,6 +970,7 @@ print count_of_A, count_of_C, count_of_G, count_of_T
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 数据}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 # small.dna
 AAAAAAAAAAAAAAGGGGGGGTTTTCCCCCCCC
@@ -939,7 +984,7 @@ AAACG
 \begin{frame}
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 拆解}
   \begin{itemize}
-    \item 把字符串拆解成数组：把字符串中的每一个字符分离开来（相当于把一句话分成单个的字）
+    \item 把字符串拆解成数组：把字符串中的每一个字符分离开来（相当于：把一句话分成单个的字，把一个单词分成单个的字母）
     \item 拆解与join相反：join把数组中的字符串合并成单个的标量值
     \item 把DNA字符串拆解：把DNA序列中的每个碱基都分离出来
     \item 拆解成数组：按照顺序，每个碱基都成为了数组中的元素
@@ -948,6 +993,7 @@ AAACG
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}
 read in the DNA from a file
 
@@ -966,6 +1012,7 @@ count_of_T = 0
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}
 for each base in @DNA
 
@@ -985,6 +1032,7 @@ print count_of_A, count_of_C, count_of_G, count_of_T
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.1}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 5-4   Determining frequency of nucleotides
@@ -1001,6 +1049,7 @@ chomp $dna_filename;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12]
 # open the file, or exit
 unless ( open( DNAFILE, $dna_filename ) ) {
@@ -1020,6 +1069,7 @@ close DNAFILE;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=26,basicstyle=\small\tt]
 # From the lines of the DNA file,
 # put the DNA sequence data into a single string.
@@ -1038,6 +1088,7 @@ $DNA =~ s/\s//g;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=39]
 # Initialize the counts.
 # Notice that we can use scalar variables to hold numbers.
@@ -1055,6 +1106,7 @@ $errors     = 0;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=50,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 foreach $base (@DNA) {
 #for $base (@DNA) {
@@ -1080,6 +1132,7 @@ foreach $base (@DNA) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.6}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=70]
 # print the results
 print "A = $count_of_A\n";
@@ -1096,6 +1149,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 Please type the filename of the DNA sequence data: small.dna
 !!!!!!!! Error - I don't recognize this base: V
@@ -1104,11 +1158,13 @@ A = 40
 C = 27
 G = 24
 T = 17
+errors = 1
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{split}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 @DNA = split( '', $DNA );
 \end{lstlisting}
@@ -1150,6 +1206,7 @@ T = 17
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.5.1}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 5-5   Demonstration of Perl's built-in knowledge about numbers and strings
@@ -1166,6 +1223,7 @@ print $num, " ", $str, "\n";
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.5.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=11]
 # add the variables as numbers
 $num_or_str = $num + $str;
@@ -1183,6 +1241,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.5 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 1234 1234
 2468
@@ -1200,6 +1259,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 上下文}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -1220,6 +1280,7 @@ print $cat, "\n"; #123412ab
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{程序5.5}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -1242,6 +1303,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{foreach}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 foreach $base (@DNA) {
 #for $base (@DNA) {
@@ -1259,6 +1321,7 @@ foreach $base (@DNA) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | foreach}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 foreach (@DNA) {
   if ( /A/ ) {
@@ -1281,6 +1344,7 @@ foreach (@DNA) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | foreach}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 foreach $_ (@DNA) {
   if ( $_ =~ /A/ ) {
@@ -1303,6 +1367,7 @@ foreach $_ (@DNA) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \$\_}
+  \vspace{-1.5em}
 \begin{lstlisting}
 while ( <$FH> ) {
 #while ( <> ) { # 处理命令行中指定的文件
@@ -1323,6 +1388,7 @@ while ( <$FH> ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{加1}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 在Perl中有四种方法给一个数字加1
 
@@ -1342,6 +1408,7 @@ $count += 1;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{加1}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $i = 0;
 $j = 0;
@@ -1358,11 +1425,12 @@ print ++$j;  # 1
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | \alert{双目赋值操作符}}
+  \vspace{-0.5em}
   \begin{block}{双目赋值操作符}
     几乎所有用来求值的双目操作符都可以接上等号，成为相应的双目赋值操作符（binary assignment operator）。
   \end{block}
   \pause
-  \vspace{-1em}
+  \vspace{-2em}
 \begin{lstlisting}
 $num = 9;
 $num += 1;  # $num = $num + 1;  #10
@@ -1391,6 +1459,7 @@ $str x= 2;    # $str = $str x 2;   #2nd2nd
 \subsection{操作字符串}
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}
 read in the DNA from a file
 
@@ -1406,6 +1475,7 @@ count_of_T = 0
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}
 for each base at each position in $DNA
 
@@ -1425,6 +1495,7 @@ print count_of_A, count_of_C, count_of_G, count_of_T
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 程序5.6.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 5-6   Determining frequency of nucleotides, take 2
@@ -1440,6 +1511,7 @@ chomp $dna_filename;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 程序5.6.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=11,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # Does the file exist?
 unless ( -e $dna_filename ) {
@@ -1463,6 +1535,7 @@ close DNAFILE;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 程序5.6.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=29,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 $DNA = join( '', @DNA );
 
@@ -1485,6 +1558,7 @@ $errors     = 0;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 程序5.6.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=45,basicstyle=\scriptsize\tt,numberstyle=\tiny]
 for ( $position = 0 ; $position < length $DNA ; ++$position ) {
 
@@ -1512,6 +1586,7 @@ for ( $position = 0 ; $position < length $DNA ; ++$position ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 程序5.6.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=67]
 # print the results
 print "A = $count_of_A\n";
@@ -1527,9 +1602,11 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | 程序5.6 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 Please type the filename of the DNA sequence data: small.dna
 !!!!!!!! Error - I don't recognize this vase: V
+
 A = 40
 C = 27
 G = 24
@@ -1540,6 +1617,7 @@ errors = 1
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{文件测试}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 unless ( -e $dna_filename ) {
 \end{lstlisting}
@@ -1582,6 +1660,7 @@ unless ( -e $dna_filename ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{for vs. while}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 for ( $position = 0 ; $position < length $DNA ; ++$position ) {
   # the statements in the block
@@ -1602,6 +1681,7 @@ while( $position < length $DNA  ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | for循环 | 九九乘法表 | 正确 | for}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 #!/usr/bin/perl 
 
@@ -1625,6 +1705,7 @@ for ( my $i = 1 ; $i <= 9 ; $i++ ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | for循环 | 九九乘法表 | 正确 | 等价while}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 #!/usr/bin/perl 
 use strict; use warnings; use utf8;
@@ -1649,6 +1730,7 @@ while ( $i <= 9 ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | for循环 | 九九乘法表 | 错误 | for}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 #!/usr/bin/perl 
 
@@ -1672,6 +1754,7 @@ for ( my $i = 1, my $j = 1 ; $i <= 9 && $j <= $i ; $i++, $j++ ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | for循环 | 九九乘法表 | 错误 | 等价while}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 #!/usr/bin/perl 
 use strict; use warnings; use utf8;
@@ -1704,6 +1787,7 @@ while ( $i <= 9 ) {
   \end{itemize}
   \end{block}
   \pause
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 字符串：ATGCGCAT
 索引值：01234567
@@ -1717,6 +1801,7 @@ while ( $i <= 9 ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{substr}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $base = substr($DNA, $position, 1);
 \end{lstlisting}
@@ -1741,6 +1826,7 @@ $base = substr($DNA, $position, 1);
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 操作字符串 | \alert{substr}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 my $s = "The black cat climbed the green tree";
 my $color  = substr $s, 4, 5;      # black
@@ -1757,6 +1843,7 @@ my $r = substr $s, 14, 7, "jumped from";    # climbed
 \section{写入文件}
 \begin{frame}[fragile]
   \frametitle{基序和循环 | \alert{写入文件}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # Also write the results to a file called "countbase"
 
@@ -1775,6 +1862,7 @@ close(COUNTBASE);
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | \alert{读写文件}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 读取文件
 open my $FH, '<', $filename or die "$0 : failed to open input file '$filename' : $!\n";
@@ -1794,6 +1882,7 @@ close $FH_OUT or warn "$0 : failed to close output file '$fn_out' : $!\n";
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl -w
 # Example 5-7   Determining frequency of nucleotides, take 3
@@ -1816,6 +1905,7 @@ unless ( -e $dna_filename ) {
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=18,basicstyle=\small\tt]
 # Can we open the file?
 unless ( open( DNAFILE, $dna_filename ) ) {
@@ -1837,6 +1927,7 @@ $DNA =~ s/\s//g;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=34]
 # Initialize the counts.
 # Notice that we can use scalar variables to hold numbers.
@@ -1853,6 +1944,7 @@ $e = 0;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=44]
 while ( $DNA =~ /a/ig )       { $a++ }
 while ( $DNA =~ /c/ig )       { $c++ }
@@ -1866,6 +1958,7 @@ print "A=$a C=$c G=$g T=$t errors=$e\n";
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=52,basicstyle=\small\tt]
 # Also write the results to a file called "countbase"
 $outputfile = "countbase";
@@ -1887,6 +1980,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | 程序5.7 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 Please type the filename of the DNA sequence data: small.dna
 A=40 C=27 G=24 T=17 errors=1
@@ -1895,6 +1989,7 @@ A=40 C=27 G=24 T=17 errors=1
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | \alert{while循环}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 while ( $dna =~ /a/ig ) { $a++ }
 \end{lstlisting}
@@ -1911,6 +2006,7 @@ while ( $dna =~ /a/ig ) { $a++ }
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | \alert{tr}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $a = ($dna =~ tr/Aa//);
 $c = ($dna =~ tr/Cc//);
@@ -1921,6 +2017,7 @@ $basecount = ($dna =~ tr/ACGTacgt//);
 $nonbase = (length $dna) - $basecount;
 \end{lstlisting}
 \pause
+  \vspace{-0.5em}
 \begin{block}{tr}
   \begin{itemize}
     \item tr函数返回它在字符串中找到的特定字符的数目
@@ -1934,6 +2031,7 @@ $nonbase = (length $dna) - $basecount;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 写入文件 | 计数核苷酸 | \alert{length}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 my $dna = "ACGT";
 my $dna_len = length $dna;
@@ -2027,6 +2125,7 @@ This function cannot be used on an entire array or hash to find out how many ele
     Provide commonly requested regular expressions.
   \end{block}
   \vspace{-0.5em}
+  \vspace{-1.5em}
   \begin{lstlisting}[basicstyle=\scriptsize\tt]
 use Regexp::Common;
 while (<>) {
