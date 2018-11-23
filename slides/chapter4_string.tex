@@ -248,7 +248,7 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
   \begin{block}{变量}
     \begin{itemize}
       \item {\small 
-Perl语言从C那里继承了一部分命名约定。局部变量与子例程通常使用用下划线分隔开的小写单词来命名；如果是私有变量或子例程，则在前面加一个下划线以表明其私有性；Perl包中的变量命名则采用单词首字母大写的方式（像英文标题那样）；如果是声明的常量，需要全部大写；Perl包的名字，除了pragmata（如strict），则一律采用“CamelCase”的方式。}
+Perl语言从C那里继承了一部分命名约定。局部变量与子程序通常使用用下划线分隔开的小写单词来命名；如果是私有变量或子程序，则在前面加一个下划线以表明其私有性；Perl包中的变量命名则采用单词首字母大写的方式（像英文标题那样）；如果是声明的常量，需要全部大写；Perl包的名字，除了pragmata（如strict），则一律采用“CamelCase”的方式。}
       \item \href{https://en.wikipedia.org/wiki/Naming\_convention\_(programming)}{Naming convention (programming)}
     \end{itemize}
   \end{block}
@@ -287,8 +287,8 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
 $DNA = "ACGGGAGGACGGGAAAATTACTACGGCATTAGC";
 
 # 此处结果完全不同（变量内插）
-print '$DNA';
-print "$DNA";
+print '$DNA'; # $DNA
+print "$DNA"; # ACGGG...
 \end{lstlisting}
 \end{frame}
 
@@ -480,8 +480,8 @@ print $DNA2, "\n\n";
   \frametitle{序列和字符串 | 拼接DNA | \alert{拼接语句}}
   \vspace{-1.5em}
 \begin{lstlisting}
-$DNA3 = "$DNA1$DNA2"; print "$DNA3\n\n";
-$DNA3 = $DNA1 . $DNA2; print "$DNA3\n\n";
+$DNA3 = "$DNA1$DNA2"; print "$DNA3\n";
+$DNA3 = $DNA1 . $DNA2; print "$DNA3\n";
 print $DNA1, $DNA2, "\n";
 print "$DNA1$DNA2\n";
 ...
@@ -978,7 +978,8 @@ close $FH or warn "$0 : failed to close input file '$filename' : $!\n";
 
 # 写入文件
 open my $FH_OUT, '>', $fn_out or die "$0 : failed to open output file '$fn_out' : $!\n";
-select $FH_OUT;
+select $FH_OUT; # Then,
+print "something...";
 # OR: use $FH_OUT for every print
 print $FH_OUT "something...";
 ... 
@@ -1560,17 +1561,30 @@ $number = scalar @array;
   \vspace{-1.5em}
 \begin{lstlisting}
 my @bases = ('A', 'C', 'G', 'T');
+# 注意：本页幻灯片中的操作非迭代，每次均使用原始值
 
 # 参数为负数
 splice (@bases, 1, -1);   # A T
 splice (@bases, -1, 1);   # A C G
 splice (@bases, -2, -1);  # A C T
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{序列和字符串 | 上下文 | splice}
+  \vspace{-1.5em}
+\begin{lstlisting}
+my @bases = ('A', 'C', 'G', 'T');
+# 注意：本页幻灯片中的操作非迭代，每次均使用原始值
 
 # 上下文
+# In list context, returns the elements removed from the array.
 my @base = splice (@bases, 1, 2);
 print "@base"; # C G
+# In scalar context, returns the last element removed,
 my $base = splice (@bases, 1, 2);
 print "$base"; # G
+# or "undef" if no elements are removed.
 my $base = splice (@bases, 1, 0);
 print "$base"; # undef
 \end{lstlisting}
@@ -1595,7 +1609,7 @@ print "$base"; # undef
       \item 能够编写Perl程序：存储DNA序列、拼接DNA片段、把DNA转录成RNA、获取DNA的反向互补序列。
       \item 能够编写Perl程序：从文件中读取所需数据。
       \item 掌握Perl语言中数组的常见操作。
-      \item 理解并能熟练应用标量上下文和列表上下文。
+      \item 理解并能灵活应用标量上下文和列表上下文。
     \end{itemize}
   \end{block}
 \end{frame}
