@@ -215,6 +215,17 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
 
 \begin{frame}
   \frametitle{序列和字符串 | 存储DNA | 变量}
+  \begin{block}{幼儿园“趣事”}
+开学第一天，子轩和梓轩打架，撞伤了梓萱和子萱。可欣，可馨，可鑫跑过来劝架，撞倒若曦，若溪和若熙。子睿和梓睿跑去告诉班干部浩然，昊然，浩宇和宇豪，大家一起拉开了子轩和梓轩，扶起了梓萱和子萱。语彤，雨萱，羽琪，宇涵拿来药品帮大家处理伤口，最后，子轩、梓轩、梓萱和子萱在大家的帮助和劝导下握手言和。
+  \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{c4_string_name_03.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{序列和字符串 | 存储DNA | 变量}
   \begin{figure}
     \centering
     \includegraphics[width=0.54\textwidth]{c4_string_name_01.jpg}
@@ -1529,7 +1540,7 @@ $a = @bases;
 \end{block}
 \pause
 \begin{block}{获取数组元素个数}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 $number = @array;
 #明确指定是标量上下文
@@ -1563,20 +1574,6 @@ $number = scalar @array;
 my @bases = ('A', 'C', 'G', 'T');
 # 注意：本页幻灯片中的操作非迭代，每次均使用原始值
 
-# 参数为负数
-splice (@bases, 1, -1);   # A T
-splice (@bases, -1, 1);   # A C G
-splice (@bases, -2, -1);  # A C T
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{序列和字符串 | 上下文 | splice}
-  \vspace{-1.5em}
-\begin{lstlisting}
-my @bases = ('A', 'C', 'G', 'T');
-# 注意：本页幻灯片中的操作非迭代，每次均使用原始值
-
 # 上下文
 # In list context, returns the elements removed from the array.
 my @base = splice (@bases, 1, 2);
@@ -1589,6 +1586,21 @@ my $base = splice (@bases, 1, 0);
 print "$base"; # undef
 \end{lstlisting}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{序列和字符串 | 上下文 | splice | 补遗}
+  \vspace{-1.5em}
+\begin{lstlisting}
+my @bases = ('A', 'C', 'G', 'T');
+# 注意：本页幻灯片中的操作非迭代，每次均使用原始值
+
+# 参数为负数
+splice (@bases, 1, -1);   # A T
+splice (@bases, -1, 1);   # A C G
+splice (@bases, -2, -1);  # A C T
+\end{lstlisting}
+\end{frame}
+
 
 \section{回顾与总结}
 \subsection{总结}
