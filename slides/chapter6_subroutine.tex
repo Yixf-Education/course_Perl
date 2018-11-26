@@ -4,7 +4,7 @@
 \title[子程序和Bugs]{第六章\quad 子程序和Bugs}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2016年11月}
+\date{2018年12月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -92,6 +92,7 @@ addACGT($dna);
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | 程序6.1.1}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 6-1   A program with a subroutine to append ACGT to DNA
@@ -111,10 +112,11 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | 程序6.1.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=15,basicstyle=\small\tt]
-################################################################################
+#################################################
 # Subroutines for Example 6-1
-################################################################################
+#################################################
 
 # Here is the definition for subroutine "addACGT"
 
@@ -129,6 +131,7 @@ sub addACGT {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | 程序6.1 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 I added ACGT to CGACGTCTTCTCAGGCGA and got CGACGTCTTCTCAGGCGAACGT
 \end{lstlisting}
@@ -154,6 +157,7 @@ I added ACGT to CGACGTCTTCTCAGGCGA and got CGACGTCTTCTCAGGCGAACGT
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | \alert{程序6.1}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -183,6 +187,7 @@ sub addACGT {
       \item 包裹在大括号中的代码块
     \end{itemize}
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}
 sub addACGT {
     my ($dna) = @_;
@@ -219,6 +224,7 @@ sub addACGT {
       \item 可以返回：标量、标量列表、数组，等
     \end{itemize}
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}
 return $dna;
 return ( $dna, $dna2 );
@@ -239,6 +245,7 @@ return @lines;
       \item 参数值及值的顺序是不变的，而非变量名
     \end{itemize}
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 注意：小括号表明是列表上下文，可以保证新变量能被正确地初始化
 my ($dna) = @_;
@@ -258,6 +265,7 @@ my ($dna, $protein, $name_of_gene) = @_;
     \end{itemize}
   \end{block}
   \pause
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 使用my声明变量
 my ($x);
@@ -273,6 +281,7 @@ my ($x) = @_;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 作用域 | 程序6.2.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 6-2   Illustrating the pitfalls of not using my variables
@@ -289,6 +298,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 作用域 | 程序6.2.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12,basicstyle=\small\tt]
 ################################################################################
 # Subroutines
@@ -308,20 +318,25 @@ sub A_to_T {
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 作用域 | 程序6.2 | 输出}
   \begin{block}{预期输出}
+    \vspace{-1em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 I changed all the A's in AAAAA to T's and got TTTTT 
 \end{lstlisting}
+    \vspace{-0.5em}
   \end{block}
   \vspace{-0.3em}
   \pause
   \begin{block}{实际输出}
+    \vspace{-1em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 I changed all the A's in TTTTT to T's and got TTTTT 
 \end{lstlisting}
+    \vspace{-0.5em}
   \end{block}
   \vspace{-0.3em}
   \pause
   \begin{block}{修正子程序}
+  \vspace{-1em}
 \begin{lstlisting}[basicstyle=\small\tt]
 sub A_to_T {
     my ($input) = @_;
@@ -330,6 +345,7 @@ sub A_to_T {
     return $dna;
 }
 \end{lstlisting}
+    \vspace{-0.5em}
   \end{block}
 \end{frame}
 
@@ -344,6 +360,7 @@ sub A_to_T {
   \end{block}
   \pause
   \begin{block}{强制使用my声明变量}
+    \vspace{-1em}
 \begin{lstlisting}
 use strict;
 # 好处：谁用谁知道！
@@ -371,6 +388,7 @@ use strict;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 6-3   Counting the number of G's in some DNA on the command line
@@ -388,6 +406,7 @@ my ($USAGE) = "$0 DNA\n\n";
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
 # @ARGV is an array containing all command-line arguments.
 #
@@ -402,6 +421,7 @@ unless (@ARGV) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=22]
 # Read in the DNA from the argument on the command line.
 my ($dna) = $ARGV[0];
@@ -418,6 +438,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=37,basicstyle=\small\tt]
 sub countG {
 
@@ -439,6 +460,7 @@ sub countG {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 AAGGGGTTTCCC
 
@@ -448,6 +470,7 @@ The DNA AAGGGGTTTCCC has 4 G's in it!
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | \alert{use strict;}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 use strict;
 \end{lstlisting}
@@ -462,6 +485,7 @@ use strict;
     \item \verb|$0|：程序名
     \item \verb|@ARGV|：所有的命令行参数
   \end{itemize}
+  \vspace{-1em}
 \begin{lstlisting}
 # $0 is a special variable that has the name of the program.
 my ($USAGE) = "$0 DNA\n\n";
@@ -481,6 +505,7 @@ unless (@ARGV) {
     \item 提示信息：程序名（\verb|$0|） + 程序需要的参数
     \item 步骤：检测参数，提示用户，退出程序
   \end{itemize}
+  \vspace{-1em}
 \begin{lstlisting}
 # $0 is a special variable that has the name of the program.
 my ($USAGE) = "$0 DNA\n\n";
@@ -496,6 +521,7 @@ unless (@ARGV) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | \alert{提取数组元素}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 my ($dna) = $ARGV[0];
 #my $dna = $ARGV[0];
@@ -512,6 +538,7 @@ my ($dna) = $ARGV[0];
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | \alert{程序6.3}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 use strict;
@@ -537,6 +564,7 @@ sub countG {
 \subsection{通过值传递}
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过值 | 程序}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example of pass-by-value (a.k.a. call-by-value)
@@ -557,6 +585,7 @@ sub simple_sub {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过值 | 程序输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 In subroutine simple_sub, $i equals 102
 
@@ -566,6 +595,7 @@ In main program, after the subroutine call, $i equals 2
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过值 | \alert{说明}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 simple_sub($i);
 \end{lstlisting}
@@ -584,6 +614,7 @@ simple_sub($i);
 \subsection{通过引用传递}
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example of problem of pass-by-value with two arrays
@@ -603,6 +634,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
+  \vspace{-1.5em}
 \begin{lstlisting}
 sub reference_sub {
   my(@i, @j) = @_;
@@ -618,6 +650,7 @@ sub reference_sub {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 In main program before calling subroutine: i = 1 2 3
 In main program before calling subroutine: j = a b c
@@ -637,6 +670,7 @@ In main program after calling subroutine: j = a b c
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | \alert{说明}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 reference_sub(\@i, \@j);
 \end{lstlisting}
@@ -655,6 +689,7 @@ reference_sub(\@i, \@j);
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 #!/usr/bin/perl
 # Example of pass-by-reference (a.k.a. call-by-reference)
@@ -675,6 +710,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
+  \vspace{-1.5em}
 \begin{lstlisting}
 sub reference_sub {
   my($i, $j) = @_;
@@ -690,6 +726,7 @@ sub reference_sub {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 In main program before calling subroutine: i = 1 2 3
 In main program before calling subroutine: j = a b c
@@ -702,6 +739,7 @@ In main program after calling subroutine: j = b c
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | \alert{总结}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 通过值传递
 simple_sub($i);
@@ -728,6 +766,7 @@ reference_sub(@i, @j);
       \item 必要时给出模块的全路径名
     \end{itemize}
   \end{block}
+  \vspace{-1.5em}
 \begin{lstlisting}
 use lib '/home/tisdall/book';
 use BeginPerlBioinfo;
@@ -774,6 +813,7 @@ use BeginPerlBioinfo;
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | \alert{use warnings;和use strict;}}
   \begin{block}{use warnings;}
+    \vspace{-1em}
 \begin{lstlisting}
 #!/usr/bin/perl -w # 在Perl脚本中
 use warnings;      # 在Perl脚本中
@@ -783,9 +823,11 @@ perl -w script.pl  # 在shell命令行上
   \end{block}
   \pause
   \begin{block}{use strict;}
+    \vspace{-1em}
 \begin{lstlisting}
 use strict;
 \end{lstlisting}
+    \vspace{-0.5em}
 \begin{itemize}
   \item 强制声明变量（找到未声明的变量）
   \item 找到拼写错误的变量
@@ -827,6 +869,7 @@ use strict;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl
 # Example 6-4   A program with a bug or two
@@ -841,6 +884,7 @@ use strict;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=10]
 # declare and initialize variables
 my $dna = 'CGACGTCTTCTAAGGCGA';
@@ -861,6 +905,7 @@ else {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=25,basicstyle=\small\tt]
 my $base1 = substr( $subsequence, 0, 1 );
 my $base2 = substr( $subsequence, 1, 1 );
@@ -881,6 +926,7 @@ my $base2 = substr( $subsequence, 1, 1 );
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=40,basicstyle=\small\tt]
 foreach (@dna) {
     if ($receivingcommittment) {
@@ -905,6 +951,7 @@ exit;
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4 | 输出}
   \begin{block}{实际输出}
+    \vspace{-1em}
 \begin{lstlisting}[language=sh]
 $ perl example 6-4 AA
 
@@ -914,6 +961,7 @@ TA
   \end{block}
   \pause
   \begin{block}{理论输出}
+    \vspace{-1em}
 \begin{lstlisting}[language=sh]
 $ perl example 6-4 AA
 AAGGCGA
@@ -926,6 +974,7 @@ TAAGGCGA
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | \alert{启动和停止}}
   \begin{block}{启动}
+    \vspace{-1em}
 \begin{lstlisting}
 # 交互式运行
 perl -d script.pl  # 在shell命令行上
@@ -978,6 +1027,7 @@ perl -d script.pl  # 在shell命令行上
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.5}
+  \vspace{-1.5em}
   \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 use warnings; use strict;
@@ -1003,6 +1053,7 @@ for ( my $i = 0 ; $i < @dna - 1 ; $i++ ) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.6}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -1024,6 +1075,7 @@ for ( my $i = 0 ; $i < length($dna) - 1 ; $i++ ) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.6 | 补充说明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 my $subsequence = @ARGV ? $ARGV[0] : "TC";
 \end{lstlisting}
