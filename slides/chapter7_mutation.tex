@@ -4,7 +4,7 @@
 \title[突变和随机化]{第七章\quad 突变和随机化}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2016年12月}
+\date{2018年12月}
 
 
 \input{snippet/beamer_toc.tex}
@@ -14,13 +14,15 @@
 \begin{frame}
   \frametitle{突变和随机化 | 突变}
   \begin{block}{突变}
- 突变（mutation，即基因突变），指细胞中的遗传基因（通常指存在于细胞核中的脱氧核糖核酸）发生的改变。它包括单个碱基改变所引起的点突变，或多个碱基的缺失、重复和插入。
+突变（mutation，即基因突变），指细胞中的遗传基因（通常指存在于细胞核中的脱氧核糖核酸）发生的改变。它包括单个碱基改变所引起的点突变，或多个碱基的缺失、重复和插入。
   \end{block}
   \pause
+  \vspace{-0.5em}
   \begin{block}{原因}
     细胞分裂时遗传基因的复制发生错误、或受化学物质、毒性、辐射或病毒的影响等。
   \end{block}
   \pause
+  \vspace{-0.5em}
   \begin{block}{影响}
     \begin{itemize}
       \item 突变通常会导致细胞运作不正常或死亡，甚至可以在较高等生物中引发癌症。
@@ -95,7 +97,7 @@
 
 \begin{frame}
   \frametitle{突变和随机化 | 突变和随机}
-  进化论将观察到的分集性归因于随机突变。由于一些突变的基因带给了拥有它们的个体更高的存活与繁衍的机会，随机突变保留在了基因库中。\\
+  进化论将观察到的生命多样性归因于随机突变。由于一些突变的基因带给了拥有它们的个体更高的存活与繁衍的机会，随机突变保留在了基因库中。\\
   \vspace{1em}
   生物体的特征在某种程度上是确定性地发生的（例如：在基因和环境的影响下），在某种程度上是随机发生的。例如，基因与曝光量仅仅支配着人体皮肤上出现的色斑密度；而单个色斑的精确位置看来是随机决定的。
 \end{frame}
@@ -134,8 +136,9 @@
     大部分计算机上的伪随机数，并不是真正的随机数，只是重复的周期比较大的数列，是按一定的算法和种子值生成的。
   \end{block}
   \pause
+  \vspace{-0.5em}
   \begin{block}{伪随机数}
-    伪随机性（pseudorandomness）是指一个过程似乎是随机的，但实际上并不是。例如伪随机数（或称伪乱数），是使用一个确定性的算法计算出来的似乎是随机的数序，因此伪随机数实际上并不随机。在计算伪随机数时假如使用的开始值不变的话，那么伪随机数的数序也不变。伪随机数的随机性可以用它的统计特性来衡量，其主要特征是每个数出现的可能性和它出现时与数序中其它数的关系。伪随机数的优点是它的计算比较简单，而且只使用少数数值很难推算出计算它的算法。一般人们使用一个假的随机数，比如电脑上的时间作为计算伪随机数的开始值。
+伪随机性（pseudorandomness）是指一个过程似乎是随机的，但实际上并不是。例如伪随机数（或称伪乱数），是使用一个确定性的算法计算出来的似乎是随机的数序，因此伪随机数实际上并不随机。在计算伪随机数时假如使用的开始值不变的话，那么伪随机数的数序也不变。伪随机数的随机性可以用它的统计特性来衡量，其主要特征是每个数出现的可能性和它出现时与数序中其它数的关系。伪随机数的优点是它的计算比较简单，而且只使用少数数值很难推算出计算它的算法。一般人们使用一个假的随机数，比如电脑上的时间作为计算伪随机数的开始值。
   \end{block}
 \end{frame}
 
@@ -152,6 +155,7 @@
 \section{随机化程序}
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1,basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example 7-1   Children's game, demonstrating primitive artificial intelligence,
@@ -171,6 +175,7 @@ my $story;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=15,basicstyle=\small\tt]
 # Here are the arrays of parts of sentences:
 my @nouns = (
@@ -188,6 +193,7 @@ my @verbs = (
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=27,basicstyle=\small\tt]
 my @prepositions = (
     'at the store',
@@ -209,6 +215,7 @@ srand( time | $$ );
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=43]
 # This do-until loop composes six-sentence "stories".
 #  until the user types "quit".
@@ -224,6 +231,7 @@ do {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=53,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
         #  Notes on the following statements:
         #  1) scalar @array gives the number of elements in the array.
@@ -244,6 +252,7 @@ do {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1.6}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=68]
     # Print the story.
     print "\n", $story, "\n";
@@ -262,6 +271,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 程序7.1 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 Joe and Moe jumped with Rebecca in New York City. Rebecca exploded Groucho in a dream. Mom ran to Harpo over the rainbow. TV giggled with Joe and Moe over the rainbow. Harpo exploded Joe and Moe at the beach. Robin Hood giggled with Harpo at the beach. 
 
@@ -275,6 +285,7 @@ Type "quit" to quit, or press Enter to continue: quit
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | \alert{设置种子}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 srand( time | $$ );
 srand(100);
@@ -316,6 +327,7 @@ srand;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | \alert{随机选取数组元素}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 $verbs[ int( rand( scalar @verbs ) ) ] 
 # 由内向外逐步进行阅读/计算/理解/分析
@@ -338,6 +350,7 @@ $verbs[3] # 给出数组@verbs的第4个元素
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 格式化}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $verbs[ int( rand( scalar @verbs ) ) ] 
 
@@ -353,6 +366,7 @@ $sentence = "$subject $verb $object $prepositional_phrase. ";
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 随机化程序 | 随机选取数组元素 | \alert{简写}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 原程序中的写法
 $verbs[ int( rand( scalar @verbs ) ) ] 
@@ -391,6 +405,7 @@ $verbs[rand @verbs]
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 设计 | 选取随机位置}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # randomposition
 # A subroutine to randomly select a position in a string.
@@ -407,6 +422,7 @@ sub randomposition {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 设计 | \alert{选取随机位置}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Test the randomposition subroutine
@@ -428,6 +444,7 @@ sub randomposition {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 设计 | 选取随机核苷酸}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # randomnucleotide
 # A subroutine to randomly select a nucleotide
@@ -444,6 +461,7 @@ sub randomnucleotide {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 设计 | \alert{选取随机核苷酸}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Test the randomnucleotide subroutine
@@ -465,6 +483,7 @@ sub randomnucleotide {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 设计 | \alert{突变}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # mutate
 # A subroutine to perform a mutation in a string of DNA
@@ -507,6 +526,7 @@ sub mutate {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 改进设计}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # randomnucleotide
 # A subroutine to randomly select a nucleotide
@@ -532,6 +552,7 @@ sub randomnucleotide {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 改进设计}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # randomnucleotide
 # A subroutine to randomly select a nucleotide
@@ -561,6 +582,7 @@ sub randomelement {
 \subsection{组合子程序}
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 7-2   Mutate DNA
@@ -578,6 +600,7 @@ my $DNA = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
 # $i is a common name for a counter variable, short for "integer"
 my $i;
@@ -597,7 +620,8 @@ print "\nMutate DNA\n\n";
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.3}
-\begin{lstlisting}[firstnumber=27]
+  \vspace{-1.5em}
+\begin{lstlisting}[firstnumber=27,basicstyle=\small\tt,numberstyle=\footnotesize]
 print "\nHere is the original DNA:\n\n";
 print "$DNA\n";
 
@@ -618,6 +642,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=54]
 sub mutate {
 
@@ -638,6 +663,7 @@ sub mutate {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=80]
 sub randomelement {
 
@@ -650,6 +676,7 @@ sub randomelement {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.6}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=94]
 sub randomnucleotide {
 
@@ -664,6 +691,7 @@ sub randomnucleotide {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2.7}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=110,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 sub randomposition {
     my ($string) = @_;
@@ -684,7 +712,8 @@ sub randomposition {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | 组合 | 程序7.2 | 输出}
-\begin{lstlisting}
+  \vspace{-1.5em}
+\begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 Mutate DNA
 Here is the original DNA:
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -722,6 +751,7 @@ AAAAAATTAGAAAACAACAAGACAAAAAAA
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | bug? | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}
 Select a random position in the string of DNA
 
@@ -737,6 +767,7 @@ Repeat:
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | bug? | \alert{修正}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 # mutate_better
 # Subroutine to perform a mutation in a string of DNA--version 2, in which it is guaranteed that one base will change on each call
@@ -759,7 +790,8 @@ sub mutate_better {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 模拟DNA突变 | bug? | 修正 | 输出}
-\begin{lstlisting}
+  \vspace{-1.5em}
+\begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 Mutate DNA
 Here is the original DNA:
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -831,6 +863,7 @@ AATTATTAAAAAGTGATAAAAACAACACAA
 \end{itemize}
 用文字来说，就是费波那契数列由0和1开始，之后的费波那契系数就是由之前的两数相加而得出。
   \end{block}
+  \vspace{-0.5em}
   \begin{figure}
     \centering
     \includegraphics[width=0.45\textwidth]{c7_mutation_fs_01.png}\quad
@@ -850,8 +883,8 @@ AATTATTAAAAAGTGATAAAAACAACACAA
   \frametitle{突变和随机化 | 生成随机DNA | 设计理念}
   \begin{figure}
     \centering
-    \includegraphics[width=0.55\textwidth]{c7_mutation_bt_02.jpg}
-    \includegraphics[width=0.45\textwidth]{c7_mutation_bt_03.jpg}
+    \includegraphics[width=0.53\textwidth]{c7_mutation_bt_02.jpg}
+    \includegraphics[width=0.43\textwidth]{c7_mutation_bt_03.jpg}
   \end{figure}
 \end{frame}
 
@@ -859,8 +892,8 @@ AATTATTAAAAAGTGATAAAAACAACACAA
   \frametitle{突变和随机化 | 生成随机DNA | 设计理念}
   \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{c7_mutation_bt_04.jpg}
-    \includegraphics[width=0.6\textwidth]{c7_mutation_bt_05.png}
+    \includegraphics[width=0.38\textwidth]{c7_mutation_bt_04.jpg}
+    \includegraphics[width=0.58\textwidth]{c7_mutation_bt_05.png}
   \end{figure}
 \end{frame}
 
@@ -875,6 +908,7 @@ AATTATTAAAAAGTGATAAAAACAACACAA
   使用子程序 \verb|make_random_DNA_set|直接生成数据
   \end{block}
   \pause
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 @random_DNA = make_random_DNA_set( $minimum_length, $maximum_length, $size_of_set );
 \end{lstlisting}
@@ -886,6 +920,7 @@ AATTATTAAAAAGTGATAAAAACAACACAA
     编写 \verb|make_random_DNA_set|子程序
   \end{block}
   \pause
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 repeat $size_of_set times:
 
@@ -906,6 +941,7 @@ return @set
     编写 \verb|make_random_DNA|子程序
   \end{block}
   \pause
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 from 1 to $length
 
@@ -917,6 +953,7 @@ from 1 to $length
 return $dna
 \end{lstlisting}
 \pause
+\vspace{-0.5em}
   \begin{block}{目标}
     已经编写完了 \verb|randomnucleotide|子程序
   \end{block}
@@ -925,6 +962,7 @@ return $dna
 \subsection{程序}
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 7-3   Generate random DNA
@@ -942,6 +980,7 @@ my $minimum_length = 15;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
 # An array, initialized to the empty list, to store the DNA in
 my @random_DNA = ();
@@ -958,6 +997,7 @@ srand( time | $$ );
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=24]
 # Print the results, one per line
 print "Here is an array of $size_of_set randomly generated DNA sequences\n";
@@ -976,6 +1016,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=51]
 sub make_random_DNA_set {
 
@@ -995,6 +1036,7 @@ sub make_random_DNA_set {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=65,basicstyle=\small\tt]
     # Create set of random DNA
     for ( my $i = 0 ; $i < $size_of_set ; ++$i ) {
@@ -1016,6 +1058,7 @@ sub make_random_DNA_set {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.6}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=94,basicstyle=\small\tt]
 sub randomlength {
 
@@ -1034,6 +1077,7 @@ sub randomlength {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.7}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=114]
 sub make_random_DNA {
 
@@ -1054,6 +1098,7 @@ sub make_random_DNA {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.8}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=140]
 sub randomnucleotide {
 
@@ -1069,6 +1114,7 @@ sub randomnucleotide {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3.9}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=156]
 sub randomelement {
 
@@ -1082,6 +1128,7 @@ sub randomelement {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 生成随机DNA | 程序7.3 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\small\tt]
 Here is an array of 12 randomly generated DNA sequences
   with lengths between 15 and 30:
@@ -1108,6 +1155,7 @@ GGCCCATGACCAGCATCCAGACAGCA
     \centering
     \includegraphics[width=0.9\textwidth]{c7_mutation_similar.png}
   \end{figure}
+  \vspace{-1em}
   \begin{block}{一般性问题}
     两条DNA的相似性如何？（对于两个随机的DNA序列，平均来说，它们的碱基相同的百分比是多少？）
   \end{block}
@@ -1122,6 +1170,7 @@ GGCCCATGACCAGCATCCAGACAGCA
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 Generate a set of random DNA sequences, all the same length
 
@@ -1137,6 +1186,7 @@ Report the mean of the preceding calculations as a percentage
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 伪代码 | 比较相同位置上的核苷酸}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 assuming DNA1 is the same length as DNA2,
 
@@ -1154,6 +1204,7 @@ return count/length
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 7-4   Calculate the average percentage of positions that are the same
@@ -1171,6 +1222,7 @@ my $result;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
 # An array, initialized to the empty list, to store the DNA in
 my @random_DNA = ();
@@ -1186,6 +1238,7 @@ srand( time | $$ );
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=23]
 # Iterate through all pairs of sequences
 for ( my $k = 0 ; $k < scalar @random_DNA - 1 ; ++$k ) {
@@ -1201,6 +1254,7 @@ for ( my $k = 0 ; $k < scalar @random_DNA - 1 ; ++$k ) {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=33]
 # Finally, the average result:
 $result = 0;
@@ -1222,6 +1276,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.5}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=58]
 sub matching_percentage {
 
@@ -1236,6 +1291,7 @@ sub matching_percentage {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.6}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=67]
     for ( $position = 0 ; $position < $length ; ++$position ) {
         if (
@@ -1253,6 +1309,7 @@ sub matching_percentage {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.7}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=89]
 sub make_random_DNA_set {
 
@@ -1272,6 +1329,7 @@ sub make_random_DNA_set {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.8}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=103,basicstyle=\small\tt]
     # Create set of random DNA
     for ( my $i = 0 ; $i < $size_of_set ; ++$i ) {
@@ -1293,6 +1351,7 @@ sub make_random_DNA_set {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.9}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=127,basicstyle=\small\tt]
 sub randomlength {
 
@@ -1311,6 +1370,7 @@ sub randomlength {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.10}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=147]
 sub make_random_DNA {
 
@@ -1330,6 +1390,7 @@ sub make_random_DNA {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.11}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=168]
 sub randomnucleotide {
 
@@ -1344,6 +1405,7 @@ sub randomnucleotide {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4.12}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=184]
 sub randomelement {
 
@@ -1356,6 +1418,7 @@ sub randomelement {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4 | \alert{子程序}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 sub matching_percentage {
     my ( $string1, $string2 ) = @_;
@@ -1376,6 +1439,7 @@ sub matching_percentage {
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 In this run of the experiment, the average number of 
 matching positions is 24%
@@ -1392,6 +1456,7 @@ matching positions is 24%
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4 | 子程序调用}
+  \vspace{-1.5em}
 \begin{lstlisting}
 @random_DNA = make_random_DNA_set( 10, 10, 10 );
 \end{lstlisting}
@@ -1407,6 +1472,7 @@ my $size_of_set    = 10;
 
 \begin{frame}[fragile]
   \frametitle{突变和随机化 | 分析DNA | 程序7.4 | \alert{嵌套循环}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # Iterate through all pairs of sequences
 for (my $k = 0 ; $k < scalar @random_DNA - 1 ; ++$k) {
@@ -1551,6 +1617,7 @@ for (my $k = 0 ; $k < scalar @random_DNA - 1 ; ++$k) {
 
 \begin{frame}[fragile]
   \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 递归}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -1570,6 +1637,7 @@ print F( $ARGV[0] ), "\n";
 
 \begin{frame}[fragile]
   \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | \alert{闭包 $\Rightarrow$ 缓存}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -1594,6 +1662,7 @@ print F( $ARGV[0] ), "\n";
 
 \begin{frame}[fragile]
   \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 模块 $\Rightarrow$ 缓存}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -1615,6 +1684,7 @@ print F( $ARGV[0] ), "\n";
 
 \begin{frame}[fragile]
   \frametitle{图标和随机化 | 知识拓展 | 斐波那契数列 | 总结}
+  \vspace{-1.5em}
   \begin{lstlisting}[basicstyle=\small\tt]
 # 1. Compute Fibonacci numbers
 sub fib {
