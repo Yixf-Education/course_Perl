@@ -1108,7 +1108,7 @@ $errors     = 0;
 
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 字符串变数组 | 程序5.4.5}
-  \vspace{-1.5em}
+  \vspace{-2em}
 \begin{lstlisting}[firstnumber=50,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 foreach $base (@DNA) {
 #for $base (@DNA) {
@@ -1376,7 +1376,7 @@ while ( <$FH> ) {
   chomp;
   if ( /pattern/ ) {
     @fields = split /\t/;
-   #@fields = split; # 以空格为分隔符
+    #@fields = split; # 以空格为分隔符
     ...
   }
   ...

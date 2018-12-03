@@ -15,7 +15,7 @@
   \begin{block}{子程序（subroutine）}
     \begin{itemize}
       \item 对程序进行结构化组织的一个重要方法。
-      \item 类似于shell编程语言中的函数
+      \item 类似于shell编程语言中的函数。
     \end{itemize}
   \end{block}
   \pause
@@ -265,17 +265,18 @@ my ($dna, $protein, $name_of_gene) = @_;
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
+  \vspace{-2em}
 \begin{lstlisting}
 # 使用my声明变量
 my ($x);
 my $x;
-
 # 声明变量的同时进行初始化
 my $x = '49';
 
 # 在子程序中收集参数
 my ($x) = @_;
+my $x = shift @_;
+my $x = $_[0];
 \end{lstlisting}
 \end{frame}
 
@@ -524,8 +525,9 @@ unless (@ARGV) {
   \vspace{-1.5em}
 \begin{lstlisting}
 my ($dna) = $ARGV[0];
-#my $dna = $ARGV[0];
 #my ($dna) = @ARGV;
+#my $dna = $ARGV[0];
+#my $dna = shift @ARGV;
 \end{lstlisting}
 \begin{block}{说明}
   \begin{itemize}
