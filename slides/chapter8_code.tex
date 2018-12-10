@@ -4,7 +4,7 @@
 \title[遗传密码]{第八章\quad 遗传密码}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2015年12月}
+\date{2018年12月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -41,6 +41,7 @@
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{初始化}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 %classification = (
   'dog',      'mammal',
@@ -70,6 +71,7 @@
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{键值操作}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 给键赋值
 $english_dictonary{'recreant'} = "One who calls out in surrender.";
@@ -85,6 +87,7 @@ $definition = $english_dictonary{'recreant'};
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | keys \& values}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 初始化散列
 %hash = (a=>1, b=>2, c=>3);
@@ -104,6 +107,7 @@ $count = values %hash;
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | each}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 逐项处理散列中的每一个元素
 while ( ($key, $value) = each %hash ) {
@@ -121,6 +125,7 @@ foreach my $key (sort keys %hash){
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | 判断真假}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 真
 if ($books{$someone}) {
@@ -137,6 +142,7 @@ $books{"pebbles"} = undef;
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | delete}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 删除指定的键及其相对应的值
 delete $books{$person};
@@ -150,6 +156,7 @@ $books{$person} = undef;
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | reverse}
+  \vspace{-1.5em}
 \begin{lstlisting}
 %hash = (a=>1, b=>2, c=>3);
 
@@ -162,6 +169,7 @@ $books{$person} = undef;
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | 元素内插}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 可以将单一散列元素内插到双引号包裹起来的字符串中
 foreach $person (sort keys %books) {
@@ -195,6 +203,7 @@ print "%books";
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl 
 
@@ -214,6 +223,7 @@ my %hash = (
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 if ( defined $hash{a} ) {
     print "defined: $hash{a}(number) is TURE!\n";
@@ -238,6 +248,7 @@ unless ( defined $hash{x} ) {
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 if ( exists $hash{a} ) {
     print "exists: key a is TURE!\n";
@@ -262,6 +273,7 @@ unless ( exists $hash{x} ) {
 
 \begin{frame}[fragile]
   \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 if ( $hash{a} ) {
     print "value: $hash{a}(number) is TURE!\n";
@@ -566,6 +578,7 @@ unless ( $hash{x} ) {
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | 折半查找}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 折半查找（binary search）的伪代码
 Given a sorted array, and an element:
@@ -594,6 +607,7 @@ Until you find the element or discover it's not there,
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | 普通查找}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -617,6 +631,7 @@ print search( \@numbers, 28 ),  "\n";
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | 折半查找}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
 #!/usr/bin/perl
 use strict; use warnings;
@@ -645,6 +660,7 @@ print search( \@numbers, 28 ),  "\n";
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | \alert{比较与排序}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 两个字符串一样，返回0
 'ZZZ' cmp 'ZZZ'
@@ -668,6 +684,7 @@ print search( \@numbers, 28 ),  "\n";
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | \alert{散列操作}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 查看某个散列值是否被定义
 if ( defined $myhash{'mykey'} ) { ... }
@@ -689,16 +706,18 @@ if ( defined $myhash{'mykey'} ) { ... }
 
 \begin{frame}
   \frametitle{数据结构和算法 | 数据库}
+  \vspace{-0.5em}
   \begin{block}{数据库}
     数据库，简单来说可视为电子化的文件柜——存储电子文件的处所，用户可以对文件中的数据运行新增、截取、更新、删除等操作。适用于存储和访问海量数据。\\
     \vspace{0.2em}
     数据库指的是以一定方式储存在一起、能为多个用户共享、具有尽可能小的冗余度、与应用程序彼此独立的数据集合。
   \end{block}
   \pause
+  \vspace{-0.5em}
   \begin{block}{数据库管理系统}
     数据库管理系统（Database Management System，DBMS）是为管理数据库而设计的电脑软件系统，一般具有存储、截取、安全保障、备份等基础功能。\\
     \vspace{0.1em}
-    数据库管理系统可以依据它所支持的数据库模型来作分类（关系式、XML），或依据所支持的电脑类型来作分类（服务器群集、移动电话），或依据所用查询语言来作分类（SQL、XQuery），或依据性能冲量重点来作分类（最大规模、最高运行速度），亦或其他的分类方式。不论使用哪种分类方式，一些DBMS能够跨类，例如，同时支持多种查询语言。
+数据库管理系统可以依据它所支持的数据库模型来作分类（关系式、XML），或依据所支持的电脑类型来作分类（服务器群集、移动电话），或依据所用查询语言来作分类（SQL、XQuery），或依据性能冲量重点来作分类（最大规模、最高运行速度），亦或其他的分类方式。不论使用哪种分类方式，一些DBMS能够跨类，例如，同时支持多种查询语言。
   \end{block}
 \end{frame}
 
@@ -775,6 +794,7 @@ if ( defined $myhash{'mykey'} ) { ... }
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | DBM | Perl | \textcolor{gray}{dbmopen}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 use DB_File;  # optional; overrides default
 dbmopen %HASH, $FILENAME, 0666  # open database, accessed through %HASH
@@ -792,6 +812,7 @@ dbmclose %HASH;  # close the database
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | DBM | Perl | \textcolor{gray}{实例}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 use warnings; use strict;
@@ -814,6 +835,7 @@ dbmclose(%MYDB) or die "Can not close database";
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | DBM | Perl | tie}
+  \vspace{-1.5em}
 \begin{lstlisting}
 use DB_File;  # load database module
 
@@ -832,6 +854,7 @@ untie %HASH;  # close the database
 
 \begin{frame}[fragile]
   \frametitle{数据结构和算法 | DBM | Perl | 实例}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 
@@ -887,6 +910,7 @@ untie %h;
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 密码子翻译}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # codon2aa
 #
@@ -908,6 +932,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 密码子翻译}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=16,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
   elsif ( $codon =~ /TAC/i ) { return 'Y' } # Tyrosine
   elsif ( $codon =~ /TAT/i ) { return 'Y' } # Tyrosine
@@ -932,6 +957,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 密码子翻译}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=34,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
   elsif ( $codon =~ /CAA/i ) { return 'Q' } # Glutamine
   elsif ( $codon =~ /CAG/i ) { return 'Q' } # Glutamine
@@ -956,6 +982,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 密码子翻译}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=52,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
   elsif ( $codon =~ /AGC/i ) { return 'S' } # Serine
   elsif ( $codon =~ /AGT/i ) { return 'S' } # Serine
@@ -976,6 +1003,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 密码子翻译}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=66,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
   elsif ( $codon =~ /GAA/i ) { return 'E' } # Glutamic Acid
   elsif ( $codon =~ /GAG/i ) { return 'E' } # Glutamic Acid
@@ -1071,6 +1099,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 冗余性}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1,basicstyle=\scriptsize\tt,numberstyle=\tiny]
 # codon2aa
 #
@@ -1097,6 +1126,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 冗余性}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=21,basicstyle=\scriptsize\tt,numberstyle=\tiny]
   elsif ( $codon =~ /CC./i )    { return 'P' } # Proline
   elsif ( $codon =~ /CA[AG]/i ) { return 'Q' } # Glutamine
@@ -1138,6 +1168,7 @@ sub codon2aa {
 \subsection{使用散列表示遗传密码}
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 散列}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #
 # codon2aa
@@ -1154,6 +1185,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 散列}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12]
   my(%genetic_code) = (
 	    
@@ -1174,6 +1206,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 散列}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=26,basicstyle=\scriptsize\tt,numberstyle=\tiny]
   'TGC' => 'C',    # Cysteine
   'TGT' => 'C',    # Cysteine
@@ -1200,6 +1233,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 散列}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=46,basicstyle=\scriptsize\tt,numberstyle=\tiny]
   'ATA' => 'I',    # Isoleucine
   'ATC' => 'I',    # Isoleucine
@@ -1226,7 +1260,8 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{遗传密码 | 散列}
-\begin{lstlisting}[firstnumber=66,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
+  \vspace{-1.5em}
+\begin{lstlisting}[firstnumber=66,basicstyle=\scriptsize\tt,numberstyle=\tiny]
   'GCA' => 'A',    # Alanine
   'GCC' => 'A',    # Alanine
   'GCG' => 'A',    # Alanine
@@ -1283,6 +1318,7 @@ sub codon2aa {
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.1.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 8-1   Translate DNA into protein
@@ -1300,6 +1336,7 @@ my $codon;
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.1.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
 # Translate each three-base codon into an amino acid, and append to a protein 
 for(my $i=0; $i < (length($dna) - 2) ; $i += 3) {
@@ -1315,6 +1352,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.1 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 I translated the DNA
 
@@ -1328,6 +1366,7 @@ RRLRTGLARVGR
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.1 | \alert{循环}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 for (my $i = 0; $i < (length($dna) - 2); $i += 3) {
 \end{lstlisting}
@@ -1343,6 +1382,7 @@ for (my $i = 0; $i < (length($dna) - 2); $i += 3) {
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.1 | \alert{提取密码子}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $codon = substr ($dna, $i, 3);
 \end{lstlisting}
@@ -1374,6 +1414,7 @@ $codon = substr ($dna, $i, 3);
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | \alert{子程序}}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 # dna2peptide 
 #
@@ -1391,6 +1432,7 @@ sub dna2peptide {
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | \alert{子程序}}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
   # Initialize variables
   my $protein = '';
@@ -1530,6 +1572,7 @@ sub dna2peptide {
 
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 两个子程序 | 伪代码 | 处理文件}
+  \vspace{-1.5em}
 \begin{lstlisting}
 subroutine get data from a file
 
@@ -1547,6 +1590,7 @@ subroutine get data from a file
 
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 两个子程序 | 伪代码 | 提取序列}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 Subroutine extract sequence data from fasta file
 
@@ -1579,6 +1623,7 @@ Subroutine extract sequence data from fasta file
 \subsection{读取FASTA文件的子程序}
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 子程序}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # get_file_data
 # A subroutine to get data from a file given its filename
@@ -1602,6 +1647,7 @@ sub get_file_data {
 
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 子程序}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=31,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # extract_sequence_from_fasta_data: A subroutine to extract FASTA sequence data from an array
 sub extract_sequence_from_fasta_data {
@@ -1626,6 +1672,7 @@ sub extract_sequence_from_fasta_data {
 
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 子程序 | \alert{说明}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # 使用my声明循环中使用的变量
 foreach my $line (@fasta_file_data) {
@@ -1658,6 +1705,7 @@ $sequence =~ s/\s//g;
 
 \begin{frame}[fragile]
   \frametitle{格式化序列数据 | \alert{子程序}}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print_sequence
 # A subroutine to format and print sequence data 
@@ -1677,6 +1725,7 @@ sub print_sequence {
 \subsection{读取FASTA文件的主程序}
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 程序8.2.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 8-2   Read a fasta file and extract the sequence data
@@ -1693,6 +1742,7 @@ my $dna = '';
 
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 程序8.2.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12]
 # Read in the contents of the file "sample.dna"
 @file_data = get_file_data("sample.dna");
@@ -1709,6 +1759,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{读取FASTA文件 | 程序8.2 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}
 agatggcggcgctgaggggtcttgg
 gggctctaggccggccacctactgg
@@ -1728,6 +1779,7 @@ accta
 \subsection{DNA翻译成蛋白质的主程序}
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.3.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 8-3   Read a fasta file and extract the DNA sequence data
@@ -1746,7 +1798,8 @@ my $protein = '';
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.3.1}
-\begin{lstlisting}[firstnumber=13]
+  \vspace{-1.5em}
+\begin{lstlisting}[firstnumber=13,basicstyle=\small\tt,numberstyle=\footnotesize]
 # Read in the contents of the file "sample.dna"
 @file_data = get_file_data("sample.dna");
 
@@ -1765,6 +1818,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{DNA翻译成蛋白质 | 程序8.3 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 RWRR_GVLGALGRPPTGLQRRRRMG
 PAQ_EYAAWEA_LEAEVVVGAFATA
@@ -1856,6 +1910,7 @@ TPEPLSDEDL
 \subsection{翻译阅读框}
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 反向互补 | 子程序}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # revcom 
 # A subroutine to compute the reverse complement of DNA sequence
@@ -1876,6 +1931,7 @@ sub revcom {
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 指定区间 | 伪代码}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 Given DNA sequence
 
@@ -1915,6 +1971,7 @@ subroutine translate_frame ( DNA, start, end )
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 指定区间 | \alert{子程序}}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # translate_frame
 # A subroutine to translate a frame of DNA
@@ -1936,6 +1993,7 @@ sub translate_frame {
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 程序8.4.1}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 8-4   Translate a DNA sequence in all six reading frames
@@ -1954,6 +2012,7 @@ my $protein = '';
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 程序8.4.2}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=14,basicstyle=\small\tt,numberstyle=\footnotesize]
 # Read in the contents of the file "sample.dna"
 @file_data = get_file_data("sample.dna");
@@ -1971,6 +2030,7 @@ print_sequence($protein, 70);
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 程序8.4.3}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=26]
 print "\n -------Reading Frame 2--------\n\n";
 $protein = translate_frame($dna, 2);
@@ -1984,6 +2044,7 @@ print_sequence($protein, 70);
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 程序8.4.4}
+  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=34,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # Calculate reverse complement
 $revcom = revcom($dna);
@@ -2006,6 +2067,7 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{阅读框 | 翻译 | 程序8.4 | 输出}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\tiny\tt,numberstyle=\tiny]
  -------Reading Frame 1--------
 
@@ -2096,6 +2158,7 @@ PPRPLSAAI
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 声明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 @AoA = (
     [ "fred", "barney" ],
@@ -2107,6 +2170,7 @@ PPRPLSAAI
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # reading from file
 while ( <> ) {
@@ -2128,6 +2192,7 @@ push @{ $AoA[0] }, "wilma", "betty";
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # one element
 $AoA[0][0] = "Fred";
@@ -2139,6 +2204,7 @@ $AoA[1][1] =~ s/(\w)/\u$1/;
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的数组 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing with refs
 for $aref ( @AoA ) {
@@ -2159,6 +2225,7 @@ for $i ( 0 .. $#AoA ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 声明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 %HoA = (
   flintstones => [ "fred", "barney" ],
@@ -2170,6 +2237,7 @@ for $i ( 0 .. $#AoA ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # reading from file
 # flintstones: fred barney wilma dino
@@ -2190,6 +2258,7 @@ while ( $line = <> ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # calling a function that returns a list
 for $group ( "simpsons", "jetsons", "flintstones" ) {
@@ -2208,6 +2277,7 @@ push @{ $HoA{"flintstones"} }, "wilma", "betty";
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # one element
 $HoA{flintstones}[0] = "Fred";
@@ -2230,6 +2300,7 @@ foreach $family ( keys %HoA ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为数组 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing sorted by number of members
 foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} } keys %HoA ) {
@@ -2245,6 +2316,7 @@ foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} || $a cmp $b } keys %HoA  )
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 声明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 @AoH = (
   {
@@ -2267,6 +2339,7 @@ foreach $family ( sort { @{$HoA{$b}} <=> @{$HoA{$a}} || $a cmp $b } keys %HoA  )
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # reading from file
 # format: LEAD=fred FRIEND=barney
@@ -2288,6 +2361,7 @@ while ( <>  ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # calling a function  that returns a key/value pair list, like
 # "lead","fred","daughter","pebbles"
@@ -2308,6 +2382,7 @@ $AoH[2]{pet} = "santa's little helper";
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # one element
 $AoH[0]{lead} = "fred";
@@ -2319,6 +2394,7 @@ $AoH[1]{lead} =~ s/(\w)/\u$1/;
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing with refs
 for $href ( @AoH ) {
@@ -2341,6 +2417,7 @@ for $i ( 0 .. $#AoH ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 数组的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing one at a time
 for $i ( 0 .. $#AoH ) {
@@ -2353,6 +2430,7 @@ for $i ( 0 .. $#AoH ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 声明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 %HoH = (
   flintstones => {
@@ -2375,6 +2453,7 @@ for $i ( 0 .. $#AoH ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # reading from file
 # flintstones: lead=fred pal=barney wife=wilma pet=dino
@@ -2391,6 +2470,7 @@ while ( <> ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # reading from file; more temps
 # flintstones: lead=fred pal=barney wife=wilma pet=dino
@@ -2409,6 +2489,7 @@ while ( <> ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # calling a function that returns a key,value hash
 for $group ( "simpsons", "jetsons", "flintstones" ) {
@@ -2425,6 +2506,7 @@ for $group ( "simpsons", "jetsons", "flintstones" ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # append new members to an existing family
 %new_folks = (
@@ -2440,6 +2522,7 @@ for $what (keys %new_folks) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # one element
 $HoH{flintstones}{wife} = "wilma";
@@ -2451,6 +2534,7 @@ $HoH{simpsons}{lead} =~ s/(\w)/\u$1/;
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing
 foreach $family ( keys %HoH ) {
@@ -2465,6 +2549,7 @@ foreach $family ( keys %HoH ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing somewhat sorted
 foreach $family ( sort keys %HoH ) {
@@ -2479,6 +2564,7 @@ foreach $family ( sort keys %HoH ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # print the whole thing sorted by number of members
 foreach $family ( sort { keys %{$HoH{$b}} <=> keys %{$HoH{$a}} } keys %HoH  ) {
@@ -2493,6 +2579,7 @@ foreach $family ( sort { keys %{$HoH{$b}} <=> keys %{$HoH{$a}} } keys %HoH  ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 散列的元素为散列 | 访问}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # establish a sort order (rank) for each role
 $i = 0;
@@ -2511,6 +2598,7 @@ foreach $family ( sort { keys %{ $HoH{$b}  } <=> keys %{ $HoH{$a} } } keys %HoH 
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 声明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 $rec = {
   TEXT      => $string,
@@ -2525,6 +2613,7 @@ $rec = {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 声明}
+  \vspace{-1.5em}
 \begin{lstlisting}
 print $rec->{TEXT};
 print $rec->{SEQUENCE}[0];
@@ -2543,7 +2632,8 @@ $rec->{HANDLE}->print(" a string\n");
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 定义}
-\begin{lstlisting}[basicstyle=\footnotesize\tt]
+  \vspace{-1.5em}
+\begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
 %TV = (
   flintstones => {
     series   => "flintstones",
@@ -2578,6 +2668,7 @@ $rec->{HANDLE}->print(" a string\n");
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # reading from file
 # here's a piece by piece build up
@@ -2598,20 +2689,22 @@ $TV{ $rec->{series} } = $rec;
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
-###########################################################
+##################################################
 # now, you might want to make interesting extra fields that
 # include pointers back into the same data structure so if
 # change one piece, it changes everywhere, like for example
 # if you wanted a {kids} field that was a reference
 # to an array of the kids' records without having duplicate
 # records and thus update problems.
-###########################################################
+##################################################
 \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 foreach $family (keys %TV) {
   $rec = $TV{$family}; # temp pointer
@@ -2629,6 +2722,7 @@ foreach $family (keys %TV) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}
 # you copied the array, but the array itself contains pointers
 # to uncopied objects. this means that if you make bart get
@@ -2643,6 +2737,7 @@ print $TV{simpsons}{members}[2]{age};
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | 复杂数据结构 | 更复杂的结构 | 生成}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 # print the whole thing
 foreach $family ( keys %TV ) {
@@ -2940,12 +3035,14 @@ foreach $family ( keys %TV ) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
-library(readr)
-library(tidyr)
-library(dplyr)
-library(stringr)
-library(ggplot2)
+library(tidyverse)
+#library(readr)
+#library(tidyr)
+#library(dplyr)
+#library(stringr)
+#library(ggplot2)
 library(ComplexHeatmap)
 library(circlize)
 
@@ -2958,6 +3055,7 @@ score_long <- score_long %>% mutate(id2=as.factor(str_replace(id, "20130521", ""
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | boxplot}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
 score_long2 <- score_long %>% filter(str_detect(class, "e"))
 
@@ -2978,6 +3076,7 @@ ggsave("exp_boxplot.png", gb)
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | violin}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
 gv <- ggplot(score_long2, aes(class, score))
 gv <- gv + geom_violin(aes(fill=class, color=class), alpha=0.2)
@@ -3000,6 +3099,7 @@ ggsave("exp_violin.png", gv)
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | heatmap}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 tri2mat <- function(tp, pf) {
   tp <- cbind(tp, rep(NA, nrow(tp)))
@@ -3030,6 +3130,7 @@ dev.off()
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | line}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
 gl <- ggplot(score_long2, aes(class, score, group=id2))
 gl <- gl + geom_point()
@@ -3049,6 +3150,7 @@ ggsave("id_lineplot.png", gl)
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | correlation(1/3)}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
 lm_eqn <- function(df) {
   m <- lm(final ~ exp, df)
@@ -3064,6 +3166,7 @@ lm_eqn <- function(df) {
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | correlation(2/3)}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
 plot_cor <- function (df){
   gr <- ggplot(df, aes(exp, final))
@@ -3088,6 +3191,7 @@ ggsave("correlation_plot.png", gr)
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | correlation(3/3)}
+  \vspace{-1.5em}
 \begin{lstlisting}[language=r]
 id1 <- score_wide2[which.min(score_wide2$final),]$id
 score_wide3 <- score_wide2 %>% filter(id!=id1)
@@ -3108,6 +3212,7 @@ ggsave("correlation_plot_correct.png", gr2)
 
 \begin{frame}[fragile]
   \frametitle{知识拓展 | example | R | bar}
+  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
 m <- lm(final ~ exp, score_wide3)
 score2014 <- read_csv("score_2014.csv")
