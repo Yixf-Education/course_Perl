@@ -185,24 +185,24 @@ print "%books";
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{散列 | \alert{常用函数} | defined \& exists}
-  \begin{block}{defined}
-    \begin{itemize}
-      \item 判断某个字符串是undef而不是空字符串
-      \item 如果是undef，返回假；否则返回真
-    \end{itemize}
-  \end{block}
-  \pause
+  \frametitle{散列 | \alert{常用函数} | exists \& defined}
   \begin{block}{exists}
     \begin{itemize}
       \item 检查散列中是否存在某个键，和键对应的值无关
       \item 如果键存在，返回真；否则返回假
     \end{itemize}
   \end{block}
+  \pause
+  \begin{block}{defined}
+    \begin{itemize}
+      \item 判断某个字符串是undef而不是空字符串
+      \item 如果是undef，返回假；否则返回真
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \frametitle{散列 | \alert{常用函数} | exists vs. defined}
   \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl 
@@ -222,32 +222,7 @@ my %hash = (
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{散列 | \alert{常用函数} | defined vs. exists}
-  \vspace{-1.5em}
-\begin{lstlisting}[basicstyle=\small\tt]
-if ( defined $hash{a} ) {
-    print "defined: $hash{a}(number) is TURE!\n";
-}
-if ( defined $hash{b} ) {
-    print "defined: $hash{b}(number) is TURE!\n";
-}
-if ( defined $hash{c} ) {
-    print "defined: $hash{c}(string) is TURE!\n";
-}
-if ( defined $hash{d} ) {
-    print "defined: $hash{d}(string) is TURE!\n";
-}
-unless ( defined $hash{e} ) {
-    print "defined: undef is FALSE!\n";
-}
-unless ( defined $hash{x} ) {
-    print "defined: key ?x? is FALSE!\n";
-}
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \frametitle{散列 | \alert{常用函数} | exists vs. defined}
   \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 if ( exists $hash{a} ) {
@@ -272,7 +247,32 @@ unless ( exists $hash{x} ) {
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{散列 | \alert{常用函数} | defined vs. exists}
+  \frametitle{散列 | \alert{常用函数} | exists vs. defined}
+  \vspace{-1.5em}
+\begin{lstlisting}[basicstyle=\small\tt]
+if ( defined $hash{a} ) {
+    print "defined: $hash{a}(number) is TURE!\n";
+}
+if ( defined $hash{b} ) {
+    print "defined: $hash{b}(number) is TURE!\n";
+}
+if ( defined $hash{c} ) {
+    print "defined: $hash{c}(string) is TURE!\n";
+}
+if ( defined $hash{d} ) {
+    print "defined: $hash{d}(string) is TURE!\n";
+}
+unless ( defined $hash{e} ) {
+    print "defined: undef is FALSE!\n";
+}
+unless ( defined $hash{x} ) {
+    print "defined: key ?x? is FALSE!\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{散列 | \alert{常用函数} | exists vs. defined}
   \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 if ( $hash{a} ) {
@@ -339,13 +339,13 @@ unless ( $hash{x} ) {
 \begin{frame}
   \frametitle{数据结构和算法 | 算法 | 简介}
   \begin{block}{特征}
-高德纳在他的著作《计算机程序设计艺术》里对算法的特征归纳：
+高德纳在他的著作《计算机程序设计艺术》里对算法的特征归纳为：
 \begin{itemize}
   \item 输入：一个算法必须有零个或以上输入量。
   \item 输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。
   \item 明确性：算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望，通常要求实际运行结果是确定的。
   \item 有限性：依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵机只有有限个状态、有限个输入符号和有限个转移函数（指令）。而一些定义更规定算法必须在有限个步骤内完成任务。
-  \item 有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。
+  \item 有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现的。
 \end{itemize}
   \end{block}
 \end{frame}
@@ -375,7 +375,7 @@ unless ( $hash{x} ) {
   \begin{block}{常用设计模式}
     \begin{itemize}
       \item 完全遍历法和不完全遍历法：把解空间的所有元素完全遍历一遍，逐个检测元素是否是我们要的解。
-      \item 分治法：把一个问题分区成互相独立的多个部分分别求解的思路，便于进行并行计算。
+      \item 分治法：把一个问题分解成互相独立的多个部分分别求解的思路，便于进行并行计算。
       \item 动态规划法：当问题的整体最优解就是由局部最优解组成的时候，经常采用的一种方法。
       \item 贪婪算法：常见的近似求解思路。当问题的整体最优解不是（或无法证明是）由局部最优解组成，且对解的最优性没有要求的时候，可以采用的一种方法。
       \item 线性规划法：线性规划是最优化问题中的一个重要领域。很多最优化问题算法都可以分解为线性规划子问题，然后逐一求解。
@@ -725,7 +725,7 @@ if ( defined $myhash{'mykey'} ) { ... }
   \frametitle{数据结构和算法 | 数据库 | 关系数据库}
 关系数据库（relational database），是建立在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。\alert{关系数据库是存储和提取海量数据最流行的方法。}\\
 \vspace{1em}
-\alert{关系数据库把数据组织成表格进行存储。}表是以\alert{行和列的形式}组织起来的数据的集合。一个数据库包括一个或多个表。例如，可能有一个有关作者信息的名为authors的表。每列都包含特定类型的信息，如作者的姓氏。每行都包含有关特定作者的所有信息：姓、名、住址等等。在关系型数据库当中一个表就是一个关系，一个关系数据库可以包含多个表。\\
+\alert{关系数据库把数据组织成表格进行存储。} 表是以\alert{行和列的形式}组织起来的数据的集合。一个数据库包括一个或多个表。例如，可能有一个有关作者信息的名为authors的表。每列都包含特定类型的信息，如作者的姓氏。每行都包含有关特定作者的所有信息：姓、名、住址等等。在关系型数据库当中一个表就是一个关系，一个关系数据库可以包含多个表。\\
 \vspace{1em}
 数据通常通过一种查询语言进行输入和提取，即\alert{结构化查询语言（SQL, Structured Query Language）}。SQL是1974年由Boyce和Chamberlin提出的一种介于关系代数与关系演算之间的结构化查询语言，是一个通用的、功能极强的关系型数据库语言。
 \end{frame}
@@ -779,7 +779,7 @@ if ( defined $myhash{'mykey'} ) { ... }
   \end{block}
   \pause
   \begin{block}{Solution}
-    Use \textbf{dbmopen} or \textbf{tie} to open the database and make it accessible through a hash. Then use the hash as you normally would. When you’re done, call \textbf{dbmclose} or \textbf{untie}.
+    Use \textbf{dbmopen} or \textbf{tie} to open the database and make it accessible through a hash. Then use the hash as you normally would. When you're done, call \textbf{dbmclose} or \textbf{untie}.
   \end{block}
 \end{frame}
 
@@ -1188,7 +1188,7 @@ sub codon2aa {
   \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12]
   my(%genetic_code) = (
-	    
+
   'TCA' => 'S',    # Serine
   'TCC' => 'S',    # Serine
   'TCG' => 'S',    # Serine
@@ -1842,7 +1842,7 @@ TPEPLSDEDL
 \subsection{简介}
 \begin{frame}
   \frametitle{阅读框 | 阅读框架}
-  阅读框架（reading frame）是指RNA或DNA中，一组连续且不重复的3核苷酸密码子。每一条mRNA共有3种可能的阅读框架，而双股的DNA则每股各3种，共6种阅读框架。\\
+  阅读框架（reading frame）是指RNA或DNA中，一组连续且不重复的3核苷酸密码子。每一条mRNA共有3种可能的阅读框架，而双链的DNA则每条链各3种，共6种阅读框架。\\
   \vspace{1em}
   同一序列具有多种阅读框架的现象使重叠基因（overlapping genes）可能存在，已知常见于某些细菌与病毒。至于人类细胞中则较少见。
 \end{frame}

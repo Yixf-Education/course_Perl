@@ -31,5 +31,5 @@ sub binary_search {
     return $middle;
 }
 
-print search( \@numbers, 699 ), "\n";
-print search( \@numbers, 28 ),  "\n";
+print search( \@numbers, 3333 ), "\n";
+print search( \@numbers, 3334 ),  "\n";

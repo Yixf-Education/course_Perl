@@ -10,8 +10,8 @@ sub search {
     for my $i ( 0 .. $#$numbers ) {
         return $i if $numbers->[$i] == $target;
     }
-    return;
+    return "Not found!";
 }
 
-print search( \@numbers, 699 ), "\n";
-print search( \@numbers, 28 ),  "\n";
+print search( \@numbers, 3333 ), "\n";
+print search( \@numbers, 3334 ),  "\n";
