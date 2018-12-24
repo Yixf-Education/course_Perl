@@ -1199,7 +1199,7 @@ my $string = "abcdef";
 # 1-index: 1 2 3 4 5 6
 while ( $string =~ /cd/g ) {
     my $pos    = pos($string);
-    my $start0 = $pos - length($&);
+    my $start0 = $pos - length($&); # length($`)
     my $start1 = $pos - length($&) + 1;
     print "Number for pos(function): $pos\n";
     print "Number for start(0-index): $start0\n";

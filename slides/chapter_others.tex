@@ -687,13 +687,16 @@ print "Population of France is ",
   \begin{block}{R}
   \vspace{-0.5em}
 \begin{lstlisting}[language=r]
+#!/usr/bin/Rscript
+
 library(readr)
 library(dplyr)
 
 countries <- read_tsv("country.txt")
 countries %>% 
   filter(Country=="France") %>% 
-  select(Population)
+  select(Population) %>%
+  pull()
 \end{lstlisting}
   \end{block}
 \end{frame}
