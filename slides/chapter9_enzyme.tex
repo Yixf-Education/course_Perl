@@ -1018,6 +1018,7 @@ unless(open(MYFILE, $file)) {
 }
 
 open(MYFILE, $file) or die "I cannot open file $file: $!";
+open(MYFILE, $file) || die "I cannot open file $file: $!"; # WRONG!
 \end{lstlisting}
 \end{frame}
 
