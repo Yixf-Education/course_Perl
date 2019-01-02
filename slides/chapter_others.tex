@@ -731,24 +731,23 @@ foreach my $expt (@experiments) {
 \section{模块}
 \begin{frame}[fragile]
   \frametitle{模块 | 安装}
-  \vspace{-1.5em}
+  \vspace{-1.8em}
 \begin{lstlisting}
-#METHOD 1: cpan
+# METHOD 1: cpan
 #Open cpan shell
-sudo cpan
-#Or
+sudo cpan #Or
 perl -MCPAN -e shell
 #Install modules
 cpan>install Date::Calc
 
 # METHOD 2: cpanm
 #Install cpanm
+#perlbrew is an admin-free perl installation management tool
 perlbrew install-cpanm
 #Install modules
 cpanm Bio::Perl
 
 # METHOD 3: manual
-...
 \end{lstlisting}
 \end{frame}
 
