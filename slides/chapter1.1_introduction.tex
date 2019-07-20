@@ -923,6 +923,44 @@ polygon(x, y, col="red", border=NA)
   \end{figure}
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{R | Example | parallel}
+\begin{lstlisting}[language=R]
+#!/usr/bin/Rscript
+
+# print 1 to 10: use 20 seconds
+system.time(
+  for (i in 1:10) {
+    Sys.sleep(2)
+    print(i)
+  }
+)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{R | Example | parallel}
+  \vspace{-0.5em}
+\begin{lstlisting}[language=R]
+#!/usr/bin/Rscript
+library(foreach)
+library(doParallel)
+
+# no_cores <- detechCores() - 1
+no_cores <- 10
+cl <- makeCluster(no_cores)
+registerDoParallel(cl)
+
+system.time(
+  x <- foreach (i=1:10) %dopar% {
+    Sys.sleep(2); print(i)
+  }
+)
+
+stopCluster(cl)
+\end{lstlisting}
+\end{frame}
+
 \begin{frame}
   \frametitle{R | 参考资料}
    \begin{itemize}
