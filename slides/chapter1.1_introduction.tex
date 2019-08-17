@@ -6,7 +6,7 @@
 \title[绪论]{第一章\quad 绪论}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2018年11月}
+\date{2019年8月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -22,12 +22,12 @@
     Lincoln Stein (Biologist and former CSHL Professor)
   \end{flushright}
   \end{quotation}
-  \vspace{-1.5em}
+  \vspace{-1em}
   \begin{figure}
     \centering
     \includegraphics[width=8cm]{c1_intro_code.jpg}
   \end{figure}
-  \vspace{-1.5em}
+  \vspace{-1em}
   Nothing in Biology Makes Sense Except in the Light of Evolution\\ \textcolor{gray}{and Bioinformatics}.
 \end{frame}
 
@@ -348,15 +348,15 @@
   \frametitle{计算机科学 | 编程语言 | 流行度}
   \begin{figure}
     \centering
-    \includegraphics[width=11cm]{c1_intro_language_rank_2018.png}
+    \includegraphics[width=11cm]{c1_intro_language_rank_2019.png}
   \end{figure}
 \end{frame}
 
 \begin{frame}
-  \frametitle{计算机科学 | 编程语言 | 排名 | 2018}
+  \frametitle{计算机科学 | 编程语言 | 排名 | 2019}
   \begin{figure}
     \centering
-    \includegraphics[width=9cm]{c1_intro_language_rate_2018.png}
+    \includegraphics[width=9cm]{c1_intro_language_rate_2019.png}
   \end{figure}
 \end{frame}
 
@@ -364,7 +364,7 @@
 %   \frametitle{计算机科学 | 编程语言 | 排名 | 趋势}
 %   \begin{figure}
 %     \centering
-%     \includegraphics[width=12cm]{c1_intro_language_rate_period_2018.png}
+%     \includegraphics[width=12cm]{c1_intro_language_rate_period_2019.png}
 %   \end{figure}
 % \end{frame}
 
@@ -372,8 +372,22 @@
   \frametitle{计算机科学 | 编程语言 | 排名 | 历史}
   \begin{figure}
     \centering
-    \includegraphics[width=11cm]{c1_intro_language_rate_history_2018.png}
+    \includegraphics[width=11cm]{c1_intro_language_rate_history_2019.png}
   \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{计算机科学 | 编程语言 | 生物信息学}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{c1_intro_perl_bx1.png}
+  \end{figure}
+  \begin{flushright}
+    \href{https://web.stanford.edu/class/gene211/handouts/How_Perl_HGP.html}{How Perl Saved the Human Genome Project}
+  \end{flushright}
+  \begin{quotation}
+Perl and the human genome are almost perfectly matched; both are almost incomprehensible, with no central design, accreted haphazardly over a long time.
+  \end{quotation}
 \end{frame}
 
 \begin{frame}
@@ -670,6 +684,30 @@
     \item \href{https://nlcb.wordpress.com/2013/02/23/programming-languages-of-bioinformatics-2/}{Programming Languages of Bioinformatics}
     \item \href{https://www.ncbi.nlm.nih.gov/pubmed/28968751}{A global perspective on evolving bioinformatics and data science training needs}
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Career outlook}
+  \begin{block}{\href{https://bioinformaticshome.com/blog/jobs_landscape_2018_2020.html}{\textcolor{white}{Data and Bioinformatics Scientists (2018-26)}}}
+    \begin{itemize}
+      \item The Future of Jobs
+        \begin{itemize}
+          \item The top ten job winners
+          \item The top ten job losers
+        \end{itemize}
+      \item What is the career outlook for Bioinformatics (2018-2026)?
+        \begin{itemize}
+          \item What skills a successful bioinformatician need to have?
+          \item Specialization within a branch of bioinformatics is essential
+          \item Not all bioinformatics jobs and bioinformatics scientists are the same
+          \item Job growth and median wages
+          \item Keep an eye on rapid technology development
+          \item What technology knowledge employers demand today?
+        \end{itemize}
+      \item Formal bioinformatics education
+      \item Pros and cons of bioinformatics as an interdisciplinary field
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \section{R}
@@ -1185,6 +1223,8 @@ stopCluster(cl)
     \item 《Python语言及其应用》
     \item 《Python编程——从入门到实践》
     \item 《R语言入门与实践》
+    \item 《R语言：从数据思维到数据实战》
+    \item 《R语言数据可视化之美：专业图表绘制指南》
   \end{itemize}
 \end{frame}
 
@@ -1209,6 +1249,7 @@ stopCluster(cl)
     \end{itemize}
         \column{0.6\textwidth}
     \begin{itemize}
+      \item 《数据结构与算法图解》
       \item 《大话数据结构》
       \item 《程序员的数学》
       \item 《程序员的数学2：概率统计》
@@ -1236,20 +1277,27 @@ stopCluster(cl)
 \begin{frame}
   \frametitle{书籍 | 其他}
     \begin{block}{统计学}
+    \begin{columns}
+        \column{0.5\textwidth}
     \begin{itemize}
       \item 《统计学》（\textit{Statistics for Engineers and the Sciences}）
       \item 《统计学及其应用》
       \item 《深入浅出统计学》
       \item 《从零开始学统计》
       \item 《从零开始读懂统计学》
+      \item 《白话统计》
       \item 《白话统计学》
       \item 《爱上统计学》
+    \end{itemize}
+        \column{0.5\textwidth}
+    \begin{itemize}
       \item \alert{《赤裸裸的统计学》}
       \item 《你一定爱读的极简统计学》
       \item 《介绍丛书:统计学》
       \item 《漫画玩转统计学》
       \item 《漫画统计学》
     \end{itemize}
+  \end{columns}
   \end{block}
 \end{frame}
 
