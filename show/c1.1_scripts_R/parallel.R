@@ -21,7 +21,7 @@ cl <- makeCluster(no_cores)
 registerDoParallel(cl)
 
 system.time(
-  x <- foreach (i=1:10) %dopar% {
+  x <- foreach (i = 1:10) %dopar% {
     Sys.sleep(2)
     print(i)
   }
