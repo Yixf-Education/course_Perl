@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # gives a flat two-dimensional label a three-dimensional look with rich textures and simulated depth
 convert label.gif +matte \( +clone -shade 110x90 -normalize -negate +clone -compose Plus -composite \) \( -clone 0 -shade 110x50 -normalize -channel BG -fx 0 +channel -matte \) -delete 0 +swap -compose Multiply -composite button.gif
 
