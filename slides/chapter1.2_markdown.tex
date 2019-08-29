@@ -6,7 +6,7 @@
 \title[Markdown]{第一章\quad Markdown标记语言}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2018年11月}
+\date{2019年8月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -173,7 +173,7 @@ This is an H2
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | \alert{区块引用}}
-  Markdown标记区块引用是使用类似email中用 \verb|>|的引用方式，看起来像是你自己先断好行，然后在每行的最前面加上 \verb|>|。\\
+  Markdown标记区块引用是使用类似email中用 \verb|>| 的引用方式，看起来像是你自己先断好行，然后在每行的最前面加上 \verb|>|。\\
 \begin{lstlisting}[language=]
 >半亩方塘一鉴开，天光云影共徘徊。
 >问渠那得清如许？为有源头活水来。
@@ -191,7 +191,7 @@ This is an H2
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | 区块引用}
-  区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 \verb|>|即可。\\
+  区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 \verb|>| 即可。\\
 \begin{lstlisting}[language=]
 >圣人无常师。孔子师郯子、苌子、师襄、老聃。郯子之徒，其贤不及孔子。孔子曰：
 >
@@ -323,7 +323,7 @@ This is the second paragraph.
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区块元素 | 列表 | 引用}
-  如果要在列表项目内放进引用，那么 \verb|>|就需要缩进：
+  如果要在列表项目内放进引用，那么 \verb|>| 就需要缩进：
 \begin{lstlisting}[language=]
 *   A list item with a blockquote:
 
@@ -374,7 +374,7 @@ A normal paragraph followed by a Perl script:
   \begin{itemize}
     \item 每行一阶的缩进，即4个空格或是1个制表符，都会被移除。
     \item 一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。
-    \item 在代码区块里面，\verb|&|、\verb|<|和 \verb|>|会自动转成HTML实体，这样的方式让你非常容易使用Markdown插入范例用的HTML源代码——只需要复制贴上，再加上缩进就可以了——剩下的Markdown都会帮你处理。
+    \item 在代码区块里面，\verb|&|、\verb|<| 和 \verb|>| 会自动转成HTML实体，这样的方式让你非常容易使用Markdown插入范例用的HTML源代码——只需要复制贴上，再加上缩进就可以了——剩下的Markdown都会帮你处理。
     \item 代码区块中，一般的Markdown语法不会被转换，像是星号便只是星号，这表示你可以很容易地以Markdown语法撰写Markdown语法相关的文件。
   \end{itemize}
 \end{frame}
@@ -540,7 +540,7 @@ I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3]
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 区段元素 | 链接 | 范例 | 显式 vs. 隐式}
-  \vspace{-2em}
+  \vspace{-1em}
 \begin{lstlisting}[language=]
 I get 10 times more traffic from [Google] [1] than from [Yahoo] [2] or [MSN] [3].
 
@@ -597,7 +597,7 @@ ___three underscores___
 un*frigging*believable
 \end{lstlisting}
 \pause
-  但是如果你的\verb|*|和\verb|_|两边都有空白的话，它们就只会被当成普通的符号。\\
+  但是如果你的 \verb|*| 和 \verb|_| 两边都有空白的话，它们就只会被当成普通的符号。\\
   \vspace{1em}
 \pause
   如果要在文字前后直接插入普通的星号或下划线，你可以用反斜线：
@@ -633,7 +633,7 @@ A backtick-delimited string in a code span: `` `foo` ``
   \frametitle{基本语法 | 区段元素 | 图片}
   Markdown使用一种和链接很相似的语法来标记图片，同样也允许两种样式：行内式和参考式。\\
   \vspace{1em}
-  到目前为止，Markdown还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 \verb|<img>|标签。
+  到目前为止，Markdown还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 \verb|<img>| 标签。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -701,7 +701,7 @@ _   下划线
 
 \begin{frame}[fragile]
   \frametitle{基本语法 | 其他 | \alert{脚注}}
-使用这样的占位符号可以将脚注添加到文本中：\verb|[^1]|。另外，你可以使用“n”而不是数字的\verb|[^n]|。所以你可以不必担心使用哪个号码。在文章的结尾，你可以如下所示定义匹配的注脚，URL将变成链接：
+使用这样的占位符号可以将脚注添加到文本中：\verb|[^1]|。另外，你可以使用“n”而不是数字的 \verb|[^n]|。所以你可以不必担心使用哪个号码。在文章的结尾，你可以如下所示定义匹配的注脚，URL将变成链接：
 \vspace{-0.3em}
 \begin{lstlisting}[language=]
 [^1]: This is my first footnote
@@ -801,7 +801,7 @@ The HTML specification is maintained by the W3C.
     print "Hello, world!\n";
 \end{lstlisting}
 \vspace{1em}
-    \item GFM（GitHub Flavored Markdown）使用三个反引号\verb|```|：
+    \item GFM（GitHub Flavored Markdown）使用三个反引号 \verb|```|：
 \begin{lstlisting}[language=]
 ```perl
 #!/usr/bin/perl
@@ -979,7 +979,7 @@ pandoc [options] [input-file] ...
 
 \begin{frame}[fragile]
   \frametitle{格式转换 | pandoc | \alert{使用}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash]
 # Pandoc会根据文件的后缀名自动判断格式
 pandoc -o output.html input.md
@@ -1043,7 +1043,7 @@ Use ImageMagick to create, edit, compose, or convert bitmap images. It can read 
   \begin{block}{convert}
 Use the convert program to convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more. 
   \end{block}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash]
 # 安装
 sudo apt install imagemagick
@@ -1059,7 +1059,7 @@ convert rose.jpg -resize 50% rose.png
 
 \begin{frame}[fragile]
   \frametitle{格式转换 | ImageMagick | 使用}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash]
 # combine multiple image-processing operations to produce complex results
 convert -size 320x85 canvas:none -font Bookman-DemiItalic -pointsize 72 -draw "text 25,60 \'Magick\'" -channel RGBA -blur 0x6 -fill darkred -stroke magenta -draw "text 20,55 \'Magick\'" fuzzy-magick.png
@@ -1159,7 +1159,7 @@ ffmpeg -i video.avi -target pal-dvd -ps 2000000000 -aspect 16:9 video.mpeg
 
 \begin{frame}[fragile]
   \frametitle{格式转化 | FFmpeg | 使用}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # Get Video File Information
 ffmpeg -i video.flv -hide_banner
@@ -1182,7 +1182,7 @@ ffmpeg -f concat -i file-list.txt -c copy output.mp4
 
 \begin{frame}[fragile]
   \frametitle{格式转化 | FFmpeg | 使用}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash,basicstyle=\small\tt]
 # Resize a video
 ffmpeg -i input.mp4 -s 480x320 -c:a copy output.mp4
@@ -1201,7 +1201,7 @@ ffmpeg -i input.mp4 -filter:v 'transpose=2,transpose=2' rotated-video.mp4
 
 \begin{frame}[fragile]
   \frametitle{格式转化 | FFmpeg | 使用}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 # Mute a video (Remove the audio component)
 ffmpeg -i video.mp4 -an mute-video.mp4
