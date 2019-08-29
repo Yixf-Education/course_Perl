@@ -6,7 +6,7 @@
 \title[Perl语言入门]{第二章\quad Perl语言入门}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2018年11月}
+\date{2019年9月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -113,7 +113,7 @@
     \begin{itemize}
       \item Perl：程序语言本身
       \item perl：实际编译并运行程序的解释器
-      \item PERL：错误的写法，外行的标志
+      \item PERL：错误的写法（外行的标志）
     \end{itemize}
   \end{block}
 \end{frame}
@@ -303,7 +303,7 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
 
 \begin{frame}[fragile]
   \frametitle{Perl | 优缺点 | JAPH}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
                         #!/usr/bin/perl
                           use strict;
@@ -357,14 +357,14 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
   \begin{block}{Perl5}
     \begin{itemize}
       \item 1994年——至今
-      \item 最新版：v5.28.0（2018-06-22）
+      \item 最新版：v5.30.0（2019-05-22）
     \end{itemize}
   \end{block}
   \pause
   \begin{block}{Perl6}
     \begin{itemize}
       \item 2000年——至今（2015-12-25发布v1.0）
-      \item 最新版：Rakudo Star 2018.06（2018-08-06）
+      \item 最新版：Rakudo Star 2019.03（2019-03-30）
     \end{itemize}
   \end{block}
   \pause
@@ -525,7 +525,7 @@ perl -v
 
 \begin{frame}[fragile]
   \frametitle{Perl | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl
 # Classic "Hello World" as done with Perl
@@ -589,7 +589,7 @@ perl -c script.pl
 
 \begin{frame}[fragile]
   \frametitle{Perl | 格式化 | \alert{perltidy}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=bash]
 # 安装perltidy
 sudo apt install perltidy
@@ -609,7 +609,7 @@ perltidy -h
 
 \begin{frame}[fragile]
   \frametitle{Perl | 格式化 | 前}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl 
 
@@ -622,7 +622,7 @@ if($j==$i){print"\n";}else{print"\t";}}}
 
 \begin{frame}[fragile]
   \frametitle{Perl | 格式化 | \alert{后}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 #!/usr/bin/perl 
 
@@ -650,9 +650,9 @@ for ( my $i = 1 ; $i <= 9 ; $i++ ) {
   \pause
   \begin{block}{\alert{类型}}
     \begin{itemize}
-      \item 标量：scalar；只包含一个元素的变量；以 \verb|$|开头；类比“个体”
-      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以 \verb|@|开头；类比“队列”
-      \item 散列：hash，associative array（关联数组）；像字典一样，把不同的变量按照它们的逻辑关系组织起来，并以作为“键”的变量进行索引；以 \verb|%|开头；类比“字典”
+      \item 标量：scalar；只包含一个元素的变量；以 \verb|$| 开头；类比“个体”
+      \item 数组：array；含有任意数量元素的变量，以其存储顺序作为索引；以 \verb|@| 开头；类比“队列”
+      \item 散列：hash，associative array（关联数组）；像字典一样，把不同的变量按照它们的逻辑关系组织起来，并以作为“键”的变量进行索引；以 \verb|%| 开头；类比“字典”
     \end{itemize}
   \end{block}
 \end{frame}
@@ -660,7 +660,7 @@ for ( my $i = 1 ; $i <= 9 ; $i++ ) {
 \subsection{标量}
 \begin{frame}[fragile]
   \frametitle{变量 | 标量 | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 标量：$scalar
 
@@ -686,7 +686,7 @@ $age = 29;
 
 \begin{frame}[fragile]
   \frametitle{变量 | 数组 | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 数组：@array
 # 索引值从0开始
@@ -727,7 +727,7 @@ $list[0] # 1
 
 \begin{frame}[fragile]
   \frametitle{变量 | 散列 | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 散列：%hash
 
@@ -802,7 +802,7 @@ $person{"age"} # 29
       \verb|le| & 小于等于\\
       \verb|ge| & 大于等于\\
       \verb|ne| & 不等于\\
-      \verb|cmp| & 比较。类似于数字比较的\verb|<=>|\\
+      \verb|cmp| & 比较。类似于数字比较的 \verb|<=>|\\
       \hline
     \end{tabularx}
   \end{table}
@@ -874,7 +874,7 @@ $person{"age"} # 29
 \section{基本函数}
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{print, chomp}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 向标准输出打印文本
 print "Hello Again\n";
@@ -896,7 +896,7 @@ chomp @authors;
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{join, split}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # joining a number of strings togother with a colon delimiter
 $fields = join ':', $data_field1, $data_field2, $data_field3;
@@ -911,7 +911,7 @@ $fields = join ':', $data_field1, $data_field2, $data_field3;
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{open, close}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # open the file and slurp its contents into an array and then close the file
 open(FILE, "/etc/passwd");
@@ -929,7 +929,7 @@ close $IN or warn "$0 : failed to close input file '$file_in' : $!\n";
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | opendir, readdir, closedir}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 #!/usr/bin/perl -w
 
@@ -950,7 +950,7 @@ print "All done\n\n";
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | \alert{my}, local}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # Global variable $name is given a name
 $name = "Paul";
@@ -971,7 +971,7 @@ foreach (@filedata) {
 
 \begin{frame}[fragile]
   \frametitle{基本函数 | my vs. local}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 #!/usr/bin/perl
 $x = 9;
@@ -1005,7 +1005,7 @@ print "#MAIN#\n"; print "main: $x\n";
 
 \begin{frame}[fragile]
   \frametitle{判断语句 | if | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # if区块
 if ($hour > 22) {
@@ -1028,7 +1028,7 @@ print "hello" if $guest >= 1;
 
 \begin{frame}[fragile]
   \frametitle{判断语句 | if-else | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 if ($name eq "Paul") {
   print "Hi Paul\n";
@@ -1100,7 +1100,7 @@ given ($foo) {
 
 \begin{frame}[fragile]
   \frametitle{循环语句 | foreach | \alert{语法}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 @group = 1..10;
 
@@ -1305,7 +1305,7 @@ my @descending = sort { $b <=> $a } @numbers;
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | sort | 复杂排序}
-  \vspace{-1.8em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\scriptsize\tt]
 my @employees = (
     {
@@ -1349,7 +1349,7 @@ my @employees = (
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | sort | 复杂排序}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 将sort代码块放到子程序中，并用子程序的名称替代sort代码块
 sub by_seniority_then_pay_then_name {
@@ -1373,7 +1373,7 @@ sub by_seniority_then_pay_then_name {
   \begin{block}{grep：筛选}
     生成一个新的列表，该列表中的所有元素由一个给定列表中所有满足筛选标准的元素组成。 
   \end{block}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 NEWLIST = grep BLOCK       LIST;
 NEWLIST = grep EXPRESSION, LIST;
@@ -1392,7 +1392,7 @@ my @greater = grep ( $_ > 0,  @numbers );
   \begin{block}{原理}
     在使用grep函数时，通过轮流地把每个元素设置成 \verb|$_|的方式，可以实现对列表中每个元素的迭代处理。grep函数只返回在BLOCK或EXPRESSION中值为真的那些元素。可以在grep函数中使用任意复杂的表达式。
   \end{block}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 获取回文字符串
 my @palindromes = grep { uc eq reverse uc } @words;
@@ -1422,7 +1422,7 @@ my @result = sort { $a <=> $b }
   \begin{block}{map：变换}
 在想要改变整个列表内容时使用map。它逐个对给定列表中的元素进行处理，然后新建一个列表，并将修改后的值返回到新的列表中。 
   \end{block}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 NEWLIST = map BLOCK       LIST;
 NEWLIST = map EXPRESSION, LIST;
@@ -1441,7 +1441,7 @@ my @roots = map  { sqrt($_) }
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | map | 实例}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # 将华氏温度转换为摄氏温度
 my %fahrenheit = (
@@ -1574,7 +1574,7 @@ my @sorted = map { substr $_, 4 }
 \section{检修脚本}
 \begin{frame}[fragile]
   \frametitle{\alert{检修脚本}}
-  \vspace{-1.5em}
+  \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 # 不洁模式
 #!/usr/bin/perl -T
