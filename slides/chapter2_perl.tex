@@ -25,7 +25,7 @@
   \vspace{1em}
   打个比方，一个程序就像一个用汉语（程序设计语言）写下的红烧肉菜谱（程序），用于指导懂汉语和烹饪手法的人（体系结构）来做这个菜。\\
   \vspace{1em}
-  通常，计算机程序要经过编译和链接而成为一种人们不易看懂而计算机可解读的格式，然后运行。未经编译就可运行的程序，通常称之为脚本程序（script）。
+  通常，计算机程序要经过编译和链接而成为一种人们不易看懂而计算机可解读的格式，然后运行。未经编译就可运行的程序，通常称之为\alert{脚本}程序（script）。
 \end{frame}
 
 \begin{frame}
@@ -171,6 +171,19 @@
       \item[RT] RT is an enterprise-grade issue tracking system. It allows organizations to keep track of what needs to get done, who is working on which tasks, what's already been done, and when tasks were (or weren't) completed.
       \item[\alert{Webmin}] Webmin is a web-based interface for system administration for Unix. Using any browser that supports tables and forms, you can setup user accounts, Apache, internet services, DNS, file sharing and so on.
       \item[\alert{Circos}] Circos is a program for the generation of publication-quality, circularly composited renditions of genomic data and related annotations. Circos is particularly suited for visualizing alignments, conservation and intra and inter-chromosomal relationships.
+    \end{description}
+  \end{block}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perl | 应用}
+  {\footnotesize
+    \begin{block}{应用举例}
+    \begin{description}
+      \item[Frozen Bubble] Frozen Bubble是一款泡泡龙样式的可在多个操作系统上运行的自由软体电脑游戏。Frozen Bubble原版用 Perl写成，拥有100个关卡，附带关卡编辑器。和很多专门针对Linux开发的游戏一样，使用Tux为主要角色，发射彩色冰泡泡到同色的泡泡旁边，成组消灭它们。在泡泡到达底部之前全部消除。 
+      \item[Movable Type] Movable Type，简称MT，是由位于美国加州的Six Apart公司推出的博客发布系统。它是全球最受欢迎的博客系统之一，包含多用户、评论、引用、主题等功能，并广泛的支持各种第三方插件。Movable Type不仅可以应用于个人的博客系统，而且可以应用于商业、教育等领域。 
+      \item[TWiki] TWiki is a Perl-based structured wiki application, typically used to run a collaboration platform, knowledge or document management system, a knowledge base, or team portal. Users can create wiki pages using the TWiki Markup Language, and developers can extend wiki application functionality with plugins.
     \end{description}
   \end{block}
   }
@@ -361,7 +374,7 @@ tr/a-z/oh, turtleneck Phrase Jar!/; print;
     \end{itemize}
   \end{block}
   \pause
-  \begin{block}{Perl6}
+  \begin{block}{Perl6\textcolor{gray}{（一种全新的编程语言）}}
     \begin{itemize}
       \item 2000年——至今（2015-12-25发布v1.0）
       \item 最新版：Rakudo Star 2019.03（2019-03-30）
@@ -962,7 +975,7 @@ foreach (@filedata) {
   my $current_file;
 
   # create a local version of name to temporarily assign values within the loop to
-  # 在局部声明全局变量
+  # 在局部声明“全局变量”
   local $name;
   ...
 }
@@ -1461,7 +1474,6 @@ my %celsius = map
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{Orcish Maneuver}
-    \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 keys my %or_cache = @in;
 @out = sort {
@@ -1486,14 +1498,13 @@ foobar是电脑程式领域里的术语，并无实际用途和参考意义。�
 \vspace{0.5em}
 单词“foobar”或分离的“foo”与“bar”常出现于程序设计的案例中，如同Hello World程序一样，它们常被用于向学习者介绍某种程序语言。\\
 \vspace{0.5em}
-“foo”“bar”常被作为函数/方法的名称或变量名。
+“foo”、“bar”常被作为函数/方法的名称或变量名。
   \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{\alert{Schwartzian transform}}
-    \vspace{-1em}
 \begin{lstlisting}[language=Perl,basicstyle=\small\tt]
 # The general form of the Schwartzian Transform:
 @sorted = map  { $_->[0] }
@@ -1516,7 +1527,6 @@ foobar是电脑程式领域里的术语，并无实际用途和参考意义。�
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{Schwartzian transform}
-    \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # James|007|Spy
 # Number 6|6|Ex-spy
@@ -1550,7 +1560,6 @@ my @sorted = map  { $_->[0] }
 \begin{frame}[fragile]
   \frametitle{列表操作 | 高效排序}
   \begin{block}{Guttman-Rosler Transform}
-    \vspace{-1em}
 \begin{lstlisting}[language=Perl]
 # James|007|Spy
 # Number 6|6|Ex-spy
