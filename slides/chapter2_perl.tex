@@ -1411,7 +1411,7 @@ my @greater = grep ( $_ > 0,  @numbers );
 \begin{frame}[fragile]
   \frametitle{列表操作 | grep | 原理}
   \begin{block}{原理}
-    在使用grep函数时，通过轮流地把每个元素设置成 \verb|$_|的方式，可以实现对列表中每个元素的迭代处理。grep函数只返回在BLOCK或EXPRESSION中值为真的那些元素。可以在grep函数中使用任意复杂的表达式。
+    在使用grep函数时，通过轮流地把每个元素设置成 \verb|$_| 的方式，可以实现对列表中每个元素的迭代处理。grep函数只返回在BLOCK或EXPRESSION中值为真的那些元素。可以在grep函数中使用任意复杂的表达式。
   \end{block}
   \vspace{-1em}
 \begin{lstlisting}[language=Perl]
@@ -1646,6 +1646,7 @@ perl -d script.pl
       L & 列出所有的断点\\
       B & 删除断点\\
       R & 重新启动脚本以便再次测试\\
+      q & 退出调试器\\
       \hline
     \end{tabularx}
   \end{table}
