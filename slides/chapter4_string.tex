@@ -4,7 +4,7 @@
 \title[序列和字符串]{第四章\quad 序列和字符串}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2018年11月}
+\date{2019年9月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -96,7 +96,6 @@
 \subsection{Perl程序}
 \begin{frame}[fragile,label=exam4.1]
   \frametitle{序列和字符串 | 存储DNA | \alert{程序4.1}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-1   Storing DNA in a variable, and printing it out
@@ -116,7 +115,7 @@ exit;
   \frametitle{序列和字符串 | 存储DNA | 程序 | \alert{补充}}
   \begin{itemize}
     \item 在Perl中，变量就是要处理的数据的名称，使用该名称，你可以对数据进行完全的访问。
-    \item 变量起名要清晰易懂；既然是存储DNA序列，起名为 \verb|$DNA|再自然不过了（或者 \verb|$dna|、\verb|$dna_seq|……）。
+    \item 变量起名要清晰易懂；既然是存储DNA序列，起名为 \verb|$DNA| 再自然不过了（或者 \verb|$dna|、\verb|$dna_seq|……）。
     \item 保存程序时一定要保存为ASCII或者纯文本格式。
     \item 运行程序：\verb|perl example4-1.pl|（或者：\verb|chmod 755 example4-1.pl; ./example4-1.pl|）。
   \end{itemize}
@@ -139,13 +138,12 @@ exit;
   \frametitle{序列和字符串 | 存储DNA | 注释}
   \begin{itemize}
     \item 添加空行使程序更加易读。
-    \item 以 \verb|#|起始进行注释。
+    \item 以 \verb|#| 起始进行注释。
     \item Perl程序运行时，会把空行和注释忽略掉。
     \item 注释内容：程序的用途、作者及相关信息，代码每一部分的作用，代码的工作原理，……
   \end{itemize}
   \pause
   \begin{block}{没有注释的、赤裸裸的、完全等价的程序}
-  \vspace{-0.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
@@ -158,7 +156,6 @@ exit;
 \subsection{命令解释}
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 存储DNA | \alert{命令解释}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 \end{lstlisting}
@@ -176,7 +173,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 存储DNA | 命令解释}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 #!/usr/bin/env perl
@@ -189,7 +185,6 @@ exit;
 \subsection{语句}
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 存储DNA | \alert{语句}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
 \end{lstlisting}
@@ -197,8 +192,8 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
 \begin{block}{语句}
   \begin{itemize}
     \item 这行代码在Perl语言中叫做语句（statement）。
-    \item 在Perl中，语句以分号 \verb|;|结尾（类似于英语中以句号 \verb|.|进行结尾）。
-    \item 该行是一个赋值语句：把DNA序列存储到 \verb|$DNA|变量中。
+    \item 在Perl中，语句以分号 \verb|;| 结尾（类似于英语中以句号 \verb|.| 进行结尾）。
+    \item 该行是一个赋值语句：把DNA序列存储到 \verb|$DNA| 变量中。
   \end{itemize}
 \end{block}
 \end{frame}
@@ -209,7 +204,7 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
     \centering
     \includegraphics[width=0.48\textwidth]{c4_string_statement_01.jpg}
     \quad
-    \includegraphics[width=0.44\textwidth]{c4_string_statement_02.jpg}
+    \includegraphics[width=0.445\textwidth]{c4_string_statement_02.jpg}
   \end{figure}
 \end{frame}
 
@@ -238,7 +233,7 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
   \frametitle{序列和字符串 | 存储DNA | \alert{变量}}
   \begin{block}{变量名}
   \begin{itemize}
-    \item Perl中变量名的规范：只能由大小写字母、数字和下划线 \verb|_|组成，且第一个字符不能是数字。
+    \item Perl中变量名的规范：只能由大小写字母、数字和下划线 \verb|_| 组成，且第一个字符不能是数字。
     \item 只要合法，什么样的变量名对于计算机来说都无所谓，都是一样的。
     \item 有意义的变量名可以清晰地表明程序中变量的作用，使程序易读、易理解。
     \item 精心选择有意义的变量名是一个好习惯。
@@ -247,7 +242,7 @@ $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
   \pause
   \begin{block}{标量变量}
     \begin{itemize}
-      \item 标量变量（scalar variable）：存储单个数据项目的变量，在Perl中以美元符号 \verb|$|起始。
+      \item 标量变量（scalar variable）：存储单个数据项目的变量，在Perl中以美元符号 \verb|$| 起始。
       \item 一个标量变量一次只能存储数据中的一个项目。
       \item 使用标量变量存储字符串或者数字（比如：hello，25、6.234、3.5E10、-0.8373）。
     \end{itemize}
@@ -291,7 +286,6 @@ Perl语言从C那里继承了一部分命名约定。局部变量与子程序通
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 此处两者完全等价
 $DNA = 'ACGGGAGGACGGGAAAATTACTACGGCATTAGC';
@@ -307,11 +301,11 @@ print "$DNA"; # ACGGG...
   \frametitle{序列和字符串 | 存储DNA | \alert{赋值}}
   \begin{block}{赋值}
     \begin{itemize}
-      \item 使用等号 \verb|=|来把一个变量设成特定的值。
-      \item \verb|=|叫做赋值操作符（assignment operator）。
+      \item 使用等号 \verb|=| 来把一个变量设成特定的值。
+      \item \verb|=| 叫做赋值操作符（assignment operator）。
       \item 赋值后就可以通过变量名来获取它的值了。
       \item 注意赋值语句中项目的顺序：变量在左边（lvalue），要赋给变量的值在右边（rvalue）。
-      \item 牢记在Perl中 \verb|=|不表示相等（数学），而是进行赋值。
+      \item 牢记在Perl中 \verb|=| 不表示相等（数学），而是进行赋值。
     \end{itemize}
   \end{block}
 \end{frame}
@@ -320,13 +314,12 @@ print "$DNA"; # ACGGG...
   \frametitle{序列和字符串 | 存储DNA | 打印输出}
   \begin{block}{打印输出}
     \begin{itemize}
-      \item 使用 \verb|print|函数，它会把变量的值直接打印输出出来。
-      \item \verb|print|处理的是标量变量。
+      \item 使用 \verb|print| 函数，它会把变量的值直接打印输出出来。
+      \item \verb|print| 处理的是标量变量。
       \item 默认是输出到计算机屏幕（标准输出设备， STDOUT）上。
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 两者效果相同
 print $DNA;
@@ -341,8 +334,8 @@ print '$DNA';
   \frametitle{序列和字符串 | 存储DNA | \alert{退出}}
   \begin{block}{退出}
     \begin{itemize}
-      \item 使用 \verb|exit;|语句明确告诉计算机退出程序。
-      \item 在Perl中，程序末尾的 \verb|exit;|并不是必需的。
+      \item 使用 \verb|exit;| 语句明确告诉计算机退出程序。
+      \item 在Perl中，程序末尾的 \verb|exit;| 并不是必需的。
       \item Perl程序一旦运行到末尾，就会自动退出。
     \end{itemize}
   \end{block}
@@ -350,7 +343,6 @@ print '$DNA';
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 存储DNA | 程序4.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -385,7 +377,6 @@ exit;
 
 \begin{frame}[fragile,label=exam4.2.1]
   \frametitle{序列和字符串 | 拼接DNA | 程序4.2.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-2   Concatenating DNA
@@ -405,7 +396,6 @@ print $DNA2, "\n\n";
 
 \begin{frame}[fragile,label=exam4.2.2]
   \frametitle{序列和字符串 | 拼接DNA | 程序4.2.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=15]
 # Concatenate the DNA fragments into a third variable and print them
 # Using "string interpolation"
@@ -419,7 +409,6 @@ print "$DNA3\n\n";
 
 \begin{frame}[fragile,label=exam4.2.3]
   \frametitle{序列和字符串 | 拼接DNA | 程序4.2.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=23]
 # An alternative way using the "dot operator":
 # Concatenate the DNA fragments into a third variable and print them
@@ -433,7 +422,6 @@ print "$DNA3\n\n";
 
 \begin{frame}[fragile,label=exam4.2.4]
   \frametitle{序列和字符串 | 拼接DNA | 程序4.2.4}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=31]
 # Print the same thing without using the variable $DNA3
 print "Here is the concatenation of the first two fragments (version 3):\n\n";
@@ -446,7 +434,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 拼接DNA | 程序4.2 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
 Here are the original two DNA fragments:
 
@@ -469,7 +456,6 @@ ACGGGAGGACGGGAAAATTACTACGGCATTAGCATAGTGCCGTGAGAGTGATGTAGTA
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 拼接DNA | \alert{print语句}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 print $DNA1, "\n";
 print $DNA2, "\n\n";
@@ -481,7 +467,7 @@ print $DNA2, "\n\n";
     \item \verb|\n\n|：两个新行（中间添加一个空行）
     \item 空行：没有任何打印输出的行（取决于操作系统）
     \item 包裹在双引号中的换行符表示它们是字符串的一部分
-    \item \verb|"\n"|会输出换行符，\verb|'\n'|输出 \verb|\n|本身
+    \item \verb|"\n"| 会输出换行符，\verb|'\n'| 输出 \verb|\n| 本身
     \item 逗号分隔列表中的项目，print语句会输出列表中的所有项目
   \end{itemize}
 \end{block}
@@ -489,7 +475,7 @@ print $DNA2, "\n\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 拼接DNA | \alert{拼接语句}}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 $DNA3 = "$DNA1$DNA2"; print "$DNA3\n";
 $DNA3 = $DNA1 . $DNA2; print "$DNA3\n";
@@ -517,7 +503,6 @@ print "$DNA1$DNA2\n";
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 $number = 17;
 print $number, "\n";
@@ -526,7 +511,6 @@ print $number, "\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 拼接DNA | \alert{程序4.2}}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 
@@ -563,7 +547,6 @@ exit;
 
 \begin{frame}[fragile,label=exam4.3.1]
   \frametitle{序列和字符串 | 转录 | 程序4.3.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-3   Transcribing DNA into RNA
@@ -580,7 +563,6 @@ print "$DNA\n\n";
 
 \begin{frame}[fragile,label=exam4.3.2]
   \frametitle{序列和字符串 | 转录 | 程序4.3.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12]
 # Transcribe the DNA to RNA by substituting all T's with U's.
 $RNA = $DNA;
@@ -599,7 +581,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 转录 | 程序4.3 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 Here is the starting DNA:
 
@@ -622,7 +603,6 @@ ACGGGAGGACGGGAAAAUUACUACGGCAUUAGC
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 转录 | \alert{语句}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # $RNA开始存储的其实是DNA
 $RNA = $DNA;
@@ -645,7 +625,6 @@ $RNA =~ s/T/U/g;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 转录 | \alert{程序4.3}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -691,7 +670,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | 程序4.4.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-4   Calculating the reverse complement of a strand of DNA
@@ -708,7 +686,6 @@ print "$DNA\n\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | 程序4.4.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12,basicstyle=\footnotesize\tt]
 # Calculate the reverse complement
 #  Warning: this attempt will fail!
@@ -728,7 +705,6 @@ print "$DNA\n\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | 程序4.4.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=27,basicstyle=\footnotesize\tt]
 $revcom = reverse $DNA;
 
@@ -751,7 +727,6 @@ print "$revcom\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | 程序4.4.4}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=45,basicstyle=\scriptsize\tt]
 # Oh-oh, that didn't work right!
 # Our reverse complement should have all the bases in it, since the
@@ -772,7 +747,6 @@ print "Try again ... \n\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | 程序4.4.5}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=60,basicstyle=\small\tt]
 # Make a new copy of the DNA (see why we saved the original?)
 $revcom = reverse $DNA;
@@ -793,7 +767,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | 程序4.4.1 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\small\tt]
 Here is the starting DNA:
 
@@ -847,7 +820,6 @@ This time it worked!
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 反向互补 | \alert{程序4.4}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -890,7 +862,6 @@ exit;
 \section{从文件读取数据}
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 创建数据}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=,xrightmargin=1em,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
 SVLQDRSMPHQEILAADEVLQESEMRQQDMISHDELMVHEETVKNDEEQMETHERLPQ
@@ -909,7 +880,6 @@ GLQYALNVPISVKQEITFTDVSEQLMRDKKQIR
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.5.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-5   Reading protein sequence data from a file
@@ -925,7 +895,6 @@ $proteinfilename = 'NM_021964fragment.pep';
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.5.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=10,basicstyle=\footnotesize\tt]
 open( PROTEINFILE, $proteinfilename );
 
@@ -948,7 +917,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.5 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 Here is the protein:
 
@@ -958,7 +926,6 @@ MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | \alert{处理方法}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 第一步： 把文件和文件句柄关联起来，之后对文件的操作都通过文件句柄来进行
 open( PROTEINFILE, $proteinfilename );
@@ -980,7 +947,6 @@ close PROTEINFILE;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | \alert{读写文件}}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 读取文件
 open my $FH, '<', $filename or die "$0 : failed to open input file '$filename' : $!\n";
@@ -1000,7 +966,6 @@ close $FH_OUT or warn "$0 : failed to close output file '$fn_out' : $!\n";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.6.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-6   Reading protein sequence data from a file, take 2
@@ -1017,7 +982,6 @@ open( PROTEINFILE, $proteinfilename );
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.6.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12]
 # Now we do the actual reading of the protein sequence data from the file,
 # by using the angle brackets < and > to get the input from the
@@ -1030,7 +994,6 @@ open( PROTEINFILE, $proteinfilename );
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.6.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=19,basicstyle=\small\tt]
 # First line
 $protein = <PROTEINFILE>;
@@ -1052,7 +1015,6 @@ print $protein;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.6.4}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=35]
 # Third line
 $protein = <PROTEINFILE>;
@@ -1071,7 +1033,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件 | 程序4.6 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\footnotesize\tt,xrightmargin=1em]
 Here is the first line of the protein file:
 
@@ -1089,7 +1050,6 @@ GLQYALNVPISVKQEITFTDVSEQLMRDKKQIR
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件| \alert{程序4.6}}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 
@@ -1112,7 +1072,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 读取文件| 程序4.6 | WRONG!}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 
@@ -1158,7 +1117,6 @@ exit;
 \subsection{Perl程序}
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | 程序4.7.1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 4-7   Reading protein sequence data from a file, take 3
@@ -1173,7 +1131,6 @@ open( PROTEINFILE, $proteinfilename );
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | 程序4.7.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=10]
 # Read the protein sequence data from the file, and store it
 # into the array variable @protein
@@ -1191,7 +1148,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | 程序4.7 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=,basicstyle=\footnotesize\tt,xrightmargin=1em]
 MNIDDKLEGLFLKCGGIDEMQSSRTMVVMGGVSGQSTVSGELQD
 SVLQDRSMPHQEILAADEVLQESEMRQQDMISHDELMVHEETVKNDEEQMETHERLPQ
@@ -1201,7 +1157,6 @@ GLQYALNVPISVKQEITFTDVSEQLMRDKKQIR
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{程序4.7}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -1230,8 +1185,8 @@ exit;
   \pause
   \begin{block}{标量 vs. 数组}
     \begin{itemize}
-      \item 标量：单数，以 \verb|$|起始（scalar）
-      \item 数组：复数，以 \verb|@|起始（array）
+      \item 标量：单数，以 \verb|$| 起始（scalar）
+      \item 数组：复数，以 \verb|@| 起始（array）
       \item print函数不仅可以处理标量变量，也可以处理数组变量
       \item 数组中的每一个元素都是标量值
       \item 通过索引/下标/偏移量/位置（从0开始）对数组中的元素进行访问
@@ -1241,7 +1196,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{初始化和元素访问}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Here's one way to declare an array, initialized with a list of four scalar values.
 @bases = ('A', 'C', 'G', 'T');
@@ -1261,7 +1215,6 @@ print $bases[3];
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | 初始化和元素访问}
-  \vspace{-1.5em}
 \begin{lstlisting}[language=]
 Here are the array elements:
 First element: A
@@ -1273,7 +1226,6 @@ Fourth element: T
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{初始化和元素访问}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 @bases = ('A', 'C', 'G', 'T');
 print "\n\nHere are the array elements: ";
@@ -1290,7 +1242,6 @@ print "@bases";
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{pop}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # pop：从数组的末尾拿掉一个元素
 @bases = ('A', 'C', 'G', 'T');
@@ -1310,7 +1261,6 @@ Here's the remaining array of bases: A C G
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{shift}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # shift：从数组的开头拿掉一个元素
 @bases = ('A', 'C', 'G', 'T');
@@ -1330,7 +1280,6 @@ Here's the remaining array of bases: C G T
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{unshift}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # unshift：把一个元素添加到数组的开头
 @bases = ('A', 'C', 'G', 'T');
@@ -1347,7 +1296,6 @@ Here's the element from the end put on the beginning: T A C G
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{push}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # push：把一个元素添加到数组的末尾
 @bases = ('A', 'C', 'G', 'T');
@@ -1364,7 +1312,6 @@ Here's the element from the beginning put on the end: C G T A
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{reverse}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # reverse：反转数组
 @bases = ('A', 'C', 'G', 'T');
@@ -1380,7 +1327,6 @@ Here's the array in reverse: T G C A
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{scalar}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # scalar @array：获取数组的长度（数组中元素的个数）
 @bases = ('A', 'C', 'G', 'T');
@@ -1395,7 +1341,6 @@ Here's the length of the array: 4
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | \alert{splice}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # splice：在数组的任意一个位置插入一个元素（或者删除任意一个或多个元素）
 @bases = ('A', 'C', 'G', 'T');
@@ -1412,7 +1357,7 @@ Here's the array with an element inserted after the 2nd element: A C X G T
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | splice}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 my @bases = ( "A", "C", "G", "T" );
 
@@ -1435,7 +1380,6 @@ undef(@bases); 或 @bases=();
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 数组 | splice | 等价命令}
-  \vspace{-1.5em}
 \begin{lstlisting}
 push(@a,$x,$y)
 splice(@a,@a,0,$x,$y)
@@ -1473,8 +1417,8 @@ splice(@a,$i,1,$y)
   \pause
   \begin{block}{谁也赢不了}
     \begin{itemize}
-      \item 中国兵乓球谁也赢不了！
-      \item 中国足球谁也赢不了！
+      \item \textcolor{gray}{中国兵乓球}谁也赢不了！
+      \item \textcolor{gray}{中国足球}谁也赢不了！
     \end{itemize}
   \end{block}
 \end{frame}
@@ -1503,7 +1447,6 @@ splice(@a,$i,1,$y)
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 上下文 | \alert{程序4.8}}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example 4-8   Demonstration of "scalar context" and "list context"
@@ -1526,7 +1469,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 上下文 | \alert{标量上下文}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 $a = @bases;
 \end{lstlisting}
@@ -1540,7 +1482,6 @@ $a = @bases;
 \end{block}
 \pause
 \begin{block}{获取数组元素个数}
-  \vspace{-0.5em}
 \begin{lstlisting}
 $number = @array;
 #明确指定是标量上下文
@@ -1551,7 +1492,6 @@ $number = scalar @array;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 上下文 | \alert{列表上下文}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 ($a) = @bases;
 \end{lstlisting}
@@ -1559,7 +1499,7 @@ $number = scalar @array;
 \begin{block}{说明}
   \begin{itemize}
     \item 数组是一种列表
-    \item 语句的左边是一个列表（该列表仅有 \verb|$a|一个变量），表明这是一个列表上下文（list context）
+    \item 语句的左边是一个列表（该列表仅有 \verb|$a| 一个变量），表明这是一个列表上下文（list context）
     \item 在列表上下文中，数组会把它的元素展开成一个列表
     \item 如果左边没有足够的变量用来赋值，那么就只有数组中的部分元素会被赋值给变量
     \item 如果左边变量的个数多于数组中的元素，多出来的变量将不会被赋值，处于未初始化状态
@@ -1569,7 +1509,6 @@ $number = scalar @array;
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 上下文 | splice}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my @bases = ('A', 'C', 'G', 'T');
 # 注意：本页幻灯片中的操作非迭代，每次均使用原始值
@@ -1589,7 +1528,6 @@ print "$base"; # undef
 
 \begin{frame}[fragile]
   \frametitle{序列和字符串 | 上下文 | splice | 补遗}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my @bases = ('A', 'C', 'G', 'T');
 # 注意：本页幻灯片中的操作非迭代，每次均使用原始值
