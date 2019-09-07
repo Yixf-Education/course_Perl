@@ -115,7 +115,7 @@ exit;
   \frametitle{序列和字符串 | 存储DNA | 程序 | \alert{补充}}
   \begin{itemize}
     \item 在Perl中，变量就是要处理的数据的名称，使用该名称，你可以对数据进行完全的访问。
-    \item 变量起名要清晰易懂；既然是存储DNA序列，起名为 \verb|$DNA| 再自然不过了（或者 \verb|$dna|、\verb|$dna_seq|……）。
+    \item 变量起名要清晰易懂；既然是存储DNA序列，起名为 \verb|$DNA| 再自然不过了（或者 \verb|$dna|、\verb|$dna_seq| ……）。
     \item 保存程序时一定要保存为ASCII或者纯文本格式。
     \item 运行程序：\verb|perl example4-1.pl|（或者：\verb|chmod 755 example4-1.pl; ./example4-1.pl|）。
   \end{itemize}
@@ -131,6 +131,11 @@ exit;
   \vspace{1em}
   可以通过条件流程控制语句（if等）、循环流程控制语句（while等）等控制程序的执行顺序。
   \end{block}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.3\textwidth]{c4_string_flow_01.png}\qquad
+    \includegraphics[width=0.45\textwidth]{c4_string_flow_02.jpg}
+  \end{figure}
 \end{frame}
 
 \subsection{注释}
@@ -653,6 +658,10 @@ exit;
     \item 文档太全，直接忽略掉对你来说毫无意义的内容吧
     \item 翻阅文档是学习Perl的绝佳途径（不要“骑着驴找驴”）
   \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{c4_string_perldoc_01.jpg}
+  \end{figure}
 \end{frame}
 
 \section{序列反向互补}
@@ -935,11 +944,12 @@ $protein = <PROTEINFILE>;
 close PROTEINFILE;
 \end{lstlisting}
 \pause
+\vspace{-0.5em}
 \begin{block}{补充说明}
   \begin{itemize}
     \item open函数还有很多选项，用于精确指定如何使用文件
     \item 文件句柄通常使用大写字母
-    \item \verb|< >|：输入操作符，从文件中读取数据
+    \item \verb|< >|：输入操作符，从文件中读取数据（每使用一次，读入一行数据，指针下移一行）
     \item 好习惯：有open就有close
   \end{itemize}
 \end{block}
@@ -949,9 +959,9 @@ close PROTEINFILE;
   \frametitle{序列和字符串 | \alert{读写文件}}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 读取文件
-open my $FH, '<', $filename or die "$0 : failed to open input file '$filename' : $!\n";
+open my $FH, '<', $filename_in or die "$0 : failed to open input file '$filename_in' : $!\n";
 ... <$FH> ...
-close $FH or warn "$0 : failed to close input file '$filename' : $!\n";
+close $FH or warn "$0 : failed to close input file '$filename_in' : $!\n";
 
 # 写入文件
 open my $FH_OUT, '>', $fn_out or die "$0 : failed to open output file '$fn_out' : $!\n";
@@ -1344,6 +1354,7 @@ Here's the length of the array: 4
 \begin{lstlisting}
 # splice：在数组的任意一个位置插入一个元素（或者删除任意一个或多个元素）
 @bases = ('A', 'C', 'G', 'T');
+# splice ARRAY, OFFSET, LENGTH, LIST
 splice ( @bases, 2, 0, 'X' );
 print "Here's the array with an element inserted after the 2nd element:
 ";
@@ -1361,14 +1372,14 @@ Here's the array with an element inserted after the 2nd element: A C X G T
 \begin{lstlisting}
 my @bases = ( "A", "C", "G", "T" );
 
-splice ( @bases, 4, 0, "U" );
-print "@bases\n"; # A C G T U
+splice ( @bases, 4, 0, "N" );
+print "@bases\n"; # A C G T N
 
 splice ( @bases, 3, 1, "U" );
-print "@bases\n"; # A C G U U
+print "@bases\n"; # A C G U N
 
 splice ( @bases, 3, 1 );
-print "@bases\n"; # A C G U
+print "@bases\n"; # A C G N
 
 splice ( @bases, 2 );
 print "@bases\n"; # A C
@@ -1533,7 +1544,9 @@ my @bases = ('A', 'C', 'G', 'T');
 # 注意：本页幻灯片中的操作非迭代，每次均使用原始值
 
 # 参数为负数
+# If LENGTH is negative, removes the elements from OFFSET onward except for -LENGTH elements at the end of the array.
 splice (@bases, 1, -1);   # A T
+# If OFFSET is negative then it starts that far from the end of the array.
 splice (@bases, -1, 1);   # A C G
 splice (@bases, -2, -1);  # A C T
 \end{lstlisting}
