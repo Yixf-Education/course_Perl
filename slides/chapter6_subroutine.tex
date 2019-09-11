@@ -4,7 +4,7 @@
 \title[子程序和Bugs]{第六章\quad 子程序和Bugs}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2018年12月}
+\date{2019年9月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -92,7 +92,7 @@ addACGT($dna);
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | 程序6.1.1}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 # Example 6-1   A program with a subroutine to append ACGT to DNA
@@ -112,7 +112,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | 程序6.1.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=15,basicstyle=\small\tt]
 #################################################
 # Subroutines for Example 6-1
@@ -131,7 +130,6 @@ sub addACGT {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | 程序6.1 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}
 I added ACGT to CGACGTCTTCTCAGGCGA and got CGACGTCTTCTCAGGCGAACGT
 \end{lstlisting}
@@ -157,7 +155,7 @@ I added ACGT to CGACGTCTTCTCAGGCGA and got CGACGTCTTCTCAGGCGAACGT
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 编写 | \alert{程序6.1}}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 #!/usr/bin/perl -w
 
@@ -187,7 +185,6 @@ sub addACGT {
       \item 包裹在大括号中的代码块
     \end{itemize}
   \end{block}
-  \vspace{-1.5em}
 \begin{lstlisting}
 sub addACGT {
     my ($dna) = @_;
@@ -204,7 +201,7 @@ sub addACGT {
       \item 传递给子程序的参数
 	\begin{itemize}
 	  \item 参数：调用子程序时传递给它的值
-	  \item 使用特殊变量 \verb|@_|向子程序传递参数值
+	  \item 使用特殊变量 \verb|@_| 向子程序传递参数值
 	\end{itemize}
       \item 子程序中声明的变量
 	\begin{itemize}
@@ -224,7 +221,6 @@ sub addACGT {
       \item 可以返回：标量、标量列表、数组，等
     \end{itemize}
   \end{block}
-  \vspace{-1.5em}
 \begin{lstlisting}
 return $dna;
 return ( $dna, $dna2 );
@@ -240,12 +236,11 @@ return @lines;
       \item 参数（argument，parameter）通常包含子程序要计算的数据
       \item 调用时使用的参数名在子程序中无关紧要
       \item 关键的是被实际传递到子程序内部的参数的值
-      \item 子程序从 \verb|@_|数组中收集参数的值，并把它们赋值给新的变量
+      \item 子程序从 \verb|@_| 数组中收集参数的值，并把它们赋值给新的变量
       \item 新的变量名和调用时使用的变量名可以一样/不一样
       \item 参数值及值的顺序是不变的，而非变量名
     \end{itemize}
   \end{block}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 注意：小括号表明是列表上下文，可以保证新变量能被正确地初始化
 my ($dna) = @_;
@@ -265,7 +260,7 @@ my ($dna, $protein, $name_of_gene) = @_;
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-2em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 # 使用my声明变量
 my ($x);
@@ -282,7 +277,6 @@ my $x = $_[0];
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 作用域 | 程序6.2.1}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 6-2   Illustrating the pitfalls of not using my variables
@@ -299,7 +293,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 作用域 | 程序6.2.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=12,basicstyle=\small\tt]
 ##################################################
 # Subroutines
@@ -319,7 +312,6 @@ sub A_to_T {
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 子程序 | 作用域 | 程序6.2 | 输出}
   \begin{block}{预期输出}
-    \vspace{-1em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 I changed all the A's in AAAAA to T's and got TTTTT 
 \end{lstlisting}
@@ -328,7 +320,6 @@ I changed all the A's in AAAAA to T's and got TTTTT
   \vspace{-0.3em}
   \pause
   \begin{block}{实际输出}
-    \vspace{-1em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 I changed all the A's in TTTTT to T's and got TTTTT 
 \end{lstlisting}
@@ -337,7 +328,6 @@ I changed all the A's in TTTTT to T's and got TTTTT
   \vspace{-0.3em}
   \pause
   \begin{block}{修正子程序}
-  \vspace{-1em}
 \begin{lstlisting}[basicstyle=\small\tt]
 sub A_to_T {
     my ($input) = @_;
@@ -361,7 +351,6 @@ sub A_to_T {
   \end{block}
   \pause
   \begin{block}{强制使用my声明变量}
-    \vspace{-1em}
 \begin{lstlisting}
 use strict;
 # 好处：谁用谁知道！
@@ -389,7 +378,6 @@ use strict;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.1}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl -w
 # Example 6-3   Counting the number of G's in some DNA on the command line
@@ -407,7 +395,6 @@ my ($USAGE) = "$0 DNA\n\n";
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=13]
 # @ARGV is an array containing all command-line arguments.
 #
@@ -422,7 +409,6 @@ unless (@ARGV) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=22]
 # Read in the DNA from the argument on the command line.
 my ($dna) = $ARGV[0];
@@ -439,7 +425,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3.4}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=37,basicstyle=\small\tt]
 sub countG {
 
@@ -461,7 +446,6 @@ sub countG {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | 程序6.3 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}
 AAGGGGTTTCCC
 
@@ -471,7 +455,6 @@ The DNA AAGGGGTTTCCC has 4 G's in it!
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | \alert{use strict;}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 use strict;
 \end{lstlisting}
@@ -486,7 +469,6 @@ use strict;
     \item \verb|$0|：程序名
     \item \verb|@ARGV|：所有的命令行参数
   \end{itemize}
-  \vspace{-1em}
 \begin{lstlisting}
 # $0 is a special variable that has the name of the program.
 my ($USAGE) = "$0 DNA\n\n";
@@ -506,7 +488,6 @@ unless (@ARGV) {
     \item 提示信息：程序名（\verb|$0|） + 程序需要的参数
     \item 步骤：检测参数，提示用户，退出程序
   \end{itemize}
-  \vspace{-1em}
 \begin{lstlisting}
 # $0 is a special variable that has the name of the program.
 my ($USAGE) = "$0 DNA\n\n";
@@ -522,7 +503,6 @@ unless (@ARGV) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | \alert{提取数组元素}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my ($dna) = $ARGV[0];
 #my ($dna) = @ARGV;
@@ -540,7 +520,7 @@ my ($dna) = $ARGV[0];
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 命令行参数 | \alert{程序6.3}}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 use strict;
@@ -566,7 +546,6 @@ sub countG {
 \subsection{通过值传递}
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过值 | 程序}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example of pass-by-value (a.k.a. call-by-value)
@@ -587,7 +566,6 @@ sub simple_sub {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过值 | 程序输出}
-  \vspace{-1.5em}
 \begin{lstlisting}
 In subroutine simple_sub, $i equals 102
 
@@ -597,7 +575,6 @@ In main program, after the subroutine call, $i equals 2
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过值 | \alert{说明}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 simple_sub($i);
 \end{lstlisting}
@@ -616,7 +593,7 @@ simple_sub($i);
 \subsection{通过引用传递}
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl -w
 # Example of problem of pass-by-value with two arrays
@@ -636,7 +613,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
-  \vspace{-1.5em}
 \begin{lstlisting}
 sub reference_sub {
   my(@i, @j) = @_;
@@ -652,7 +628,6 @@ sub reference_sub {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 In main program before calling subroutine: i = 1 2 3
 In main program before calling subroutine: j = a b c
@@ -663,7 +638,7 @@ In main program after calling subroutine: j = a b c
 \end{lstlisting}
 \begin{block}{说明}
   \begin{itemize}
-    \item Perl把 \verb|@i|和 \verb|@j|两个数组的所有元素都赋值给了子程序中的第一个数组 \verb|@i|
+    \item Perl把 \verb|@i| 和 \verb|@j| 两个数组的所有元素都赋值给了子程序中的第一个数组 \verb|@i|
     \item 使用词法作用域（即my变量），主程序中原始的数组不会被子程序所影响
     \item 解决办法：通过引用/参考/指针传递参数/调用子程序
   \end{itemize}
@@ -672,7 +647,6 @@ In main program after calling subroutine: j = a b c
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | \alert{说明}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 reference_sub(\@i, \@j);
 \end{lstlisting}
@@ -681,17 +655,16 @@ reference_sub(\@i, \@j);
     \item 在变量名前加一个反斜线（\verb|\|）
     \item 注意：在子程序中对参数变量值的操作会影响到主程序中参数的值
     \item 引用是存储在标量变量中的一种特殊类型的数据
-    \item 从 \verb|@_|数组中读取参数后要保存为标量变量
+    \item 从 \verb|@_| 数组中读取参数后要保存为标量变量
     \item 当使用引用时要对它们进行解引用
     \item 解引用：在引用前添加上表明变量类型的符号（标量 \verb|$|，数组 \verb|@|，散列 \verb|%|）
-    \item 解引用时在变量名前有两个符号：（从左到右）表明变量类型的本来的符号和表明是引用的 \verb|$|符号（如：\verb|shift(@$j);|）
+    \item 解引用时在变量名前有两个符号：（从左到右）表明变量类型的本来的符号和表明是引用的 \verb|$| 符号（如：\verb|shift(@$j);|）
   \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt]
 #!/usr/bin/perl
 # Example of pass-by-reference (a.k.a. call-by-reference)
@@ -712,7 +685,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序}
-  \vspace{-1.5em}
 \begin{lstlisting}
 sub reference_sub {
   my($i, $j) = @_;
@@ -728,7 +700,6 @@ sub reference_sub {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | 通过引用 | 程序输出}
-  \vspace{-1.5em}
 \begin{lstlisting}
 In main program before calling subroutine: i = 1 2 3
 In main program before calling subroutine: j = a b c
@@ -741,7 +712,6 @@ In main program after calling subroutine: j = b c
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | 传递数据 | \alert{总结}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 通过值传递
 simple_sub($i);
@@ -763,12 +733,11 @@ reference_sub(@i, @j);
       \item 把所有可重复使用的子程序统一放到一个或多个文件中
       \item 在程序中使用use函数把子程序的库文件读进来（就像它们本身就在程序中一样）
       \item 模块的后缀：\verb|.pm|（比如：BeginPerlBioinfo.pm）
-      \item 模块（\verb|.pm|文件）的最后一行必须是：\verb|1;|
-      \item 使用模块：在靠近程序顶部的地方加上语句 \verb|use BiginPerlBioinfo;|（此处不需要 \verb|.pm|后缀）
+      \item 模块（\verb|.pm| 文件）的最后一行必须是：\verb|1;|
+      \item 使用模块：在靠近程序顶部的地方加上语句 \verb|use BiginPerlBioinfo;|（此处不需要 \verb|.pm| 后缀）
       \item 必要时给出模块的全路径名
     \end{itemize}
   \end{block}
-  \vspace{-1.5em}
 \begin{lstlisting}
 use lib '/home/tisdall/book';
 use BeginPerlBioinfo;
@@ -815,7 +784,6 @@ use BeginPerlBioinfo;
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | \alert{use warnings;和use strict;}}
   \begin{block}{use warnings;}
-    \vspace{-1em}
 \begin{lstlisting}
 #!/usr/bin/perl -w # 在Perl脚本中
 use warnings;      # 在Perl脚本中
@@ -825,7 +793,6 @@ perl -w script.pl  # 在shell命令行上
   \end{block}
   \pause
   \begin{block}{use strict;}
-    \vspace{-1em}
 \begin{lstlisting}
 use strict;
 \end{lstlisting}
@@ -871,7 +838,6 @@ use strict;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.1}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 #!/usr/bin/perl
 # Example 6-4   A program with a bug or two
@@ -886,7 +852,6 @@ use strict;
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=10]
 # declare and initialize variables
 my $dna = 'CGACGTCTTCTAAGGCGA';
@@ -907,7 +872,6 @@ else {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=25,basicstyle=\small\tt]
 my $base1 = substr( $subsequence, 0, 1 );
 my $base2 = substr( $subsequence, 1, 1 );
@@ -928,7 +892,6 @@ my $base2 = substr( $subsequence, 1, 1 );
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4.4}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=40,basicstyle=\small\tt]
 foreach (@dna) {
     if ($receivingcommittment) {
@@ -953,7 +916,6 @@ exit;
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.4 | 输出}
   \begin{block}{实际输出}
-    \vspace{-1em}
 \begin{lstlisting}[language=sh]
 $ perl example 6-4 AA
 
@@ -963,7 +925,6 @@ TA
   \end{block}
   \pause
   \begin{block}{理论输出}
-    \vspace{-1em}
 \begin{lstlisting}[language=sh]
 $ perl example 6-4 AA
 AAGGCGA
@@ -976,7 +937,6 @@ TAAGGCGA
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | \alert{启动和停止}}
   \begin{block}{启动}
-    \vspace{-1em}
 \begin{lstlisting}
 # 交互式运行
 perl -d script.pl  # 在shell命令行上
@@ -1016,20 +976,19 @@ perl -d script.pl  # 在shell命令行上
   \frametitle{子程序和Bugs | Perl调试器 | \alert{补充说明}}
   \begin{itemize}
     \item 调试器显示的是将要执行的那一行代码，而不是已经执行的代码行
-    \item 使用v查看临近代码行时，当前行（即将被执行的行）会以 \verb|==>|进行标示
+    \item 使用v查看临近代码行时，当前行（即将被执行的行）会以 \verb|==>| 进行标示
     \item 重复键入v可以持续显示更多代码，使用减号 \verb|-| 会上翻一屏
     \item 使用print打印数组时（\verb|print @array|）默认元素之间没有空格，把数组放在双引号中（\verb|print "@array"|）会使元素以空格分隔的形式展示出来
     \item 所谓断点（breakpoint）指的是程序中的一个点，调试器会在此处停止执行（避免从头开始一步一步执行代码中的每一行），便于检查附近的代码
     \item 特殊变量 \verb|$_|：print和模式匹配等默认使用的变量
     \item 特殊变量 \verb|@_|：子程序存储参数的变量
-    \item \verb|use warings;|和 \verb|use strict;|不是万能的，但强烈推荐同时使用它们两个
+    \item \verb|use warings;| 和 \verb|use strict;| 不是万能的，但强烈推荐同时使用它们两个
     \item 错误信息可能会有（一行）错位，所以真正的错误可能出现在提示行的前面
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.5}
-  \vspace{-1.5em}
   \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 use warnings; use strict;
@@ -1055,7 +1014,6 @@ for ( my $i = 0 ; $i < @dna - 1 ; $i++ ) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.6}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -1077,7 +1035,6 @@ for ( my $i = 0 ; $i < length($dna) - 1 ; $i++ ) {
 
 \begin{frame}[fragile]
   \frametitle{子程序和Bugs | Perl调试器 | 程序6.6 | 补充说明}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $subsequence = @ARGV ? $ARGV[0] : "TC";
 \end{lstlisting}
