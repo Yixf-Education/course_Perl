@@ -4,7 +4,7 @@
 \title[其他]{第10..13章\quad GenBank、PDB、BLAST、其他}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2019年1月}
+\date{2019年10月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -12,7 +12,6 @@
 \section{模式匹配}
 \begin{frame}[fragile]
   \frametitle{模式匹配 | 单词}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $name = "manfred";
 
@@ -29,7 +28,6 @@ if ($name =~ /\bfred\b/) {
 
 \begin{frame}[fragile]
   \frametitle{模式匹配 | 界定符 | =$\sim$m}
-  \vspace{-1.5em}
 \begin{lstlisting}
 if ( $line =~ /^\/\/\n/ ) {
   last;
@@ -43,7 +41,6 @@ if ( $line =~ m!//\n! ) {
 
 \begin{frame}[fragile]
   \frametitle{模式匹配 | 修饰符 | /m}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -63,7 +60,6 @@ print "With /m:\n", $&, "\n";
 
 \begin{frame}[fragile]
   \frametitle{模式匹配 | 修饰符 | /s}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -84,7 +80,7 @@ print "With /s:\n", $&, "\n";
 
 \begin{frame}[fragile]
   \frametitle{模式匹配 | 捕获}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -107,7 +103,6 @@ print "Third pattern = ",  $3, "\n";
 
 \begin{frame}[fragile]
   \frametitle{模式匹配 | 捕获}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 my $string = "File code=123 name=test.txt";
 if ($string =~ /code=(\d+)\s+name=([\w\.]+)/) {
@@ -141,7 +136,6 @@ foreach my $word (sort {$q_count{$b}<=>$q_count{$a}} keys %q_count) {
 
 \begin{frame}[fragile]
   \frametitle{模式匹配 | index}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $string = "xxxxxxhixxxxxxxxxhixxxxxxxxhi";
 my $lastpos = 0;
@@ -158,7 +152,6 @@ while (1){
 \section{输入记录分隔符}
 \begin{frame}[fragile]
   \frametitle{输入记录分隔符}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $save_input_separator = $/;
 
@@ -172,7 +165,6 @@ $/ = $save_input_separator;
 \section{读取文件}
 \begin{frame}[fragile]
   \frametitle{读取文件 | tell \& seek}
-  \vspace{-1.5em}
 \begin{lstlisting}
 for (;;) {
     for ($curpos = tell(FILE); $_ = <FILE>; $curpos = tell(FILE)) {
@@ -187,7 +179,6 @@ for (;;) {
 \section{文件夹处理}
 \begin{frame}[fragile]
   \frametitle{文件夹处理 | 递归}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
 #!/usr/bin/perl
 use strict; use warnings;
@@ -216,7 +207,6 @@ sub list_recursively {
 
 \begin{frame}[fragile]
   \frametitle{文件夹处理 | 模块}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -235,7 +225,6 @@ sub my_sub {
 
 \begin{frame}[fragile]
   \frametitle{文件夹处理 | 通配}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # <*>
 my @files = <*.doc>;
@@ -254,7 +243,6 @@ while (my $file = <*.doc>) {
 
 \begin{frame}[fragile]
   \frametitle{文件夹处理 | 定位}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 use warnings; use strict;
@@ -272,7 +260,6 @@ print "Script is located in $Bin\n";
 \section{格式化输出}
 \begin{frame}[fragile]
   \frametitle{格式化输出 | printf}
-  \vspace{-1.5em}
 \begin{lstlisting}
 while(<>) {
   /^ATOM/ or next;
@@ -292,7 +279,6 @@ while(<>) {
 
 \begin{frame}[fragile]
   \frametitle{格式化输出 | printf}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $first  = '3.14159265';
 my $second  = 76;
@@ -305,7 +291,7 @@ printf STDOUT "A float: %6.4f An integer: %-5d and a string: %s\n", $first, $sec
 
 \begin{frame}[fragile]
   \frametitle{格式化输出 | here文档}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}
 #!/usr/bin/perl
 use strict; use warnings;
@@ -328,7 +314,6 @@ HEREDOC
 
 \begin{frame}[fragile]
   \frametitle{格式化输出 | format \& write}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 use strict; use warnings;
@@ -351,7 +336,6 @@ write;
 
 \begin{frame}[fragile]
   \frametitle{格式化输出 | format \& write}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 >A0000      Highly weird DNA.  This DNA is so un...
 AAAAAACCCCCCCCCCCCCCGGGGGGGGGGGGGGGGGGGGGGTTTTTTTT
@@ -389,7 +373,6 @@ you don't need to collect any data back from it.
 
 \begin{frame}[fragile]
   \frametitle{外部程序 | 运行 | 举例}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 my $filename = $ARGV[0];
 my $stride = '/usr/local/bin/stride';
@@ -414,7 +397,6 @@ system 'tar', 'cvf', $tarfile, @dirs;
 \begin{frame}[fragile]
   \frametitle{外部程序 | 管道 | 接入}
   \begin{block}{Piping data out of an external program}
-  \vspace{-0.5em}
 \begin{lstlisting}
 open (my $log, "tail -f /var/log/httpd/access_log |") or die "Can't open pipe to web logs: $!";
 
@@ -430,7 +412,6 @@ while (<$log>) {
 \begin{frame}[fragile]
   \frametitle{外部程序 | 管道 | 导出}
   \begin{block}{Piping data into an external program}
-  \vspace{-0.5em}
 \begin{lstlisting}
 open (my $zip, "| zip compress.zip -") or die "Can't open pipe to zip: $!";
 
@@ -444,7 +425,6 @@ close $zip or die "Can't close pipe to zip : $!";
 \section{浮点数比较}
 \begin{frame}[fragile]
   \frametitle{浮点数比较}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -467,7 +447,6 @@ else { print "Wrong!\n"; }
 \section{引用}
 \begin{frame}[fragile]
   \frametitle{引用 | 匿名}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my @array = (1, 2, 3, 4);
 my $slow_arrayref = \@array;
@@ -487,7 +466,6 @@ my $quick_hashref = {
 
 \begin{frame}[fragile]
   \frametitle{引用 | 解引用}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $arrayref = [10, 20, 30];
 print "First element is ", $$arrayref[0],  "\n";
@@ -503,7 +481,6 @@ print "The duck says ", $hashref->{duck}, "\n";
 
 \begin{frame}[fragile]
   \frametitle{引用 | 拷贝}
-  \vspace{-1.5em}
 \begin{lstlisting}
 my @original = (2, 4, 6, 8);
 my @copy = @original;
@@ -529,7 +506,7 @@ print "Copy says ",$copy->[1]," but original was ",$original->[1];
 
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[basicstyle=\small\tt]
 my %countries;
 my %uk_info = (
@@ -553,7 +530,7 @@ print "Population of France is ",
 
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[basicstyle=\small\tt]
 my %countries = (
     uk => {
@@ -578,7 +555,6 @@ print "Population of France is ",
 
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 my %countries;
 
@@ -615,14 +591,12 @@ print "Population of France is ",
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构 | 多种方法}
   \begin{block}{shell}
-  \vspace{-0.5em}
 \begin{lstlisting}
 grep -i -w France country.txt | cut -f2
 \end{lstlisting}
   \end{block}
   \pause
   \begin{block}{csvkit}
-  \vspace{-0.5em}
 \begin{lstlisting}
 # Method 1
 csvsql --query "select Population from country where Country=='France'" country.txt | csvlook
@@ -635,7 +609,7 @@ csvgrep -t -c Country -m France country.txt | csvcut -c Population | csvlook
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构 | 多种方法}
   \begin{block}{Perl-hash}
-  \vspace{-1em}
+  \vspace{-0.6em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 use strict; use warnings;
@@ -663,7 +637,6 @@ print "Population of France is ", $countries{france}->{population}, "\n";
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构 | 多种方法}
   \begin{block}{Perl-Data::Table}
-  \vspace{-0.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -685,7 +658,6 @@ print "Population of France is ",
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构 | 多种方法}
   \begin{block}{R}
-  \vspace{-0.5em}
 \begin{lstlisting}[language=r]
 #!/usr/bin/Rscript
 
@@ -703,7 +675,7 @@ countries %>%
 
 \begin{frame}[fragile]
   \frametitle{引用 | 复杂数据结构}
-  \vspace{-1.8em}
+  \vspace{-0.8em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 my @experiments = (
     {
@@ -731,7 +703,7 @@ foreach my $expt (@experiments) {
 \section{模块}
 \begin{frame}[fragile]
   \frametitle{模块 | 安装}
-  \vspace{-1.8em}
+  \vspace{-0.6em}
 \begin{lstlisting}
 # METHOD 1: cpan
 #Open cpan shell
@@ -753,7 +725,6 @@ cpanm Bio::Perl
 
 \begin{frame}[fragile]
   \frametitle{模块 | 使用 | 函数式编程}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -769,7 +740,7 @@ print "In Feb 2020 there are ",Days_in_Month(2020,2)," days";
 
 \begin{frame}[fragile]
   \frametitle{模块 | 使用 | 面向对象编程}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
   \begin{lstlisting}[basicstyle=\small\tt]
 #!/usr/bin/perl
 
@@ -794,7 +765,6 @@ else {
 
 \begin{frame}[fragile]
   \frametitle{模块 | 编写 | 函数式编程}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -811,7 +781,6 @@ package Example::Module;
 
 \begin{frame}[fragile]
   \frametitle{模块 | 编写 | 函数式编程}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 use warnings; use strict;
@@ -836,7 +805,6 @@ sub will_be_exported {
 
 \begin{frame}[fragile]
   \frametitle{模块 | 编写 | 面向对象编程（1/2）}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 #!/usr/bin/perl
 
@@ -858,7 +826,7 @@ sub new {
 
 \begin{frame}[fragile]
   \frametitle{模块 | 编写 | 面向对象编程（2/2）}
-  \vspace{-1.5em}
+  \vspace{-0.8em}
 \begin{lstlisting}[firstnumber=16,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 sub save_value {
     # This subroutine takes a single arguement which it stores in the hash reference. The $object is provided automatically as the first argument to every object oriented subroutine (other than 'new').
@@ -878,7 +846,6 @@ sub get_value {
 
 \begin{frame}[fragile]
   \frametitle{模块 | 编写 | 面向对象编程 | 使用}
-  \vspace{-1.5em}
 \begin{lstlisting}
 #!/usr/bin/perl
 
@@ -898,7 +865,6 @@ print "The object says '". $object->get_value() . "'\n";
 \section{BioPerl}
 \begin{frame}[fragile]
   \frametitle{BioPerl}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 use Bio::SeqIO;
 
@@ -920,7 +886,6 @@ while( my $seq = $seqio->next_seq ) {
 
 \begin{frame}[fragile]
   \frametitle{BioPerl}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 use strict; use Bio::SeqIO;
 my $input_file = shift;
@@ -945,7 +910,6 @@ print "Mean length ", $total/$count, " Median ",
 
 \begin{frame}[fragile]
   \frametitle{BioPerl}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 use Bio::SeqIO;
 
@@ -969,7 +933,7 @@ while (my $inseq = $seq_in->next_seq) {
 
 \begin{frame}[fragile]
   \frametitle{BioPerl}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[basicstyle=\tiny\tt,numberstyle=\tiny]
 use Bio::SeqIO;
 my $usage = "splitgb.pl infile "; my $infile = shift or die $usage;
@@ -1007,7 +971,6 @@ while (my $seqin = $inseq->next_seq) {
 
 \begin{frame}[fragile]
   \frametitle{BioPerl}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 use Bio::DB::GenBank;
 use Bio::DB::Query::GenBank;
@@ -1029,7 +992,7 @@ while ($seq_obj = $stream_obj->next_seq) {
 
 \begin{frame}[fragile]
   \frametitle{BioPerl}
-  \vspace{-1.5em}
+  \vspace{-0.8em}
 \begin{lstlisting}[basicstyle=\scriptsize\tt,numberstyle=\tiny]
 #!/usr/bin/perl
 use strict; use warnings;
