@@ -4,7 +4,7 @@
 \title[限制酶图谱和正则表达式]{第九章\quad 限制酶图谱和正则表达式}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2018年12月}
+\date{2019年10月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -185,7 +185,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \begin{description}
     \item[串接] RS表示集合\{ $\alpha\beta$ $|$ $\alpha$ $\in$  $R,$ $\beta$ $\in$ $S$ \}。例如：\\ \verb|{"ab", "c"}{"d", "ef"}| \\\verb|= {"abd", "abef", "cd", "cef"}|。
     \item[选择] R|S表示R和S的并集。例如：\\ \verb+{"ab", "c"}|{"ab", "d", "ef"}={"ab", "c", "d", "ef"}+。
-    \item[Kleene星号] \verb|R*|表示包含$\varepsilon$并且闭合在字符串串接下的R的最小超集。这是通过R中的零或多个字符串的串接得到的所有字符串的集合。例如：\\ \verb|{"ab", "c"}*|\\ \verb|= {|$\varepsilon$\verb|,"ab","c","abab","abc","cab","cc","ccc",|\\ \quad \verb|...}|。
+    \item[Kleene星号] \verb|R*| 表示包含$\varepsilon$并且闭合在字符串串接下的R的最小超集。这是通过R中的零或多个字符串的串接得到的所有字符串的集合。例如：\\ \verb|{"ab", "c"}*|\\ \verb|= {|$\varepsilon$\verb|,"ab","c","abab","abc","cab","cc","ccc",|\\ \quad \verb|...}|。
   \end{description}
 \end{frame}
 
@@ -197,8 +197,8 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \pause
   \begin{block}{优先级实例}
     \begin{itemize}
-      \item \verb|(ab)c|可以写为 \verb|abc|
-      \item \verb=a|(b(c*))=可以写为 \verb=a|bc*=。
+      \item \verb|(ab)c| 可以写为 \verb|abc|
+      \item \verb=a|(b(c*))= 可以写为 \verb=a|bc*=。
     \end{itemize}
   \end{block}
 \end{frame}
@@ -206,9 +206,9 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 正则表达式 | 理论 | 实例}
   \begin{itemize}
-    \item \verb=a|b*=表示 \verb={a, =$\varepsilon$\verb=, b, bb, bbb, ...}=。
-    \item \verb=(a|b)*=表示由包括空串、任意数目个a或b字符组成的所有字符串的集合。
-    \item \verb=ab*(c|=$\varepsilon$\verb=)=表示开始于一个a接着零或多个b和最终可选的一个c的字符串的集合。
+    \item \verb=a|b*= 表示 \verb={a, =$\varepsilon$\verb=, b, bb, bbb, ...}=。
+    \item \verb=(a|b)*= 表示由包括空串、任意数目个a或b字符组成的所有字符串的集合。
+    \item \verb=ab*(c|=$\varepsilon$\verb=)= 表示开始于一个a接着零或多个b和最终可选的一个c的字符串的集合。
   \end{itemize}
 \end{frame}
 
@@ -352,7 +352,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
     \item 第二级：量词，星号 \verb|*|、加号 \verb|+|、问号 \verb|?|、用花括号表示的量词 \verb|{m,n}|；和它前面的条目紧密相连
     \item 第三级：锚位和序列，\verb|^|、\verb|$|；单词里字母之间的紧密程度和锚位与字母之间的紧密程度是相同的
     \item 第四级：择一竖线 \verb=|=；把各种模式拆分成数个组件
-    \item 最低级别：原子，单独的字符、字符集 \verb|\d|、反引用 \verb|\1|等；构成大多数基本的模式
+    \item 最低级别：原子，单独的字符、字符集 \verb|\d|、反引用 \verb|\1| 等；构成大多数基本的模式
   \end{enumerate}
   \end{block}
   \pause
@@ -416,7 +416,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \begin{block}{限制酶}
     限制酶（restriction enzyme）又称限制内切酶或限制性内切酶（restriction endonuclease），全称限制性核酸内切酶，是一种能将双链DNA切开的酶。\\
     \vspace{1em}
-    切割方法是将糖类分子与磷酸之间的键切断，进而于两条DNA链上各产生一个切口，且不破坏核苷酸与碱基。切割形式有两种，分别是可产生具有突出单链DNA的黏状末端，以及末端平整无凸起的平滑末端。由于断开的DNA片段可由DNA连接酶黏合，因此染色体或DNA上不同的限制片段，可以经由剪接作用而结合在一起。\\
+切割方法是将糖类分子与磷酸之间的键切断，进而于两条DNA链上各产生一个切口，且不破坏核苷酸与碱基。切割形式有两种，分别是可产生具有突出单链DNA的黏状末端，以及末端平整无凸起的平滑末端。由于断开的DNA片段可由DNA连接酶黏合，因此染色体或DNA上不同的限制片段，可以经由剪接作用而结合在一起。\\
     \vspace{1em}
     限制酶在分子生物学与遗传工程领域有广泛的应用。
   \end{block}
@@ -590,7 +590,6 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 读取bionet | 伪代码}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\small\tt]
 Discard header lines 
 
@@ -610,7 +609,6 @@ return the names, recognition sites, and the regular expressions
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 读取bionet | 伪代码 | 头信息}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Discard header lines
 # This keeps reading lines, up to a line containing "Rich Roberts"
@@ -624,7 +622,7 @@ foreach line
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 读取bionet | 伪代码 | 数据信息}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[basicstyle=\small\tt]
 For each data line:
 
@@ -644,7 +642,6 @@ return the names, recognition sites, and the regular expressions
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 读取bionet | 伪代码 | \alert{补充说明}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 提取用空白分隔的单词，保存到数组
 # 处理的是存储在特殊变量$_中的行
@@ -668,7 +665,6 @@ $site = pop @fields;
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1.1}
-  \vspace{-1.5em}
 %\begin{lstlisting}[firstnumber=1,basicstyle=\footnotesize\tt,numberstyle=\footnotesize]
 \begin{lstlisting}
 # Example 9-1 Translate IUB ambiguity codes to regular expressions
@@ -681,7 +677,6 @@ $site = pop @fields;
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=7]
 # These are the IUB ambiguity codes
 # (Eur. J. Biochem. 150: 1-5, 1985):
@@ -701,7 +696,6 @@ $site = pop @fields;
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=21]
 sub IUB_to_regexp {
 
@@ -713,7 +707,7 @@ sub IUB_to_regexp {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1.4}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[firstnumber=27,basicstyle=\small\tt,numberstyle=\footnotesize]
     my %iub2character_class = (
 
@@ -738,7 +732,6 @@ sub IUB_to_regexp {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1.5}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=46]
     # Remove the ^ signs from the recognition sites
     $iub =~ s/\^//g;
@@ -755,7 +748,6 @@ sub IUB_to_regexp {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | IUB2RE | 程序9.1 | \alert{子程序}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 sub IUB_to_regexp {
     my ($iub) = @_;
@@ -797,7 +789,6 @@ sub IUB_to_regexp {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.1}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1]
 # Example 9-2 Subroutine to parse a REBASE datafile
 # parseREBASE-Parse REBASE bionet file
@@ -810,7 +801,6 @@ sub IUB_to_regexp {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=8]
 sub parseREBASE {
 
@@ -831,7 +821,7 @@ sub parseREBASE {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.3}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[firstnumber=23,basicstyle=\small\tt,numberstyle=\footnotesize]
     # Read in the REBASE file
     my $rebase_filehandle = open_file($rebasefile);
@@ -853,7 +843,7 @@ sub parseREBASE {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.4}
-  \vspace{-1.8em}
+  \vspace{-0.8em}
 \begin{lstlisting}[firstnumber=39,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
         # Remove parenthesized names, for simplicity's sake,
         # by not saving the middle field, if any,
@@ -877,7 +867,6 @@ sub parseREBASE {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2.5}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=57,basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 ##################################################
 # Subroutines
@@ -904,7 +893,6 @@ sub open_file {
 \subsection{操作符}
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | \alert{范围操作符}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 ( 1 .. /Rich Roberts/ ) and next;
 \end{lstlisting}
@@ -920,7 +908,6 @@ sub open_file {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | \alert{范围操作符}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 foreach my $number (100..200) {
     print "$number is a very big number\n";
@@ -949,7 +936,7 @@ foreach my $letter ("a".."z", "A".."Z") {
   \pause
   \begin{block}{补充说明}
     \begin{itemize}
-      \item 与and、or和not相关的操作符分别是 \verb|&&|、\verb=||=和 \verb|!|；它们的优先级不同
+      \item 与and、or和not相关的操作符分别是 \verb|&&|、\verb=||= 和 \verb|!|；它们的优先级不同
       \item 对优先级不确定时，用小括号把表达式包裹起来，确保语句的执行结果和预期一样
     \end{itemize}
   \end{block}
@@ -957,7 +944,6 @@ foreach my $letter ("a".."z", "A".."Z") {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | \alert{逻辑操作符}}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # and：只有当两个条件都为真时，整个语句才为真
 if( $string eq 'kinase' and $num == 3 ) {
@@ -988,7 +974,6 @@ if( not 6 == 9 ) {
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 if( $verbose  ) {
   print $helpful_but_verbose_message;
@@ -1010,7 +995,7 @@ $verbose and print $helpful_but_verbose_message;
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
+  \vspace{-0.5em}
 \begin{lstlisting}
 unless(open(MYFILE, $file)) {
   print "I cannot open file $file\n";
@@ -1024,7 +1009,6 @@ open(MYFILE, $file) || die "I cannot open file $file: $!"; # WRONG!
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 限制酶数据 | 解析REBASE | 程序9.2 | 说明}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # 跳过头部的信息行
 ( 1 .. /Rich Roberts/ ) and next;
@@ -1040,7 +1024,6 @@ open(MYFILE, $file) || die "I cannot open file $file: $!"; # WRONG!
     The \textbf{next} function immediately sends a loop back to check its condition statement and start over. No code from the rest of the block is run. You can use this to skip over certain values when processing a list.
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 my @days = ("Mon","Tue","Wed","Thur","Fri","Sat","Sun");
 foreach my $day (@days) {
@@ -1057,7 +1040,6 @@ foreach my $day (@days) {
   \end{block}
   \vspace{-0.5em}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 while (1) { # Infinite loop
     my $guess = int(rand(10));
@@ -1079,7 +1061,6 @@ while (1) { # Infinite loop
   \end{block}
   \vspace{-1em}
   \pause
-  \vspace{-1.3em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 YEARS: foreach my $year (2000..2005) {
   if (($year % 4) != 0) {
@@ -1099,7 +1080,7 @@ YEARS: foreach my $year (2000..2005) {
 \subsection{制作酶切图谱}
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 伪代码}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}
 # Get DNA
 get_file_data
@@ -1128,7 +1109,6 @@ for each user query
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 Given arguments $query and $dna
 
@@ -1142,7 +1122,7 @@ return @positions
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 伪代码 | \alert{子程序}}
-  \vspace{-1.5em}
+  \vspace{-0.6em}
 \begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 # Find locations of a match of a regular expression in a string
 # return an array of positions where the regular expression appears in the string
@@ -1171,7 +1151,6 @@ sub match_positions {
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-1.5em}
 \begin{lstlisting}
 my $string = "abcdef";
 while ( $string =~ /cd/g ) {
@@ -1192,7 +1171,7 @@ while ( $string =~ /cd/g ) {
     \end{itemize}
   \end{block}
   \pause
-  \vspace{-2em}
+  \vspace{-0.5em}
 \begin{lstlisting}[basicstyle=\small\tt,numberstyle=\footnotesize]
 my $string = "abcdef";
 # 0-index: 0 1 2 3 4 5
@@ -1212,7 +1191,6 @@ while ( $string =~ /cd/g ) {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 程序9.3.1}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=1,basicstyle=\small\tt,numberstyle=\footnotesize]
 #!/usr/bin/perl -w
 # Example 9-3   Make restriction map from user queries on names of restriction enzymes
@@ -1234,7 +1212,6 @@ my @locations        = ();
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 程序9.3.2}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=17]
 # Read in the file "sample.dna"
 @file_data = get_file_data("sample.dna");
@@ -1251,7 +1228,6 @@ $dna = extract_sequence_from_fasta_data(@file_data);
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 程序9.3.3}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=27]
 do {
     print "Search for what restriction site for (or quit)?: ";
@@ -1270,7 +1246,6 @@ do {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 程序9.3.4}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=40]
     # Perform the search in the DNA sequence
     if ( exists $rebase_hash{$query} ) {
@@ -1284,7 +1259,6 @@ do {
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 程序9.3.5}
-  \vspace{-1.5em}
 \begin{lstlisting}[firstnumber=48,basicstyle=\small\tt,numberstyle=\footnotesize]
         # Report the restriction map to the user
         if (@locations) {
@@ -1305,7 +1279,6 @@ exit;
 
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 制作图谱 | 程序9.3 | 输出}
-  \vspace{-1.5em}
 \begin{lstlisting}[basicstyle=\footnotesize\tt,numberstyle=\scriptsize]
 Search for what restriction enzyme (or quit)?: AceI
 Searching for AceI G^CWGC GC[AT]GC
