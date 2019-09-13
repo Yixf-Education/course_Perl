@@ -4,7 +4,7 @@
 \title[TIMTOWTDI]{TIMTOWTDI\\（条条大路通罗马）}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2019年1月}
+\date{2019年10月}
 
 %\input{snippet/beamer_toc.tex}
 \begin{frame}
@@ -13,7 +13,6 @@
 
 \begin{frame}[fragile]
   \frametitle{帮助文档}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # The Perl 5 language interpreter
 man perl
@@ -35,7 +34,6 @@ perldoc -v '$_'
 
 \begin{frame}[fragile]
   \frametitle{启用警告}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Method1
 # 使用命令行选项-w
@@ -53,7 +51,6 @@ use warnings;
 
 \begin{frame}[fragile]
   \frametitle{字符串拼接}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Method1
 $DNA3 = "$DNA1$DNA2"; print "$DNA3\n";
@@ -74,7 +71,6 @@ $DNA3 = join "", $DNA1, $DNA2; print "$DNA3\n";
 
 \begin{frame}[fragile]
   \frametitle{文件读取}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Method1（只读取一行）
 $protein = <PROTEINFILE>;
@@ -94,7 +90,6 @@ $protein = do { local $/; <PROTEINFILE>; };
 
 \begin{frame}[fragile]
   \frametitle{获取数组元素个数}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Methods1
 $num = scalar @bases;
@@ -109,7 +104,6 @@ $num = $#bases + 1;
 
 \begin{frame}[fragile]
   \frametitle{获取数组的第一个元素}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Method1
 $first_gene = $genes[0];
@@ -126,7 +120,6 @@ $first_gene = shift @genes;
 
 \begin{frame}[fragile]
   \frametitle{获取数组的最后一个元素}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Method1
 $last_gene = $genes[-1];
@@ -142,7 +135,6 @@ $last_gene = pop @genes;
 
 \begin{frame}[fragile]
   \frametitle{变量值+1}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Methods1
 $count++;
@@ -160,7 +152,6 @@ $count = $count + 1;
 
 \begin{frame}[fragile]
   \frametitle{计数核苷酸}
-  \vspace{-1.5em}
 \begin{lstlisting}
 # Methods1（使用数组）
 @DNA = split( '', $DNA );
