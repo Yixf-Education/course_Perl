@@ -803,7 +803,7 @@ $protein =~ s/\s//g;
       \item \verb|s/\s//g|：把空白字符全部替换成空字符串（其实就是删除所有的空白字符）
       \item 元字符 \verb|\s|：匹配空格、制表符、换行符、换页符和回车符
       \item 字符集 \verb|[ \t\n\f\r]|：分别表示空格、制表符、换行符、换页符和回车符
-      \item 元字符 \verb|\s|等同于字符集 \verb|[ \t\n\f\r]|
+      \item 元字符 \verb|\s| 等同于字符集 \verb|[ \t\n\f\r]|
       \item \verb|s///| 中的前两个斜线之间：放置正则表达式（\verb|C|、\verb|\s| 等）
     \end{itemize}
   \end{block}
@@ -917,7 +917,7 @@ print count_of_A, count_of_C, count_of_G, count_of_T
 \begin{frame}[fragile]
   \frametitle{基序和循环 | 计数核苷酸 | 策略}
   \begin{block}{通用策略——策略一}
-    把DNA拆解成单个碱基，存储到数组中，对数组中的元素进行迭代处理
+把DNA拆解成单个碱基，存储到数组中，对数组中的元素进行迭代处理
 \begin{lstlisting}[language=]
 数组：A C G T G T A C
 索引：0 1 2 3 4 5 6 7
@@ -1804,9 +1804,9 @@ close(COUNTBASE);
   \frametitle{基序和循环 | \alert{读写文件}}
 \begin{lstlisting}[basicstyle=\small\tt]
 # 读取文件
-open my $FH, '<', $filename or die "$0 : failed to open input file '$filename' : $!\n";
+open my $FH, '<', $filename_in or die "$0 : failed to open input file '$filename_in' : $!\n";
 ... <$FH> ...
-close $FH or warn "$0 : failed to close input file '$filename' : $!\n";
+close $FH or warn "$0 : failed to close input file '$filename_in' : $!\n";
 
 # 写入文件
 open my $FH_OUT, '>', $fn_out or die "$0 : failed to open output file '$fn_out' : $!\n";
