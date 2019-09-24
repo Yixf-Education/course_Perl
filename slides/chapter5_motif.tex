@@ -265,6 +265,11 @@ if ( !(1 == 0) ) {
           \item 注意：字符串 \verb|'0'| 或 \verb|"0"|（和数字0是同一个标量值）是唯一被当成假的非空字符串
 	        \item 如果既不是数字也不是字符串，先转换成数字或字符串再行判断
         \end{itemize}
+      \item 数字与字符串
+        \begin{itemize}
+          \item 数字0.0，-0.0为假
+          \item 字符串 \verb|"0.0"|，\verb|"-0.0"|为真
+        \end{itemize}
       \item 补充说明
        	\begin{itemize}
           \item \verb|""|, \verb|''|（空字符串） vs. \verb|" "|, \verb|' '|（空白/格字符串）
@@ -1760,7 +1765,7 @@ $base = substr($DNA, $position, 1);
       \begin{itemize}
         \item 语法
         \item 返回值
-        \item 对原数组的“伤害”
+        \item 对原字符串/原数组的“伤害”
       \end{itemize}
   \end{itemize}
 \end{block}
