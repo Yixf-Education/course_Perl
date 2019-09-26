@@ -188,6 +188,9 @@ sub addACGT {
 \begin{lstlisting}
 sub addACGT {
     my ($dna) = @_;
+    # my $dna = $_[0];
+    # my $dna = shift @_;
+    # my $dna = shift;
     $dna .= 'ACGT';
     return $dna;
 }
@@ -789,6 +792,7 @@ use BeginPerlBioinfo;
 use warnings;      # 在Perl脚本中
 perl -w script.pl  # 在shell命令行上
 \end{lstlisting}
+    \vspace{-0.3em}
 开启Perl的警告功能，尝试寻找代码中潜在的问题（如：变量不止声明了一次），并给出警告。
   \end{block}
   \pause
