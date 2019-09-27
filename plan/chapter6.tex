@@ -166,7 +166,7 @@ sub addACGT {
       \item 数组使用
 	\begin{itemize}
 	  \item 起始索引为0
-	  \item 使用 \verb|$|而非 \verb|@|提取元素
+	  \item 使用 \verb|$| 而非 \verb|@| 提取元素
 	  \item 在中括号中放置下标
 	\end{itemize}
     \end{enumerate}
@@ -190,7 +190,7 @@ sub addACGT {
 	  \item 说明
 	    \begin{itemize}
 	      \item 引用：在变量名前加 \verb|\|，存储在标量变量中的一种特殊类型的数据
-	      \item 收集：从 \verb|@_|中读取参数时要保存为标量变量
+	      \item 收集：从 \verb|@_| 中读取参数时要保存为标量变量
 	      \item 使用：先解引用后使用
 	      \item 解引用：在引用前添加表明变量类型的符号（\verb|$|、\verb|@|、\verb|%|）
 	      \item 注意：子程序中对参数变量值的操作会影响到主程序中参数的值
@@ -226,15 +226,15 @@ sub addACGT {
 	  \item 简介：程序设计术语，程序错误/漏洞，源于历史中的典故
 	  \item 常见：括号没配对、没用分号结尾、拼写错误、索引错误、……
 	\end{itemize}
-      \item \verb|use warnings;|和\verb|use strict;|
+      \item \verb|use warnings;| 和\verb|use strict;|
 	\begin{itemize}
 	  \item \verb|use warnings;|：开启警告功能
 	  \item \verb|use strict;|：强制使用my声明变量……
 	\end{itemize}
       \item 使用注释和print语句
 	\begin{itemize}
-	  \item 选择性注释：适用于没有精确定位错误、但是直到大体范围时
-	  \item 添加print语句：打印出变量的值，适用于差不多直到错误之处时
+	  \item 选择性注释：适用于没有精确定位错误、但是知道大体范围时
+	  \item 添加print语句：打印出变量的值，适用于差不多知道错误之处时
 	\end{itemize}
       \item \textcolor{red}{【难点】}Perl调试器\textcolor{red}{（通过实例演示其使用）}
 	\begin{itemize}
