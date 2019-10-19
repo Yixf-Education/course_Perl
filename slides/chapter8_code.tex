@@ -98,7 +98,7 @@ $definition = $english_dictonary{'recreant'};
 # 获取散列元素（键值对）的个数
 $count = keys %hash;
 $count = values %hash;
-# 列表上下文
+# 标量上下文
 \end{lstlisting}
 \end{frame}
 
@@ -1346,6 +1346,31 @@ for (my $i = 0; $i < (length($dna) - 2); $i += 3) {
     \item \verb|$i+=3|：计数器递增，一次处理3个碱基
   \end{itemize}
 \end{block}
+\pause
+\begin{block}{一般性公式}
+$i < length - (window - 1)$
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{DNA翻译成蛋白质 | 程序8.1 | 循环 | 滑动窗口}
+  \begin{block}{Sliding window}
+    \begin{itemize}
+      \item 两个参数：窗口大小（window size）和步长（step）
+    \end{itemize}
+    \vspace{-0.8em}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.574\textwidth]{c8_code_sliding_01.png}
+      \includegraphics[width=0.415\textwidth]{c8_code_sliding_03.png}
+    \end{figure}
+  \end{block}
+  \pause
+\begin{lstlisting}
+for (my $i = 0; $i < ($length - ($window - 1)); $i += $step) {
+    ...
+}
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
