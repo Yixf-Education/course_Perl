@@ -192,7 +192,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 \begin{frame}[fragile]
   \frametitle{酶切图谱 | 正则表达式 | 理论 | 运算 | \alert{优先级}}
   \begin{block}{优先级定义}
-    为了避免括号，假定Kleene星号有最高优先级，接着是串接，接着是并集。如果没有歧义则可以省略括号。
+    为了避免括号，假定Kleene星号有最高优先级，接着是串接，接着是并集（选择）。如果没有歧义则可以省略括号。
   \end{block}
   \pause
   \begin{block}{优先级实例}
@@ -1327,7 +1327,7 @@ Search for what restriction enzyme (or quit)?: quit
   \frametitle{酶切图谱 | 优先级 | 原则}
   \begin{block}{实例}
     \begin{itemize}
-      \item $10 + 8 / 4 - 2 \times 3 = 10$
+      \item $10 + 8 / 4 - 2 \times 3 = 10$ \alert{【？】}
       \item $10 + (8 / 4) - (2 \times 3) = 6$
       \item $10 + (8 / 4 - 2) \times 3 = 10$
     \end{itemize}
