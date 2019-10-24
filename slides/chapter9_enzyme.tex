@@ -524,6 +524,18 @@ if( $dna =~ /CT[CGT]ACG/  ) {
 
 \begin{frame}
   \frametitle{酶切图谱 | 程序规划 | 总结}
+  \begin{itemize}
+    \item 把限制酶数据翻译成正则表达式
+    \item \textcolor{gray}{把限制酶存储到散列中（键为名字，值为用正则表达式表征的识别切割序列）}
+    \item \textcolor{gray}{从文件中读入DNA序列数据}
+    \item \textcolor{gray}{提示用户输入限制酶的名字}
+    \item \textcolor{gray}{查找正则表达式所有的出现}及出现位置
+    \item \textcolor{gray}{输出找到的位置列表}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{酶切图谱 | 程序规划 | 总结}
   \begin{block}{已经学习}
     \begin{itemize}
       \item 散列的使用
@@ -546,7 +558,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \frametitle{酶切图谱 | 限制酶数据 | REBASE}
   \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{c9_enzyme_rebase_01.png}
+    \includegraphics[width=\textwidth]{c9_enzyme_rebase_01.png}
   \end{figure}
 \end{frame}
 
@@ -554,7 +566,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \frametitle{酶切图谱 | 限制酶数据 | REBASE}
   \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{c9_enzyme_rebase_02.png}
+    \includegraphics[width=\textwidth]{c9_enzyme_rebase_02.png}
   \end{figure}
 \end{frame}
 
