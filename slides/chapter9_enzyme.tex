@@ -268,7 +268,7 @@ if( $dna =~ /CT[CGT]ACG/  ) {
   \begin{block}{正则表达式}
     \begin{itemize}
       \item<1-> \verb=/(abc|def)z*x/=
-      \item<3-> \verb=ACG.*GCA=
+      \item<3-> \verb=/ACG.*GCA/=
     \end{itemize}
   \end{block}
   \begin{block}{解析}
@@ -1198,6 +1198,68 @@ while ( $string =~ /cd/g ) {
     print "Number for start(1-index): $start1\n";
 }
 # 4 2 3
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 制作图谱 | 伪代码 | 子程序 | pos与贪婪匹配}
+\begin{lstlisting}[firstnumber=1,basicstyle=\small\tt,numberstyle=\footnotesize]
+#!/usr/bin/perl
+
+use warnings; use strict; use utf8;
+
+my $string = "abxxxxxxyz";
+# 0-index: 0 1 2 3 4 5 6 7 8 9
+# string : a b x x x x x x y z
+
+print "Position\tPrematch\tMatch\tPosmatch\n";
+
+print "\n# Match exact 'xx':\n";
+while ( $string =~ /x{2}/g ) {
+    my $pos = pos($string);
+    print join "\t", $pos, $`, $&, $';
+    print "\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 制作图谱 | 伪代码 | 子程序 | pos与贪婪匹配}
+\begin{lstlisting}[firstnumber=17,basicstyle=\small\tt,numberstyle=\footnotesize]
+print "\n# Match two or three x with greedy mode:\n";
+while ( $string =~ /x{2,3}/g ) {
+    my $pos = pos($string);
+    print join "\t", $pos, $`, $&, $';
+    print "\n";
+}
+
+print "\n# Match two or three x with non-greedy mode:\n";
+while ( $string =~ /x{2,3}?/g ) {
+    my $pos = pos($string);
+    print join "\t", $pos, $`, $&, $';
+    print "\n";
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{酶切图谱 | 制作图谱 | 伪代码 | 子程序 | pos与贪婪匹配}
+\begin{lstlisting}[firstnumber=1,basicstyle=\small\tt,numberstyle=\footnotesize,language=]
+Position Prematch Match Posmatch
+
+# Match exact 'xx':
+4        ab       xx    xxxxyz
+6        abxx     xx    xxyz
+8        abxxxx   xx    yz
+
+# Match two or three x with greedy mode:
+5        ab       xxx   xxxyz
+8        abxxx    xxx   yz
+
+# Match two or three x with non-greedy mode:
+4        ab       xx    xxxxyz
+6        abxx     xx    xxyz
+8        abxxxx   xx    yz
 \end{lstlisting}
 \end{frame}
 
