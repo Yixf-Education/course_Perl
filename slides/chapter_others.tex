@@ -4,7 +4,7 @@
 \title[其他]{第10..13章\quad GenBank、PDB、BLAST、其他}
 \author[Yixf]{伊现富（Yi Xianfu）}
 \institute[TIJMU]{天津医科大学（TIJMU）\\ 生物医学工程与技术学院}
-\date{2019年11月}
+\date{2019年10月}
 
 \input{snippet/beamer_toc.tex}
 
@@ -51,7 +51,7 @@ print "Without /m:\n", $&, "\n";
 #Without /m:
 #Use of uninitialized value $& in print at XXX.pl line N.
 
-"AAC\nGTT" =~ /^.*$/m;
+"AAC\nGTT" =~ /^.*$/m; # 开启多行模式
 print "With /m:\n", $&, "\n";
 #With /m:
 #AAC
@@ -70,7 +70,7 @@ print "Without /s:\n", $&, "\n";
 #Without /s:
 #Use of uninitialized value $& in print at XXX.pl line N.
 
-"AAC\nGTT" =~ /^.*$/s;
+"AAC\nGTT" =~ /^.*$/s; # .能够匹配\n了！
 print "With /s:\n", $&, "\n";
 #With /s:
 #AAC
@@ -146,6 +146,10 @@ while (1){
     print "Found hi at index $pos\n";
     $lastpos = ++$pos;
 }
+
+# Found hi at index 6
+# Found hi at index 17
+# Found hi at index 27
 \end{lstlisting}
 \end{frame}
 
