@@ -8,3 +8,5 @@
 
 
 * [递归和死循环](https://mp.weixin.qq.com/s?__biz=MzA3MTM3NTA5Ng==&mid=2651063219&idx=5&sn=0d59650cffb1ac2c47e71addcbdb18e7&chksm=84de2224b3a9ab3257d174de04f856bbd109d96946815473ce25d2430dc3099357a3273f72e9&mpshare=1&scene=1&srcid=&sharer_sharetime=1576403423072&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+* [R 语言实现并行计算](https://mp.weixin.qq.com/s?__biz=MzA5NjgwODM0MQ==&mid=2651441090&idx=1&sn=add8c0f82acc61bf7f08699e90058ad3&chksm=8b571b38bc20922e60990c2b4eda9306a2b2f9af9fb156108210f332546cf6a5bf5533ae219b&mpshare=1&scene=1&srcid=&sharer_sharetime=1576708449503&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+
