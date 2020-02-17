@@ -14,3 +14,9 @@
 
 
 * [宅在家学不进去吗？试试这些 GitHub 上简单易学的游戏项目吧](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247487533&idx=2&sn=7f633ccb4f1c6b6f179f15398c7e9e13&chksm=fa0e7faccd79f6baee5b1f04c9670547692ddc2e90317278a9a8bb4c9b2be8b1b1420f94f6fc&mpshare=1&scene=1&srcid=&sharer_sharetime=1581731461993&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+
+
+
+* [哈哈哈，这个教人写出烂代码的项目在 GitHub 上火了...](https://mp.weixin.qq.com/s?__biz=MzAxOTcxNTIwNQ==&mid=2457918102&idx=1&sn=3e178d9050dd6214ec22e78a9ab9e1db&chksm=8cb6bf7cbbc1366a3f14bf819c60dc66e48a46a56ebef7fd87e327aae7adbd86ad6866d17abb&mpshare=1&scene=1&srcid=&sharer_sharetime=1581914347977&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+* [State-of-the-art shitcode](https://github.com/trekhleb/state-of-the-art-shitcode)
+
