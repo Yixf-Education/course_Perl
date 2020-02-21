@@ -21,3 +21,6 @@
 * [哈哈哈，这个教人写出烂代码的项目在 GitHub 上火了...](https://mp.weixin.qq.com/s?__biz=MzAxOTcxNTIwNQ==&mid=2457918102&idx=1&sn=3e178d9050dd6214ec22e78a9ab9e1db&chksm=8cb6bf7cbbc1366a3f14bf819c60dc66e48a46a56ebef7fd87e327aae7adbd86ad6866d17abb&mpshare=1&scene=1&srcid=&sharer_sharetime=1581914347977&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
 * [State-of-the-art shitcode](https://github.com/trekhleb/state-of-the-art-shitcode)
 
+
+
+* [牛逼了，原来大神都是这样学动态规划的...](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247487578&idx=1&sn=d4485f2e021fcd75a2726efd3a28ea6a&chksm=fa0e7fdbcd79f6cd44828cfb7181e07b280c822f97499be8445449c48f4b51024d61c1631fa8&mpshare=1&scene=1&srcid=&sharer_sharetime=1582259388607&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
