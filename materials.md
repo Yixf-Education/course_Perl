@@ -24,3 +24,8 @@
 
 
 * [牛逼了，原来大神都是这样学动态规划的...](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247487578&idx=1&sn=d4485f2e021fcd75a2726efd3a28ea6a&chksm=fa0e7fdbcd79f6cd44828cfb7181e07b280c822f97499be8445449c48f4b51024d61c1631fa8&mpshare=1&scene=1&srcid=&sharer_sharetime=1582259388607&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+* [计算机是如何跑起来的？](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247487613&idx=2&sn=06e1bdb6efefadc4738089d16acc3a23&chksm=fa0e7ffccd79f6eaa40b9028ce393414d1d32d27d0936454d11ccd714072a3eea0f66cdbb6da&mpshare=1&scene=1&srcid=&sharer_sharetime=1582519680021&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+
+
+
+* [一行 Python 代码能实现什么奇葩功能？](https://mp.weixin.qq.com/s?__biz=MjM5MDEyMDk4Mw==&mid=2650169749&idx=1&sn=d5e8698b66768ffe0fdd1aa61ecfbd74&chksm=be4b6ced893ce5fb2f12b8ae4d86a4c16be0c72e9e437b03e1fe08f436cecf2a70d3bfd61b67&mpshare=1&scene=1&srcid=&sharer_sharetime=1582617266633&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
