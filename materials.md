@@ -32,3 +32,6 @@
 
 
 * [诞生 16 周年，Markdown 为什么成了写作神器？](https://mp.weixin.qq.com/s?__biz=MjM5MjAyNDUyMA==&mid=2650536339&idx=1&sn=6a2e54da100bee686c84af2bca7bfae5&chksm=bea3cb3489d44222d4bb33cfd6b9a7f8e6b2326b6235e0f767887c0c4676e275608baccd97ce&mpshare=1&scene=1&srcid=&sharer_sharetime=1584937714149&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
+
+
+* [图解算法：摘取位运算的王冠「八皇后问题」！](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247487922&idx=2&sn=638d54092c46d25411623132bc4002c7&chksm=fa0e7e33cd79f72509e28a0cf59fede4a112946864965ca6494dcf807c38a93391fe30a783c1&mpshare=1&scene=1&srcid=&sharer_sharetime=1585957077269&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0&key=27fa696e26bac0aecc4322cf26ec5d46178c99ddac8c46e7439c49219c9a7696f149cf7faef96e2064f3a51a803c40e55af9d7af47cba73450610acbd0b11ee959106ccc7cbf97fab014bdc9aba50e77&ascene=1&uin=MjEyMzUzNDk2MQ%3D%3D&devicetype=Windows+XP&version=62060841&lang=zh_CN&exportkey=AZvW%2BJGw9sAsC9zzipwrooo%3D&pass_ticket=LyxVoEqcqUKETvbrhpvozloVSfOO66jU2aseO6rDzT9KqRpuHdXJpfL8KYyMXEbU)
