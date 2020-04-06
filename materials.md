@@ -20,6 +20,7 @@
 
 * [哈哈哈，这个教人写出烂代码的项目在 GitHub 上火了...](https://mp.weixin.qq.com/s?__biz=MzAxOTcxNTIwNQ==&mid=2457918102&idx=1&sn=3e178d9050dd6214ec22e78a9ab9e1db&chksm=8cb6bf7cbbc1366a3f14bf819c60dc66e48a46a56ebef7fd87e327aae7adbd86ad6866d17abb&mpshare=1&scene=1&srcid=&sharer_sharetime=1581914347977&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0#rd)
 * [State-of-the-art shitcode](https://github.com/trekhleb/state-of-the-art-shitcode)
+* [19 条准则，手把手教你写出烂代码](https://mp.weixin.qq.com/s?__biz=MzA3MTM3NTA5Ng==&mid=2651063681&idx=4&sn=e23d6672ad2919d84cad9ce5189840a9&chksm=84de2416b3a9ad00e3130ef8585cfc4e50ca620b10c16cd82ab0adca720fb86996276fa2125b&mpshare=1&scene=1&srcid=&sharer_sharetime=1585995510000&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0&key=4ed88be3ea0748e59b08753216b2c47c877abe70ae8638cfd9475abcf1542c865520d8e4d7077d48455ac7d29ada1028eac33863426017f1b0e1ec7a89f89dddea0393905f610c1cf969138745f60228&ascene=1&uin=MjEyMzUzNDk2MQ%3D%3D&devicetype=Windows+XP&version=62060841&lang=zh_CN&exportkey=AawIJL3rygwMEwkp%2FkH0EaI%3D&pass_ticket=Dq%2Fn%2F2sOhPkAzoapmD8lMSoDYSdQcnfqBIAqsaWajKcnEEsRJ4vPRL5T9JBdoqbY)
 
 
 
