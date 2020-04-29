@@ -43,3 +43,6 @@
 * [CS Unplugged](https://classic.csunplugged.org/): a collection of free learning activities that teach Computer Science through engaging games and puzzles that use cards, string, crayons and lots of running around
 * [CSUnplugged-zh_TW](https://github.com/fweng322/CSUnplugged-zh_TW): zh_TW translation files for the book CSUnplugged
 * [无需计算机的计算机科学](https://csunplugged.org/zh-hans/): CS Unplugged 提供一系列的免费教学素材，并通过使用卡片、绳子、蜡笔和大量跑动的游戏和谜题来教授计算机科学
+
+
+* [什么是整洁的代码](https://www.cnblogs.com/xybaby/p/11335829.html)
