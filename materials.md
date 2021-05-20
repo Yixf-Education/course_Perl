@@ -47,5 +47,5 @@
 
 
 * [什么是整洁的代码](https://www.cnblogs.com/xybaby/p/11335829.html)
-
 * [520，生信思维下的神告白 @需要的人](https://mp.weixin.qq.com/s?__biz=MzA5NjA0ODgxNQ==&mid=2652656515&idx=1&sn=424bd65e02bab6994b579f29a8fd545d&chksm=8b5ef043bc2979551aa36eec4175160afca7961d07fd951df8b02cff817c5a68941e29bce4d5&mpshare=1&scene=1&srcid=&sharer_sharetime=1589887140546&sharer_shareid=49bb68e4d4ad9f65af077f4e54025da0&key=5c8778b7574a982deafef9e6edc335a2e9fd5785d6117230af25b19c20cc6bbd4e3930f3e4ba6819ea91f97a01f7f49b4388ba4d4ab62bce63fecec803a09dd1b76a9c2704b25f7677e84bbdf35e0ec6&ascene=1&uin=MjEyMzUzNDk2MQ%3D%3D&devicetype=Windows+XP&version=62060841&lang=zh_CN&exportkey=AT6%2FWTW5pGsqvKRkg6eS5Lk%3D&pass_ticket=WeQ%2F9lMsk9TGefvhi5xsI1DxDC0Tuk826MThQy%2BRPMirkkwS6E8ZoGX%2BTcUnIroA)
+* [一行代码没写，凭啥被尊为“第一位程序员”？](https://mp.weixin.qq.com/s/OixxE1HtpIrjohiEyVLRAg)
