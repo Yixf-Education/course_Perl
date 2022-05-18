@@ -51,6 +51,7 @@
 * [一行代码没写，凭啥被尊为“第一位程序员”？](https://mp.weixin.qq.com/s/OixxE1HtpIrjohiEyVLRAg)
 * [圣诞前送你们一朵使用ggplot画的玫瑰花](https://mp.weixin.qq.com/s?__biz=MzUzMjYyMDE2OQ==&mid=2247489473&idx=2&sn=f63ff0aa485e1bd9022b614e5b8cc1bc&scene=21#wechat_redirect)
 * [R可视乎|用R给心仪的对象表白吧](https://mp.weixin.qq.com/s/JJT9hK7eOi-PQmdGRv1gxg)
+* [R 可视乎 | 用 R 给心仪的对象表白吧](https://mp.weixin.qq.com/s/0dbTBLblWiFLnlUslOQEIQ)
 
 
 
